@@ -117,10 +117,13 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             'deleted',
         ],
     ]);
-    Route::resource('videos', \App\Http\Controllers\UsersManagementController::class, [
+    Route::resource('video', \App\Http\Controllers\VideoManagementController::class, [
         'names' => [
-            'index'   => 'users',
-            'destroy' => 'user.destroy',
+            'index'   => 'videos',
+            'create'   => 'videos.create',
+            'store'   => 'videos.store',
+            'destroy' => 'video.destroy',
+            
         ],
         'except' => [
             'deleted',

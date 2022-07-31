@@ -21,6 +21,9 @@ class CreateVideoManagementTable extends Migration
             //$table->foreign('id')->references('id')->on('category')->onDelete('cascade');
             $table->unsignedBigInteger('status')->unsigned()->default(1);
             $table->string('thumbnail_image')->nullable();
+            $table->string('like_counts')->nullable();
+            $table->string('share')->nullable();
+            $table->string('comments_id')->nullable();
             $table->string('video')->nullable();
             $table->timestamps();
         });

@@ -35,7 +35,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {!! trans('usersmanagement.showing-all-users') !!}
+                                {!! trans('usersmanagement.showing-all-users') !!}---
                             </span>
 
                             <div class="btn-group pull-right btn-group-xs">

@@ -67,6 +67,29 @@
                                 <?php echo trans('titles.laravelBlocker'); ?>
 
                             </a>
+                        
+                        </div>
+                    </li>
+                <?php endif; ?>
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo trans('Management'); ?>
+
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          
+                            <a class="dropdown-item <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/video')); ?>">
+                                <?php echo trans('Category'); ?>
+
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item <?php echo e(Request::is('blocker') ? 'active' : null); ?>" href="<?php echo e(url('/video')); ?>">
+                                <?php echo trans('Video Management'); ?>
+
+                            </a>
                         </div>
                     </li>
                 <?php endif; ?>

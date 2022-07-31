@@ -36,8 +36,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                <?php echo trans('usersmanagement.showing-all-users'); ?>
-
+                                <?php echo trans('usersmanagement.showing-all-users'); ?>---
                             </span>
 
                             <div class="btn-group pull-right btn-group-xs">

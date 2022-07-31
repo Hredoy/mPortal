@@ -55,6 +55,26 @@
                             <a class="dropdown-item {{ Request::is('blocker') ? 'active' : null }}" href="{{ route('laravelblocker::blocker.index') }}">
                                 {!! trans('titles.laravelBlocker') !!}
                             </a>
+                        
+                        </div>
+                    </li>
+                @endrole
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                @role('admin')
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {!! trans('Management') !!}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          
+                            <a class="dropdown-item {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/video') }}">
+                                {!! trans('Category') !!}
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/video') }}">
+                                {!! trans('Video Management') !!}
+                            </a>
                         </div>
                     </li>
                 @endrole
