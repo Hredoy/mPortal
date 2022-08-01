@@ -43,8 +43,8 @@ class VideoManagementController extends Controller
     {
         $page_title = 'Create A New Video';
         $categories = Category::all();
-        $countries = Country::all();
-        return view('backend.video-audio.create', compact('page_title', 'countries', 'categories'));
+        // $countries = Country::all();
+        return view('backend.video-audio.create', compact('page_title', 'categories'));
     }
 
     /**

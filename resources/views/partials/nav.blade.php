@@ -68,7 +68,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           
-                            <a class="dropdown-item {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/video') }}">
+                            <a class="dropdown-item {{ Request::is('blocker') ? 'active' : null }}" href="{{ url('/category') }}">
                                 {!! trans('Category') !!}
                             </a>
                             <div class="dropdown-divider"></div>

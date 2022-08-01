@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $table = 'category';
+    protected $table = 'categories';
 
     // Relation
     public function videoss()

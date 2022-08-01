@@ -117,7 +117,21 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             'deleted',
         ],
     ]);
-    Route::resource('video', \App\Http\Controllers\VideoManagementController::class, [
+    Route::resource('cat', \App\Http\Controllers\CategoryController::class, [
+        'names' => [
+            'index'   => 'categories',
+            'create'   => 'categories.create',
+            'store'   => 'categories.store',
+            'edit'   => 'categories.edit',
+            'update'   => 'categories.update',
+            'destroy' => 'categories.destroy',
+            
+        ],
+        'except' => [
+            'deleted',
+        ],
+    ]);
+    Route::resource('video', \App\Http\Controllers\VideoController::class, [
         'names' => [
             'index'   => 'videos',
             'create'   => 'videos.create',
