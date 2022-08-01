@@ -21,8 +21,6 @@ Thumbs.db
 .phpintel/*
 /.phpintel/*
 /.vscode
-node_modules/
-vendor/
 
 ### Vagrant/Homestead Vendor Configs ###
 /.vagrant
