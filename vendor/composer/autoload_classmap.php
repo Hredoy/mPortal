@@ -51,6 +51,7 @@ return array(
     'App\\Models\\Theme' => $baseDir . '/app/Models/Theme.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\VideoManagement' => $baseDir . '/app/Models/VideoManagement.php',
+    'App\\Models\\Videos' => $baseDir . '/app/Models/Videos.php',
     'App\\Notifications\\SendActivationEmail' => $baseDir . '/app/Notifications/SendActivationEmail.php',
     'App\\Notifications\\SendGoodbyeEmail' => $baseDir . '/app/Notifications/SendGoodbyeEmail.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

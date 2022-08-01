@@ -122,6 +122,8 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             'index'   => 'videos',
             'create'   => 'videos.create',
             'store'   => 'videos.store',
+            'edit'   => 'videos.edit',
+            'update'   => 'videos.update',
             'destroy' => 'video.destroy',
             
         ],

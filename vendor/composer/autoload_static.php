@@ -748,6 +748,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'App\\Models\\Theme' => __DIR__ . '/../..' . '/app/Models/Theme.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\VideoManagement' => __DIR__ . '/../..' . '/app/Models/VideoManagement.php',
+        'App\\Models\\Videos' => __DIR__ . '/../..' . '/app/Models/Videos.php',
         'App\\Notifications\\SendActivationEmail' => __DIR__ . '/../..' . '/app/Notifications/SendActivationEmail.php',
         'App\\Notifications\\SendGoodbyeEmail' => __DIR__ . '/../..' . '/app/Notifications/SendGoodbyeEmail.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

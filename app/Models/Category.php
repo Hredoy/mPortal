@@ -12,9 +12,9 @@ class Category extends Model
     protected $table = 'category';
 
     // Relation
-    public function video()
+    public function videoss()
     {
       //  return $this->belongsTo(VideoManagement::class, 'id', 'category_id');
-        return $this->belongsTo(\App\Models\VideoManagement::class);
+        return $this->hasMany(Videos::class, 'category_id', 'id');
     }
 }
