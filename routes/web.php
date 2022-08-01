@@ -52,9 +52,12 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'checkblocked']]
 // Registered and Activated User Routes
 Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'checkblocked']], function () {
 
-    //  Homepage Route - Redirect based on user role is in controller.
+    //  Dashboard Route - Redirect based on user role is in controller.
     Route::get('/home', ['as' => 'public.home',   'uses' => 'App\Http\Controllers\UserController@index']);
 
+    //Upload Contents and Show
+    
+    
     // Show users profile - viewable by other users.
     Route::get('profile/{username}', [
         'as'   => '{username}',
