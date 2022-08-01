@@ -10,7 +10,7 @@
                         <div class="col-xl-6 col-lg-12 col-md-12">
                             <a href="javascript:void(0);">
                                 <div class="channel-logo" data-animation-in="fadeInLeft" data-delay-in="0.5">
-                                    <img src="images/logo.png" class="c-logo" alt="streamit">
+                                    <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo" alt="streamit">
                                 </div>
                             </a>
                             <h1 class="slider-text big-title title text-uppercase" data-animation-in="fadeInLeft"
@@ -58,7 +58,7 @@
                         <div class="col-xl-6 col-lg-12 col-md-12">
                             <a href="javascript:void(0);">
                                 <div class="channel-logo" data-animation-in="fadeInLeft">
-                                    <img src="images/logo.png" class="c-logo" alt="streamit">
+                                    <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo" alt="streamit">
                                 </div>
                             </a>
                             <h1 class="slider-text big-title title text-uppercase" data-animation-in="fadeInLeft">
@@ -107,7 +107,7 @@
                         <div class="col-xl-6 col-lg-12 col-md-12">
                             <a href="javascript:void(0);">
                                 <div class="channel-logo" data-animation-in="fadeInLeft">
-                                    <img src="images/logo.png" class="c-logo" alt="streamit">
+                                    <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo" alt="streamit">
                                 </div>
                             </a>
                             <h1 class="slider-text big-title title text-uppercase"
@@ -172,7 +172,7 @@
                                 <a href="movie-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/favorite/01.jpg" class="img-fluid" alt="">
+                                            <img src="<?php echo e(asset('assets/frontend/images/favorite/01.jpg')); ?>" class="img-fluid" alt="">
                                         </div>
                                         <div class="block-description">
                                             <h6>Champions</h6>
@@ -201,7 +201,7 @@
                                 <a href="show-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/favorite/02.jpg" class="img-fluid" alt="">
+                                            <img src="<?php echo e(asset('assets/frontend/images/favorite/02.jpg')); ?>" class="img-fluid" alt="">
                                         </div>
                                         <div class="block-description">
                                             <h6>Last Race</h6>
@@ -230,7 +230,7 @@
                                 <a href="movie-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/favorite/03.jpg" class="img-fluid" alt="">
+                                            <img src="<?php echo e(asset('assets/frontend/images/favorite/03.jpg')); ?>" class="img-fluid" alt="">
                                         </div>
                                         <div class="block-description">
                                             <h6>Boop Bitty</h6>
@@ -259,7 +259,7 @@
                                 <a href="show-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/favorite/04.jpg" class="img-fluid" alt="">
+                                            <img src="<?php echo e(asset('assets/frontend/images/favorite/04.jpg')); ?>" class="img-fluid" alt="">
                                         </div>
                                         <div class="block-description">
                                             <h6>Dino Land</h6>
@@ -288,7 +288,7 @@
                                 <a href="show-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/favorite/05.jpg" class="img-fluid" alt="">
+                                            <img src="<?php echo e(asset('assets/frontend/images/favorite/05.jpg')); ?>" class="img-fluid" alt="">
                                         </div>
                                         <div class="block-description">
                                             <h6>Jaction action</h6>
@@ -332,7 +332,7 @@
                                 <a href="movie-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/upcoming/01.jpg" class="img-fluid" alt="">
+                                            <img src="<?php echo e(asset('assets/frontend/images/upcoming/01.jpg')); ?>" class="img-fluid" alt="">
                                         </div>
                                         <div class="block-description">
                                             <h6>The Last Breath</h6>
@@ -361,7 +361,7 @@
                                 <a href="movie-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/upcoming/02.jpg" class="img-fluid" alt="">
+                                            <img src="<?php echo e(asset('assets/frontend/images/upcoming/02.jpg')); ?>" class="img-fluid" alt="">
                                         </div>
                                         <div class="block-description">
                                             <h6>Last Night</h6>
@@ -390,7 +390,7 @@
                                 <a href="movie-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/upcoming/03.jpg" class="img-fluid" alt="">
+                                            <img src="<?php echo e(asset('assets/frontend/images/upcoming/03.jpg')); ?>" class="img-fluid" alt="">
                                         </div>
                                         <div class="block-description">
                                             <h6>1980</h6>
@@ -419,7 +419,7 @@
                                 <a href="movie-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/upcoming/04.jpg" class="img-fluid" alt="">
+                                            <img src="<?php echo e(asset('assets/frontend/images/upcoming/04.jpg')); ?>" class="img-fluid" alt="">
                                         </div>
                                         <div class="block-description">
                                             <h6>Looters</h6>
@@ -448,7 +448,7 @@
                                 <a href="movie-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/upcoming/05.jpg" class="img-fluid" alt="">
+                                            <img src="<?php echo e(asset('assets/frontend/images/upcoming/05.jpg')); ?>" class="img-fluid" alt="">
                                         </div>
                                         <div class="block-description">
                                             <h6>Vugotronic</h6>
@@ -491,32 +491,32 @@
                         <ul id="top-ten-slider" class="list-inline p-0 m-0  d-flex align-items-center">
                             <li>
                                 <a href="movie-details.html">
-                                    <img src="images/top-10/01.jpg" class="img-fluid w-100" alt="">
+                                    <img src="<?php echo e(asset('assets/frontend/images/top-10/01.jpg')); ?>" class="img-fluid w-100" alt="">
                                 </a>
                             </li>
                             <li>
                                 <a href="movie-details.html">
-                                    <img src="images/top-10/02.jpg" class="img-fluid w-100" alt="">
+                                    <img src="<?php echo e(asset('assets/frontend/images/top-10/02.jpg')); ?>" class="img-fluid w-100" alt="">
                                 </a>
                             </li>
                             <li>
                                 <a href="movie-details.html">
-                                    <img src="images/top-10/03.jpg" class="img-fluid w-100" alt="">
+                                    <img src="<?php echo e(asset('assets/frontend/images/top-10/03.jpg')); ?>" class="img-fluid w-100" alt="">
                                 </a>
                             </li>
                             <li>
                                 <a href="movie-details.html">
-                                    <img src="images/top-10/04.jpg" class="img-fluid w-100" alt="">
+                                    <img src="<?php echo e(asset('assets/frontend/images/top-10/04.jpg')); ?>" class="img-fluid w-100" alt="">
                                 </a>
                             </li>
                             <li>
                                 <a href="movie-details.html">
-                                    <img src="images/top-10/05.jpg" class="img-fluid w-100" alt="">
+                                    <img src="<?php echo e(asset('assets/frontend/images/top-10/05.jpg')); ?>" class="img-fluid w-100" alt="">
                                 </a>
                             </li>
                             <li>
                                 <a href="movie-details.html">
-                                    <img src="images/top-10/06.jpg" class="img-fluid w-100" alt="">
+                                    <img src="<?php echo e(asset('assets/frontend/images/top-10/06.jpg')); ?>" class="img-fluid w-100" alt="">
                                 </a>
                             </li>
                         </ul>
@@ -525,7 +525,7 @@
                                 <li>
                                     <div class="block-images position-relative">
                                         <a href="movie-details.html">
-                                            <img src="images/top-10/01.jpg" class="img-fluid w-100"
+                                            <img src="<?php echo e(asset('assets/frontend/images/top-10/01.jpg')); ?>" class="img-fluid w-100"
                                                 alt="">
                                         </a>
                                         <div class="block-description">
@@ -546,7 +546,7 @@
                                 <li>
                                     <div class="block-images position-relative">
                                         <a href="movie-details.html">
-                                            <img src="images/top-10/02.jpg" class="img-fluid w-100"
+                                            <img src="<?php echo e(asset('assets/frontend/images/top-10/02.jpg')); ?>" class="img-fluid w-100"
                                                 alt="">
                                         </a>
                                         <div class="block-description">
@@ -567,7 +567,7 @@
                                 <li>
                                     <div class="block-images position-relative">
                                         <a href="movie-details.html">
-                                            <img src="images/top-10/03.jpg" class="img-fluid w-100"
+                                            <img src="<?php echo e(asset('assets/frontend/images/top-10/03.jpg')); ?>" class="img-fluid w-100"
                                                 alt="">
                                         </a>
                                         <div class="block-description">
@@ -588,7 +588,7 @@
                                 <li>
                                     <div class="block-images position-relative">
                                         <a href="movie-details.html">
-                                            <img src="images/top-10/04.jpg" class="img-fluid w-100"
+                                            <img src="<?php echo e(asset('assets/frontend/images/top-10/04.jpg')); ?>" class="img-fluid w-100"
                                                 alt="">
                                         </a>
                                         <div class="block-description">
@@ -609,7 +609,7 @@
                                 <li>
                                     <div class="block-images position-relative">
                                         <a href="movie-details.html">
-                                            <img src="images/top-10/05.jpg" class="img-fluid w-100"
+                                            <img src="<?php echo e(asset('assets/frontend/images/top-10/05.jpg')); ?>" class="img-fluid w-100"
                                                 alt="">
                                         </a>
                                         <div class="block-description">
@@ -630,7 +630,7 @@
                                 <li>
                                     <div class="block-images position-relative">
                                         <a href="movie-details.html">
-                                            <img src="images/top-10/06.jpg" class="img-fluid w-100"
+                                            <img src="<?php echo e(asset('assets/frontend/images/top-10/06.jpg')); ?>" class="img-fluid w-100"
                                                 alt="">
                                         </a>
                                         <div class="block-description">
@@ -668,7 +668,7 @@
                                 <a href="movie-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/suggested/01.jpg" class="img-fluid"
+                                            <img src="<?php echo e(asset('assets/frontend/images/suggested/01.jpg')); ?>" class="img-fluid"
                                                 alt="">
                                         </div>
                                         <div class="block-description">
@@ -697,7 +697,7 @@
                                 <a href="show-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/suggested/02.jpg" class="img-fluid"
+                                            <img src="<?php echo e(asset('assets/frontend/images/suggested/02.jpg')); ?>" class="img-fluid"
                                                 alt="">
                                         </div>
                                         <div class="block-description">
@@ -726,7 +726,7 @@
                                 <a href="movie-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/suggested/03.jpg" class="img-fluid"
+                                            <img src="<?php echo e(asset('assets/frontend/images/suggested/03.jpg')); ?>" class="img-fluid"
                                                 alt="">
                                         </div>
                                         <div class="block-description">
@@ -755,7 +755,7 @@
                                 <a href="show-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/suggested/04.jpg" class="img-fluid"
+                                            <img src="<?php echo e(asset('assets/frontend/images/suggested/04.jpg')); ?>" class="img-fluid"
                                                 alt="">
                                         </div>
                                         <div class="block-description">
@@ -784,7 +784,7 @@
                                 <a href="movie-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/suggested/05.jpg" class="img-fluid"
+                                            <img src="<?php echo e(asset('assets/frontend/images/suggested/05.jpg')); ?>" class="img-fluid"
                                                 alt="">
                                         </div>
                                         <div class="block-description">
@@ -821,7 +821,7 @@
                 <div class="col-lg-4 r-mb-23">
                     <div class="text-left">
                         <a href="javascript:void(0);">
-                            <img src="images/parallax/parallax-logo.png" class="img-fluid" alt="bailey">
+                            <img src="<?php echo e(asset('assets/frontend/images/parallax/parallax-logo.png')); ?>" class="img-fluid" alt="bailey">
                         </a>
                         <div class="parallax-ratting d-flex align-items-center mt-3 mb-3">
                             <ul
@@ -853,7 +853,7 @@
                 <div class="col-lg-8">
                     <div class="parallax-img">
                         <a href="movie-details.html">
-                            <img src="images/parallax/p1.jpg" class="img-fluid w-100" alt="bailey">
+                            <img src="<?php echo e(asset('assets/frontend/images/parallax/p1.jpg')); ?>" class="img-fluid w-100" alt="bailey">
                         </a>
                     </div>
                 </div>
@@ -872,42 +872,42 @@
                             <li>
                                 <a href="javascript:void(0);">
                                     <div class="movie-slick position-relative">
-                                        <img src="images/trending/01.jpg" class="img-fluid" alt="">
+                                        <img src="<?php echo e(asset('assets/frontend/images/trending/01.jpg')); ?>" class="img-fluid" alt="">
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0);">
                                     <div class="movie-slick position-relative">
-                                        <img src="images/trending/02.jpg" class="img-fluid" alt="">
+                                        <img src="<?php echo e(asset('assets/frontend/images/trending/02.jpg')); ?>" class="img-fluid" alt="">
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0);">
                                     <div class="movie-slick position-relative">
-                                        <img src="images/trending/03.jpg" class="img-fluid" alt="">
+                                        <img src="<?php echo e(asset('assets/frontend/images/trending/03.jpg')); ?>" class="img-fluid" alt="">
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0);">
                                     <div class="movie-slick position-relative">
-                                        <img src="images/trending/04.jpg" class="img-fluid" alt="">
+                                        <img src="<?php echo e(asset('assets/frontend/images/trending/04.jpg')); ?>" class="img-fluid" alt="">
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0);">
                                     <div class="movie-slick position-relative">
-                                        <img src="images/trending/05.jpg" class="img-fluid" alt="">
+                                        <img src="<?php echo e(asset('assets/frontend/images/trending/05.jpg')); ?>" class="img-fluid" alt="">
                                     </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0);">
                                     <div class="movie-slick position-relative">
-                                        <img src="images/trending/06.jpg" class="img-fluid" alt="">
+                                        <img src="<?php echo e(asset('assets/frontend/images/trending/06.jpg')); ?>" class="img-fluid" alt="">
                                     </div>
                                 </a>
                             </li>
@@ -915,7 +915,7 @@
                         <ul id="trending-slider" class="list-inline p-0 m-0  d-flex align-items-center">
                             <li>
                                 <div class="tranding-block position-relative"
-                                    style="background-image: url(images/trending/01.jpg);">
+                                    style="background-image: url(images/trending/01.jpg')}});">
                                     <div class="trending-custom-tab">
                                         <div class="tab-title-info position-relative">
                                             <ul class="trending-pills d-flex nav nav-pills justify-content-center align-items-center text-center"
@@ -950,7 +950,7 @@
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="res-logo">
                                                             <div class="channel-logo">
-                                                                <img src="images/logo.png" class="c-logo"
+                                                                <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                     alt="streamit">
                                                             </div>
                                                         </div>
@@ -965,7 +965,7 @@
                                                     </div>
                                                     <div class="d-flex align-items-center series mb-4">
                                                         <a href="javascript:void(0);"><img
-                                                                src="images/trending/trending-label.png"
+                                                                src="images/trending/trending-label.png')}}"
                                                                 class="img-fluid" alt=""></a>
                                                         <span class="text-gold ml-3">#2 in Series Today</span>
                                                     </div>
@@ -1006,7 +1006,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="show-details.html" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -1026,7 +1026,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -1054,7 +1054,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -1082,7 +1082,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -1110,7 +1110,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -1138,7 +1138,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -1172,7 +1172,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -1184,7 +1184,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html" target="_blank">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -1214,7 +1214,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html" target="_blank">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -1244,7 +1244,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html" target="_blank">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -1274,7 +1274,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html" target="_blank">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -1306,7 +1306,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -1343,7 +1343,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -1355,7 +1355,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -1385,7 +1385,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -1415,7 +1415,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -1445,7 +1445,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -1475,7 +1475,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -1512,7 +1512,7 @@
                             </li>
                             <li>
                                 <div class="tranding-block position-relative"
-                                    style="background-image: url(images/trending/02.jpg);">
+                                    style="background-image: url(images/trending/02.jpg')}});">
                                     <div class="trending-custom-tab">
                                         <div class="tab-title-info position-relative">
                                             <ul class="trending-pills d-flex nav nav-pills justify-content-center align-items-center text-center"
@@ -1548,7 +1548,7 @@
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="res-logo">
                                                             <div class="channel-logo">
-                                                                <img src="images/logo.png" class="c-logo"
+                                                                <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                     alt="streamit">
                                                             </div>
                                                         </div>
@@ -1563,7 +1563,7 @@
                                                     </div>
                                                     <div class="d-flex align-items-center series mb-4">
                                                         <a href="javascript:void(0);"><img
-                                                                src="images/trending/trending-label.png"
+                                                                src="images/trending/trending-label.png')}}"
                                                                 class="img-fluid" alt=""></a>
                                                         <span class="text-gold ml-3">#2 in Series Today</span>
                                                     </div>
@@ -1604,7 +1604,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="show-details.html" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -1623,7 +1623,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -1653,7 +1653,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -1683,7 +1683,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -1713,7 +1713,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -1743,7 +1743,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -1779,7 +1779,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -1792,7 +1792,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -1824,7 +1824,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -1856,7 +1856,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -1888,7 +1888,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -1920,7 +1920,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -1957,7 +1957,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -1969,7 +1969,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -1999,7 +1999,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -2029,7 +2029,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -2059,7 +2059,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -2089,7 +2089,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -2126,7 +2126,7 @@
                             </li>
                             <li>
                                 <div class="tranding-block position-relative"
-                                    style="background-image: url(images/trending/03.jpg);">
+                                    style="background-image: url(images/trending/03.jpg')}});">
                                     <div class="trending-custom-tab">
                                         <div class="tab-title-info position-relative">
                                             <ul class="trending-pills d-flex nav nav-pills justify-content-center align-items-center text-center"
@@ -2162,7 +2162,7 @@
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="res-logo">
                                                             <div class="channel-logo">
-                                                                <img src="images/logo.png" class="c-logo"
+                                                                <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                     alt="streamit">
                                                             </div>
                                                         </div>
@@ -2177,7 +2177,7 @@
                                                     </div>
                                                     <div class="d-flex align-items-center series mb-4">
                                                         <a href="javascript:void(0);"><img
-                                                                src="images/trending/trending-label.png"
+                                                                src="images/trending/trending-label.png')}}"
                                                                 class="img-fluid" alt=""></a>
                                                         <span class="text-gold ml-3">#11 in Series Today</span>
                                                     </div>
@@ -2218,7 +2218,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="show-details.html" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -2238,7 +2238,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -2268,7 +2268,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -2298,7 +2298,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -2328,7 +2328,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -2358,7 +2358,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -2394,7 +2394,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -2407,7 +2407,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -2439,7 +2439,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -2471,7 +2471,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -2503,7 +2503,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -2535,7 +2535,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -2572,7 +2572,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -2584,7 +2584,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -2614,7 +2614,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -2644,7 +2644,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -2674,7 +2674,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -2704,7 +2704,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -2741,7 +2741,7 @@
                             </li>
                             <li>
                                 <div class="tranding-block position-relative"
-                                    style="background-image: url(images/trending/04.jpg);">
+                                    style="background-image: url(images/trending/04.jpg')}});">
                                     <div class="trending-custom-tab">
                                         <div class="tab-title-info position-relative">
                                             <ul class="trending-pills d-flex nav nav-pills justify-content-center align-items-center text-center"
@@ -2777,7 +2777,7 @@
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="res-logo">
                                                             <div class="channel-logo">
-                                                                <img src="images/logo.png" class="c-logo"
+                                                                <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                     alt="streamit">
                                                             </div>
                                                         </div>
@@ -2792,7 +2792,7 @@
                                                     </div>
                                                     <div class="d-flex align-items-center series mb-4">
                                                         <a href="javascript:void(0);"><img
-                                                                src="images/trending/trending-label.png"
+                                                                src="images/trending/trending-label.png')}}"
                                                                 class="img-fluid" alt=""></a>
                                                         <span class="text-gold ml-3">#2 in Series Today</span>
                                                     </div>
@@ -2833,7 +2833,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="show-details.html" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -2852,7 +2852,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -2882,7 +2882,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -2912,7 +2912,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -2942,7 +2942,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -2972,7 +2972,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -3008,7 +3008,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -3021,7 +3021,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -3053,7 +3053,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -3085,7 +3085,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -3117,7 +3117,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -3149,7 +3149,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -3186,7 +3186,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -3198,7 +3198,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -3228,7 +3228,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -3258,7 +3258,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -3288,7 +3288,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -3318,7 +3318,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -3355,7 +3355,7 @@
                             </li>
                             <li>
                                 <div class="tranding-block position-relative"
-                                    style="background-image: url(images/trending/05.jpg);">
+                                    style="background-image: url(images/trending/05.jpg')}});">
                                     <div class="trending-custom-tab">
                                         <div class="tab-title-info position-relative">
                                             <ul class="trending-pills d-flex nav nav-pills justify-content-center align-items-center text-center"
@@ -3391,7 +3391,7 @@
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="res-logo">
                                                             <div class="channel-logo">
-                                                                <img src="images/logo.png" class="c-logo"
+                                                                <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                     alt="streamit">
                                                             </div>
                                                         </div>
@@ -3406,7 +3406,7 @@
                                                     </div>
                                                     <div class="d-flex align-items-center series mb-4">
                                                         <a href="javascript:void(0);"><img
-                                                                src="images/trending/trending-label.png"
+                                                                src="images/trending/trending-label.png')}}"
                                                                 class="img-fluid" alt=""></a>
                                                         <span class="text-gold ml-3">#2 in Series Today</span>
                                                     </div>
@@ -3447,7 +3447,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="show-details.html" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -3466,7 +3466,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -3496,7 +3496,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -3526,7 +3526,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -3556,7 +3556,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -3586,7 +3586,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -3622,7 +3622,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -3635,7 +3635,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -3667,7 +3667,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -3699,7 +3699,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -3731,7 +3731,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -3763,7 +3763,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -3800,7 +3800,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -3812,7 +3812,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -3842,7 +3842,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -3872,7 +3872,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -3902,7 +3902,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -3932,7 +3932,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -3969,7 +3969,7 @@
                             </li>
                             <li>
                                 <div class="tranding-block position-relative"
-                                    style="background-image: url(images/trending/06.jpg);">
+                                    style="background-image: url(images/trending/06.jpg')}});">
                                     <div class="trending-custom-tab">
                                         <div class="tab-title-info position-relative">
                                             <ul class="trending-pills d-flex nav nav-pills justify-content-center align-items-center text-center"
@@ -4005,7 +4005,7 @@
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="res-logo">
                                                             <div class="channel-logo">
-                                                                <img src="images/logo.png" class="c-logo"
+                                                                <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                     alt="streamit">
                                                             </div>
                                                         </div>
@@ -4020,7 +4020,7 @@
                                                     </div>
                                                     <div class="d-flex align-items-center series mb-4">
                                                         <a href="javascript:void(0);"><img
-                                                                src="images/trending/trending-label.png"
+                                                                src="images/trending/trending-label.png')}}"
                                                                 class="img-fluid" alt=""></a>
                                                         <span class="text-gold ml-3">#2 in Series Today</span>
                                                     </div>
@@ -4061,7 +4061,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="show-details.html" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -4080,7 +4080,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -4110,7 +4110,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -4140,7 +4140,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -4170,7 +4170,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -4200,7 +4200,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -4236,7 +4236,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -4249,7 +4249,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -4281,7 +4281,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -4313,7 +4313,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -4345,7 +4345,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -4377,7 +4377,7 @@
                                                                 <div class="block-image position-relative">
                                                                     <a href="watch-video.html"
                                                                         target="_blank">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -4414,7 +4414,7 @@
                                                     class="trending-info align-items-center w-100 animated fadeInUp">
                                                     <a href="javascript:void(0);" tabindex="0">
                                                         <div class="channel-logo">
-                                                            <img src="images/logo.png" class="c-logo"
+                                                            <img src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>" class="c-logo"
                                                                 alt="stramit">
                                                         </div>
                                                     </a>
@@ -4426,7 +4426,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/01.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/01.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">1</div>
@@ -4456,7 +4456,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/02.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/02.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">2</div>
@@ -4486,7 +4486,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/03.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/03.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">3</div>
@@ -4516,7 +4516,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/04.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/04.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">4</div>
@@ -4546,7 +4546,7 @@
                                                             <div class="e-item">
                                                                 <div class="block-image position-relative">
                                                                     <a href="show-details.html">
-                                                                        <img src="images/episodes/05.jpg"
+                                                                        <img src="<?php echo e(asset('assets/frontend/images/episodes/05.jpg')); ?>"
                                                                             class="img-fluid" alt="">
                                                                     </a>
                                                                     <div class="episode-number">5</div>
@@ -4600,7 +4600,7 @@
                                 <a href="show-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/tvthrillers/01.jpg" class="img-fluid"
+                                            <img src="<?php echo e(asset('assets/frontend/images/tvthrillers/01.jpg')); ?>" class="img-fluid"
                                                 alt="">
                                         </div>
                                         <div class="block-description">
@@ -4629,7 +4629,7 @@
                                 <a href="show-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/tvthrillers/02.jpg" class="img-fluid"
+                                            <img src="<?php echo e(asset('assets/frontend/images/tvthrillers/02.jpg')); ?>" class="img-fluid"
                                                 alt="">
                                         </div>
                                         <div class="block-description">
@@ -4658,7 +4658,7 @@
                                 <a href="show-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/tvthrillers/03.jpg" class="img-fluid"
+                                            <img src="<?php echo e(asset('assets/frontend/images/tvthrillers/03.jpg')); ?>" class="img-fluid"
                                                 alt="">
                                         </div>
                                         <div class="block-description">
@@ -4687,7 +4687,7 @@
                                 <a href="show-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/tvthrillers/04.jpg" class="img-fluid"
+                                            <img src="<?php echo e(asset('assets/frontend/images/tvthrillers/04.jpg')); ?>" class="img-fluid"
                                                 alt="">
                                         </div>
                                         <div class="block-description">
@@ -4716,7 +4716,7 @@
                                 <a href="show-details.html">
                                     <div class="block-images position-relative">
                                         <div class="img-box">
-                                            <img src="images/tvthrillers/05.jpg" class="img-fluid"
+                                            <img src="<?php echo e(asset('assets/frontend/images/tvthrillers/05.jpg')); ?>" class="img-fluid"
                                                 alt="">
                                         </div>
                                         <div class="block-description">
