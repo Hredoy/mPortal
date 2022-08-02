@@ -56,4 +56,4 @@
       <!-- Custom JS-->
       <script src="<?php echo e(asset('assets/frontend/js/custom.js')); ?>"></script>
    </body>
-</html><?php /**PATH C:\xampp\htdocs\projects\pro-4\mPortal\resources\views/frontend/layout/app.blade.php ENDPATH**/ ?>
+</html><?php /**PATH D:\laragon\www\mPortal\resources\views/frontend/layout/app.blade.php ENDPATH**/ ?>

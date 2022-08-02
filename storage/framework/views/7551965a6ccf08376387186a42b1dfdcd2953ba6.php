@@ -48,4 +48,4 @@
           <p class="mb-0 text-center font-size-14 text-body">{{config('app.name')}}- 2020 All Rights Reserved</p>
        </div>
     </div>
- </footer><?php /**PATH C:\xampp\htdocs\projects\pro-4\mPortal\resources\views/frontend/partials/footer.blade.php ENDPATH**/ ?>
+ </footer><?php /**PATH D:\laragon\www\mPortal\resources\views/frontend/partials/footer.blade.php ENDPATH**/ ?>
