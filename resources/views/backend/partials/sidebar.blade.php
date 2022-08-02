@@ -40,22 +40,22 @@
                         aria-expanded="false"><i class="las la-list-ul"></i><span>Category</span><i
                             class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                     <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                        <li><a href="add-category.html"><i class="las la-user-plus"></i>Add Category</a></li>
-                        <li><a href="category-list.html"><i class="las la-eye"></i>Category List</a></li>
+                        <li><a href="{{Route('categories.create')}}"><i class="las la-user-plus"></i>Add Category</a></li>
+                        <li><a href="{{Route('categories')}}"><i class="las la-eye"></i>Category List</a></li>
                     </ul>
                 </li>
                 @endrole
                 <li>
-                    <a href="add-movie.html" class="iq-waves-effect"><i class="las la-upload"></i><span>Upload Content</span></a>
+                    <a href="{{Route('public.upload')}}" class="iq-waves-effect"><i class="las la-upload"></i><span>Upload Content</span></a>
                 </li>
                 <li>
-                    <a href="movie-list.html" class="iq-waves-effect"><i class="las la-music"></i><span>Music List</span></a>
+                    <a href="{{Route('public.music')}}" class="iq-waves-effect"><i class="las la-music"></i><span>Music List</span></a>
                 </li>
                 <li>
-                    <a href="movie-list.html" class="iq-waves-effect"><i class="las la-brain"></i><span>Talent List</span></a>
+                    <a href="{{Route('public.talent')}}" class="iq-waves-effect"><i class="las la-brain"></i><span>Talent List</span></a>
                 </li>
                 <li>
-                    <a href="movie-list.html" class="iq-waves-effect"><i class="las la-smile"></i><span>Comedy List</span></a>
+                    <a href="{{Route('public.comedy')}}" class="iq-waves-effect"><i class="las la-smile"></i><span>Comedy List</span></a>
                 </li>
                 <li>
                     <a href="{{ route('logout') }}"

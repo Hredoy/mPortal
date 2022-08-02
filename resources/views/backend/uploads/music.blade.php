@@ -13,6 +13,7 @@
                    <div class="iq-header-title">
                       <h4 class="card-title">Editable Table</h4>
                    </div>
+                   
                 </div>
                 <div class="iq-card-body">
                    <div id="table" class="table-editable">
@@ -22,79 +23,60 @@
                       </button>
                       </span>
                       <table class="table table-bordered table-responsive-md table-striped text-center">
+                       
                          <thead>
                             <tr>
-                               <th>Name</th>
-                               <th>Age</th>
-                               <th>Company Name</th>
-                               <th>Country</th>
-                               <th>City</th>
-                               <th>Sort</th>
-                               <th>Remove</th>
+                              <th>{!! trans('SL') !!}</th> 
+                              <th>{!! trans('Name') !!}</th>
+                              <th class="hidden-xs">{!! trans('Category') !!}</th>
+                              <th class="hidden-xs">{!! trans('Status') !!}</th>
+                              <th class="hidden-xs">{!! trans('Thumbnail') !!}</th>
+                              <th class="">{!! trans('Music') !!}</th>
+                              <th class="">{!! trans('Sort') !!}</th>
+                              <th colspan="5">{!! trans('Action') !!}</th>
+                            
                             </tr>
                          </thead>
-                         <tbody>
-                            <tr>
-                               <td contenteditable="true">Gio Metric</td>
-                               <td contenteditable="true">25</td>
-                               <td contenteditable="true">Deepends</td>
-                               <td contenteditable="true">Spain</td>
-                               <td contenteditable="true">Madrid</td>
-                               <td>
-                                  <span class="table-up"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a></span>
-                                  <span class="table-down"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a></span>
-                               </td>
-                               <td>
-                                  <span class="table-remove"><button type="button"
-                                     class="btn btn-primary btn-rounded btn-sm my-0">Remove</button></span>
-                               </td>
-                            </tr>
-                            <tr>
-                               <td contenteditable="true">Manny Petty</td>
-                               <td contenteditable="true">45</td>
-                               <td contenteditable="true">Insectus</td>
-                               <td contenteditable="true">France</td>
-                               <td contenteditable="true">San Francisco</td>
-                               <td>
-                                  <span class="table-up"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a></span>
-                                  <span class="table-down"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a></span>
-                               </td>
-                               <td>
-                                  <span class="table-remove"><button type="button"
-                                     class="btn btn-primary btn-rounded btn-sm my-0">Remove</button></span>
-                               </td>
-                            </tr>
-                            <tr>
-                               <td contenteditable="true">Lucy Tania</td>
-                               <td contenteditable="true">26</td>
-                               <td contenteditable="true">Isotronic</td>
-                               <td contenteditable="true">Germany</td>
-                               <td contenteditable="true">Frankfurt am Main</td>
-                               <td>
-                                  <span class="table-up"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a></span>
-                                  <span class="table-down"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a></span>
-                               </td>
-                               <td>
-                                  <span class="table-remove"><button type="button"
-                                     class="btn btn-primary btn-rounded btn-sm my-0">Remove</button></span>
-                               </td>
-                            </tr>
-                            <tr class="hide">
-                               <td contenteditable="true">Anna Mull</td>
-                               <td contenteditable="true">35</td>
-                               <td contenteditable="true">Portica</td>
-                               <td contenteditable="true">USA</td>
-                               <td contenteditable="true">Oregon</td>
-                               <td>
-                                  <span class="table-up"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a></span>
-                                  <span class="table-down"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a></span>
-                               </td>
-                               <td>
-                                  <span class="table-remove"><button type="button"
-                                     class="btn btn-primary btn-rounded btn-sm my-0">Remove</button></span>
-                               </td>
-                            </tr>
-                         </tbody>
+                        <tbody>
+                           @forelse($uploads as $video)
+                           <tr>
+                              <td contenteditable="true">{{ $loop->iteration }}</td>
+                              <td contenteditable="true">{{$video->name}}</td>
+                              <td contenteditable="true">{{$video->categories->category_name}}</td>
+                              <td contenteditable="true">
+                                @if($video->status == '1')
+                                  <span class="badge badge-success">Active</span>
+                                  @else
+                                  <span class="badge badge-warning">Deactive</span>
+                                  @endif
+                              </td>
+                              <td contenteditable="true"><img src="{{ asset('/uploads/'.Auth::user()->name.'/images/'.$video->thumbnail_image) }}" class="msg-photo" alt="" style="width: 100px; height:60px;" /></td>
+                              <td contenteditable="true">
+                                 <video width="320" height="100" controls>
+                                  <source src="{{ asset('/uploads/'.Auth::user()->name.'/video/'.$video->upload) }}" type="video/mp4">
+                                 </video>
+                              </td>
+                              <td>
+                                 <span class="table-up"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a></span>
+                                 <span class="table-down"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a></span>
+                              </td>
+                              <td>
+                                    <a  href="{{route('public.upload.edit',$video->id)}}"
+                                    class="btn btn-light btn-rounded btn-sm px-2 my-0"> Edit  </a>
+                                 <span class="table-remove">
+                                    <a  href="{{route('public.upload.destroy',$video->id)}}"
+                                    class="btn btn-primary btn-rounded btn-sm my-0">Remove</a>
+                                 </span>
+                              </td>
+                        </tbody>
+                           @empty
+                           <tr>
+                               <td class="text-muted text-center" colspan="100%">
+                                   {{ trans($empty_message) }}</td>
+                           </tr>
+                       </tbody>
+                       
+                       @endforelse
                       </table>
                    </div>
                 </div>

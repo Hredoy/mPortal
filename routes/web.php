@@ -63,6 +63,7 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
         'as'   => '{username}',
         'uses' => 'App\Http\Controllers\ProfilesController@show',
     ]);
+    
 });
 
 // Registered, activated, and is current user routes.
@@ -120,7 +121,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             'deleted',
         ],
     ]);
-    Route::resource('cat', \App\Http\Controllers\CategoryController::class, [
+    Route::resource('category', \App\Http\Controllers\CategoryController::class, [
         'names' => [
             'index'   => 'categories',
             'create'   => 'categories.create',
@@ -134,19 +135,40 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             'deleted',
         ],
     ]);
-    Route::resource('video', \App\Http\Controllers\VideoController::class, [
-        'names' => [
-            'index'   => 'videos',
-            'create'   => 'videos.create',
-            'store'   => 'videos.store',
-            'edit'   => 'videos.edit',
-            'update'   => 'videos.update',
-            'destroy' => 'video.destroy',
-            
-        ],
-        'except' => [
-            'deleted',
-        ],
+    // Upload Routes.
+    Route::get('upload', [
+        'as'   => 'public.upload',
+        'uses' => 'App\Http\Controllers\UploadController@create',
+    ]);
+    Route::post('upload-store', [
+        'as'   => 'public.upload.store',
+        'uses' => 'App\Http\Controllers\UploadController@store',
+    ]);
+    Route::get('upload-edit/{id}', [
+        'as'   => 'public.upload.edit',
+        'uses' => 'App\Http\Controllers\UploadController@edit',
+    ]);
+    Route::put('upload-update/{id}', [
+        'as'   => 'public.upload.update',
+        'uses' => 'App\Http\Controllers\UploadController@update',
+    ]);
+    Route::get('upload-destroy/{id}', [
+        'as'   => 'public.upload.destroy',
+        'uses' => 'App\Http\Controllers\UploadController@destroy',
+    ]);
+
+    //category wise view
+    Route::get('music', [
+        'as'   => 'public.music',
+        'uses' => 'App\Http\Controllers\UploadController@getMusic',
+    ]);
+    Route::get('comedy', [
+        'as'   => 'public.comedy',
+        'uses' => 'App\Http\Controllers\UploadController@comedy',
+    ]);
+    Route::get('talent', [
+        'as'   => 'public.talent',
+        'uses' => 'App\Http\Controllers\UploadController@talent',
     ]);
     Route::post('search-users', 'App\Http\Controllers\UsersManagementController@search')->name('search-users');
 
@@ -154,6 +176,23 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         'names' => [
             'index'   => 'themes',
             'destroy' => 'themes.destroy',
+        ],
+    ]);
+
+
+    //Comments Route:
+    Route::resource('comment', \App\Http\Controllers\CommentController::class, [
+        'names' => [
+            'index'   => 'comments',
+            'create'   => 'comments.create',
+            'store'   => 'comments.store',
+            'edit'   => 'comments.edit',
+            'update'   => 'comments.update',
+            'destroy' => 'comments.destroy',
+            
+        ],
+        'except' => [
+            'deleted',
         ],
     ]);
 

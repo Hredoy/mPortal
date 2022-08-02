@@ -7,7 +7,7 @@
              </div>
              <div class="iq-navbar-logo d-flex justify-content-between">
                 <a href="index.html" class="header-logo">
-                   <img src="{{asset('assets/frontend/{{asset('assets/backend/images/logo.png')}}')}}" class="img-fluid rounded-normal" alt="">
+                   <img src="{{asset('assets/backend/images/logo.png')}}')}}" class="img-fluid rounded-normal" alt="">
                    <div class="logo-title">
                       <span class="text-primary text-uppercase">Streamit</span>
                    </div>
@@ -175,7 +175,7 @@
                 @endauth
                 <li class="line-height pt-3">
                    <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
-                      <img src="{{asset('assets/frontend/{{asset('assets/backend/images/user/1.jpg')}}')}}" class="img-fluid rounded-circle mr-3" alt="user">
+                      <img src="{{asset('assets/backend/images/user/1.jpg')}}')}}" class="img-fluid rounded-circle mr-3" alt="user">
                    </a>
                    <div class="iq-sub-dropdown iq-user-dropdown">
                       <div class="iq-card shadow-none m-0">

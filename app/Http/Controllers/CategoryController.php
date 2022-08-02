@@ -26,7 +26,7 @@ class CategoryController extends Controller
         $empty_message = 'No Category is available.';
         $categories = Category::get();
         $roles = Role::all();
-        return View('backend.category.index', compact('categories', 'roles', 'page_title', 'empty_message'));
+        return View('backend.admin.category.index', compact('categories', 'roles', 'page_title', 'empty_message'));
     }
 
     /**
@@ -39,7 +39,7 @@ class CategoryController extends Controller
         $page_title = 'Create A New Video';
         $categories = Category::all();
         // $countries = Country::all();
-        return view('backend.category.create', compact('page_title', 'categories'));
+        return view('backend.admin.category.create', compact('page_title', 'categories'));
     }
 
     /**
@@ -51,21 +51,15 @@ class CategoryController extends Controller
      public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'thumbnail_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'category_name' => 'required',
+            'description' => 'required',
+            
         ]);
-        //for image
-        if ($request->hasFile('thumbnail_image')) {
-            $fileName = $request->file('thumbnail_image')->getClientOriginalExtension();
-            if ($fileName == 'jpg' || $fileName == 'png' || $fileName == 'jpeg' || $fileName == 'gif' || $fileName == 'svg') {
-                $newFileName = time() . '.' . $fileName;
-                $uploadPath = public_path('category/' . Auth::user()->name . '/images/');
-                $request->thumbnail_image->move($uploadPath, $newFileName);
-            }
-        } 
+         
         $category = new Category();
-        $category->category_name = $request->name;
-        $category->thumbnail_image = $newFileName;
+        $category->category_name = $request->category_name;
+        $category->description = $request->description;
+        $category->status = $request->status;
         $category->save();
         return redirect()->route('categories')->with('create', 'Category has been created successfully.');
     }
@@ -91,7 +85,7 @@ class CategoryController extends Controller
     {
         $page_title = 'Update Category';
         $category = Category::find($id);
-        return view('backend.category.edit', compact('page_title', 'category'));
+        return view('backend.admin.category.edit', compact('page_title', 'category'));
     }
 
 
@@ -102,9 +96,15 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id)->update([
+            "category_name" => $request->category_name,
+            "description" => $request->description,
+            "status" => $request->status,
+            
+        ]);
+        return redirect()->route('categories')->with('update', 'Category has been update successfully.');
     }
 
     /**
@@ -113,8 +113,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        Category::findOrFail($id)->delete(); 
+
+        return redirect()->back()->with('delete', 'Category has been delete successfully.');
     }
 }
