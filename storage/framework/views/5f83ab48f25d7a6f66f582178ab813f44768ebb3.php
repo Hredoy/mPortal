@@ -13,8 +13,8 @@
                          <span class="navbar-menu-icon navbar-menu-icon--bottom"></span>
                       </div>
                    </a>
-                   <a class="navbar-brand" href="index.html"> <img class="img-fluid logo" src="images/logo.png"
-                      alt="streamit" /> </a>
+                   <a class="navbar-brand" href="index.html"> <img class="img-fluid logo" src="<?php echo e(asset('assets/frontend/images/logo.png')); ?>"
+                      alt="2spiceart" /> </a>
                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <div class="menu-main-menu-container">
                          <ul id="top-menu" class="navbar-nav ml-auto">
@@ -67,8 +67,8 @@
                                         <div class="iq-card-body">
                                            <a href="#" class="iq-sub-card">
                                               <div class="media align-items-center">
-                                                 <img src="images/notify/thumb-1.jpg" class="img-fluid mr-3"
-                                                    alt="streamit" />
+                                                 <img src="<?php echo e(asset('assets/frontend/images/notify/thumb-1.jpg')); ?>" class="img-fluid mr-3"
+                                                    alt="2spiceart" />
                                                  <div class="media-body">
                                                     <h6 class="mb-0 ">Boop Bitty</h6>
                                                     <small class="font-size-12"> just now</small>
@@ -77,8 +77,8 @@
                                            </a>
                                            <a href="#" class="iq-sub-card">
                                               <div class="media align-items-center">
-                                                 <img src="images/notify/thumb-2.jpg" class="img-fluid mr-3"
-                                                    alt="streamit" />
+                                                 <img src="<?php echo e(asset('assets/frontend/images/notify/thumb-2.jpg')); ?>" class="img-fluid mr-3"
+                                                    alt="2spiceart" />
                                                  <div class="media-body">
                                                     <h6 class="mb-0 ">The Last Breath</h6>
                                                     <small class="font-size-12">15 minutes ago</small>
@@ -87,8 +87,8 @@
                                            </a>
                                            <a href="#" class="iq-sub-card">
                                               <div class="media align-items-center">
-                                                 <img src="images/notify/thumb-3.jpg" class="img-fluid mr-3"
-                                                    alt="streamit" />
+                                                 <img src="<?php echo e(asset('assets/frontend/images/notify/thumb-3.jpg')); ?>" class="img-fluid mr-3"
+                                                    alt="2spiceart" />
                                                  <div class="media-body">
                                                     <h6 class="mb-0 ">The Hero Camp</h6>
                                                     <small class="font-size-12">1 hour ago</small>
@@ -101,7 +101,7 @@
                                </li>
                                <li>
                                   <a href="#" class="iq-user-dropdown search-toggle d-flex align-items-center">
-                                  <img src="images/user/user.jpg" class="img-fluid avatar-40 rounded-circle"
+                                  <img src="<?php echo e(asset('assets/frontend/images/user/user.jpg')); ?>" class="img-fluid avatar-40 rounded-circle"
                                      alt="user">
                                   </a>
                                   <div class="iq-sub-dropdown iq-user-dropdown">
@@ -186,8 +186,8 @@
                                   <div class="iq-card-body">
                                      <a href="#" class="iq-sub-card">
                                         <div class="media align-items-center">
-                                           <img src="images/notify/thumb-1.jpg" class="img-fluid mr-3"
-                                              alt="streamit" />
+                                           <img src="<?php echo e(asset('assets/frontend/images/notify/thumb-1.jpg')); ?>" class="img-fluid mr-3"
+                                              alt="2spiceart" />
                                            <div class="media-body">
                                               <h6 class="mb-0 ">Boot Bitty</h6>
                                               <small class="font-size-12"> just now</small>
@@ -196,8 +196,8 @@
                                      </a>
                                      <a href="#" class="iq-sub-card">
                                         <div class="media align-items-center">
-                                           <img src="images/notify/thumb-2.jpg" class="img-fluid mr-3"
-                                              alt="streamit" />
+                                           <img src="<?php echo e(asset('assets/frontend/images/notify/thumb-2.jpg')); ?>" class="img-fluid mr-3"
+                                              alt="2spiceart" />
                                            <div class="media-body">
                                               <h6 class="mb-0 ">The Last Breath</h6>
                                               <small class="font-size-12">15 minutes ago</small>
@@ -206,8 +206,8 @@
                                      </a>
                                      <a href="#" class="iq-sub-card">
                                         <div class="media align-items-center">
-                                           <img src="images/notify/thumb-3.jpg" class="img-fluid mr-3"
-                                              alt="streamit" />
+                                           <img src="<?php echo e(asset('assets/frontend/images/notify/thumb-3.jpg')); ?>" class="img-fluid mr-3"
+                                              alt="2spiceart" />
                                            <div class="media-body">
                                               <h6 class="mb-0 ">The Hero Camp</h6>
                                               <small class="font-size-12">1 hour ago</small>
@@ -221,7 +221,7 @@
                          <li class="nav-item nav-icon">
                             <a href="#" class="iq-user-dropdown search-toggle p-0 d-flex align-items-center"
                                data-toggle="search-toggle">
-                            <img src="images/user/user.jpg" class="img-fluid avatar-40 rounded-circle" alt="user">
+                            <img src="<?php echo e(asset('assets/frontend/images/user/user.jpg')); ?>" class="img-fluid avatar-40 rounded-circle" alt="user">
                             </a>
                             <div class="iq-sub-dropdown iq-user-dropdown">
                                <div class="iq-card shadow-none m-0">

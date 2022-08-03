@@ -1,59 +1,54 @@
-<!doctype html>
-<html lang="en-US">
-   <head>
-      <!-- Required meta tags -->
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>{{config('app.name')}}- Responsive Bootstrap 4 Template</title>
-      <!-- Favicon -->
-      <link rel="shortcut icon" href="<?php echo e(asset('assets/frontend/images/favicon.ico')); ?>" />
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/bootstrap.min.css')); ?>" />
-      <!-- Typography CSS -->
-      <link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/typography.css')); ?>">
-      <!-- Style -->
-      <link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/style.css')); ?>" />
-      <!-- Responsive -->
-      <link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/responsive.css')); ?>" />
-   </head>
-   <body>
-      <!-- loader Start -->
-      <div id="loading">
-         <div id="loading-center">
-         </div>
-      </div>
-      <!-- loader END -->
-      <!-- Header -->
-      <?php echo $__env->make('frontend.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-      <!-- Header End -->
-      <!-- MainContent -->
-      <?php echo $__env->yieldContent('main_section'); ?>
-      <!-- MainContent End-->
-      <!-- Footer -->
-      <?php echo $__env->make('frontend.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-      <!-- Footer End -->
-      <!-- back-to-top -->
-      <div id="back-to-top">
-         <a class="top" href="#top" id="top"> <i class="fa fa-angle-up"></i> </a>
-      </div>
-      <!-- back-to-top End -->
-      <!-- jQuery, Popper JS -->
-      <script src="<?php echo e(asset('assets/frontend/js/jquery-3.4.1.min.js')); ?>"></script>
-      <script src="<?php echo e(asset('assets/frontend/js/popper.min.js')); ?>"></script>
-      <!-- Bootstrap JS -->
-      <script src="<?php echo e(asset('assets/frontend/js/bootstrap.min.js')); ?>"></script>
-      <!-- Slick JS -->
-      <script src="<?php echo e(asset('assets/frontend/js/slick.min.js')); ?>"></script>
-      <!-- owl carousel Js -->
-      <script src="<?php echo e(asset('assets/frontend/js/owl.carousel.min.js')); ?>"></script>
-      <!-- select2 Js -->
-      <script src="<?php echo e(asset('assets/frontend/js/select2.min.js')); ?>"></script>
-      <!-- Magnific Popup-->
-      <script src="<?php echo e(asset('assets/frontend/js/jquery.magnific-popup.min.js')); ?>"></script>
-      <!-- Slick Animation-->
-      <script src="<?php echo e(asset('assets/frontend/js/slick-animation.min.js')); ?>"></script>
-      <!-- Custom JS-->
-      <script src="<?php echo e(asset('assets/frontend/js/custom.js')); ?>"></script>
-   </body>
-</html><?php /**PATH D:\laragon\www\mPortal\resources\views/frontend/layout/app.blade.php ENDPATH**/ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.png">
+
+    <title><?php echo e(config('app.name')); ?></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="<?php echo e(asset('assets/frontend/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="<?php echo e(asset('assets/frontend/css/style.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/frontend/css/font-awesome.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/frontend/css/font-circle-video.css')); ?>" rel="stylesheet">
+
+    <!-- font-family: 'Hind', sans-serif; -->
+    <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="light">
+<!-- logo, menu, search, avatar -->
+<?php echo $__env->make('frontend.partials.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
+<?php echo $__env->make('frontend.partials.mobile_menu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<!-- /logo -->
+
+<!-- goto -->
+<?php echo $__env->make('frontend.partials.second_navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<!-- /goto -->
+
+<?php echo $__env->yieldContent('main_section'); ?>
+
+<!-- footer -->
+<?php echo $__env->make('frontend.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<!-- /footer -->
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="<?php echo e(asset('assets/frontend/js/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/frontend/bootstrap/js/bootstrap.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/frontend/js/custom.js')); ?>"></script>
+
+</body>
+</html>
+<?php /**PATH D:\laragon\www\mPortal\resources\views/frontend/layout/app.blade.php ENDPATH**/ ?>

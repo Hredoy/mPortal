@@ -1,51 +1,62 @@
-<footer class="mb-0">
-    <div class="container-fluid">
-       <div class="block-space">
-          <div class="row">
-             <div class="col-lg-3 col-md-4">
-                <ul class="f-link list-unstyled mb-0">
-                   <li><a href="#">About Us</a></li>
-                   <li><a href="movie-category.html">Movies</a></li>
-                   <li><a href="show-category.html">Tv Shows</a></li>
-                   <li><a href="#">Coporate Information</a></li>
-                </ul>
-             </div>
-             <div class="col-lg-3 col-md-4">
-                <ul class="f-link list-unstyled mb-0">
-                   <li><a href="#">Privacy Policy</a></li>
-                   <li><a href="#">Terms & Conditions</a></li>
-                   <li><a href="#">Help</a></li>
-                </ul>
-             </div>
-             <div class="col-lg-3 col-md-4">
-                <ul class="f-link list-unstyled mb-0">
-                   <li><a href="#">FAQ</a></li>
-                   <li><a href="#">Cotact Us</a></li>
-                   <li><a href="#">Legal Notice</a></li>
-                </ul>
-             </div>
-             <div class="col-lg-3 col-md-12 r-mt-15">
-                <div class="d-flex">
-                   <a href="#" class="s-icon">
-                   <i class="ri-facebook-fill"></i>
+<footer>
+   <div class="container-fluid">
+       <div class="row">
+           <div class="container padding-def">
+               <div class="col-lg-1  col-sm-2 col-xs-12 footer-logo">
+                   <!--<a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="Project name" class="logo" /></a>-->
+                   <a class="navbar-brand" href="index.html">
+                       <img src="images/logo.svg" alt="Project name" class="logo" />
+                       <span>Circle</span>
                    </a>
-                   <a href="#" class="s-icon">
-                   <i class="ri-skype-fill"></i>
-                   </a>
-                   <a href="#" class="s-icon">
-                   <i class="ri-linkedin-fill"></i>
-                   </a>
-                   <a href="#" class="s-icon">
-                   <i class="ri-whatsapp-fill"></i>
-                   </a>
-                </div>
-             </div>
-          </div>
+               </div>
+               <div class="col-lg-7 col-sm-6 col-xs-12">
+                   <div class="f-links">
+                       <ul class="list-inline">
+                           <li><a href="#">About</a></li>
+                           <li><a href="#">Press</a></li>
+                           <li><a href="#">Copyright</a></li>
+                           <li><a href="#">Advertise</a></li>
+                           <li class="hidden-xs"><a href="#">Help</a></li>
+                       </ul>
+                   </div>
+                   <div class="delimiter"></div>
+               </div>
+               <div class="col-lg-7 col-sm-6 col-xs-12">
+                   <div class="f-copy">
+                       <ul class="list-inline">
+                           <li><a href="#">Terms</a></li>
+                           <li><a href="#">Privacy</a></li>
+                           <li>Copyrights 2016 <a href="azyrusthemes.com" class="hidden-xs">azyrusthemes.com</a></li>
+                       </ul>
+                   </div>
+               </div>
+               <div class="col-lg-offset-1 col-lg-3 col-sm-4 col-xs-12">
+                   <div class="f-last-line">
+                       <div class="f-icon pull-left">
+                           <a href="#"><i class="fa fa-facebook-square"></i></a>
+                           <a href="#"><i class="fa fa-twitter"></i></a>
+                           <a href="#"><i class="fa fa-google-plus"></i></a>
+                       </div>
+                       <div class="f-lang pull-right">
+                           <!-- Small button group -->
+                           <div class="btn-group dropup pull-right">
+                               <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   Language <span class="caret"></span>
+                               </button>
+                               <ul class="dropdown-menu">
+                                   <li><a href="#"><i class="cv cvicon-cv-relevant"></i> Relevant</a></li>
+                                   <li><a href="#"><i class="cv cvicon-cv-calender"></i> Recent</a></li>
+                                   <li><a href="#"><i class="cv cvicon-cv-view-stats"></i> Viewed</a></li>
+                                   <li><a href="#"><i class="cv cvicon-cv-star"></i> Top Rated</a></li>
+                                   <li><a href="#"><i class="cv cvicon-cv-watch-later"></i> Longest</a></li>
+                               </ul>
+                           </div>
+                       </div>
+                       <div class="clearfix"></div>
+                   </div>
+                   <div class="delimiter visible-xs"></div>
+               </div>
+           </div>
        </div>
-    </div>
-    <div class="copyright py-2">
-       <div class="container-fluid">
-          <p class="mb-0 text-center font-size-14 text-body">{{config('app.name')}}- 2020 All Rights Reserved</p>
-       </div>
-    </div>
- </footer>
+   </div>
+</footer>
