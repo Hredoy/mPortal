@@ -19,7 +19,7 @@
             <ul id="iq-sidebar-toggle" class="iq-menu">
                 <li><a href="{{ url('/') }}" class="text-primary"><i class="ri-arrow-right-line"></i><span>Visit
                             site</span></a></li>
-                <li class="active active-menu"><a href="{{ route('home') }}" class="iq-waves-effect"><i
+                <li class="active active-menu"><a href="{{ route('public.home') }}" class="iq-waves-effect"><i
                             class="las la-home iq-arrow-left"></i><span>Dashboard</span></a>
                 </li>
                 @role('admin')

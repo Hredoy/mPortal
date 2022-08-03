@@ -32,18 +32,18 @@
                     </div>
                     <div class="cb-content avatars">
                         <div class="row">
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="images/ava2.png" alt=""><div class="note">1</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="images/ava3.png" alt=""><div class="note">03</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="images/ava4.png" alt=""><div class="note">10</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="images/ava5.png" alt=""><div class="note">56</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="images/ava6.png" alt=""><div class="note">6</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="images/ava7.png" alt=""><div class="note">25</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="images/ava8.png" alt=""><div class="note">23</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="images/ava9.png" alt=""><div class="note">16</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="images/ava10.png" alt=""><div class="note">3</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="images/ava11.png" alt=""><div class="note">6</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="images/ava12.png" alt=""><div class="note">98</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="images/ava1.png" alt=""><div class="note">125</div></a></div>
+                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava2.png')}}" alt=""><div class="note">1</div></a></div>
+                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava3.png')}}" alt=""><div class="note">03</div></a></div>
+                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava4.png')}}" alt=""><div class="note">10</div></a></div>
+                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}" alt=""><div class="note">56</div></a></div>
+                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava6.png')}}" alt=""><div class="note">6</div></a></div>
+                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava7.png')}}" alt=""><div class="note">25</div></a></div>
+                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava8.png')}}" alt=""><div class="note">23</div></a></div>
+                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava9.png')}}" alt=""><div class="note">16</div></a></div>
+                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava10.png')}}" alt=""><div class="note">3</div></a></div>
+                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava11.png')}}" alt=""><div class="note">6</div></a></div>
+                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava12.png')}}" alt=""><div class="note">98</div></a></div>
+                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava1.png')}}" alt=""><div class="note">125</div></a></div>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video1-1.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video1-1.png')}}" alt=""></a>
                                         <div class="time">3:50</div>
                                     </div>
                                     <div class="v-desc">
@@ -102,7 +102,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video1-2.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video1-2.png')}}" alt=""></a>
                                         <div class="time">15:19</div>
                                     </div>
                                     <div class="v-desc">
@@ -117,7 +117,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video1-3.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video1-3.png')}}" alt=""></a>
                                         <div class="time">4:23</div>
                                     </div>
                                     <div class="v-desc">
@@ -132,7 +132,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video1-4.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video1-4.png')}}" alt=""></a>
                                         <div class="time">7:18</div>
                                     </div>
                                     <div class="v-desc">
@@ -147,7 +147,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video last-row">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video1-5.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video1-5.png')}}" alt=""></a>
                                         <div class="time">23:57</div>
                                     </div>
                                     <div class="v-desc">
@@ -163,7 +163,7 @@
                                 <div class="b-video last-row">
                                     <div class="v-img">
                                         <a href="single-video-tabs.html">
-                                            <img src="images/video1-6.png" alt="">
+                                            <img src="{{asset('assets/frontend/images/video1-6.png')}}" alt="">
                                             <div class="watched-mask"></div>
                                             <div class="watched">WATCHED</div>
                                             <div class="time">7:27</div>
@@ -181,7 +181,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video last-row">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video1-7.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video1-7.png')}}" alt=""></a>
                                         <div class="time">12:58</div>
                                     </div>
                                     <div class="v-desc">
@@ -196,7 +196,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video last-row">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video1-8.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video1-8.png')}}" alt=""></a>
                                         <div class="time">9:47</div>
                                     </div>
                                     <div class="v-desc">
@@ -259,7 +259,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video2-1.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video2-1.png')}}" alt=""></a>
                                         <div class="time">54:23</div>
                                     </div>
                                     <div class="v-desc">
@@ -274,7 +274,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video2-2.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video2-2.png')}}" alt=""></a>
                                         <div class="time">47:12</div>
                                     </div>
                                     <div class="v-desc">
@@ -289,7 +289,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video2-3.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video2-3.png')}}" alt=""></a>
                                         <div class="watched-mask"></div>
                                         <div class="watched">WATCHED</div>
                                         <div class="time">19:23</div>
@@ -306,7 +306,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video2-4.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video2-4.png')}}" alt=""></a>
                                         <div class="time">21:18</div>
                                     </div>
                                     <div class="v-desc">
@@ -321,7 +321,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video last-row">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video2-5.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video2-5.png')}}" alt=""></a>
                                         <div class="time">1:23:57</div>
                                     </div>
                                     <div class="v-desc">
@@ -336,7 +336,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video last-row">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video2-6.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video2-6.png')}}" alt=""></a>
                                         <div class="time">8:27</div>
                                     </div>
                                     <div class="v-desc">
@@ -351,7 +351,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video last-row">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video2-7.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video2-7.png')}}" alt=""></a>
                                         <div class="time">6:58</div>
                                     </div>
                                     <div class="v-desc">
@@ -366,7 +366,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video last-row">
                                     <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="images/video2-8.png" alt=""></a>
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/video2-8.png')}}" alt=""></a>
                                         <div class="time">5:47</div>
                                     </div>
                                     <div class="v-desc">
@@ -419,9 +419,9 @@
                             <div class="col-lg-3 col-sm-6 col-xs-12">
                                 <div class="b-playlist">
                                     <div class="v-img">
-                                        <img src="images/video1-1.png" alt="" class="l-1" />
-                                        <img src="images/video1-2.png" alt="" class="l-2" />
-                                        <a href="single-video-tabs.html"><img src="images/playlist-1.png" alt="" class="l-3" /></a>
+                                        <img src="{{asset('assets/frontend/images/video1-1.png')}}" alt="" class="l-1" />
+                                        <img src="{{asset('assets/frontend/images/video1-2.png')}}" alt="" class="l-2" />
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/playlist-1.png')}}" alt="" class="l-3" /></a>
                                         <div class="items">20</div>
                                     </div>
                                     <div class="v-desc">
@@ -436,9 +436,9 @@
                             <div class="col-lg-3 col-sm-6 col-xs-12">
                                 <div class="b-playlist">
                                     <div class="v-img">
-                                        <img src="images/video2-1.png" alt="" class="l-1" />
-                                        <img src="images/video2-2.png" alt="" class="l-2" />
-                                        <a href="single-video-tabs.html"><img src="images/playlist-2.png" alt="" class="l-3"></a>
+                                        <img src="{{asset('assets/frontend/images/video2-1.png')}}" alt="" class="l-1" />
+                                        <img src="{{asset('assets/frontend/images/video2-2.png')}}" alt="" class="l-2" />
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/playlist-2.png')}}" alt="" class="l-3"></a>
                                         <div class="items">15</div>
                                     </div>
                                     <div class="v-desc">
@@ -453,9 +453,9 @@
                             <div class="col-lg-3 col-sm-6 col-xs-12">
                                 <div class="b-playlist">
                                     <div class="v-img">
-                                        <img src="images/video2-6.png" alt="" class="l-1" />
-                                        <img src="images/video2-4.png" alt="" class="l-2" />
-                                        <a href="single-video-tabs.html"><img src="images/playlist-3.png" alt="" class="l-3" ></a>
+                                        <img src="{{asset('assets/frontend/images/video2-6.png')}}" alt="" class="l-1" />
+                                        <img src="{{asset('assets/frontend/images/video2-4.png')}}" alt="" class="l-2" />
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/playlist-3.png')}}" alt="" class="l-3" ></a>
                                         <div class="items">7</div>
                                     </div>
                                     <div class="v-desc">
@@ -470,9 +470,9 @@
                             <div class="col-lg-3 col-sm-6 col-xs-12">
                                 <div class="b-playlist">
                                     <div class="v-img">
-                                        <img src="images/video1-6.png" alt="" class="l-1" />
-                                        <img src="images/video1-4.png" alt="" class="l-2" />
-                                        <a href="single-video-tabs.html"><img src="images/playlist-4.png" alt="" class="l-3"></a>
+                                        <img src="{{asset('assets/frontend/images/video1-6.png')}}" alt="" class="l-1" />
+                                        <img src="{{asset('assets/frontend/images/video1-4.png')}}" alt="" class="l-2" />
+                                        <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/playlist-4.png')}}" alt="" class="l-3"></a>
                                         <div class="items">27</div>
                                     </div>
                                     <div class="v-desc">
@@ -523,7 +523,7 @@
                             <div class="col-lg-2 col-sm-4 col-xs-4">
                                 <div class="b-chanel">
                                     <a href="#">
-                                        <img src="images/chanel-1.png" alt="">
+                                        <img src="{{asset('assets/frontend/images/chanel-1.png')}}" alt="">
                                         <div class="hover">
                                             <span>Ray Simpson</span>
                                             <span><i class="cv cvicon-cv-liked"></i> 5K</span>
@@ -534,7 +534,7 @@
                             <div class="col-lg-2 col-sm-4 col-xs-4">
                                 <div class="b-chanel">
                                     <a href="#">
-                                        <img src="images/chanel-2.png" alt="">
+                                        <img src="{{asset('assets/frontend/images/chanel-2.png')}}" alt="">
                                         <div class="hover">
                                             <span>Ray</span>
                                             <span><i class="cv cvicon-cv-liked"></i> 215K</span>
@@ -545,7 +545,7 @@
                             <div class="col-lg-2 col-sm-4 col-xs-4">
                                 <div class="b-chanel">
                                     <a href="#">
-                                        <img src="images/chanel-3.png" alt="">
+                                        <img src="{{asset('assets/frontend/images/chanel-3.png')}}" alt="">
                                         <div class="hover">
                                             <span>Simpson</span>
                                             <span><i class="cv cvicon-cv-liked"></i> 21</span>
@@ -556,7 +556,7 @@
                             <div class="col-lg-2 col-sm-4 col-xs-4">
                                 <div class="b-chanel">
                                     <a href="#">
-                                        <img src="images/chanel-4.png" alt="">
+                                        <img src="{{asset('assets/frontend/images/chanel-4.png')}}" alt="">
                                         <div class="hover">
                                             <span>Ray Simpson</span>
                                             <span><i class="cv cvicon-cv-liked"></i> 134</span>
@@ -567,7 +567,7 @@
                             <div class="col-lg-2 col-sm-4 col-xs-4">
                                 <div class="b-chanel">
                                     <a href="#">
-                                        <img src="images/chanel-5.png" alt="">
+                                        <img src="{{asset('assets/frontend/images/chanel-5.png')}}" alt="">
                                         <div class="hover">
                                             <span>Simpson</span>
                                             <span><i class="cv cvicon-cv-liked"></i> 1.6M</span>
@@ -578,7 +578,7 @@
                             <div class="col-lg-2 col-sm-4 col-xs-4">
                                 <div class="b-chanel">
                                     <a href="#">
-                                        <img src="images/chanel-6.png" alt="">
+                                        <img src="{{asset('assets/frontend/images/chanel-6.png')}}" alt="">
                                         <div class="hover">
                                             <apan>Ray</apan>
                                             <span><i class="cv cvicon-cv-liked"></i> 265K</span>

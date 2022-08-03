@@ -55,7 +55,41 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
     //  Dashboard Route - Redirect based on user role is in controller.
     Route::get('/home', ['as' => 'public.home',   'uses' => 'App\Http\Controllers\UserController@index']);
 
-    //Upload Contents and Show
+    // Upload Routes.
+    Route::get('upload', [
+        'as'   => 'public.upload',
+        'uses' => 'App\Http\Controllers\UploadController@create',
+    ]);
+    Route::post('upload-store', [
+        'as'   => 'public.upload.store',
+        'uses' => 'App\Http\Controllers\UploadController@store',
+    ]);
+    Route::get('upload-edit/{id}', [
+        'as'   => 'public.upload.edit',
+        'uses' => 'App\Http\Controllers\UploadController@edit',
+    ]);
+    Route::put('upload-update/{id}', [
+        'as'   => 'public.upload.update',
+        'uses' => 'App\Http\Controllers\UploadController@update',
+    ]);
+    Route::get('upload-destroy/{id}', [
+        'as'   => 'public.upload.destroy',
+        'uses' => 'App\Http\Controllers\UploadController@destroy',
+    ]);
+
+    //category wise view
+    Route::get('music', [
+        'as'   => 'public.music',
+        'uses' => 'App\Http\Controllers\UploadController@getMusic',
+    ]);
+    Route::get('comedy', [
+        'as'   => 'public.comedy',
+        'uses' => 'App\Http\Controllers\UploadController@comedy',
+    ]);
+    Route::get('talent', [
+        'as'   => 'public.talent',
+        'uses' => 'App\Http\Controllers\UploadController@talent',
+    ]);
     
     
     // Show users profile - viewable by other users.
@@ -135,41 +169,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             'deleted',
         ],
     ]);
-    // Upload Routes.
-    Route::get('upload', [
-        'as'   => 'public.upload',
-        'uses' => 'App\Http\Controllers\UploadController@create',
-    ]);
-    Route::post('upload-store', [
-        'as'   => 'public.upload.store',
-        'uses' => 'App\Http\Controllers\UploadController@store',
-    ]);
-    Route::get('upload-edit/{id}', [
-        'as'   => 'public.upload.edit',
-        'uses' => 'App\Http\Controllers\UploadController@edit',
-    ]);
-    Route::put('upload-update/{id}', [
-        'as'   => 'public.upload.update',
-        'uses' => 'App\Http\Controllers\UploadController@update',
-    ]);
-    Route::get('upload-destroy/{id}', [
-        'as'   => 'public.upload.destroy',
-        'uses' => 'App\Http\Controllers\UploadController@destroy',
-    ]);
-
-    //category wise view
-    Route::get('music', [
-        'as'   => 'public.music',
-        'uses' => 'App\Http\Controllers\UploadController@getMusic',
-    ]);
-    Route::get('comedy', [
-        'as'   => 'public.comedy',
-        'uses' => 'App\Http\Controllers\UploadController@comedy',
-    ]);
-    Route::get('talent', [
-        'as'   => 'public.talent',
-        'uses' => 'App\Http\Controllers\UploadController@talent',
-    ]);
+    
     Route::post('search-users', 'App\Http\Controllers\UsersManagementController@search')->name('search-users');
 
     Route::resource('themes', \App\Http\Controllers\ThemesManagementController::class, [

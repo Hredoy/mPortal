@@ -1,7 +1,7 @@
 <div class="container-fluid">
    <div class="row">
        <div class="btn-color-toggle">
-           <img src="images/icon_bulb_light.png" alt="">
+           <img src="{{asset('assets/frontend/images/icon_bulb_light.png')}}" alt="">
        </div>
        <div class="navbar-container">
            <div class="container">
@@ -11,7 +11,7 @@
                    </div>
                    <div class="col-lg-1 col-sm-2 col-xs-6">
                        <a class="navbar-brand" href="index.html">
-                           <img src="images/logo.svg" alt="Project name" class="logo" />
+                           <img src="{{asset('assets/frontend/images/logo.svg')}}" alt="Project name" class="logo" />
                            <span>{{config('app.name')}}</span>
                        </a>
                    </div>
@@ -66,7 +66,7 @@
                    </div>
                    <div class="col-lg-2 col-sm-4 hidden-xs">
                        <div class="avatar pull-left">
-                           <img src="images/avatar.png" alt="avatar" />
+                           <img src="{{asset('assets/frontend/images/avatar.png')}}" alt="avatar" />
                            <span class="status"></span>
                        </div>
                        <div class="selectuser pull-left">
@@ -76,8 +76,8 @@
                                    <span class="caret"></span>
                                </button>
                                <ul class="dropdown-menu">
-                                   <li><a href="login.html">Login</a></li>
-                                   <li><a href="signup.html">Sign up</a></li>
+                                   <li><a href="{{route('login')}}">Login</a></li>
+                                   <li><a href="{{route('register')}}">Sign up</a></li>
                                </ul>
                            </div>
                        </div>

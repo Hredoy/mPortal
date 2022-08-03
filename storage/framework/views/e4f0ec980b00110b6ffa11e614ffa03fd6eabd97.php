@@ -2,17 +2,17 @@
     <div class="mobile-menu-head">
         <a href="#" class="mobile-menu-close"></a>
         <a class="navbar-brand" href="index.html">
-            <img src="images/logo.svg" alt="Project name" class="logo" />
+            <img src="<?php echo e(asset('assets/frontend/images/logo.svg')); ?>" alt="Project name" class="logo" />
             <span>Circle</span>
         </a>
         <div class="mobile-menu-btn-color">
-            <img src="images/icon_bulb_light.png" alt="">
+            <img src="<?php echo e(asset('assets/frontend/images/icon_bulb_light.png')); ?>" alt="">
         </div>
     </div>
     <div class="mobile-menu-content">
         <div class="mobile-menu-user">
             <div class="mobile-menu-user-img">
-                <img src="images/ava11.png" alt="">
+                <img src="<?php echo e(asset('assets/frontend/images/ava11.png')); ?>" alt="">
             </div>
             <p>Bailey Fry </p>
             <span class="caret"></span>
@@ -54,8 +54,8 @@
                                 <li><a href="categories.html">Browse Categories Page</a></li>
                                 <li><a href="categories_side_menu.html">Browse Categories Side Menu Page</a></li>
                                 <li><a href="subscription.html">Subscription Page</a></li>
-                                <li><a href="login.html">Login Page</a></li>
-                                <li><a href="signup.html">Signup Page</a></li>
+                                <li><a href="<?php echo e(route('login')); ?>">Login Page</a></li>
+                                <li><a href="<?php echo e(route('register')); ?>">Signup Page</a></li>
                             </ul>
                         </li>
                         <li><a href="categories.html">Categories</a></li>

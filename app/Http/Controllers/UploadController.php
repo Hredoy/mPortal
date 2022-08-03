@@ -54,7 +54,7 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-            $request->validate([
+        $request->validate([
             'name' => 'required',
             'category_id' => 'required',
             'thumbnail_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
@@ -93,7 +93,7 @@ class UploadController extends Controller
         $upload->thumbnail_image = $newFileName;
         $upload->upload = $uploadFileName;
         $upload->release_date = $request->release_date;
-        $upload->region_id = $request->region_id;
+        $upload->region_id = $request->region_id??'BD';
         $upload->type = $request->type;
         $upload->upload_duration = $request->upload_duration;
         $upload->save();

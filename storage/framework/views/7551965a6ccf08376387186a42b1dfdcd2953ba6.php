@@ -3,9 +3,9 @@
        <div class="row">
            <div class="container padding-def">
                <div class="col-lg-1  col-sm-2 col-xs-12 footer-logo">
-                   <!--<a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="Project name" class="logo" /></a>-->
+                   <!--<a class="navbar-brand" href="index.html"><img src="<?php echo e(asset('assets/frontend/images/logo.svg')); ?>" alt="Project name" class="logo" /></a>-->
                    <a class="navbar-brand" href="index.html">
-                       <img src="images/logo.svg" alt="Project name" class="logo" />
+                       <img src="<?php echo e(asset('assets/frontend/images/logo.svg')); ?>" alt="Project name" class="logo" />
                        <span>Circle</span>
                    </a>
                </div>
