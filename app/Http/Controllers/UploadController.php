@@ -155,7 +155,7 @@ class UploadController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             'thumbnail_image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'video' => 'mimes:mp3,mp4,3gp,mpeg',
+            'upload' => 'mimes:mp3,mp4,3gp,mpeg',
             'release_date' => 'required',
             'region_id' => 'required',
         ]);
