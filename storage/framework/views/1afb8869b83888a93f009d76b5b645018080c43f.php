@@ -47,7 +47,19 @@
                                 </span>
                                 <?php endif; ?>
                                </div>
-                               
+                               <div class="col-sm-6 form-group">
+                                 <select class="form-control" name="region" id="exampleFormControlSelect3">
+                                    <option selected disabled="">Choose Region</option>
+                                    <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($country); ?>"><?php echo e($country); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                 </select>
+                                 <?php if($errors->has('region_id')): ?>
+                         <span class="help-block">
+                             <strong><?php echo e($errors->first('region_id')); ?></strong>
+                         </span>
+                         <?php endif; ?>
+                               </div>
                                <div class="col-12 form-group">
                                   <textarea id="text" name="description" rows="5" class="form-control"
                                      placeholder="Description"></textarea>
@@ -77,22 +89,8 @@
                                 </span>
                                 <?php endif; ?>
                          </div>
-                         <div class="col-sm-6 form-group">
-                           <select class="form-control" name="region_id" id="exampleFormControlSelect2">
-                              <option selected disabled="">Choose Region</option>
-                              <?php $__currentLoopData = $regions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ctn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                              <option value="<?php echo e($ctn->id); ?>"><?php echo e($ctn->region_name); ?></option>
-                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                           </select>
-                           <?php if($errors->has('region_id')): ?>
-                         <span class="help-block">
-                             <strong><?php echo e($errors->first('region_id')); ?></strong>
-                         </span>
-                         <?php endif; ?>
-                        </div>
-                        <div class="col-sm-12 form-group">
-                           <input type="time" class="form-control" name="upload_duration" placeholder="Movie Duration">
-                        </div>
+
+                        
                          <div class="col-12 form-group ">
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <button type="reset" class="btn btn-danger">cancel</button>

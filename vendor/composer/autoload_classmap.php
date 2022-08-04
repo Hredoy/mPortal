@@ -6,6 +6,14 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Adrianorosa\\GeoLocation\\Console\\GeoLocationCommand' => $vendorDir . '/adrianorosa/laravel-geolocation/src/Console/GeoLocationCommand.php',
+    'Adrianorosa\\GeoLocation\\Contracts\\LookupInterface' => $vendorDir . '/adrianorosa/laravel-geolocation/src/Contracts/LookupInterface.php',
+    'Adrianorosa\\GeoLocation\\GeoLocation' => $vendorDir . '/adrianorosa/laravel-geolocation/src/GeoLocation.php',
+    'Adrianorosa\\GeoLocation\\GeoLocationDetails' => $vendorDir . '/adrianorosa/laravel-geolocation/src/GeoLocationDetails.php',
+    'Adrianorosa\\GeoLocation\\GeoLocationException' => $vendorDir . '/adrianorosa/laravel-geolocation/src/GeoLocationException.php',
+    'Adrianorosa\\GeoLocation\\GeoLocationManager' => $vendorDir . '/adrianorosa/laravel-geolocation/src/GeoLocationManager.php',
+    'Adrianorosa\\GeoLocation\\GeoLocationServiceProvider' => $vendorDir . '/adrianorosa/laravel-geolocation/src/GeoLocationServiceProvider.php',
+    'Adrianorosa\\GeoLocation\\Providers\\IpInfo' => $vendorDir . '/adrianorosa/laravel-geolocation/src/Providers/IpInfo.php',
     'App\\Console\\Commands\\DeleteExpiredActivations' => $baseDir . '/app/Console/Commands/DeleteExpiredActivations.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -244,6 +252,7 @@ return array(
     'Database\\Seeders\\RolesTableSeeder' => $baseDir . '/database/seeders/RolesTableSeeder.php',
     'Database\\Seeders\\ThemesTableSeeder' => $baseDir . '/database/seeders/ThemesTableSeeder.php',
     'Database\\Seeders\\UsersTableSeeder' => $baseDir . '/database/seeders/UsersTableSeeder.php',
+    'Database\\Seeders\\WorldSeeder' => $baseDir . '/database/seeders/WorldSeeder.php',
     'DebugBar\\Bridge\\CacheCacheCollector' => $vendorDir . '/maximebf/debugbar/src/DebugBar/Bridge/CacheCacheCollector.php',
     'DebugBar\\Bridge\\DoctrineCollector' => $vendorDir . '/maximebf/debugbar/src/DebugBar/Bridge/DoctrineCollector.php',
     'DebugBar\\Bridge\\MonologCollector' => $vendorDir . '/maximebf/debugbar/src/DebugBar/Bridge/MonologCollector.php',
@@ -3260,6 +3269,10 @@ return array(
     'Mockery\\Undefined' => $vendorDir . '/mockery/mockery/library/Mockery/Undefined.php',
     'Mockery\\VerificationDirector' => $vendorDir . '/mockery/mockery/library/Mockery/VerificationDirector.php',
     'Mockery\\VerificationExpectation' => $vendorDir . '/mockery/mockery/library/Mockery/VerificationExpectation.php',
+    'Monarobase\\CountryList\\CountryList' => $vendorDir . '/monarobase/country-list/src/CountryList.php',
+    'Monarobase\\CountryList\\CountryListFacade' => $vendorDir . '/monarobase/country-list/src/CountryListFacade.php',
+    'Monarobase\\CountryList\\CountryListServiceProvider' => $vendorDir . '/monarobase/country-list/src/CountryListServiceProvider.php',
+    'Monarobase\\CountryList\\CountryNotFoundException' => $vendorDir . '/monarobase/country-list/src/CountryNotFoundException.php',
     'Monolog\\Attribute\\AsMonologProcessor' => $vendorDir . '/monolog/monolog/src/Monolog/Attribute/AsMonologProcessor.php',
     'Monolog\\DateTimeImmutable' => $vendorDir . '/monolog/monolog/src/Monolog/DateTimeImmutable.php',
     'Monolog\\ErrorHandler' => $vendorDir . '/monolog/monolog/src/Monolog/ErrorHandler.php',
@@ -5868,4 +5881,5 @@ return array(
     'phpDocumentor\\Reflection\\Types\\Void_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Void_.php',
     'phpDocumentor\\Reflection\\Utils' => $vendorDir . '/phpdocumentor/reflection-docblock/src/Utils.php',
     'voku\\helper\\ASCII' => $vendorDir . '/voku/portable-ascii/src/voku/helper/ASCII.php',
+    'wapmorgan\\Mp3Info\\Mp3Info' => $vendorDir . '/wapmorgan/mp3info/src/Mp3Info.php',
 );

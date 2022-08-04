@@ -10,6 +10,7 @@ use App\Models\Upload;
 use jeremykenedy\LaravelRoles\Models\Role;
 use Validator;
 use Illuminate\Support\Facades\Auth;
+use Monarobase\CountryList\CountryListFacade;
 
 class UploadController extends Controller
 {
@@ -42,8 +43,9 @@ class UploadController extends Controller
     {
         $page_title = 'Create A New Upload';
         $categories = Category::all();
-        $regions = Region::all();
-        return view('backend.uploads.create', compact('page_title', 'regions','categories'));
+        // $regions = Region::all();
+        $countries =CountryListFacade::getList('en');
+        return view('backend.uploads.create', compact('page_title', 'countries','categories'));
     }
 
     /**
@@ -62,7 +64,7 @@ class UploadController extends Controller
             'description' => 'required',
             'release_date' => 'required',
 
-            'upload_duration' => 'required',
+            // 'upload_duration' => 'required',
         ]);
         //for image
         if ($request->hasFile('thumbnail_image')) {
@@ -80,15 +82,22 @@ class UploadController extends Controller
                 $uploadFileName = time() . '.' . $upload_extension;
                 $uploadPath = public_path('uploads/' . Auth::user()->name . '/audio/');
                 $request->upload->move($uploadPath, $uploadFileName);
+                $filename = static::getUrlContentLength($uploadPath) ;
+                // $audio = new \wapmorgan\Mp3Info\Mp3Info($filename, true);
+                // $duration = floor($audio->duration);
+                $duration = $filename;
             } elseif ($upload_extension == 'mp4' || $upload_extension == '3gp' || $upload_extension == 'mpeg') {
                 $type = 2;
                 $uploadFileName = time() . '.' . $upload_extension;
                 $uploadPath = public_path('uploads/' . Auth::user()->name . '/video/');
                 $request->upload->move($uploadPath, $uploadFileName);
+                // $duration = $uploadFileName;
             }else {
                 $type = 3;
             }
         }
+        echo $duration;
+        die();
 
         $upload = new Upload;
         $upload->name = $request->name;
@@ -98,9 +107,9 @@ class UploadController extends Controller
         $upload->thumbnail_image = $newFileName;
         $upload->upload = $uploadFileName;
         $upload->release_date = $request->release_date;
-        $upload->region_id = $request->region_id??'BD';
+        $upload->region = $request->region;
         $upload->type_id = $type;
-        $upload->upload_duration = $request->upload_duration;
+        // $upload->upload_duration = $duration;
         $upload->save();
         return redirect()->route('public.upload')->with('create', 'File has been created successfully.');
     }

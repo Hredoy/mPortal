@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\MacroServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
+        Monarobase\CountryList\CountryListServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -232,6 +233,7 @@ return [
         'Gravatar'      => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Image'         => Intervention\Image\Facades\Image::class,
         'Uuid'          => jeremykenedy\Uuid\Uuid::class,
+        'Countries'     => Monarobase\CountryList\CountryListFacade::class,
     ],
 
 ];

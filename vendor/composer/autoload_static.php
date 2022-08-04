@@ -44,6 +44,10 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
     );
 
     public static $prefixLengthsPsr4 = array (
+        'w' => 
+        array (
+            'wapmorgan\\Mp3Info\\' => 18,
+        ),
         'v' => 
         array (
             'voku\\' => 5,
@@ -140,6 +144,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Monarobase\\CountryList\\' => 23,
         ),
         'L' => 
         array (
@@ -217,10 +222,15 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         array (
             'Asm89\\Stack\\' => 12,
             'App\\' => 4,
+            'Adrianorosa\\GeoLocation\\' => 24,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'wapmorgan\\Mp3Info\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wapmorgan/mp3info/src',
+        ),
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
@@ -480,6 +490,10 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Monarobase\\CountryList\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monarobase/country-list/src',
+        ),
         'League\\OAuth1\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/oauth1-client/src',
@@ -669,6 +683,10 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'Adrianorosa\\GeoLocation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/adrianorosa/laravel-geolocation/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -703,6 +721,14 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
     );
 
     public static $classMap = array (
+        'Adrianorosa\\GeoLocation\\Console\\GeoLocationCommand' => __DIR__ . '/..' . '/adrianorosa/laravel-geolocation/src/Console/GeoLocationCommand.php',
+        'Adrianorosa\\GeoLocation\\Contracts\\LookupInterface' => __DIR__ . '/..' . '/adrianorosa/laravel-geolocation/src/Contracts/LookupInterface.php',
+        'Adrianorosa\\GeoLocation\\GeoLocation' => __DIR__ . '/..' . '/adrianorosa/laravel-geolocation/src/GeoLocation.php',
+        'Adrianorosa\\GeoLocation\\GeoLocationDetails' => __DIR__ . '/..' . '/adrianorosa/laravel-geolocation/src/GeoLocationDetails.php',
+        'Adrianorosa\\GeoLocation\\GeoLocationException' => __DIR__ . '/..' . '/adrianorosa/laravel-geolocation/src/GeoLocationException.php',
+        'Adrianorosa\\GeoLocation\\GeoLocationManager' => __DIR__ . '/..' . '/adrianorosa/laravel-geolocation/src/GeoLocationManager.php',
+        'Adrianorosa\\GeoLocation\\GeoLocationServiceProvider' => __DIR__ . '/..' . '/adrianorosa/laravel-geolocation/src/GeoLocationServiceProvider.php',
+        'Adrianorosa\\GeoLocation\\Providers\\IpInfo' => __DIR__ . '/..' . '/adrianorosa/laravel-geolocation/src/Providers/IpInfo.php',
         'App\\Console\\Commands\\DeleteExpiredActivations' => __DIR__ . '/../..' . '/app/Console/Commands/DeleteExpiredActivations.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -941,6 +967,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'Database\\Seeders\\RolesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/RolesTableSeeder.php',
         'Database\\Seeders\\ThemesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/ThemesTableSeeder.php',
         'Database\\Seeders\\UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeders/UsersTableSeeder.php',
+        'Database\\Seeders\\WorldSeeder' => __DIR__ . '/../..' . '/database/seeders/WorldSeeder.php',
         'DebugBar\\Bridge\\CacheCacheCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/Bridge/CacheCacheCollector.php',
         'DebugBar\\Bridge\\DoctrineCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/Bridge/DoctrineCollector.php',
         'DebugBar\\Bridge\\MonologCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/Bridge/MonologCollector.php',
@@ -3957,6 +3984,10 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'Mockery\\Undefined' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Undefined.php',
         'Mockery\\VerificationDirector' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/VerificationDirector.php',
         'Mockery\\VerificationExpectation' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/VerificationExpectation.php',
+        'Monarobase\\CountryList\\CountryList' => __DIR__ . '/..' . '/monarobase/country-list/src/CountryList.php',
+        'Monarobase\\CountryList\\CountryListFacade' => __DIR__ . '/..' . '/monarobase/country-list/src/CountryListFacade.php',
+        'Monarobase\\CountryList\\CountryListServiceProvider' => __DIR__ . '/..' . '/monarobase/country-list/src/CountryListServiceProvider.php',
+        'Monarobase\\CountryList\\CountryNotFoundException' => __DIR__ . '/..' . '/monarobase/country-list/src/CountryNotFoundException.php',
         'Monolog\\Attribute\\AsMonologProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Attribute/AsMonologProcessor.php',
         'Monolog\\DateTimeImmutable' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/DateTimeImmutable.php',
         'Monolog\\ErrorHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/ErrorHandler.php',
@@ -6565,6 +6596,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
         'phpDocumentor\\Reflection\\Utils' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/Utils.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
+        'wapmorgan\\Mp3Info\\Mp3Info' => __DIR__ . '/..' . '/wapmorgan/mp3info/src/Mp3Info.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
