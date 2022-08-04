@@ -14,6 +14,9 @@
     <!-- Bootstrap core CSS -->
     <link href="<?php echo e(asset('assets/frontend/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
 
+    <!-- player -->
+    <link rel="stylesheet" href="<?php echo e(asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelementplayer.min.css')); ?>" />
+
     <!-- Theme CSS -->
     <link href="<?php echo e(asset('assets/frontend/css/style.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('assets/frontend/css/font-awesome.min.css')); ?>" rel="stylesheet">
@@ -23,7 +26,7 @@
     <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700' rel='stylesheet' type='text/css'>
 </head>
 
-<body class="light">
+<body class="<?php echo $__env->yieldContent('class'); ?> light">
 <!-- logo, menu, search, avatar -->
 <?php echo $__env->make('frontend.partials.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
@@ -31,7 +34,7 @@
 <!-- /logo -->
 
 <!-- goto -->
-<?php echo $__env->make('frontend.partials.second_navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->yieldContent('second_navbar'); ?>
 <!-- /goto -->
 
 <?php echo $__env->yieldContent('main_section'); ?>
@@ -47,8 +50,9 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="<?php echo e(asset('assets/frontend/js/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/frontend/bootstrap/js/bootstrap.min.js')); ?>"></script>
+<script  src="<?php echo e(asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelement-and-player.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/frontend/js/custom.js')); ?>"></script>
-
+<?php echo $__env->yieldPushContent('custom_script'); ?>
 </body>
 </html>
 <?php /**PATH C:\xampp\htdocs\mPortal\resources\views/frontend/layout/app.blade.php ENDPATH**/ ?>

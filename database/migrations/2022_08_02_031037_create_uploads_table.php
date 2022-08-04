@@ -25,7 +25,7 @@ class CreateUploadsTable extends Migration
             $table->string('thumbnail_image')->nullable();
             $table->string('upload')->nullable();
             $table->date('release_date')->nullable();
-            $table->integer('region_id')->nullable();
+            $table->string('region')->nullable();
             $table->integer('type_id')->nullable();
             $table->string('upload_duration')->nullable();
             $table->timestamps();

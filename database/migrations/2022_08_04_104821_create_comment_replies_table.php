@@ -15,10 +15,10 @@ class CreateCommentRepliesTable extends Migration
     {
         Schema::create('comment_replies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('comment_id')->constrained('comments')->onDelete('cascade');
-            $table->string('image')-nullable();
-            $table->string('description');
+            $table->string('author')->nullable();
+            $table->string('image')->nullable();
+            $table->string('body');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

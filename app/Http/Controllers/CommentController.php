@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -37,7 +38,15 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        Comment::create($request->all());
+        $request->validate([
+            'body' => 'required|max:255',
+
+        ]);
+        Comment::create([
+            "author" => Auth::user()->name,
+            "upload_id" => $request->upload_id,
+            "body" => $request->body
+        ]);
         return redirect()->back()->with('create', 'Comment has been created successfully.');
     }
 

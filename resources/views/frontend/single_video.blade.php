@@ -212,8 +212,10 @@
                                 <div class="rc-header"><i class="cv cvicon-cv-comment"></i> <span class="semibold">236</span> Comments</div>
                                 <div class="rc-ava"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}" alt=""></a></div>
                                 <div class="rc-comment">
-                                    <form action="#" method="post">
-                                        <textarea rows="3">Share what you think?</textarea >
+                                    <form action="{{Route('comments.store')}}" method="post">
+                                        @csrf
+                                        <textarea name="body" rows="3">Share what you think?</textarea >
+                                            <input type="hidden" name="upload_id" value="{{$upload->id}}" id="">
                                         <button type="submit">
                                             <i class="cv cvicon-cv-add-comment"></i>
                                         </button>
@@ -233,17 +235,19 @@
                                 </div>
 
                                 <!-- comment -->
+                                @foreach ($comments as $comment)
                                 <div class="cl-comment">
                                     <div class="cl-avatar"><a href="#"><img src="{{asset('assets/frontend/images/ava8.png')}}" alt=""></a></div>
                                     <div class="cl-comment-text">
-                                        <div class="cl-name-date"><a href="#">BOWTZ pros</a> . 1 week ago</div>
-                                        <div class="cl-text">Really great story. You're doing a great job. Keep it up pal.</div>
+                                        <div class="cl-name-date"><a href="#">>{!! $comment->author !!}</a> . {{$comment->created_at->diffForHumans()}}</div>
+                                        <div class="cl-text">{!! $comment->body !!}</div>
                                         <div class="cl-meta"><span class="green"><span class="circle"></span> 121</span> <span class="grey"><span class="circle"></span> 2</span> . <a href="#">Reply</a></div>
                                         <div class="cl-replies"><a href="#">View all 5 replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
                                         <div class="cl-flag"><a href="#"><i class="cv cvicon-cv-flag"></i></a></div>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
+                                @endforeach
                                 <!-- END comment -->
 
                                 <!-- reply comment -->

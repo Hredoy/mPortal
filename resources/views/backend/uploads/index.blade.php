@@ -11,11 +11,7 @@
              <div class="iq-card">
                 <div class="iq-card-header d-flex justify-content-between">
                    <div class="iq-header-title">
-<<<<<<< HEAD
                       <h4 class="card-title">{{$page_title}}</h4>
-=======
-                      <h4 class="card-title">Editable Table</h4>
->>>>>>> ed57efe32a440f961bb50e0959eb1fb289889dde
                    </div>
 
                 </div>

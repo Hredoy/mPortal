@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Upload;
+use App\Models\Comment;
 
 class HomeController extends Controller
 {
@@ -11,7 +13,9 @@ class HomeController extends Controller
         return view('frontend.homepage');
     }
 
-    public function singleVideo(){
-        return view('frontend.single_video');
+    public function singleVideo($id){
+       $upload = Upload::findOrFail($id);
+       $comments = Comment::whereUpload_id($id)->get();
+        return view('frontend.single_video', compact('upload', "comments"));
     }
 }

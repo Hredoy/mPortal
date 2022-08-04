@@ -81,7 +81,7 @@
                          </div>
                       </div>
                       <div class="row">
-                         <div class="col-sm-6 form-group">
+                         <div class="col-sm-12 form-group">
                             <input type="date" class="form-control" name="release_date" placeholder="Release Date">
                             <?php if($errors->has('release_date')): ?>
                                 <span class="help-block">
