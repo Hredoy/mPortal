@@ -36,9 +36,14 @@
                                <div class="col-md-6 form-group">
                                   <select class="form-control" name="category_id" id="exampleFormControlSelect1">
                                      <option selected disabled="">Movie Category</option>
-                                     @foreach ($categories as $cate)
+                                     <option value="1">Music</option>
+                                     <option value="2">Comedy</option>
+                                     <option value="3">Talent</option>
+
+                                     {{-- dynamic category --}}
+                                     {{-- @foreach ($categories as $cate)
                                      <option value="{{$cate->id}}">{{$cate->category_name}}</option>
-                                     @endforeach
+                                     @endforeach --}}
                                   </select>
                                   @if ($errors->has('category_id'))
                                 <span class="help-block">
@@ -46,15 +51,15 @@
                                 </span>
                                 @endif
                                </div>
-                               <div class="col-sm-6 form-group">
+                               {{-- <div class="col-sm-6 form-group">
                                  <select class="form-control" name="type" id="exampleFormControlSelect3">
                                     <option selected disabled="">Choose File Type</option>
                                     <option value="1">Audio</option>
                                     <option value="2">Video</option>
                                     <option value="3">Others</option>
                                  </select>
-                                 
-                               </div>
+
+                               </div> --}}
                                <div class="col-12 form-group">
                                   <textarea id="text" name="description" rows="5" class="form-control"
                                      placeholder="Description"></textarea>

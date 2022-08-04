@@ -24,7 +24,7 @@ class UploadController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         // $ext = pathinfo($filename, PATHINFO_EXTENSION);
         $page_title = 'Showing Video Management';
         $empty_message = 'No Video is available.';
@@ -61,7 +61,7 @@ class UploadController extends Controller
             'upload' => 'required|mimes:mp3,mp4,3gp,mpeg',
             'description' => 'required',
             'release_date' => 'required',
-            'region_id' => 'required',
+
             'upload_duration' => 'required',
         ]);
         //for image
@@ -72,19 +72,24 @@ class UploadController extends Controller
                 $uploadPath = public_path('uploads/' . Auth::user()->name . '/images/');
                 $request->thumbnail_image->move($uploadPath, $newFileName);
             }
-        } 
+        }
         if ($request->hasFile('upload')) {
             $upload_extension = $request->file('upload')->getClientOriginalExtension();
             if ($upload_extension == 'mp3') {
+                $type = 1;
                 $uploadFileName = time() . '.' . $upload_extension;
                 $uploadPath = public_path('uploads/' . Auth::user()->name . '/audio/');
                 $request->upload->move($uploadPath, $uploadFileName);
             } elseif ($upload_extension == 'mp4' || $upload_extension == '3gp' || $upload_extension == 'mpeg') {
+                $type = 2;
                 $uploadFileName = time() . '.' . $upload_extension;
                 $uploadPath = public_path('uploads/' . Auth::user()->name . '/video/');
                 $request->upload->move($uploadPath, $uploadFileName);
+            }else {
+                $type = 3;
             }
         }
+
         $upload = new Upload;
         $upload->name = $request->name;
         $upload->category_id = $request->category_id;
@@ -94,7 +99,7 @@ class UploadController extends Controller
         $upload->upload = $uploadFileName;
         $upload->release_date = $request->release_date;
         $upload->region_id = $request->region_id??'BD';
-        $upload->type = $request->type;
+        $upload->type_id = $type;
         $upload->upload_duration = $request->upload_duration;
         $upload->save();
         return redirect()->route('public.upload')->with('create', 'File has been created successfully.');
@@ -136,7 +141,7 @@ class UploadController extends Controller
     public function update(Request $request, $id)
     {
 
-      
+
         $request->validate([
             'name' => 'required',
             'category_id' => 'required',
@@ -150,7 +155,7 @@ class UploadController extends Controller
           //FOR PICTURE UPDATE
           global $old_image;
           $old_image = public_path('uploads/' . Auth::user()->name . '/images/'.$post->thumbnail_image);
-        
+
           if ($request->hasFile('thumbnail_image')) {
               if (file_exists(public_path($old_image))) {
                   unlink(public_path($old_image));
@@ -168,7 +173,7 @@ class UploadController extends Controller
           //FOR VIDEO UPDATE
           global $old_video;
           $old_video = public_path('uploads/' . Auth::user()->name . '/video/'.$post->upload);
-       
+
           if ($request->hasFile('upload')) {
             if (file_exists(public_path($old_video))) {
                 unlink(public_path($old_video));
@@ -199,7 +204,7 @@ class UploadController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
+    {
         $delete=  Upload::findOrFail($id);
         $old_image = public_path('uploads/' . Auth::user()->name . '/images/'.$delete->thumbnail_image);
         $old_video = public_path('uploads/' . Auth::user()->name . '/video/'.$delete->video_audio);
@@ -213,24 +218,24 @@ class UploadController extends Controller
     }
     public function getMusic()
     {
-       $page_title = 'Showing Video Management';
-       $empty_message = 'No Video is available.';
+       $page_title = 'Music Management';
+       $empty_message = 'No Music is available.';
        $uploads = Upload::where('category_id', 1 )->with('categories')->get();
        $roles = Role::all();
        return View('backend.uploads.index', compact('uploads', 'roles', 'page_title', 'empty_message'));
     }
     public function comedy()
     {
-       $page_title = 'Showing Video Management';
-       $empty_message = 'No Video is available.';
+       $page_title = 'Comedy Management';
+       $empty_message = 'No Comedy is available.';
        $uploads = Upload::where('category_id', 2 )->with('categories')->get();
        $roles = Role::all();
        return View('backend.uploads.index', compact('uploads', 'roles', 'page_title', 'empty_message'));
     }
     public function talent()
     {
-       $page_title = 'Showing Video Management';
-       $empty_message = 'No Video is available.';
+       $page_title = 'Talent Management';
+       $empty_message = 'No Comedy is available.';
        $uploads = Upload::where('category_id', 3 )->with('categories')->get();
        $roles = Role::all();
        return View('backend.uploads.index', compact('uploads', 'roles', 'page_title', 'empty_message'));

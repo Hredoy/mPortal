@@ -16,8 +16,9 @@ class CreateUploadsTable extends Migration
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->unsignedBigInteger('category_id')->unsigned()->index();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->integer('category_id')->nullable();
+            // $table->unsignedBigInteger('category_id')->unsigned()->index();
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->longtext('description');
             $table->boolean('status')->default(1);
@@ -25,7 +26,7 @@ class CreateUploadsTable extends Migration
             $table->string('upload')->nullable();
             $table->date('release_date')->nullable();
             $table->integer('region_id')->nullable();
-            $table->integer('type')->nullable();
+            $table->integer('type_id')->nullable();
             $table->string('upload_duration')->nullable();
             $table->timestamps();
         });
