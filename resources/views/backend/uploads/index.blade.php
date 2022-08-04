@@ -11,22 +11,26 @@
              <div class="iq-card">
                 <div class="iq-card-header d-flex justify-content-between">
                    <div class="iq-header-title">
+<<<<<<< HEAD
+                      <h4 class="card-title">{{$page_title}}</h4>
+=======
                       <h4 class="card-title">Editable Table</h4>
+>>>>>>> ed57efe32a440f961bb50e0959eb1fb289889dde
                    </div>
-                   
+
                 </div>
                 <div class="iq-card-body">
                    <div id="table" class="table-editable">
                       <span class="table-add float-right mb-3 mr-2">
-                      <button class="btn btn-sm iq-bg-success"><i
+                      <a href="{{Route('public.upload')}}" class="btn btn-sm iq-bg-success"><i
                          class="ri-add-fill"><span class="pl-1">Add New</span></i>
-                      </button>
+                      </a>
                       </span>
                       <table class="table table-bordered table-responsive-md table-striped text-center">
-                       
+
                          <thead>
                             <tr>
-                              <th>{!! trans('SL') !!}</th> 
+                              <th>{!! trans('SL') !!}</th>
                               <th>{!! trans('Name') !!}</th>
                               <th class="hidden-xs">{!! trans('Category') !!}</th>
                               <th class="hidden-xs">{!! trans('Status') !!}</th>
@@ -34,7 +38,7 @@
                               <th class="">{!! trans('Music') !!}</th>
                               <th class="">{!! trans('Sort') !!}</th>
                               <th colspan="5">{!! trans('Action') !!}</th>
-                            
+
                             </tr>
                          </thead>
                         <tbody>
@@ -75,7 +79,7 @@
                                    {{ trans($empty_message) }}</td>
                            </tr>
                        </tbody>
-                       
+
                        @endforelse
                       </table>
                    </div>

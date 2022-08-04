@@ -55,6 +55,11 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
 
     //  Dashboard Route - Redirect based on user role is in controller.
     Route::get('/home', ['as' => 'public.home',   'uses' => 'App\Http\Controllers\UserController@index']);
+    //region Routes.
+    Route::get('region', [
+        'as'   => 'public.region',
+        'uses' => 'App\Http\Controllers\RegionController@index',
+    ]);
 
     // Upload Routes.
     Route::get('upload', [
@@ -91,14 +96,14 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
         'as'   => 'public.talent',
         'uses' => 'App\Http\Controllers\UploadController@talent',
     ]);
-    
-    
+
+
     // Show users profile - viewable by other users.
     Route::get('profile/{username}', [
         'as'   => '{username}',
         'uses' => 'App\Http\Controllers\ProfilesController@show',
     ]);
-    
+
 });
 
 // Registered, activated, and is current user routes.
@@ -164,13 +169,13 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             'edit'   => 'categories.edit',
             'update'   => 'categories.update',
             'destroy' => 'categories.destroy',
-            
+
         ],
         'except' => [
             'deleted',
         ],
     ]);
-    
+
     Route::post('search-users', 'App\Http\Controllers\UsersManagementController@search')->name('search-users');
 
     Route::resource('themes', \App\Http\Controllers\ThemesManagementController::class, [
@@ -190,7 +195,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             'edit'   => 'comments.edit',
             'update'   => 'comments.update',
             'destroy' => 'comments.destroy',
-            
+
         ],
         'except' => [
             'deleted',
