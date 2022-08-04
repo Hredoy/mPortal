@@ -1,23 +1,36 @@
-@extends('layouts.app')
-
-@section('template_title')
-	{{ trans('titles.activation') }}
-@endsection
-
-@section('content')
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 offset-md-1">
-				<div class="card card-default">
-					<div class="card-header">{{ trans('titles.activation') }}</div>
-					<div class="card-body">
-						<p>{{ trans('auth.regThanks') }}</p>
+@extends('frontend.layout.app')
+@push('custom_css')
+	<style>
+		.login-wraper .login-window{
+			top: 25%;
+			left: 30%;
+			margin-top: 0px;
+		}
+		@media screen and (max-width:767px){
+			.login-wraper .login-window{
+			left: 5%;
+		}
+		}
+	</style>
+@endpush
+@section('main_section')
+	<div class="row">
+        <div class="login-wraper text-center">
+            <div class="hidden-xs">
+                <img src="{{asset('assets/frontend/images/login.jpg')}}" alt="">
+            </div>
+            <div class="login-window">
+                <div class="l-head">
+                    Activate Your Account
+                </div>
+                <div class="l-form">
+					<p>{{ trans('auth.regThanks') }}</p>
 						<p>{{ trans('auth.anEmailWasSent',['email' => $email, 'date' => $date ] ) }}</p>
 						<p>{{ trans('auth.clickInEmail') }}</p>
 						<p><a href='/activation' class="btn btn-primary">{{ trans('auth.clickHereResend') }}</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
