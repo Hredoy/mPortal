@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <!-- Updates from Subscriptions -->
-                <div class="content-block">
+                {{-- <div class="content-block">
                     <div class="cb-header">
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-xs-10">
@@ -49,7 +49,7 @@
                             <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="{{asset('assets/frontend/images/ava1.png')}}" alt=""><div class="note">125</div></a></div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- /Updates from Subscriptions -->
 
                 <!-- Featured Videos -->
