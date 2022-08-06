@@ -34,11 +34,14 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+
+
                         <a href="#" class="author-btn-add"><i class="cv cvicon-cv-plus"></i></a>
                     </div>
-                    <div class="author-border"></div>
+                    <div class="author-border">
+                    </div>
                     <div class="sv-views">
-                        <div class="sv-views-count">
+                        <div class="sv-views-count row">
                             2,729,347 views
                         </div>
                         <div class="sv-views-progress">
@@ -51,6 +54,17 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
+                    @auth
+                    <div class="row">
+                        @if ( empty($likeCheck))
+                        <a href="{{Route('like', $upload->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                        @else
+                        <a href="{{Route('unlike', $upload->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                        @endif
+                        <h4>Like: {{$likeCount}}</h4>
+
+                    </div>
+                    @endauth
                 </div>
                 <div class="info">
                     <div class="info-content">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Upload;
 use App\Models\Comment;
+use App\Models\Like;
 
 class HomeController extends Controller
 {
@@ -16,6 +17,7 @@ class HomeController extends Controller
     public function singleVideo($id){
        $upload = Upload::findOrFail($id);
        $comments = Comment::whereUpload_id($id)->get();
-        return view('frontend.single_video', compact('upload', "comments"));
+       $likeCount = Like::select('count')->count();
+        return view('frontend.single_video', compact('upload', "comments", "likeCount"));
     }
 }

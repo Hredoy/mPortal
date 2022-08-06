@@ -97,6 +97,30 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
         'uses' => 'App\Http\Controllers\UploadController@talent',
     ]);
 
+    //Comments Route:
+    Route::resource('comment', \App\Http\Controllers\CommentController::class, [
+        'names' => [
+            'index'   => 'comments',
+            'create'   => 'comments.create',
+            'store'   => 'comments.store',
+            'edit'   => 'comments.edit',
+            'update'   => 'comments.update',
+            'destroy' => 'comments.destroy',
+
+        ],
+        'except' => [
+            'deleted',
+        ],
+    ]);
+    //like Route
+    Route::get('like/{id}', [
+        'as'   => 'like',
+        'uses' => 'App\Http\Controllers\LikeController@store',
+    ]);
+    Route::get('unlike/{id}', [
+        'as'   => 'unlike',
+        'uses' => 'App\Http\Controllers\LikeController@unlike',
+    ]);
 
     // Show users profile - viewable by other users.
     Route::get('profile/{username}', [
@@ -186,21 +210,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
     ]);
 
 
-    //Comments Route:
-    Route::resource('comment', \App\Http\Controllers\CommentController::class, [
-        'names' => [
-            'index'   => 'comments',
-            'create'   => 'comments.create',
-            'store'   => 'comments.store',
-            'edit'   => 'comments.edit',
-            'update'   => 'comments.update',
-            'destroy' => 'comments.destroy',
 
-        ],
-        'except' => [
-            'deleted',
-        ],
-    ]);
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('routes', 'App\Http\Controllers\AdminDetailsController@listRoutes');
