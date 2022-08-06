@@ -20,7 +20,7 @@
                 <li>
                     <a href="{{ url('/') }}" class="text-primary"><i class="ri-arrow-right-line"></i><span>Visit site</span></a>
                 </li>
-                <li class="iq-waves-effect {{ Request::is('home')? 'active-menu' : null }}"><a href="{{ route('public.home') }}" class="iq-waves-effect"><i
+                <li class="{{ Request::is('home')? 'active' : null }}"><a href="{{ route('public.home') }}" class="iq-waves-effect"><i
                             class="las la-home iq-arrow-left"></i><span>Dashboard</span></a>
                 </li>
                 @role('admin')
@@ -44,16 +44,16 @@
                     </ul>
                 </li>
                 @endrole
-                <li>
+                <li class="{{ Request::is('upload')? 'active' : null }}">
                     <a href="{{Route('public.upload')}}" class="iq-waves-effect"><i class="las la-upload"></i><span>Upload Content</span></a>
                 </li>
-                <li>
+                <li class="{{ Request::is('music')? 'active' : null }}">
                     <a href="{{Route('public.music')}}" class="iq-waves-effect"><i class="las la-music"></i><span>Music List</span></a>
                 </li>
-                <li>
+                <li class="{{ Request::is('talent')? 'active' : null }}">
                     <a href="{{Route('public.talent')}}" class="iq-waves-effect"><i class="las la-brain"></i><span>Talent List</span></a>
                 </li>
-                <li>
+                <li class="{{ Request::is('comedy')? 'active' : null }}">
                     <a href="{{Route('public.comedy')}}" class="iq-waves-effect"><i class="las la-smile"></i><span>Comedy List</span></a>
                 </li>
                 <li>
