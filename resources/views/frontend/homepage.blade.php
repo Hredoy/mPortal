@@ -51,7 +51,6 @@
                     </div>
                 </div> --}}
                 <!-- /Updates from Subscriptions -->
-
                 <!-- Featured Videos -->
                 <div class="content-block head-div">
                     <div class="cb-header">
@@ -64,11 +63,9 @@
                                             <span class="hidden-xs">Featured Videos</span>
                                         </a>
                                     </li>
-                                    <li><a href="#">New Videos</a></li>
-                                    <li class="hidden-xs"><a href="#">Recommended For You</a></li>
                                 </ul>
                             </div>
-                            <div class="col-lg-2 col-sm-2 col-xs-4">
+                            {{-- <div class="col-lg-2 col-sm-2 col-xs-4">
                                 <div class="btn-group pull-right bg-clean">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Sort by <span class="caret"></span>
@@ -82,141 +79,34 @@
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="cb-content videolist">
                         <div class="row">
-                            <div class="col-lg-3 col-sm-6 videoitem">
+                            @foreach ($uploads as $item)
+                            <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="{{route('singleVideo', 1)}}"><img src="{{asset('assets/frontend/images/video1-1.png')}}" alt=""></a>
+                                        <a href=""><img src="{{asset($item->thumbnail_image)}}" alt="" width="100%" height="215px"></a>
                                         <div class="time">3:50</div>
                                     </div>
                                     <div class="v-desc">
-                                        <a href="{{route('singleVideo', 1)}}">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
+                                        <a href="">{{$item->name}}</a>
                                     </div>
                                     <div class="v-views">
                                         27,548 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="{{route('singleVideo', 1)}}"><img src="{{asset('assets/frontend/images/video1-2.png')}}" alt=""></a>
-                                        <div class="time">15:19</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="{{route('singleVideo', 1)}}">GTA 5: Michael, Franklin, and Trevor in the Flesh</a>
-                                    </div>
-                                    <div class="v-views">
-                                        8,241,542 views. <span class="v-percent"><span class="v-circle"></span> 93%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="{{route('singleVideo', 1)}}"><img src="{{asset('assets/frontend/images/video1-3.png')}}" alt=""></a>
-                                        <div class="time">4:23</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="{{route('singleVideo', 1)}}">Battlefield 3: Official Fault Line Gameplay Trailer</a>
-                                    </div>
-                                    <div class="v-views">
-                                        2,729,347 views . <span class="v-percent"><span class="v-circle"></span> 95%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="{{route('singleVideo', 1)}}"><img src="{{asset('assets/frontend/images/video1-4.png')}}" alt=""></a>
-                                        <div class="time">7:18</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="{{route('singleVideo', 1)}}">Batman Arkham City: Hugo Strange Trailer</a>
-                                    </div>
-                                    <div class="v-views">
-                                        7,239,852 views. <span class="v-percent"><span class="v-circle"></span> 84%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video last-row">
-                                    <div class="v-img">
-                                        <a href="{{route('singleVideo', 1)}}"><img src="{{asset('assets/frontend/images/video1-5.png')}}" alt=""></a>
-                                        <div class="time">23:57</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="{{route('singleVideo', 1)}}">BATTALION 1944: TAKING ON BATTLEFIELD 5</a>
-                                    </div>
-                                    <div class="v-views">
-                                        19,130 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video last-row">
-                                    <div class="v-img">
-                                        <a href="{{route('singleVideo', 1)}}">
-                                            <img src="{{asset('assets/frontend/images/video1-6.png')}}" alt="">
-                                            <div class="watched-mask"></div>
-                                            <div class="watched">WATCHED</div>
-                                            <div class="time">7:27</div>
-                                        </a>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="{{route('singleVideo', 1)}}">Amazon Blocking VIDEO GAMES for Non-Prime...</a>
-                                    </div>
-                                    <div class="v-views">
-                                        185,525 views. <span class="v-percent"><span class="v-circle"></span> 93%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video last-row">
-                                    <div class="v-img">
-                                        <a href="{{route('singleVideo', 1)}}"><img src="{{asset('assets/frontend/images/video1-7.png')}}" alt=""></a>
-                                        <div class="time">12:58</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="{{route('singleVideo', 1)}}">Amazing Facts About Nebulas Inside Deep Universe</a>
-                                    </div>
-                                    <div class="v-views">
-                                        203,741 views. <span class="v-percent"><span class="v-circle"></span> 95%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video last-row">
-                                    <div class="v-img">
-                                        <a href="{{route('singleVideo', 1)}}"><img src="{{asset('assets/frontend/images/video1-8.png')}}" alt=""></a>
-                                        <div class="time">9:47</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="{{route('singleVideo', 1)}}">Cornfield Chase - Outlast II Official Gameplay</a>
-                                    </div>
-                                    <div class="v-views">
-                                        202,513 views. <span class="v-percent"><span class="v-circle"></span> 84%</span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
                 <!-- /Featured Videos -->
 
-                <!-- New Videos in India -->
-                <div class="content-block head-div head-arrow">
+                <!-- New Videos in Current Region -->
+                {{-- <div class="content-block head-div head-arrow">
                     <div class="head-arrow-icon">
                         <i class="cv cvicon-cv-next"></i>
                     </div>
@@ -383,11 +273,11 @@
                         </div>
 
                     </div>
-                </div>
-                <!-- /New Videos in India -->
+                </div> --}}
+                <!-- /New Videos in Current Region -->
 
                 <!-- Popular Playlists -->
-                <div class="content-block head-div head-arrow">
+                {{-- <div class="content-block head-div head-arrow">
                     <div class="head-arrow-icon">
                         <i class="cv cvicon-cv-next"></i>
                     </div>
@@ -489,11 +379,11 @@
 
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- /Popular Playlists -->
 
                 <!-- Popular Channels -->
-                <div class="content-block head-div head-arrow">
+                {{-- <div class="content-block head-div head-arrow">
                     <div class="head-arrow-icon">
                         <i class="cv cvicon-cv-next"></i>
                     </div>
@@ -591,11 +481,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- /Popular Channels -->
 
                 <!-- pagination -->
-                <div class="v-pagination">
+                {{-- <div class="v-pagination">
                     <ul class="list-inline">
                         <li class="v-pagination-prev"><a href="#"><i class="cv cvicon-cv-previous"></i></a></li>
                         <li class="v-pagination-first"><a href="#">1</a></li>
@@ -608,7 +498,7 @@
                         <li class="v-pagination-skin visible-xs"><a href="#">Skip 5 Pages</a></li>
                         <li class="v-pagination-next"><a href="#"><i class="cv cvicon-cv-next"></i></a></li>
                     </ul>
-                </div>
+                </div> --}}
                 <!-- /pagination -->
 
             </div>
