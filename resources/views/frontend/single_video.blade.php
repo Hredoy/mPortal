@@ -41,8 +41,17 @@
                     <div class="author-border">
                     </div>
                     <div class="sv-views">
-                        <div class="sv-views-count row">
-                            2,729,347 views
+                        <div class="sv-views-count d-flex">
+                            @auth
+                                @if ( empty($likeCheck))
+                                <a href="{{Route('like', $upload->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                @else
+                                <a href="{{Route('unlike', $upload->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                                @endif
+                               <small> {{$upload->likes->count('count')}} Likes</small>
+
+                            @endauth
+                           <small> 2,7297 views</small>
                         </div>
                         <div class="sv-views-progress">
                             <div class="sv-views-progress-bar"></div>
@@ -54,17 +63,7 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                    @auth
-                    <div class="row">
-                        @if ( empty($likeCheck))
-                        <a href="{{Route('like', $upload->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
-                        @else
-                        <a href="{{Route('unlike', $upload->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
-                        @endif
-                        <h4>Like: {{$likeCount}}</h4>
 
-                    </div>
-                    @endauth
                 </div>
                 <div class="info">
                     <div class="info-content">
@@ -226,9 +225,9 @@
                                 <div class="rc-header"><i class="cv cvicon-cv-comment"></i> <span class="semibold">236</span> Comments</div>
                                 <div class="rc-ava"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}" alt=""></a></div>
                                 <div class="rc-comment">
-                                    <form action="{{Route('comments.store')}}" method="post">
+                                    <form action="{{ route('comment.add') }}" method="post">
                                         @csrf
-                                        <textarea name="body" rows="3">Share what you think?</textarea >
+                                        <textarea name="body" rows="3" placeholder="Share what you think?"></textarea >
                                             <input type="hidden" name="upload_id" value="{{$upload->id}}" id="">
                                         <button type="submit">
                                             <i class="cv cvicon-cv-add-comment"></i>
@@ -248,81 +247,46 @@
                                     </div>
                                 </div>
 
+                                @foreach ($upload->comments as $comment)
                                 <!-- comment -->
-                                @foreach ($comments as $comment)
                                 <div class="cl-comment">
                                     <div class="cl-avatar"><a href="#"><img src="{{asset('assets/frontend/images/ava8.png')}}" alt=""></a></div>
                                     <div class="cl-comment-text">
-                                        <div class="cl-name-date"><a href="#">>{!! $comment->author !!}</a> . {{$comment->created_at->diffForHumans()}}</div>
-                                        <div class="cl-text">{!! $comment->body !!}</div>
+                                        <div class="cl-name-date"><a href="#">{{ $comment->user->name }}</a> . {{$comment->created_at->diffForHumans()}}</div>
+                                        <div class="cl-text">{{ $comment->body }}</div>
                                         <div class="cl-meta"><span class="green"><span class="circle"></span> 121</span> <span class="grey"><span class="circle"></span> 2</span> . <a href="#">Reply</a></div>
                                         <div class="cl-replies"><a href="#">View all 5 replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
                                         <div class="cl-flag"><a href="#"><i class="cv cvicon-cv-flag"></i></a></div>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-                                @endforeach
-                                <!-- END comment -->
 
+                                <!-- END comment -->
+                                <form method="post" action="{{ route('comment.add') }}">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="text" name="body" class="form-control" />
+                                        <input type="hidden" name="upload_id" value="{{ $upload->id }}" />
+                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="Reply" />
+                                    </div>
+                                </form>
+                                @foreach ($comment->replies as $reply)
                                 <!-- reply comment -->
                                 <div class="cl-comment-reply">
                                     <div class="cl-avatar"><a href="#"><img src="{{asset('assets/frontend/images/ava7.png')}}" alt=""></a></div>
                                     <div class="cl-comment-text">
-                                        <div class="cl-name-date"><a href="#">kingPIN</a> . 6 days ago</div>
-                                        <div class="cl-text"> I was stuck too. then I started to shoot everything in Doom.</div>
+                                        <div class="cl-name-date"><a href="#">{{ $reply->user->name }}</a> . {{$reply->created_at->diffForHumans()}}</div>
+                                        <div class="cl-text">{{ $reply->body }}</div>
                                         <div class="cl-meta"><span class="green"><span class="circle"></span> 70</span> <span class="grey"><span class="circle"></span> 9</span> . <a href="#">Reply</a></div>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
                                 <!-- END reply comment -->
-
-                                <!-- comment -->
-                                <div class="cl-comment">
-                                    <div class="cl-avatar"><a href="#"><img src="{{asset('assets/frontend/images/ava2.png')}}" alt=""></a></div>
-                                    <div class="cl-comment-text">
-                                        <div class="cl-name-date"><a href="#">Isleifna</a> . 1 week ago</div>
-                                        <div class="cl-text">Omg thank you so much, idk how I couldn't figure out that master trap</div>
-                                        <div class="cl-meta"><span class="green"><span class="circle"></span> 245</span> <span class="grey"><span class="circle"></span> 19</span> . <a href="#">Reply</a></div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <!-- END comment -->
-
-                                <!-- comment -->
-                                <div class="cl-comment">
-                                    <div class="cl-avatar"><a href="#"><img src="{{asset('assets/frontend/images/ava3.png')}}" alt=""></a></div>
-                                    <div class="cl-comment-text">
-                                        <div class="cl-name-date"><a href="#">Mark</a> . 2 days ago</div>
-                                        <div class="cl-text">you welcome could you watch my video plz dude you are awsome</div>
-                                        <div class="cl-meta"><span class="green"><span class="circle"></span> 516</span> <span class="grey"><span class="circle"></span> 64</span> . <a href="#">Reply</a></div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <!-- END comment -->
-
-                                <!-- comment -->
-                                <div class="cl-comment">
-                                    <div class="cl-avatar"><a href="#"><img src="{{asset('assets/frontend/images/ava4.png')}}" alt=""></a></div>
-                                    <div class="cl-comment-text">
-                                        <div class="cl-name-date"><a href="#">High_on_meme</a> . 4 days ago</div>
-                                        <div class="cl-text">People allover the world took his music to heart and that music coming from his soul</div>
-                                        <div class="cl-meta"><span class="green"><span class="circle"></span> 95</span> <span class="grey"><span class="circle"></span> 0</span> . <a href="#">Reply</a></div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <!-- END comment -->
-
-                                <!-- reply comment -->
-                                <div class="cl-comment-reply">
-                                    <div class="cl-avatar"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}" alt=""></a></div>
-                                    <div class="cl-comment-text">
-                                        <div class="cl-name-date"><a href="#">Battlefeelz</a> . 19 hours ago</div>
-                                        <div class="cl-text">He looks like Rhett with the most glorious wig ever</div>
-                                        <div class="cl-meta"><span class="green"><span class="circle"></span> 871</span> <span class="grey"><span class="circle"></span> 32</span> . <a href="#">Reply</a></div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <!-- END reply comment -->
+                                @endforeach
+                                @endforeach
 
                                 <div class="row hidden-xs">
                                     <div class="col-lg-12">

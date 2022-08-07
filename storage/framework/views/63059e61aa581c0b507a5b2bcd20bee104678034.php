@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('second_navbar'); ?>
     <?php echo $__env->make('frontend.partials.second_navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
@@ -7,48 +8,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <!-- Updates from Subscriptions -->
-                <div class="content-block">
-                    <div class="cb-header">
-                        <div class="row">
-                            <div class="col-lg-10 col-sm-10 col-xs-10">
-                                <ul class="list-inline">
-                                    <li><a href="#">Updates from Subscriptions</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-2 col-sm-2 col-xs-2">
-                                <div class="btn-group pull-right bg-clean">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="cv cvicon-cv-relevant"></i> Relevant</a></li>
-                                        <li><a href="#"><i class="cv cvicon-cv-calender"></i> Recent</a></li>
-                                        <li><a href="#"><i class="cv cvicon-cv-view-stats"></i> Viewed</a></li>
-                                        <li><a href="#"><i class="cv cvicon-cv-star"></i> Top Rated</a></li>
-                                        <li><a href="#"><i class="cv cvicon-cv-watch-later"></i> Longest</a></li>
-                                    </ul>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cb-content avatars">
-                        <div class="row">
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava2.png')); ?>" alt=""><div class="note">1</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava3.png')); ?>" alt=""><div class="note">03</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava4.png')); ?>" alt=""><div class="note">10</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava5.png')); ?>" alt=""><div class="note">56</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava6.png')); ?>" alt=""><div class="note">6</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava7.png')); ?>" alt=""><div class="note">25</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava8.png')); ?>" alt=""><div class="note">23</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava9.png')); ?>" alt=""><div class="note">16</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava10.png')); ?>" alt=""><div class="note">3</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava11.png')); ?>" alt=""><div class="note">6</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava12.png')); ?>" alt=""><div class="note">98</div></a></div>
-                            <div class="col-lg-1 col-sm-2 col-xs-3"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava1.png')); ?>" alt=""><div class="note">125</div></a></div>
-                        </div>
-                    </div>
-                </div>
+                
                 <!-- /Updates from Subscriptions -->
 
                 <!-- Featured Videos -->

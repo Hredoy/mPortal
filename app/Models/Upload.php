@@ -10,6 +10,8 @@ class Upload extends Model
     use HasFactory;
     protected $guarded = ['id'];
     protected $table = 'uploads';
+    // Relation
+
     public function categories()
     {
         return $this->belongsTo(Category::class,'category_id', 'id');
@@ -19,10 +21,9 @@ class Upload extends Model
         return $this->belongsTo(Region::class,'region_id', 'id');
     }
 
-    // Relation
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'upload_id', 'id');
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
     }
     public function likes()
     {

@@ -98,20 +98,28 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
     ]);
 
     //Comments Route:
-    Route::resource('comment', \App\Http\Controllers\CommentController::class, [
-        'names' => [
-            'index'   => 'comments',
-            'create'   => 'comments.create',
-            'store'   => 'comments.store',
-            'edit'   => 'comments.edit',
-            'update'   => 'comments.update',
-            'destroy' => 'comments.destroy',
-
-        ],
-        'except' => [
-            'deleted',
-        ],
+    Route::post('/comment/store', [
+        'as'   => 'comment.add',
+        'uses' => 'App\Http\Controllers\CommentController@store',
     ]);
+    Route::post('/reply/store', [
+        'as'   => 'reply.add',
+        'uses' => 'App\Http\Controllers\CommentController@replyStore',
+    ]);
+    // Route::resource('comment', \App\Http\Controllers\CommentController::class, [
+    //     'names' => [
+    //         'index'   => 'comments',
+    //         'create'   => 'comments.create',
+    //         'store'   => 'comments.store',
+    //         'edit'   => 'comments.edit',
+    //         'update'   => 'comments.update',
+    //         'destroy' => 'comments.destroy',
+
+    //     ],
+    //     'except' => [
+    //         'deleted',
+    //     ],
+    // ]);
     //like Route
     Route::get('like/{id}', [
         'as'   => 'like',
