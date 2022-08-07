@@ -51,7 +51,6 @@
                     </div>
                 </div> --}}
                 <!-- /Updates from Subscriptions -->
-
                 <!-- Featured Videos -->
                 <div class="content-block head-div">
                     <div class="cb-header">
@@ -64,11 +63,9 @@
                                             <span class="hidden-xs">Featured Videos</span>
                                         </a>
                                     </li>
-                                    <li><a href="#">New Videos</a></li>
-                                    <li class="hidden-xs"><a href="#">Recommended For You</a></li>
                                 </ul>
                             </div>
-                            <div class="col-lg-2 col-sm-2 col-xs-4">
+                            {{-- <div class="col-lg-2 col-sm-2 col-xs-4">
                                 <div class="btn-group pull-right bg-clean">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Sort by <span class="caret"></span>
@@ -82,21 +79,20 @@
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="cb-content videolist">
                         <div class="row">
-                            @foreach ($uploads as $upload)
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
+                            @foreach ($uploads as $item)
+                            <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="{{route('singleVideo', $upload->id)}}"><img src="{{asset($upload->thumbnail_image)}}" alt=""></a>
+                                        <a href=""><img src="{{asset($item->thumbnail_image)}}" alt="" width="100%" height="215px"></a>
                                         <div class="time">3:50</div>
                                     </div>
                                     <div class="v-desc">
-                                        <a href="{{route('singleVideo',  $upload->id)}}">{{$upload->name}}</a>
+                                        <a href="">{{$item->name}}</a>
                                     </div>
                                     <div class="v-views">
                                         27,548 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
@@ -104,15 +100,13 @@
                                 </div>
                             </div>
                             @endforeach
-
-
                         </div>
                     </div>
                 </div>
                 <!-- /Featured Videos -->
 
-                <!-- New Videos in India -->
-                <div class="content-block head-div head-arrow">
+                <!-- New Videos in Current Region -->
+                {{-- <div class="content-block head-div head-arrow">
                     <div class="head-arrow-icon">
                         <i class="cv cvicon-cv-next"></i>
                     </div>
@@ -279,11 +273,11 @@
                         </div>
 
                     </div>
-                </div>
-                <!-- /New Videos in India -->
+                </div> --}}
+                <!-- /New Videos in Current Region -->
 
                 <!-- Popular Playlists -->
-                <div class="content-block head-div head-arrow">
+                {{-- <div class="content-block head-div head-arrow">
                     <div class="head-arrow-icon">
                         <i class="cv cvicon-cv-next"></i>
                     </div>
@@ -385,11 +379,11 @@
 
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- /Popular Playlists -->
 
                 <!-- Popular Channels -->
-                <div class="content-block head-div head-arrow">
+                {{-- <div class="content-block head-div head-arrow">
                     <div class="head-arrow-icon">
                         <i class="cv cvicon-cv-next"></i>
                     </div>
@@ -487,11 +481,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- /Popular Channels -->
 
                 <!-- pagination -->
-                <div class="v-pagination">
+                {{-- <div class="v-pagination">
                     <ul class="list-inline">
                         <li class="v-pagination-prev"><a href="#"><i class="cv cvicon-cv-previous"></i></a></li>
                         <li class="v-pagination-first"><a href="#">1</a></li>
@@ -504,7 +498,7 @@
                         <li class="v-pagination-skin visible-xs"><a href="#">Skip 5 Pages</a></li>
                         <li class="v-pagination-next"><a href="#"><i class="cv cvicon-cv-next"></i></a></li>
                     </ul>
-                </div>
+                </div> --}}
                 <!-- /pagination -->
 
             </div>

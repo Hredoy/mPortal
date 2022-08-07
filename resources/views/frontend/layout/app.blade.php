@@ -35,7 +35,7 @@
 <!-- /logo -->
 
 <!-- goto -->
-@yield('second_navbar')
+{{-- @yield('second_navbar') --}}
 <!-- /goto -->
 
 @yield('main_section')

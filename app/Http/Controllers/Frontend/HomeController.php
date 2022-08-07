@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index(){
-        $uploads =Upload::whereStatus(1)->get();
-        return view('frontend.homepage', compact("uploads"));
+        $upload = Upload::get();
+        return view('frontend.homepage', ['uploads'=>$upload]);
     }
 
     public function singleVideo($id){
