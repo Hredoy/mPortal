@@ -236,7 +236,7 @@
                         <!-- comments -->
                         <div class="comments">
                             <div class="reply-comment">
-                                <div class="rc-header"><i class="cv cvicon-cv-comment"></i> <span class="semibold">236</span> Comments</div>
+                                <div class="rc-header"><i class="cv cvicon-cv-comment"></i> <span class="semibold">{{$upload->comments->count()}}</span> Comments</div>
                                 <div class="rc-ava"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}" alt=""></a></div>
                                 <div class="rc-comment">
                                     <form action="{{ route('comment.add') }}" method="post">
@@ -276,17 +276,21 @@
                                 </div>
 
                                 <!-- END comment -->
-                                <form method="post" action="{{ route('comment.add') }}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <input type="text" name="body" class="form-control" />
-                                        <input type="hidden" name="upload_id" value="{{ $upload->id }}" />
+                                <div class="reply-comment">
+                                    <div class="rc-ava"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}" alt=""></a></div>
+                                    <div class="rc-comment">
+                                        <form action="{{ route('comment.add') }}" method="post">
+                                            @csrf
+                                            <textarea name="body" rows="3" placeholder="Share what you think?"></textarea >
+                                                <input type="hidden" name="upload_id" value="{{ $upload->id }}" />
                                         <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
+                                            <button type="submit">
+                                                <i class="cv cvicon-cv-add-comment"></i>
+                                            </button>
+                                        </form>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="Reply" />
-                                    </div>
-                                </form>
+                                    <div class="clearfix"></div>
+                                </div>
                                 @foreach ($comment->replies as $reply)
                                 <!-- reply comment -->
                                 <div class="cl-comment-reply">
