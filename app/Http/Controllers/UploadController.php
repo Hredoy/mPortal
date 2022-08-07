@@ -70,8 +70,8 @@ class UploadController extends Controller
         if ($request->hasFile('thumbnail_image')) {
             $fileName = $request->file('thumbnail_image')->getClientOriginalExtension();
             if ($fileName == 'jpg' || $fileName == 'png' || $fileName == 'jpeg' || $fileName == 'gif' || $fileName == 'svg') {
-                $newFileName = time() . '.' . $fileName;
-                $uploadPath = public_path('uploads/' . Auth::user()->name . '/images/');
+                $uploadPath = 'uploads/' . Auth::user()->name . '/images/';
+                $newFileName =$uploadPath.time() . '.' . $fileName;
                 $request->thumbnail_image->move($uploadPath, $newFileName);
             }
         }
@@ -79,14 +79,14 @@ class UploadController extends Controller
             $upload_extension = $request->file('upload')->getClientOriginalExtension();
             if ($upload_extension == 'mp3') {
                 $type = 1;
-                $uploadFileName = time() . '.' . $upload_extension;
-                $uploadPath = public_path('uploads/' . Auth::user()->name . '/audio/');
+                $uploadPath = 'uploads/' . Auth::user()->name . '/audio/';
+                $uploadFileName = $uploadPath.time() . '.' . $upload_extension;
                 $request->upload->move($uploadPath, $uploadFileName);
 
             } elseif ($upload_extension == 'mp4' || $upload_extension == '3gp' || $upload_extension == 'mpeg') {
                 $type = 2;
-                $uploadFileName = time() . '.' . $upload_extension;
-                $uploadPath = public_path('uploads/' . Auth::user()->name . '/video/');
+                $uploadPath = 'uploads/' . Auth::user()->name . '/video/';
+                $uploadFileName = $uploadPath.time() . '.' . $upload_extension;
                 $request->upload->move($uploadPath, $uploadFileName);
             }else {
                 $type = 3;
@@ -157,7 +157,7 @@ class UploadController extends Controller
         $post->fill($request->all());
           //FOR PICTURE UPDATE
           global $old_image;
-          $old_image = public_path('uploads/' . Auth::user()->name . '/images/'.$post->thumbnail_image);
+          $old_image = 'uploads/' . Auth::user()->name . '/images/'.$post->thumbnail_image;
 
           if ($request->hasFile('thumbnail_image')) {
               if (file_exists(public_path($old_image))) {
@@ -166,7 +166,7 @@ class UploadController extends Controller
               $fileName = $request->file('thumbnail_image')->getClientOriginalExtension();
               if ($fileName == 'jpg' || $fileName == 'png' || $fileName == 'jpeg' || $fileName == 'gif' || $fileName == 'svg') {
                   $newFileName = time() . '.' . $fileName;
-                  $uploadPath = public_path('uploads/' . Auth::user()->name . '/images/');
+                  $uploadPath = 'uploads/' . Auth::user()->name . '/images/';
                   $request->thumbnail_image->move($uploadPath, $newFileName);
               }
                 $post->thumbnail_image =  $newFileName;
@@ -175,7 +175,7 @@ class UploadController extends Controller
           }
           //FOR VIDEO UPDATE
           global $old_video;
-          $old_video = public_path('uploads/' . Auth::user()->name . '/video/'.$post->upload);
+          $old_video = 'uploads/' . Auth::user()->name . '/video/'.$post->upload;
 
           if ($request->hasFile('upload')) {
             if (file_exists(public_path($old_video))) {
@@ -186,11 +186,11 @@ class UploadController extends Controller
             $video_Audio_extension = $request->file('upload')->getClientOriginalExtension();
             if ($video_Audio_extension == 'mp3') {
                 $audioVideoFileName = time() . '.' . $video_Audio_extension;
-                $uploadPath = public_path('uploads/' . Auth::user()->name . '/audio/');
+                $uploadPath = 'uploads/' . Auth::user()->name . '/audio/';
                 $request->video->move($uploadPath, $audioVideoFileName);
             } elseif ($video_Audio_extension == 'mp4' || $video_Audio_extension == '3gp' || $video_Audio_extension == 'mpeg') {
                 $audioVideoFileName = time() . '.' . $video_Audio_extension;
-                $uploadPath = public_path('uploads/' . Auth::user()->name . '/video/');
+                $uploadPath = 'uploads/' . Auth::user()->name . '/video/';
                 $request->video->move($uploadPath, $audioVideoFileName);
 
                 $post->upload = $audioVideoFileName;
@@ -209,8 +209,8 @@ class UploadController extends Controller
     public function destroy($id)
     {
         $delete=  Upload::findOrFail($id);
-        $old_image = public_path('uploads/' . Auth::user()->name . '/images/'.$delete->thumbnail_image);
-        $old_video = public_path('uploads/' . Auth::user()->name . '/video/'.$delete->video_audio);
+        $old_image = 'uploads/' . Auth::user()->name . '/images/'.$delete->thumbnail_image;
+        $old_video = 'uploads/' . Auth::user()->name . '/video/'.$delete->video_audio;
         if (file_exists(public_path($old_video))) {
             unlink(public_path($old_video));
         }elseif (file_exists(public_path($old_image))) {

@@ -62,6 +62,10 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
     ]);
 
     // Upload Routes.
+    Route::get('upload/index', [
+        'as'   => 'public.upload.index',
+        'uses' => 'App\Http\Controllers\UploadController@index',
+    ]);
     Route::get('upload', [
         'as'   => 'public.upload',
         'uses' => 'App\Http\Controllers\UploadController@create',

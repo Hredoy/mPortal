@@ -9,11 +9,11 @@
         <div class="row">
             <div class="col-lg-8 col-xs-12 col-sm-12">
                 <div class="sv-video">
-                    <video poster="{{asset('assets/frontend/images/single-video.png')}}" style="width:100%;height:100%;" controls="controls" width="100%" height="100%">
-                        <source src="{{asset('assets/frontend/videos/video-1.mp4')}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
+                    <video poster="{{asset($upload->thumbnail_image)}}" style="width:100%;height:100%;" controls="controls" width="100%" height="100%">
+                        <source src="{{asset($upload->upload)}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
                     </video>
                 </div>
-                <h1><a href="#">Analyzing the Mass Effect: Andromeda E3 2016 Trailer</a></h1>
+                <h1><a href="#">{{$upload->name}}</a></h1>
                 <div class="acide-panel acide-panel-top">
                     <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
                     <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>
@@ -71,10 +71,24 @@
                         <p>Nathan Drake , Victor Sullivan , Sam Drake , Elena Fisher</p>
 
                         <h4>Category :</h4>
-                        <p>Gaming , PS4 Exclusive , Gameplay , 1080p</p>
+                        @switch($upload->category_id)
+                            @case($upload->category_id == 1)
+                                <p>Music</p>
+                                @break
+                            @case($upload->category_id == 2)
+                                <p>Talent</p>
+                                @break
+                            @case($upload->category_id == 3)
+                                <p>Comedy</p>
+                                @break
+
+                            @default
+                               <p>No category Found</p>
+                        @endswitch
+
 
                         <h4>About :</h4>
-                        <p>Three years after the events of Uncharted 3: Drake's Deception, Nathan Drake, now retired as a fortune hunter, has settled into a normal life with his wife Elena Fisher. His world is then turned upside down when his older brother Sam, long believed to be dead, suddenly reappears seeking Drake's help.</p>
+                        <p>{!! $upload->description !!}</p>
 
                         <h4>Tags :</h4>
                         <p class="sv-tags">
@@ -89,7 +103,7 @@
                         <div class="row date-lic">
                             <div class="col-xs-6">
                                 <h4>Release Date:</h4>
-                                <p>2 Days ago</p>
+                                <p>{{$upload->release_date}}</p>
                             </div>
                             <div class="col-xs-6 ta-r">
                                 <h4>License:</h4>

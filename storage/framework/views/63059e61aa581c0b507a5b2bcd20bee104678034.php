@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('second_navbar'); ?>
     <?php echo $__env->make('frontend.partials.second_navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
@@ -46,129 +45,25 @@
                     </div>
                     <div class="cb-content videolist">
                         <div class="row">
+                            <?php $__currentLoopData = $uploads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $upload): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
                             <div class="col-lg-3 col-sm-6 videoitem">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>"><img src="<?php echo e(asset('assets/frontend/images/video1-1.png')); ?>" alt=""></a>
+                                        <a href="<?php echo e(route('singleVideo', $upload->id)); ?>"><img src="<?php echo e(asset($upload->thumbnail_image)); ?>" alt=""></a>
                                         <div class="time">3:50</div>
                                     </div>
                                     <div class="v-desc">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
+                                        <a href="<?php echo e(route('singleVideo',  $upload->id)); ?>"><?php echo e($upload->name); ?></a>
                                     </div>
                                     <div class="v-views">
                                         27,548 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
                                     </div>
                                 </div>
                             </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>"><img src="<?php echo e(asset('assets/frontend/images/video1-2.png')); ?>" alt=""></a>
-                                        <div class="time">15:19</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>">GTA 5: Michael, Franklin, and Trevor in the Flesh</a>
-                                    </div>
-                                    <div class="v-views">
-                                        8,241,542 views. <span class="v-percent"><span class="v-circle"></span> 93%</span>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>"><img src="<?php echo e(asset('assets/frontend/images/video1-3.png')); ?>" alt=""></a>
-                                        <div class="time">4:23</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>">Battlefield 3: Official Fault Line Gameplay Trailer</a>
-                                    </div>
-                                    <div class="v-views">
-                                        2,729,347 views . <span class="v-percent"><span class="v-circle"></span> 95%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>"><img src="<?php echo e(asset('assets/frontend/images/video1-4.png')); ?>" alt=""></a>
-                                        <div class="time">7:18</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>">Batman Arkham City: Hugo Strange Trailer</a>
-                                    </div>
-                                    <div class="v-views">
-                                        7,239,852 views. <span class="v-percent"><span class="v-circle"></span> 84%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video last-row">
-                                    <div class="v-img">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>"><img src="<?php echo e(asset('assets/frontend/images/video1-5.png')); ?>" alt=""></a>
-                                        <div class="time">23:57</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>">BATTALION 1944: TAKING ON BATTLEFIELD 5</a>
-                                    </div>
-                                    <div class="v-views">
-                                        19,130 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video last-row">
-                                    <div class="v-img">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>">
-                                            <img src="<?php echo e(asset('assets/frontend/images/video1-6.png')); ?>" alt="">
-                                            <div class="watched-mask"></div>
-                                            <div class="watched">WATCHED</div>
-                                            <div class="time">7:27</div>
-                                        </a>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>">Amazon Blocking VIDEO GAMES for Non-Prime...</a>
-                                    </div>
-                                    <div class="v-views">
-                                        185,525 views. <span class="v-percent"><span class="v-circle"></span> 93%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video last-row">
-                                    <div class="v-img">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>"><img src="<?php echo e(asset('assets/frontend/images/video1-7.png')); ?>" alt=""></a>
-                                        <div class="time">12:58</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>">Amazing Facts About Nebulas Inside Deep Universe</a>
-                                    </div>
-                                    <div class="v-views">
-                                        203,741 views. <span class="v-percent"><span class="v-circle"></span> 95%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video last-row">
-                                    <div class="v-img">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>"><img src="<?php echo e(asset('assets/frontend/images/video1-8.png')); ?>" alt=""></a>
-                                        <div class="time">9:47</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="<?php echo e(route('singleVideo', 1)); ?>">Cornfield Chase - Outlast II Official Gameplay</a>
-                                    </div>
-                                    <div class="v-views">
-                                        202,513 views. <span class="v-percent"><span class="v-circle"></span> 84%</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
