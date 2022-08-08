@@ -42,7 +42,6 @@
                     </div>
                     <div class="sv-views">
                         <div class="sv-views-count d-flex">
-                            @auth
                                 @if ( empty($likeCheck))
                                 <a href="{{Route('like', $upload->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
                                 @else
@@ -50,7 +49,6 @@
                                 @endif
                                <small> {{$upload->likes->count('count')}} Likes</small>
 
-                            @endauth
                            <small> 2,7297 views</small>
                         </div>
                         <div class="sv-views-progress">

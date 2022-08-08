@@ -41,6 +41,9 @@
                                     <div class="v-views">
                                         27,548 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
                                     </div>
+                                    <div class="pull-right">
+                                        27,548 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
+                                    </div>
                                 </div>
                             </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

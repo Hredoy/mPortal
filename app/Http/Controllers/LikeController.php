@@ -32,7 +32,7 @@ class LikeController extends Controller
 
         }else{
 
-            return response()->json(['error' => 'At First Login Your Account']);
+            return back()->with('error', 'At First Login Your Account');
 
         }
 

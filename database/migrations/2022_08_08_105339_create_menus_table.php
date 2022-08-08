@@ -15,10 +15,15 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->stirng("logo");
-            $table->stirng("app_name");
-            $table->stirng("favicon");
-            $table->stirng("description");
+            $table->stirng("header_name");
+            $table->stirng("header_link");
+            $table->stirng("header_type");
+            $table->stirng("footer_name");
+            $table->stirng("footer_link");
+            $table->stirng("footer_type");
+            $table->stirng("user_menu_name");
+            $table->stirng("user_menu_link");
+            $table->stirng("user_menu_type");
             $table->timestamps();
         });
     }
