@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index(){
-        $upload = Upload::get();
+        $upload = Upload::whereStatus(1)->get();
         return view('frontend.homepage', ['uploads'=>$upload]);
     }
 

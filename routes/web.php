@@ -62,6 +62,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
     ]);
 
     // Upload Routes.
+    Route::get('upload/index', [
+        'as'   => 'public.upload.index',
+        'uses' => 'App\Http\Controllers\UploadController@index',
+    ]);
     Route::get('upload', [
         'as'   => 'public.upload',
         'uses' => 'App\Http\Controllers\UploadController@create',

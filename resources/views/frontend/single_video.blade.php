@@ -9,11 +9,11 @@
         <div class="row">
             <div class="col-lg-8 col-xs-12 col-sm-12">
                 <div class="sv-video">
-                    <video poster="{{asset('assets/frontend/images/single-video.png')}}" style="width:100%;height:100%;" controls="controls" width="100%" height="100%">
-                        <source src="{{asset('assets/frontend/videos/video-1.mp4')}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
+                    <video poster="{{asset($upload->thumbnail_image)}}" style="width:100%;height:100%;" controls="controls" width="100%" height="100%">
+                        <source src="{{asset($upload->upload)}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
                     </video>
                 </div>
-                <h1><a href="#">Analyzing the Mass Effect: Andromeda E3 2016 Trailer</a></h1>
+                <h1><a href="#">{{$upload->name}}</a></h1>
                 <div class="acide-panel acide-panel-top">
                     <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
                     <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>
@@ -71,10 +71,24 @@
                         <p>Nathan Drake , Victor Sullivan , Sam Drake , Elena Fisher</p>
 
                         <h4>Category :</h4>
-                        <p>Gaming , PS4 Exclusive , Gameplay , 1080p</p>
+                        @switch($upload->category_id)
+                            @case($upload->category_id == 1)
+                                <p>Music</p>
+                                @break
+                            @case($upload->category_id == 2)
+                                <p>Talent</p>
+                                @break
+                            @case($upload->category_id == 3)
+                                <p>Comedy</p>
+                                @break
+
+                            @default
+                               <p>No category Found</p>
+                        @endswitch
+
 
                         <h4>About :</h4>
-                        <p>Three years after the events of Uncharted 3: Drake's Deception, Nathan Drake, now retired as a fortune hunter, has settled into a normal life with his wife Elena Fisher. His world is then turned upside down when his older brother Sam, long believed to be dead, suddenly reappears seeking Drake's help.</p>
+                        <p>{!! $upload->description !!}</p>
 
                         <h4>Tags :</h4>
                         <p class="sv-tags">
@@ -89,7 +103,7 @@
                         <div class="row date-lic">
                             <div class="col-xs-6">
                                 <h4>Release Date:</h4>
-                                <p>2 Days ago</p>
+                                <p>{{$upload->release_date}}</p>
                             </div>
                             <div class="col-xs-6 ta-r">
                                 <h4>License:</h4>
@@ -222,7 +236,7 @@
                         <!-- comments -->
                         <div class="comments">
                             <div class="reply-comment">
-                                <div class="rc-header"><i class="cv cvicon-cv-comment"></i> <span class="semibold">236</span> Comments</div>
+                                <div class="rc-header"><i class="cv cvicon-cv-comment"></i> <span class="semibold">{{$upload->comments->count()}}</span> Comments</div>
                                 <div class="rc-ava"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}" alt=""></a></div>
                                 <div class="rc-comment">
                                     <form action="{{ route('comment.add') }}" method="post">
@@ -262,17 +276,21 @@
                                 </div>
 
                                 <!-- END comment -->
-                                <form method="post" action="{{ route('comment.add') }}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <input type="text" name="body" class="form-control" />
-                                        <input type="hidden" name="upload_id" value="{{ $upload->id }}" />
+                                <div class="reply-comment">
+                                    <div class="rc-ava"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}" alt=""></a></div>
+                                    <div class="rc-comment">
+                                        <form action="{{ route('comment.add') }}" method="post">
+                                            @csrf
+                                            <textarea name="body" rows="3" placeholder="Share what you think?"></textarea >
+                                                <input type="hidden" name="upload_id" value="{{ $upload->id }}" />
                                         <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
+                                            <button type="submit">
+                                                <i class="cv cvicon-cv-add-comment"></i>
+                                            </button>
+                                        </form>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="Reply" />
-                                    </div>
-                                </form>
+                                    <div class="clearfix"></div>
+                                </div>
                                 @foreach ($comment->replies as $reply)
                                 <!-- reply comment -->
                                 <div class="cl-comment-reply">
