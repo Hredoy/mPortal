@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'checkblocked']]
 });
 
 // Registered and Activated User Routes
-Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'checkblocked']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activity', 'twostep', 'checkblocked']], function () {
 
     //  Dashboard Route - Redirect based on user role is in controller.
     Route::get('/home', ['as' => 'public.home',   'uses' => 'App\Http\Controllers\UserController@index']);
@@ -95,6 +95,22 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
     Route::get('talent', [
         'as'   => 'public.talent',
         'uses' => 'App\Http\Controllers\UploadController@talent',
+    ]);
+
+    //category
+    Route::resource('category', \App\Http\Controllers\CategoryController::class, [
+        'names' => [
+            'index'   => 'categories',
+            'create'   => 'categories.create',
+            'store'   => 'categories.store',
+            'edit'   => 'categories.edit',
+            'update'   => 'categories.update',
+            'destroy' => 'categories.destroy',
+
+        ],
+        'except' => [
+            'deleted',
+        ],
     ]);
 
     //Comments Route:
@@ -188,20 +204,6 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         'names' => [
             'index'   => 'users',
             'destroy' => 'user.destroy',
-        ],
-        'except' => [
-            'deleted',
-        ],
-    ]);
-    Route::resource('category', \App\Http\Controllers\CategoryController::class, [
-        'names' => [
-            'index'   => 'categories',
-            'create'   => 'categories.create',
-            'store'   => 'categories.store',
-            'edit'   => 'categories.edit',
-            'update'   => 'categories.update',
-            'destroy' => 'categories.destroy',
-
         ],
         'except' => [
             'deleted',
