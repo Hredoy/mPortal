@@ -17,9 +17,9 @@
                    </div>
                    <div class="col-lg-3 col-sm-10 hidden-xs">
                        <ul class="list-inline menu">
-                           <li class="{{REQUEST::is('/music')}}"><a href="{{route('music')}}">Music</a></li>
-                           <li class="{{REQUEST::is('/comedy')}}"><a href="{{route('comedy')}}">Comedy</a></li>
-                           <li class="{{REQUEST::is('/talent')}}"><a href="{{route('talent')}}">Talents</a></li>
+                           <li class="{{Request::is('music')}}"><a href="{{route('music')}}">Music</a></li>
+                           <li class="{{Request::is('comedy')}}"><a href="{{route('comedy')}}">Comedy</a></li>
+                           <li class="{{Request::is('talent')}}"><a href="{{route('talent')}}">Talents</a></li>
                        </ul>
                    </div>
                    <div class="col-lg-6 col-sm-8 col-xs-3">

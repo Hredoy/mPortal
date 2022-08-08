@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['web', 'checkblocked']], function () {
     Route::get('/', 'App\Http\Controllers\Frontend\HomeController@index')->name('home');
     Route::get('/single-video/{id}', 'App\Http\Controllers\Frontend\HomeController@singleVideo')->name('singleVideo');
+    Route::get('/music', 'App\Http\Controllers\Frontend\HomeController@music')->name('music');
+    Route::get('/comedy', 'App\Http\Controllers\Frontend\HomeController@comedy')->name('comedy');
+    Route::get('/talent', 'App\Http\Controllers\Frontend\HomeController@talent')->name('talent');
 });
 
 // Authentication Routes

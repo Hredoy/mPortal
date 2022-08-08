@@ -1,6 +1,6 @@
 <div class="iq-sidebar">
     <div class="iq-sidebar-logo d-flex justify-content-between">
-        <a href="{{url('/')}}" class="header-logo">
+        <a href="{{route('home')}}" class="header-logo">
             <img src="{{asset('assets/frontend/../assets/images/logo.png')}}" class="img-fluid rounded-normal" alt="">
             <div class="logo-title">
                 <span class="text-primary text-uppercase">{{ config('app.name') }}</span>
