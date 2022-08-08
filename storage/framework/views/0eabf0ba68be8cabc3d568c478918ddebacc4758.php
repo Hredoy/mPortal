@@ -21,6 +21,7 @@
     <link href="<?php echo e(asset('assets/frontend/css/style.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('assets/frontend/css/font-awesome.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('assets/frontend/css/font-circle-video.css')); ?>" rel="stylesheet">
+    <?php echo $__env->yieldPushContent('custom_css'); ?>
 
     <!-- font-family: 'Hind', sans-serif; -->
     <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700' rel='stylesheet' type='text/css'>
@@ -34,7 +35,7 @@
 <!-- /logo -->
 
 <!-- goto -->
-<?php echo $__env->yieldContent('second_navbar'); ?>
+
 <!-- /goto -->
 
 <?php echo $__env->yieldContent('main_section'); ?>

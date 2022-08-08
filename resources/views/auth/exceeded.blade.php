@@ -1,24 +1,37 @@
-@extends('layouts.app')
+@extends('frontend.layout.app')
+@push('custom_css')
+    <style>
+        .login-wraper .login-window {
+            top: 25%;
+            left: 30%;
+            margin-top: 0px;
+        }
 
-@section('template_title')
-	{!! trans('titles.exceeded') !!}
-@endsection
-
-@section('content')
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 offset-md-1">
-				<div class="panel panel-danger">
-					<div class="panel-heading">
-						{!! trans('titles.exceeded') !!}
-					</div>
-					<div class="panel-body">
-						<p>
-							{!! trans('auth.tooManyEmails', ['email' => $email, 'hours' => $hours]) !!}
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        @media screen and (max-width:767px) {
+            .login-wraper .login-window {
+                left: 0%;
+            }
+        }
+    </style>
+@endpush
+@section('main_section')
+    <div class="row">
+        <div class="login-wraper text-center">
+            <div class="hidden-xs">
+                <img src="{{ asset('assets/frontend/images/login.jpg') }}" alt="">
+            </div>
+            <div class="login-window">
+                <div class="l-head">
+                    {!! trans('titles.exceeded') !!}
+                </div>
+                <div class="l-form">
+                    <form>
+                        <div class="form-group">
+                            {!! trans('auth.tooManyEmails', ['email' => $email, 'hours' => $hours]) !!}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -21,13 +21,14 @@ class CreateUploadsTable extends Migration
             // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->longtext('description');
-            $table->boolean('status')->default(1);
             $table->string('thumbnail_image')->nullable();
             $table->string('upload')->nullable();
             $table->date('release_date')->nullable();
             $table->string('region')->nullable();
             $table->integer('type_id')->nullable();
             $table->string('upload_duration')->nullable();
+            $table->boolean('status')->default(1);
+            $table->boolean('featured')->default(1);
             $table->timestamps();
         });
     }

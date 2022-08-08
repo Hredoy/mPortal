@@ -175,16 +175,16 @@
                 @endauth
                 <li class="line-height pt-3">
                    <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
-                      <img src="{{asset('assets/backend/images/user/1.jpg')}}')}}" class="img-fluid rounded-circle mr-3" alt="user">
+                      <img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" alt="{{ Auth::user()->name }}"" class="img-fluid rounded-circle mr-3">
                    </a>
                    <div class="iq-sub-dropdown iq-user-dropdown">
                       <div class="iq-card shadow-none m-0">
                          <div class="iq-card-body p-0 ">
                             <div class="bg-primary p-3">
-                               <h5 class="mb-0 text-white line-height">Hello Barry Tech</h5>
+                               <h5 class="mb-0 text-white line-height">Hello {{ Auth::user()->name }}</h5>
                                <span class="text-white font-size-12">Available</span>
                             </div>
-                            <a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
+                            <a href="{{ url('/profile/' . Auth::user()->name) }}" class="iq-sub-card iq-bg-primary-hover">
                                <div class="media align-items-center">
                                   <div class="rounded iq-card-icon iq-bg-primary">
                                      <i class="ri-file-user-line"></i>
@@ -195,7 +195,7 @@
                                   </div>
                                </div>
                             </a>
-                            <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+                            <a href="{{ url('/profile/' . Auth::user()->name) . '/edit' }}" class="iq-sub-card iq-bg-primary-hover">
                                <div class="media align-items-center">
                                   <div class="rounded iq-card-icon iq-bg-primary">
                                      <i class="ri-profile-line"></i>
@@ -203,28 +203,6 @@
                                   <div class="media-body ml-3">
                                      <h6 class="mb-0 ">Edit Profile</h6>
                                      <p class="mb-0 font-size-12">Modify your personal details.</p>
-                                  </div>
-                               </div>
-                            </a>
-                            <a href="account-setting.html" class="iq-sub-card iq-bg-primary-hover">
-                               <div class="media align-items-center">
-                                  <div class="rounded iq-card-icon iq-bg-primary">
-                                     <i class="ri-account-box-line"></i>
-                                  </div>
-                                  <div class="media-body ml-3">
-                                     <h6 class="mb-0 ">Account settings</h6>
-                                     <p class="mb-0 font-size-12">Manage your account parameters.</p>
-                                  </div>
-                               </div>
-                            </a>
-                            <a href="privacy-setting.html" class="iq-sub-card iq-bg-primary-hover">
-                               <div class="media align-items-center">
-                                  <div class="rounded iq-card-icon iq-bg-primary">
-                                     <i class="ri-lock-line"></i>
-                                  </div>
-                                  <div class="media-body ml-3">
-                                     <h6 class="mb-0 ">Privacy Settings</h6>
-                                     <p class="mb-0 font-size-12">Control your privacy parameters.</p>
                                   </div>
                                </div>
                             </a>

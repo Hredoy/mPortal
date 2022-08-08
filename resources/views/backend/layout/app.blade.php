@@ -18,6 +18,7 @@
    <!-- Responsive CSS -->
    <link rel="stylesheet" href="{{asset('assets/backend/css/responsive.css')}}">
    @stack('custom-css')
+   @yield('template_linked_css')
 </head>
 <body>
    <!-- loader Start -->
@@ -36,6 +37,13 @@
       <!-- TOP Nav Bar END -->
       <!-- Page Content  -->
       @yield('main_section')
+      <!-- Role Management section -->
+      <div id="content-page" class="content-page">
+         <div class="container-fluid my-5">
+            @yield('content')
+         </div>
+      </div>
+      <!-- Role Management section END -->
       <!-- Page Content END -->
    </div>
    <!-- Wrapper END -->
@@ -75,5 +83,6 @@
    <!-- Custom JavaScript -->
    <script src="{{asset('assets/backend/js/custom.js')}}"></script>
    @stack('custom-script')
+   @yield('footer_scripts')
 </body>
 </html>

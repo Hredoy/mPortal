@@ -20,11 +20,11 @@ window.Vue = require('vue');
  */
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('users-count', require('./components/UsersCount.vue').default);
+// Vue.component('users-count', require('./components/UsersCount.vue').default);
 
-const app = new Vue({
-    el: '#app'
-});
+// const app = new Vue({
+//     el: '#app'
+// });
 
 $.fn.extend({
     toggleText: function(a, b){

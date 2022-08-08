@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['web', 'checkblocked']], function () {
     Route::get('/', 'App\Http\Controllers\Frontend\HomeController@index')->name('home');
     Route::get('/single-video/{id}', 'App\Http\Controllers\Frontend\HomeController@singleVideo')->name('singleVideo');
+    Route::get('/music', 'App\Http\Controllers\Frontend\HomeController@music')->name('music');
+    Route::get('/comedy', 'App\Http\Controllers\Frontend\HomeController@comedy')->name('comedy');
+    Route::get('/talent', 'App\Http\Controllers\Frontend\HomeController@talent')->name('talent');
 });
 
 // Authentication Routes
@@ -51,7 +54,7 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'checkblocked']]
 });
 
 // Registered and Activated User Routes
-Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'checkblocked']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activity', 'twostep', 'checkblocked']], function () {
 
     //  Dashboard Route - Redirect based on user role is in controller.
     Route::get('/home', ['as' => 'public.home',   'uses' => 'App\Http\Controllers\UserController@index']);
@@ -62,6 +65,10 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
     ]);
 
     // Upload Routes.
+    Route::get('upload/index', [
+        'as'   => 'public.upload.index',
+        'uses' => 'App\Http\Controllers\UploadController@index',
+    ]);
     Route::get('upload', [
         'as'   => 'public.upload',
         'uses' => 'App\Http\Controllers\UploadController@create',
@@ -97,6 +104,54 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
         'uses' => 'App\Http\Controllers\UploadController@talent',
     ]);
 
+    //category
+    Route::resource('category', \App\Http\Controllers\CategoryController::class, [
+        'names' => [
+            'index'   => 'categories',
+            'create'   => 'categories.create',
+            'store'   => 'categories.store',
+            'edit'   => 'categories.edit',
+            'update'   => 'categories.update',
+            'destroy' => 'categories.destroy',
+
+        ],
+        'except' => [
+            'deleted',
+        ],
+    ]);
+
+    //Comments Route:
+    Route::post('/comment/store', [
+        'as'   => 'comment.add',
+        'uses' => 'App\Http\Controllers\CommentController@store',
+    ]);
+    Route::post('/reply/store', [
+        'as'   => 'reply.add',
+        'uses' => 'App\Http\Controllers\CommentController@replyStore',
+    ]);
+    // Route::resource('comment', \App\Http\Controllers\CommentController::class, [
+    //     'names' => [
+    //         'index'   => 'comments',
+    //         'create'   => 'comments.create',
+    //         'store'   => 'comments.store',
+    //         'edit'   => 'comments.edit',
+    //         'update'   => 'comments.update',
+    //         'destroy' => 'comments.destroy',
+
+    //     ],
+    //     'except' => [
+    //         'deleted',
+    //     ],
+    // ]);
+    //like Route
+    Route::get('like/{id}', [
+        'as'   => 'like',
+        'uses' => 'App\Http\Controllers\LikeController@store',
+    ]);
+    Route::get('unlike/{id}', [
+        'as'   => 'unlike',
+        'uses' => 'App\Http\Controllers\LikeController@unlike',
+    ]);
 
     // Show users profile - viewable by other users.
     Route::get('profile/{username}', [
@@ -161,20 +216,6 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             'deleted',
         ],
     ]);
-    Route::resource('category', \App\Http\Controllers\CategoryController::class, [
-        'names' => [
-            'index'   => 'categories',
-            'create'   => 'categories.create',
-            'store'   => 'categories.store',
-            'edit'   => 'categories.edit',
-            'update'   => 'categories.update',
-            'destroy' => 'categories.destroy',
-
-        ],
-        'except' => [
-            'deleted',
-        ],
-    ]);
 
     Route::post('search-users', 'App\Http\Controllers\UsersManagementController@search')->name('search-users');
 
@@ -186,21 +227,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
     ]);
 
 
-    //Comments Route:
-    Route::resource('comment', \App\Http\Controllers\CommentController::class, [
-        'names' => [
-            'index'   => 'comments',
-            'create'   => 'comments.create',
-            'store'   => 'comments.store',
-            'edit'   => 'comments.edit',
-            'update'   => 'comments.update',
-            'destroy' => 'comments.destroy',
 
-        ],
-        'except' => [
-            'deleted',
-        ],
-    ]);
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('routes', 'App\Http\Controllers\AdminDetailsController@listRoutes');

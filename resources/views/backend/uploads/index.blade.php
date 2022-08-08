@@ -28,7 +28,7 @@
                             <tr>
                               <th>{!! trans('SL') !!}</th>
                               <th>{!! trans('Name') !!}</th>
-                              <th class="hidden-xs">{!! trans('Category') !!}</th>
+                              {{-- <th class="hidden-xs">{!! trans('Category') !!}</th> --}}
                               <th class="hidden-xs">{!! trans('Status') !!}</th>
                               <th class="hidden-xs">{!! trans('Thumbnail') !!}</th>
                               <th class="">{!! trans('Music') !!}</th>
@@ -42,7 +42,7 @@
                            <tr>
                               <td contenteditable="true">{{ $loop->iteration }}</td>
                               <td contenteditable="true">{{$video->name}}</td>
-                              <td contenteditable="true">{{$video->categories->category_name}}</td>
+                              {{-- <td contenteditable="true">{{$video->categories->category_name}}</td> --}}
                               <td contenteditable="true">
                                 @if($video->status == '1')
                                   <span class="badge badge-success">Active</span>

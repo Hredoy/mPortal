@@ -162,4 +162,8 @@ class User extends Authenticatable
     {
         return $this->profiles()->detach($profile);
     }
+    public function uploads()
+    {
+        return $this->hasMany(Upload::class);
+    }
 }

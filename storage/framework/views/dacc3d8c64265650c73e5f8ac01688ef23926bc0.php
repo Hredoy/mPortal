@@ -26,7 +26,7 @@
                             <tr>
                               <th><?php echo trans('SL'); ?></th>
                               <th><?php echo trans('Name'); ?></th>
-                              <th class="hidden-xs"><?php echo trans('Category'); ?></th>
+                              
                               <th class="hidden-xs"><?php echo trans('Status'); ?></th>
                               <th class="hidden-xs"><?php echo trans('Thumbnail'); ?></th>
                               <th class=""><?php echo trans('Music'); ?></th>
@@ -40,7 +40,7 @@
                            <tr>
                               <td contenteditable="true"><?php echo e($loop->iteration); ?></td>
                               <td contenteditable="true"><?php echo e($video->name); ?></td>
-                              <td contenteditable="true"><?php echo e($video->categories->category_name); ?></td>
+                              
                               <td contenteditable="true">
                                 <?php if($video->status == '1'): ?>
                                   <span class="badge badge-success">Active</span>
