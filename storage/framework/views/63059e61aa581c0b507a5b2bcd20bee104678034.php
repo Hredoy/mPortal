@@ -28,7 +28,7 @@
                     </div>
                     <div class="cb-content videolist">
                         <div class="row">
-                            <?php $__currentLoopData = $uploads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $uploads->where('featured', 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
