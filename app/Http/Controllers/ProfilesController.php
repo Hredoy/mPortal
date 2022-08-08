@@ -68,7 +68,7 @@ class ProfilesController extends Controller
             'currentTheme' => $currentTheme,
         ];
 
-        return view('profiles.show')->with($data);
+        return view('backend.profiles.show')->with($data);
     }
 
     /**
@@ -100,7 +100,7 @@ class ProfilesController extends Controller
 
         ];
 
-        return view('profiles.edit')->with($data);
+        return view('backend.profiles.edit')->with($data);
     }
 
     /**

@@ -39,7 +39,7 @@ class UsersManagementController extends Controller
         }
         $roles = Role::all();
 
-        return View('usersmanagement.show-users', compact('users', 'roles'));
+        return View('backend.admin.usersmanagement.show-users', compact('users', 'roles'));
     }
 
     /**
@@ -51,7 +51,7 @@ class UsersManagementController extends Controller
     {
         $roles = Role::all();
 
-        return view('usersmanagement.create-user', compact('roles'));
+        return view('backend.admin.usersmanagement.create-user', compact('roles'));
     }
 
     /**
@@ -120,7 +120,7 @@ class UsersManagementController extends Controller
      */
     public function show(User $user)
     {
-        return view('usersmanagement.show-user', compact('user'));
+        return view('backend.admin.usersmanagement.show-user', compact('user'));
     }
 
     /**
@@ -143,7 +143,7 @@ class UsersManagementController extends Controller
             'currentRole' => $currentRole,
         ];
 
-        return view('usersmanagement.edit-user')->with($data);
+        return view('backend.admin.usersmanagement.edit-user')->with($data);
     }
 
     /**
