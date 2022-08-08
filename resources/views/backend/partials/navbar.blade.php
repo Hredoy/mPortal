@@ -175,13 +175,13 @@
                 @endauth
                 <li class="line-height pt-3">
                    <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
-                      <img src="@if ($user->profile && $user->profile->avatar_status == 1) {{ $user->profile->avatar }} @else {{ Gravatar::get($user->email) }} @endif" alt="{{ $user->name }}" class="img-fluid rounded-circle mr-3">
+                      <img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" alt="{{ Auth::user()->name }}"" class="img-fluid rounded-circle mr-3">
                    </a>
                    <div class="iq-sub-dropdown iq-user-dropdown">
                       <div class="iq-card shadow-none m-0">
                          <div class="iq-card-body p-0 ">
                             <div class="bg-primary p-3">
-                               <h5 class="mb-0 text-white line-height">Hello {{ $user->name }}</h5>
+                               <h5 class="mb-0 text-white line-height">Hello {{ Auth::user()->name }}</h5>
                                <span class="text-white font-size-12">Available</span>
                             </div>
                             <a href="{{ url('/profile/' . Auth::user()->name) }}" class="iq-sub-card iq-bg-primary-hover">

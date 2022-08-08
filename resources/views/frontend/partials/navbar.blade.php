@@ -56,12 +56,15 @@
                        <div class="selectuser pull-left">
                            <div class="btn-group pull-right dropdown">
                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                   {{Auth::user()->name}}
+                                @auth
+                                    {{Auth::user()->name}}
+                                @endauth
+                               
                                    <span class="caret"></span>
                                </button>
                                <ul class="dropdown-menu">
                                 @guest
-                                   <li><a href="{{route('login')}}">Login</a></li>
+                                   <li><a href="{{route('login')}}">Sign In</a></li>
                                    <li><a href="{{route('register')}}">Sign up</a></li>
                                 @endguest
                                 @auth

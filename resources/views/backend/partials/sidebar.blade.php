@@ -31,7 +31,8 @@
                         <li class="{{ Request::is('users/create') ? 'active' : null }}"><a href="{{ url('/users/create') }}"><i class="las la-plus"></i>Add New User</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::is('admin/category*')? 'active active-menu' : null }}">
+                <!-- Category -->
+                {{-- <li class="{{ Request::is('admin/category*')? 'active active-menu' : null }}">
                     <a href="#category" class="iq-waves-effect collapsed" data-toggle="collapse"
                         aria-expanded="{{ Request::is('admin/category*')? 'true' : 'false' }}"><i class="las la-list-ul"></i><span>Category</span><i
                             class="ri-arrow-right-s-line iq-arrow-right"></i></a>
@@ -39,7 +40,7 @@
                         <li class="{{ Request::is('admin/category/create')? 'active' : null }}"><a href="{{Route('categories.create')}}"><i class="las la-user-plus"></i>Add Category</a></li>
                         <li class="{{ Request::is('admin/category')? 'active' : null }}"><a href="{{Route('categories')}}"><i class="las la-eye"></i>Category List</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 @endrole
                 <li class="{{ Request::is('admin/upload')? 'active' : null }}">
                     <a href="{{Route('public.upload')}}" class="iq-waves-effect"><i class="las la-upload"></i><span>Upload Content</span></a>

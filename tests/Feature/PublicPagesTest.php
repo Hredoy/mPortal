@@ -26,7 +26,7 @@ class PublicPagesTest extends TestCase
      */
     public function testNonPublicPages()
     {
-        $this->get('/home')->assertStatus(302);
+        $this->get('admin/home')->assertStatus(302);
         $this->get('/routes')->assertStatus(302);
         $this->get('/themes')->assertStatus(302);
         $this->get('/users')->assertStatus(302);
