@@ -15,6 +15,18 @@ class HomeController extends Controller
         $upload = Upload::whereStatus(1)->get();
         return view('frontend.homepage', ['uploads'=>$upload]);
     }
+    public function music(){
+        $upload = Upload::whereStatus(1)->get();
+        return view('frontend.categories.music', ['uploads'=>$upload]);
+    }
+    public function comedy(){
+        $upload = Upload::whereStatus(1)->get();
+        return view('frontend.categories.comedy', ['uploads'=>$upload]);
+    }
+    public function talent(){
+        $upload = Upload::whereStatus(1)->get();
+        return view('frontend.categories.talent', ['uploads'=>$upload]);
+    }
 
     public function singleVideo($id){
        $upload = Upload::findOrFail($id);
