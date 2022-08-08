@@ -269,7 +269,7 @@
                                         <div class="cl-name-date"><a href="#">{{ $comment->user->name }}</a> . {{$comment->created_at->diffForHumans()}}</div>
                                         <div class="cl-text">{{ $comment->body }}</div>
                                         <div class="cl-meta"><span class="green"><span class="circle"></span> 121</span> <span class="grey"><span class="circle"></span> 2</span> . <a href="#">Reply</a></div>
-                                        <div class="cl-replies"><a href="#">View all 5 replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                                        <div class="cl-replies"><a href="#">View all {{$comment->replies->count()}} replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
                                         <div class="cl-flag"><a href="#"><i class="cv cvicon-cv-flag"></i></a></div>
                                     </div>
                                     <div class="clearfix"></div>

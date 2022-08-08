@@ -68,7 +68,7 @@
                                     class="btn btn-primary btn-rounded btn-sm my-0">Remove</a>
                                  </span>
                               </td>
-                        </tbody>
+                            </tr>
                            @empty
                            <tr>
                                <td class="text-muted text-center" colspan="100%">
