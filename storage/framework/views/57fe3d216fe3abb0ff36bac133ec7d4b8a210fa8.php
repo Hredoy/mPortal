@@ -20,6 +20,16 @@
                            <li class="<?php echo e(Request::is('music') ? 'color-active': null); ?>"><a href="<?php echo e(route('music')); ?>">Music</a></li>
                            <li class="<?php echo e(Request::is('comedy') ? 'color-active': null); ?>"><a href="<?php echo e(route('comedy')); ?>">Comedy</a></li>
                            <li class="<?php echo e(Request::is('talent') ? 'color-active': null); ?>"><a href="<?php echo e(route('talent')); ?>">Talents</a></li>
+                           <li>
+                            <a href="#">More</a>
+                            <ul>
+                                <?php $__currentLoopData = $contents->where('type', 1)->where('status', 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $content): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li>
+                                        <a href="<?php echo e($content->link); ?>"><?php echo e($content->name); ?> </a>
+                                    </li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </ul>
+                        </li>
                        </ul>
                    </div>
                    <div class="col-lg-6 col-sm-8 col-xs-3">
@@ -54,7 +64,7 @@
                                     <?php echo e(Auth::user()->name); ?>
 
                                 <?php endif; ?>
-                               
+
                                    <span class="caret"></span>
                                </button>
                                <ul class="dropdown-menu">
@@ -71,6 +81,11 @@
                                         </form>
                                     </li>
                                 <?php endif; ?>
+                                <?php $__currentLoopData = $contents->where('type', 3)->where('status', 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $content): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li>
+                                            <a href="<?php echo e($content->link); ?>"><?php echo e($content->name); ?> </a>
+                                        </li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                </ul>
                            </div>
                        </div>
@@ -87,4 +102,5 @@
            </div>
        </div>
    </div>
-</div><?php /**PATH D:\laragon\www\2spiceart\resources\views/frontend/partials/navbar.blade.php ENDPATH**/ ?>
+</div>
+<?php /**PATH D:\laragon\www\2spiceart\resources\views/frontend/partials/navbar.blade.php ENDPATH**/ ?>

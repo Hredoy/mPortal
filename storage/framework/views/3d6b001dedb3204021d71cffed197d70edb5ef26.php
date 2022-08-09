@@ -17,6 +17,11 @@
                            <li><a href="#">Copyright</a></li>
                            <li><a href="#">Advertise</a></li>
                            <li class="hidden-xs"><a href="#">Help</a></li>
+                           <?php $__currentLoopData = $contents->where('type', 2)->where('status', 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $content): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li>
+                                        <a href="<?php echo e($content->link); ?>"><?php echo e($content->name); ?> </a>
+                                    </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                        </ul>
                    </div>
                    <div class="delimiter"></div>

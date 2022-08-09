@@ -17,6 +17,11 @@
                            <li><a href="#">Copyright</a></li>
                            <li><a href="#">Advertise</a></li>
                            <li class="hidden-xs"><a href="#">Help</a></li>
+                           @foreach ($contents->where('type', 2)->where('status', 1) as $content)
+                                    <li>
+                                        <a href="{{$content->link}}">{{$content->name}} </a>
+                                    </li>
+                            @endforeach
                        </ul>
                    </div>
                    <div class="delimiter"></div>

@@ -40,6 +40,11 @@
                         <?php if(auth()->guard()->check()): ?>
                             <li><a href="<?php echo e(route('public.home')); ?>">Dashboard</a></li>
                         <?php endif; ?>
+                            <?php $__currentLoopData = $contents->where('type', 3)->where('status', 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $content): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li>
+                                    <a href="<?php echo e($content->link); ?>"><?php echo e($content->name); ?> </a>
+                                </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
                 </div>
             </div>
@@ -74,6 +79,14 @@
                         <p>Talent</p>
                     </a>
                 </li>
+                <?php $__currentLoopData = $contents->where('type', 1)->where('status', 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $content): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li>
+                        <a href="<?php echo e($content->link); ?>">
+                            <?php echo e($content->icon); ?> 
+                            <p> <?php echo e($content->name); ?> </p>
+                        </a>
+                    </li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 
                 
                 
