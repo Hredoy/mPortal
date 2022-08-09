@@ -161,6 +161,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
 
 });
 
+  // Site Settings Route.
+  Route::get('site/settings', [
+    'as'   => 'site.settings',
+    'uses' => 'App\Http\Controllers\SiteSettingController@index',
+]);
+
 // Registered, activated, and is current user routes.
 Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', 'twostep', 'checkblocked']], function () {
 

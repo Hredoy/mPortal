@@ -60,7 +60,7 @@ class UploadController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             'thumbnail_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'upload' => 'required|mimes:mp3, mpeg, mpg, wav, mp4,3gp,mpeg,mkv, amv, avi, mov, wmv, ogg',
+            'upload' => 'required|mimes:mp3,mp4,3gp,mpeg,mkv,amv',
             'description' => 'required',
             'release_date' => 'required',
 
@@ -77,13 +77,13 @@ class UploadController extends Controller
         }
         if ($request->hasFile('upload')) {
             $upload_extension = $request->file('upload')->getClientOriginalExtension();
-            if ($upload_extension == 'mp3' || $upload_extension == 'mpeg' || $upload_extension == 'mpg' || $upload_extension == 'wav' ) {
+            if ($upload_extension == 'mp3') {
                 $type = 1;
                 $uploadPath = 'uploads/' . Auth::user()->name . '/audio/';
                 $uploadFileName = $uploadPath.time() . '.' . $upload_extension;
                 $request->upload->move($uploadPath, $uploadFileName);
 
-            } elseif ($upload_extension == 'mp4' || $upload_extension == '3gp' || $upload_extension == 'mpeg'  || $upload_extension == 'avi' || $upload_extension == 'mkv' || $upload_extension == 'mov' || $upload_extension == 'wmv'|| $upload_extension == 'ogg') {
+            } elseif ($upload_extension == 'mp4' || $upload_extension == '3gp' || $upload_extension == 'mpeg') {
                 $type = 2;
                 $uploadPath = 'uploads/' . Auth::user()->name . '/video/';
                 $uploadFileName = $uploadPath.time() . '.' . $upload_extension;
@@ -111,10 +111,10 @@ class UploadController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Upload  $upload
+     * @param  \App\Models\VideoManagement  $videoManagement
      * @return \Illuminate\Http\Response
      */
-    public function show(Upload $upload)
+    public function show(VideoManagement $videoManagement)
     {
         //
     }
@@ -122,14 +122,13 @@ class UploadController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Upload  $upload
+     * @param  \App\Models\VideoManagement  $videoManagement
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $page_title = 'Update A New Upload';
         $upload = Upload::find($id);
-        // $categories = Category::all();
         $countries =CountryListFacade::getList('en');
         return view('backend.uploads.edit', compact('page_title', 'upload', 'countries'));
     }
@@ -138,7 +137,7 @@ class UploadController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Upload  $upload
+     * @param  \App\Models\VideoManagement  $videoManagement
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -165,8 +164,8 @@ class UploadController extends Controller
               }
               $fileName = $request->file('thumbnail_image')->getClientOriginalExtension();
               if ($fileName == 'jpg' || $fileName == 'png' || $fileName == 'jpeg' || $fileName == 'gif' || $fileName == 'svg') {
-                  $newFileName = time() . '.' . $fileName;
                   $uploadPath = 'uploads/' . Auth::user()->name . '/images/';
+                  $newFileName = $uploadPath.time() . '.' . $fileName;
                   $request->thumbnail_image->move($uploadPath, $newFileName);
               }
                 $post->thumbnail_image =  $newFileName;
@@ -175,32 +174,32 @@ class UploadController extends Controller
           }
           //FOR VIDEO UPDATE
           global $old_video;
-          $old_video = 'uploads/' . Auth::user()->name . '/video/'.$post->upload;
+          $old_video = $post->upload;
 
           if ($request->hasFile('upload')) {
-            if (file_exists(public_path($old_video))) {
-                unlink(public_path($old_video));
+            if (file_exists($old_video)) {
+                unlink($old_video);
             }
 
 
             $video_Audio_extension = $request->file('upload')->getClientOriginalExtension();
-            if ($video_Audio_extension == 'mp3' || $video_Audio_extension == 'mpeg' || $video_Audio_extension == 'mpg' || $video_Audio_extension == 'wav') {
-                $audioVideoFileName = time() . '.' . $video_Audio_extension;
-                $uploadPath = 'uploads/' . Auth::user()->name . '/audio/';
-                $request->video->move($uploadPath, $audioVideoFileName);
+            if ($video_Audio_extension == 'mp3') {
                 $type = 1;
-            } elseif ($video_Audio_extension == 'mp4' || $video_Audio_extension == '3gp' || $video_Audio_extension == 'mpeg'  || $video_Audio_extension == 'avi' || $video_Audio_extension == 'mkv' || $video_Audio_extension == 'mov' || $video_Audio_extension == 'wmv'|| $video_Audio_extension == 'ogg') {
-                $audioVideoFileName = time() . '.' . $video_Audio_extension;
-                $uploadPath = 'uploads/' . Auth::user()->name . '/video/';
+                $uploadPath = 'uploads/' . Auth::user()->name . '/audio/';
+                $audioVideoFileName = $uploadPath.time() . '.' . $video_Audio_extension;
                 $request->video->move($uploadPath, $audioVideoFileName);
+                $post->upload = $audioVideoFileName;
+            } elseif ($video_Audio_extension == 'mp4' || $video_Audio_extension == '3gp' || $video_Audio_extension == 'mpeg') {
                 $type = 2;
+                $uploadPath = 'uploads/' . Auth::user()->name . '/video/';
+                $audioVideoFileName = $uploadPath.time() . '.' . $video_Audio_extension;
+                $request->video->move($uploadPath, $audioVideoFileName);
                 $post->upload = $audioVideoFileName;
             }else{
                 $type = 3;
             }
+            $upload->type = $type;
         }
-
-          $post->$type;
           $post->save();
           return redirect()->back()->with('create', 'File has been update successfully.');
     }

@@ -44,22 +44,30 @@
                                      <option  disabled="">Movie Category</option>
                                      @switch($upload->category_id)
                                      @case($upload->category_id == 1)
-                                     <option value="1">Music</option>
+                                     <option selected value="1">Music</option>
+                                     <option value="2">Comedy</option>
+                                     <option value="3">Talent</option>
                                          @break
                                      @case($upload->category_id == 2)
-                                     <option value="2">Talent</option><p>Talent</p>
+                                     <option value="1">Music</option>
+                                     <option selected value="2">Comedy</option>
+                                     <option value="3">Talent</option>
                                          @break
                                      @case($upload->category_id == 3)
-                                     <option value="3">Comedy</option><p>Comedy</p>
+                                     <option value="1">Music</option>
+                                     <option value="2">Comedy</option>
+                                     <option selected value="3">Talent</option>
                                          @break
 
                                      @default
-                                     <option  disabled="">>No category Fouy</option>
-                                 @endswitch
-                                     <option value="{{$upload->category_id}}">Music</option>
                                      <option value="1">Music</option>
                                      <option value="2">Comedy</option>
                                      <option value="3">Talent</option>
+                                 @endswitch
+                                     {{-- <option value="{{$upload->category_id}}">Music</option>
+                                     <option value="1">Music</option>
+                                     <option value="2">Comedy</option>
+                                     <option value="3">Talent</option> --}}
 
                                      {{-- @foreach ($categories as $cate)
                                      <option value="{{$cate->id}}" {{ $cate->id == $upload->category_id ? 'selected':''}}>{{$cate->category_name}}</option>
@@ -76,12 +84,11 @@
                                    <option disabled="">Choose Region</option>
                                    @foreach ($countries as $country)
                                    <option value="{{$country}}" {{ $country == $upload->region ? 'selected':''}}>{{$country}}</option>
-                           {{-- <option value="{{ $country }}">{{ $country }}</option> --}}
                            @endforeach
                                 </select>
-                                @if ($errors->has('region_id'))
+                                @if ($errors->has('region'))
                         <span class="help-block">
-                            <strong>{{ $errors->first('region_id') }}</strong>
+                            <strong>{{ $errors->first('region') }}</strong>
                         </span>
                         @endif
                               </div>
@@ -94,7 +101,7 @@
                          <div class="col-lg-5">
                             <div class="d-block position-relative">
                                <div class="form_video-upload">
-                                  <input type="file" name="upload" accept="video/mp4,video/x-m4v,video/*" multiple>
+                                  <input type="file" name="upload" accept="mp3, mpeg, mpg, wav, mp4,3gp,mpeg,mkv, amv, avi, mov, wmv, ogg" multiple>
                                   <p>Upload video</p>
                                </div>
                                @if ($errors->has('upload'))
@@ -106,7 +113,7 @@
                          </div>
                       </div>
                       <div class="row">
-                         <div class="col-sm-6 form-group">
+                         <div class="col-sm-12 form-group">
                             <input type="date" class="form-control" value="{{$upload->release_date}}" name="release_date" placeholder="Release Date">
                             @if ($errors->has('release_date'))
                                 <span class="help-block">

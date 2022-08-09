@@ -15,18 +15,23 @@
                    </div>
                 </div>
                 <div class="iq-card-body">
-                  <form method="POST" action="{{ route('public.upload.store') }}" enctype="multipart/form-data" class="needs-validation" file="true">
+                  <form method="POST" action="{{ route('public.upload.store') }}" enctype="multipart/form-data" >
                      @csrf
                       <div class="row">
                          <div class="col-lg-7">
                             <div class="row">
                                <div class="col-12 form-group">
-                                  <input type="text" name="name" class="form-control" placeholder="Title">
+                                  <input type="text" name="name" class="form-control" placeholder="Title" required>
+                                  @if ($errors->has('name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                                @endif
                                </div>
                                <div class="col-12 form_gallery form-group">
                                   <label id="gallery2" for="form_gallery-upload">Upload Image</label>
                                   <input data-name="#gallery2" id="form_gallery-upload" name="thumbnail_image" class="form_gallery-upload"
-                                     type="file" accept="png',jpg',jpeg">
+                                     type="file" accept="png',jpg',jpeg" required>
                                      @if ($errors->has('thumbnail_image'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('thumbnail_image') }}</strong>
@@ -34,7 +39,7 @@
                                 @endif
                                </div>
                                <div class="col-md-6 form-group">
-                                  <select class="form-control" name="category_id" id="exampleFormControlSelect1">
+                                  <select class="form-control" name="category_id" id="exampleFormControlSelect1" required>
                                      <option selected disabled="">Movie Category</option>
                                      <option value="1">Music</option>
                                      <option value="2">Comedy</option>
@@ -52,28 +57,33 @@
                                 @endif
                                </div>
                                <div class="col-sm-6 form-group">
-                                 <select class="form-control" name="region" id="exampleFormControlSelect3">
+                                 <select class="form-control" name="region" id="exampleFormControlSelect3" required>
                                     <option selected disabled="">Choose Region</option>
                                     @foreach ($countries as $country)
                             <option value="{{ $country }}">{{ $country }}</option>
                             @endforeach
                                  </select>
-                                 @if ($errors->has('region_id'))
+                                 @if ($errors->has('region'))
                          <span class="help-block">
-                             <strong>{{ $errors->first('region_id') }}</strong>
+                             <strong>{{ $errors->first('region') }}</strong>
                          </span>
                          @endif
                                </div>
                                <div class="col-12 form-group">
                                   <textarea id="text" name="description" rows="5" class="form-control"
-                                     placeholder="Description"></textarea>
+                                     placeholder="Description" required></textarea>
+                                     @if ($errors->has('description'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('description') }}</strong>
+                                </span>
+                            @endif
                                </div>
                             </div>
                          </div>
                          <div class="col-lg-5">
                             <div class="d-block position-relative">
                                <div class="form_video-upload">
-                                  <input type="file" name="upload" accept="video/mp4,video/x-m4v,video/*" multiple>
+                                  <input type="file" name="upload" accept="video/mp4,video/x-m4v,video/*" multiple required>
                                   <p>Upload video</p>
                                </div>
                                @if ($errors->has('upload'))
@@ -86,12 +96,12 @@
                       </div>
                       <div class="row">
                          <div class="col-sm-12 form-group">
-                            <input type="date" class="form-control" name="release_date" placeholder="Release Date">
+                            <input type="date" class="form-control" name="release_date" placeholder="Release Date" required>
                             @if ($errors->has('release_date'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('release_date') }}</strong>
                                 </span>
-                                @endif
+                            @endif
                          </div>
 
                         {{-- <div class="col-sm-12 form-group">

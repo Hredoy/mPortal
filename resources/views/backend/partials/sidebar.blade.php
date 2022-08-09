@@ -54,6 +54,9 @@
                 <li class="{{ Request::is('admin/comedy')? 'active' : null }}">
                     <a href="{{Route('public.comedy')}}" class="iq-waves-effect"><i class="las la-smile"></i><span>Comedy List</span></a>
                 </li>
+                <li class="{{ Request::is('admin/site/settings')? 'active' : null }}">
+                    <a href="{{Route('site.settings')}}" class="iq-waves-effect"><i class="las la-tools"></i><span>Site Settings</span></a>
+                </li>
                 <li>
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
