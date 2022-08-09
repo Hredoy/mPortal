@@ -16,15 +16,16 @@ class HomeController extends Controller
         return view('frontend.homepage', ['uploads'=>$upload]);
     }
     public function music(){
-        $upload = Upload::whereStatus(1)->get();
+        $upload = Upload::whereStatus(1)->where('category_id', '1')->get();
+        // dd($upload);
         return view('frontend.categories.music', ['uploads'=>$upload]);
     }
     public function comedy(){
-        $upload = Upload::whereStatus(1)->get();
+        $upload = Upload::whereStatus(1)->where('category_id', '2')->get();
         return view('frontend.categories.comedy', ['uploads'=>$upload]);
     }
     public function talent(){
-        $upload = Upload::whereStatus(1)->get();
+        $upload = Upload::whereStatus(1)->where('category_id', '3')->get();
         return view('frontend.categories.talent', ['uploads'=>$upload]);
     }
 
