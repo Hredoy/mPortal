@@ -2,86 +2,95 @@
     <div class="mobile-menu-head">
         <a href="#" class="mobile-menu-close"></a>
         <a class="navbar-brand" href="index.html">
-            <img src="{{asset('assets/frontend/images/logo.svg')}}" alt="Project name" class="logo" />
+            <img src="{{ asset('assets/frontend/images/logo.svg') }}" alt="Project name" class="logo" />
             <span>Circle</span>
         </a>
         <div class="mobile-menu-btn-color">
-            <img src="{{asset('assets/frontend/images/icon_bulb_light.png')}}" alt="">
+            <img src="{{ asset('assets/frontend/images/icon_bulb_light.png') }}" alt="">
         </div>
     </div>
     <div class="mobile-menu-content">
         <div class="mobile-menu-user">
             <div class="mobile-menu-user-img">
-                <img src="{{asset('assets/frontend/images/ava11.png')}}" alt="">
+                @guest
+                    <img src="{{ asset('assets/frontend/images/ava11.png') }}" alt="">
+                @endguest
+                @auth
+                    <img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif"
+                        alt="{{ Auth::user()->name }}" height="44px" width="100%" class="user-logo">
+                @endauth
             </div>
-            <p>Bailey Fry </p>
+            <p>
+                @auth
+                    {{ Auth::user()->name }}
+                @endauth
+            </p>
             <span class="caret"></span>
+            <div class="selectuser pull-left">
+                <div class="btn-group pull-right dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    </button>
+                    <ul class="dropdown-menu">
+                        @guest
+                            <li><a href="{{ route('login') }}">Sign In</a></li>
+                            <li><a href="{{ route('register') }}">Sign up</a></li>
+                        @endguest
+                        @auth
+                            <li><a href="{{ route('public.home') }}">Dashboard</a></li>
+                        @endauth
+                    </ul>
+                </div>
+            </div>
         </div>
-        <a href="#" class="btn mobile-menu-upload">
+        <a href="{{Route('public.upload')}}" class="btn mobile-menu-upload">
             <i class="cv cvicon-cv-upload-video"></i>
             <span>Upload Video</span>
         </a>
         <div class="mobile-menu-list">
             <ul>
-                <li>
-                    <a href="#">
+                <li class="{{Request::is('/') ? 'color-active': null}}">
+                    <a href="{{Route('home')}}">
                         <i class="cv cvicon-cv-play-circle"></i>
                         <p>Popular Videos</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="cv cvicon-cv-playlist"></i>
-                        <p>Browse Categories</p>
-                        <span class="caret"></span>
+                <li class="{{Request::is('music') ? 'color-active': null}}">
+                    <a href="{{Route('music')}}">
+                        <i class="cv cvicon-cv-play-circle"></i>
+                        <p>Music</p>
                     </a>
-                    <ul class="mobile-menu-categories">
-                        <li class="color-active">
-                            <a href="#">Pages <span class="caret"></span></a>
-                            <ul>
-                                <li><a href="index.html">Home Page</a></li>
-                                <li><a href="single-video.html">Single Video Page</a></li>
-                                <li><a href="single-video-youtube.html">Single Video Youtube Embedded Page</a></li>
-                                <li><a href="single-video-vimeo.html">Single Video Vimeo Embedded Page</a></li>
-                                <li><a href="upload.html">Upload Video Page</a></li>
-                                <li><a href="upload-edit.html">Upload Video Edit Page</a></li>
-                                <li><a href="search.html">Searched Videos Page</a></li>
-                                <li><a href="channel.html">Single Channel Page</a></li>
-                                <li><a href="channels.html">Channels Page</a></li>
-                                <li><a href="single-video-tabs.html">Single Videos Page With Tabs</a></li>
-                                <li><a href="single-video-playlist.html">Single Videos Page With Playlist</a></li>
-                                <li><a href="history.html">History Page</a></li>
-                                <li><a href="categories.html">Browse Categories Page</a></li>
-                                <li><a href="categories_side_menu.html">Browse Categories Side Menu Page</a></li>
-                                <li><a href="subscription.html">Subscription Page</a></li>
-                                <li><a href="{{route('login')}}">Login Page</a></li>
-                                <li><a href="{{route('register')}}">Signup Page</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="categories.html">Categories</a></li>
-                        <li><a href="channel.html">Channels</a></li>
-                    </ul>
                 </li>
-                <li>
+                <li class="{{Request::is('comedy') ? 'color-active': null}}">
+                    <a href="{{Route('comedy')}}">
+                        <i class="cv cvicon-cv-play-circle"></i>
+                        <p>Comedy</p>
+                    </a>
+                </li>
+                <li class="{{Request::is('talent') ? 'color-active': null}}">
+                    <a href="{{Route('talent')}}">
+                        <i class="cv cvicon-cv-play-circle"></i>
+                        <p>Talent</p>
+                    </a>
+                </li>
+                
+                {{-- <li>
                     <a href="#">
                         <i class="cv cvicon-cv-liked"></i>
                         <p>Liked Videos</p>
                     </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="cv cvicon-cv-history"></i>
-                        <p>History</p>
-                    </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a href="#">
                         <i class="cv cvicon-cv-purchased"></i>
                         <p>Purchased Videos</p>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
-        <a href="#" class="btn mobile-menu-logout">Log out</a>
+        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn mobile-menu-logout">Sign out</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
     </div>
 </div>
