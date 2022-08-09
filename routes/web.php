@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 // Homepage Route
 Route::group(['middleware' => ['web', 'checkblocked']], function () {
+    Route::view('/', 'frontend.layout.app');
     Route::get('/', 'App\Http\Controllers\Frontend\HomeController@index')->name('home');
     Route::get('/single-video/{id}', 'App\Http\Controllers\Frontend\HomeController@singleVideo')->name('singleVideo');
     Route::get('/music', 'App\Http\Controllers\Frontend\HomeController@music')->name('music');
@@ -88,6 +89,32 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
     Route::get('upload-destroy/{id}', [
         'as'   => 'public.upload.destroy',
         'uses' => 'App\Http\Controllers\UploadController@destroy',
+    ]);
+
+    // Menu Routes.
+    Route::get('menu', [
+        'as'   => 'public.menu.index',
+        'uses' => 'App\Http\Controllers\MenuController@index',
+    ]);
+    Route::get('menu-create', [
+        'as'   => 'public.menu.create',
+        'uses' => 'App\Http\Controllers\MenuController@create',
+    ]);
+    Route::post('menu-store', [
+        'as'   => 'public.menu.store',
+        'uses' => 'App\Http\Controllers\MenuController@store',
+    ]);
+    Route::get('menu-edit/{id}', [
+        'as'   => 'public.menu.edit',
+        'uses' => 'App\Http\Controllers\MenuController@edit',
+    ]);
+    Route::put('menu-update/{id}', [
+        'as'   => 'public.menu.update',
+        'uses' => 'App\Http\Controllers\MenuController@update',
+    ]);
+    Route::get('menu-destroy/{id}', [
+        'as'   => 'public.menu.destroy',
+        'uses' => 'App\Http\Controllers\MenuController@destroy',
     ]);
 
     //category wise view

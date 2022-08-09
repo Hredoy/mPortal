@@ -33,6 +33,16 @@
                 </li>
                 <!-- Category -->
                 
+                <!-- Menu -->
+                <li class="<?php echo e(Request::is('admin/menu*')? 'active active-menu' : null); ?>">
+                    <a href="#menu" class="iq-waves-effect collapsed" data-toggle="collapse"
+                        aria-expanded="<?php echo e(Request::is('admin/menu*')? 'true' : 'false'); ?>"><i class="las la-list-ul"></i><span>Menu</span><i
+                            class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                    <ul id="menu" class="iq-submenu collapse <?php echo e(Request::is('admin/menu*')? 'show' : null); ?>" data-parent="#iq-sidebar-toggle">
+                        <li class="<?php echo e(Request::is('admin/menu/create')? 'active' : null); ?>"><a href="<?php echo e(Route('public.menu.create')); ?>"><i class="las la-user-plus"></i>Add Menu</a></li>
+                        <li class="<?php echo e(Request::is('admin/menu')? 'active' : null); ?>"><a href="<?php echo e(Route('public.menu.index')); ?>"><i class="las la-eye"></i>Menu List</a></li>
+                    </ul>
+                </li>
                 <?php endif; ?>
                 <li class="<?php echo e(Request::is('admin/upload')? 'active' : null); ?>">
                     <a href="<?php echo e(Route('public.upload')); ?>" class="iq-waves-effect"><i class="las la-upload"></i><span>Upload Content</span></a>

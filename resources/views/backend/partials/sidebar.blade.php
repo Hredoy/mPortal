@@ -41,6 +41,16 @@
                         <li class="{{ Request::is('admin/category')? 'active' : null }}"><a href="{{Route('categories')}}"><i class="las la-eye"></i>Category List</a></li>
                     </ul>
                 </li> --}}
+                <!-- Menu -->
+                <li class="{{ Request::is('admin/menu*')? 'active active-menu' : null }}">
+                    <a href="#menu" class="iq-waves-effect collapsed" data-toggle="collapse"
+                        aria-expanded="{{ Request::is('admin/menu*')? 'true' : 'false' }}"><i class="las la-list-ul"></i><span>Menu</span><i
+                            class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                    <ul id="menu" class="iq-submenu collapse {{ Request::is('admin/menu*')? 'show' : null }}" data-parent="#iq-sidebar-toggle">
+                        <li class="{{ Request::is('admin/menu/create')? 'active' : null }}"><a href="{{Route('public.menu.create')}}"><i class="las la-user-plus"></i>Add Menu</a></li>
+                        <li class="{{ Request::is('admin/menu')? 'active' : null }}"><a href="{{Route('public.menu.index')}}"><i class="las la-eye"></i>Menu List</a></li>
+                    </ul>
+                </li>
                 @endrole
                 <li class="{{ Request::is('admin/upload')? 'active' : null }}">
                     <a href="{{Route('public.upload')}}" class="iq-waves-effect"><i class="las la-upload"></i><span>Upload Content</span></a>

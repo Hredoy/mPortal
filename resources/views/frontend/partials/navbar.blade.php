@@ -20,6 +20,16 @@
                            <li class="{{Request::is('music') ? 'color-active': null}}"><a href="{{route('music')}}">Music</a></li>
                            <li class="{{Request::is('comedy') ? 'color-active': null}}"><a href="{{route('comedy')}}">Comedy</a></li>
                            <li class="{{Request::is('talent') ? 'color-active': null}}"><a href="{{route('talent')}}">Talents</a></li>
+                           <li>
+                            <a href="#">More</a>
+                            <ul>
+                                @foreach ($contents->where('type', 1)->where('status', 1) as $content)
+                                    <li>
+                                        <a href="{{$content->link}}">{{$content->name}} </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
                        </ul>
                    </div>
                    <div class="col-lg-6 col-sm-8 col-xs-3">
@@ -76,6 +86,11 @@
                                         </form>
                                     </li>
                                 @endauth
+                                @foreach ($contents->where('type', 3)->where('status', 1) as $content)
+                                        <li>
+                                            <a href="{{$content->link}}">{{$content->name}} </a>
+                                        </li>
+                                @endforeach
                                </ul>
                            </div>
                        </div>

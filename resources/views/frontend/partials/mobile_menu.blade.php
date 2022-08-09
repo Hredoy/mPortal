@@ -39,6 +39,11 @@
                         @auth
                             <li><a href="{{ route('public.home') }}">Dashboard</a></li>
                         @endauth
+                            @foreach ($contents->where('type', 3)->where('status', 1) as $content)
+                                <li>
+                                    <a href="{{$content->link}}">{{$content->name}} </a>
+                                </li>
+                            @endforeach
                     </ul>
                 </div>
             </div>
@@ -73,6 +78,14 @@
                         <p>Talent</p>
                     </a>
                 </li>
+                @foreach ($contents->where('type', 1)->where('status', 1) as $content)
+                    <li>
+                        <a href="{{$content->link}}">
+                            {{$content->icon}} 
+                            <p> {{$content->name}} </p>
+                        </a>
+                    </li>
+                @endforeach
                 
                 {{-- <li>
                     <a href="#">
