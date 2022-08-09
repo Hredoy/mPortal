@@ -49,7 +49,7 @@
                                     <span class="table-down"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a></span>
                                  </td>
                                  <td>
-                                    <a  href="{{route('public.upload.edit',1)}}"
+                                    <a  :href="'admin/upload-edit/ +upload.id"
                                     class="btn btn-light btn-rounded btn-sm px-2 my-0"> Edit  </a>
                                  <span class="table-remove">
                                     <a  href="{{route('public.upload.destroy',1)}}"

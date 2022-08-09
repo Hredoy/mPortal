@@ -18,14 +18,14 @@
 
                   <form method="POST" action="{{ route('public.upload.update',$upload->id) }}" accept-charset="UTF-8" role="form" enctype="multipart/form-data" class="needs-validation" file="true">
                      @csrf
-                     @method('PUT')   
+                     @method('PUT')
                       <div class="row">
                          <div class="col-lg-7">
                             <div class="row">
                                <div class="col-12 form-group">
                                   <input type="text" name="name" value="{{ old('name', $upload->name) }}" class="form-control" placeholder="Title">
                                </div>
-                               
+
                                <div class="col-md-9 form-group form_gallery">
                                  <label id="gallery2" for="form_gallery-upload">Upload Image</label>
                                  <input data-name="#gallery2" id="form_gallery-upload" name="thumbnail_image" class="form_gallery-upload"
@@ -37,14 +37,33 @@
                                @endif
                                </div>
                                <div class="col-sm-3 form-group">
-                                 <img src="{{ asset('/uploads/'.Auth::user()->name.'/images/'.$upload->thumbnail_image) }}" class="msg-photo" alt="" style="width: 75px; height:50px;" />
+                                 <img src="{{ asset($upload->thumbnail_image) }}" class="msg-photo" alt="" style="width: 75px; height:50px;" />
                                </div>
                                <div class="col-md-6 form-group">
                                   <select class="form-control" name="category_id" id="exampleFormControlSelect1">
-                                     <option selected disabled="">Movie Category</option>
-                                     @foreach ($categories as $cate)
+                                     <option  disabled="">Movie Category</option>
+                                     @switch($upload->category_id)
+                                     @case($upload->category_id == 1)
+                                     <option value="1">Music</option>
+                                         @break
+                                     @case($upload->category_id == 2)
+                                     <option value="2">Talent</option><p>Talent</p>
+                                         @break
+                                     @case($upload->category_id == 3)
+                                     <option value="3">Comedy</option><p>Comedy</p>
+                                         @break
+
+                                     @default
+                                     <option  disabled="">>No category Fouy</option>
+                                 @endswitch
+                                     <option value="{{$upload->category_id}}">Music</option>
+                                     <option value="1">Music</option>
+                                     <option value="2">Comedy</option>
+                                     <option value="3">Talent</option>
+
+                                     {{-- @foreach ($categories as $cate)
                                      <option value="{{$cate->id}}" {{ $cate->id == $upload->category_id ? 'selected':''}}>{{$cate->category_name}}</option>
-                                     @endforeach
+                                     @endforeach --}}
                                   </select>
                                   @if ($errors->has('category_id'))
                                 <span class="help-block">
@@ -53,13 +72,19 @@
                                 @endif
                                </div>
                                <div class="col-sm-6 form-group">
-                                 <select class="form-control" name="type" id="exampleFormControlSelect3">
-                                    <option selected disabled="">Choose File Type</option>
-                                    <option value="1">Audio</option>
-                                    <option value="2">Video</option>
-                                    <option value="3">Others</option>
-                                 </select>
-                               </div>
+                                <select class="form-control" name="region" id="exampleFormControlSelect3">
+                                   <option disabled="">Choose Region</option>
+                                   @foreach ($countries as $country)
+                                   <option value="{{$country}}" {{ $country == $upload->region ? 'selected':''}}>{{$country}}</option>
+                           {{-- <option value="{{ $country }}">{{ $country }}</option> --}}
+                           @endforeach
+                                </select>
+                                @if ($errors->has('region_id'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('region_id') }}</strong>
+                        </span>
+                        @endif
+                              </div>
                                <div class="col-12 form-group">
                                   <textarea id="text" name="description" rows="5" class="form-control"
                                      placeholder="Description">{{$upload->description}}</textarea>
@@ -89,22 +114,9 @@
                                 </span>
                                 @endif
                          </div>
-                         <div class="col-sm-6 form-group">
-                           <select class="form-control" name="region_id" id="exampleFormControlSelect2">
-                              <option selected disabled="">Choose Region</option>
-                              @foreach ($regions as $ctn)
-                              <option value="{{$ctn->id}}" {{ $ctn->id == $upload->region_id ? 'selected':''}}>{{ $ctn->region_name }}</option>
-                              @endforeach
-                           </select>
-                           @if ($errors->has('region_id'))
-                         <span class="help-block">
-                             <strong>{{ $errors->first('region_id') }}</strong>
-                         </span>
-                         @endif
-                        </div>
-                        <div class="col-sm-12 form-group">
+                        {{-- <div class="col-sm-12 form-group">
                            <input type="time" class="form-control" value="{{$upload->upload_duration}}" name="upload_duration" placeholder="Movie Duration">
-                        </div>
+                        </div> --}}
                          <div class="col-12 form-group ">
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <button type="reset" class="btn btn-danger">cancel</button>

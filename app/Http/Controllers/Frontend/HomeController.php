@@ -13,7 +13,8 @@ class HomeController extends Controller
 {
     public function index(){
         $upload = Upload::whereStatus(1)->get();
-        return view('frontend.homepage', ['uploads'=>$upload]);
+        $likeCheck = Like::where('user_id',Auth::id())->first();
+        return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck]);
     }
     public function music(){
         $upload = Upload::whereStatus(1)->where('category_id', '1')->get();
@@ -32,6 +33,8 @@ class HomeController extends Controller
     public function singleVideo($id){
        $upload = Upload::findOrFail($id);
        $likeCheck = Like::where('user_id',Auth::id())->where('upload_id',$id)->first();
-        return view('frontend.single_video', compact('upload', "likeCheck"));
+       $cat_id = $upload->category_id;
+		$relatedUpload = Upload::whereStatus(1)->where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','DESC')->take(3)->get();
+        return view('frontend.single_video', compact('upload', "likeCheck", "relatedUpload"));
     }
 }

@@ -50,10 +50,10 @@
                                   <span class="badge badge-warning">Deactive</span>
                                   @endif
                               </td>
-                              <td contenteditable="true"><img src="{{ asset('/uploads/'.Auth::user()->name.'/images/'.$video->thumbnail_image) }}" class="msg-photo" alt="" style="width: 100px; height:60px;" /></td>
+                              <td contenteditable="true"><img src="{{ asset($video->thumbnail_image) }}" class="msg-photo" alt="" style="width: 100px; height:60px;" /></td>
                               <td contenteditable="true">
                                  <video width="320" height="100" controls>
-                                  <source src="{{ asset('/uploads/'.Auth::user()->name.'/video/'.$video->upload) }}" type="video/mp4">
+                                  <source src="{{ asset($video->upload) }}" type="video/mp4">
                                  </video>
                               </td>
                               <td>

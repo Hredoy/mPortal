@@ -344,16 +344,17 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="list">
+                    @foreach ($relatedUpload as $item )
                     <div class="h-video row">
                         <div class="col-lg-6 col-sm-6">
                             <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/sv-1.png')}}" alt=""></a>
+                                <a href="single-video-tabs.html"><img src="{{asset($item->thumbnail_image)}}" alt=""></a>
                                 <div class="time">15:19</div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-6">
                             <div class="v-desc">
-                                <a href="single-video-tabs.html">Battlefield 3: Official Fault Line Gameplay</a>
+                                <a href="single-video-tabs.html">{{$item->name}}</a>
                             </div>
                             <div class="v-views">
                                 2,729,347 views
@@ -362,45 +363,7 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/sv-2.png')}}" alt=""></a>
-                                <div class="time">4:23</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">Kingdom Come: Deliverance ALPHA</a>
-                            </div>
-                            <div class="v-views">
-                                429,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 79%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="{{asset('assets/frontend/images/sv-3.png')}}" alt=""></a>
-                                <div class="time">7:18</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">Markiplier Reacts to Mean Comments</a>
-                            </div>
-                            <div class="v-views">
-                                630,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 83%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
+                        @endforeach
                 <!-- END up next -->
 
                 <div class="adblock">

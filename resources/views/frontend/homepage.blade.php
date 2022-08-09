@@ -96,9 +96,14 @@
                                     </div>
                                     <div class="v-views">
                                         27,548 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
-                                    </div>
-                                    <div class="pull-right">
-                                        27,548 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
+                                        <div class="pull-right">
+                                            @if ( empty($likeChecks))
+                                            <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                            @else
+                                            <a href="{{Route('unlike', $item->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                                            @endif
+                                           <small> {{$item->likes->count('count')}} Likes</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
