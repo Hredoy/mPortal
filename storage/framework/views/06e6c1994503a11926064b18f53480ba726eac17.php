@@ -12,76 +12,77 @@
     <div class="mobile-menu-content">
         <div class="mobile-menu-user">
             <div class="mobile-menu-user-img">
-                <img src="<?php echo e(asset('assets/frontend/images/ava11.png')); ?>" alt="">
+                <?php if(auth()->guard()->guest()): ?>
+                    <img src="<?php echo e(asset('assets/frontend/images/ava11.png')); ?>" alt="">
+                <?php endif; ?>
+                <?php if(auth()->guard()->check()): ?>
+                    <img src="<?php if(Auth::user()->profile && Auth::user()->profile->avatar_status == 1): ?> <?php echo e(Auth::user()->profile->avatar); ?> <?php else: ?> <?php echo e(Gravatar::get(Auth::user()->email)); ?> <?php endif; ?>"
+                        alt="<?php echo e(Auth::user()->name); ?>" height="44px" width="100%" class="user-logo">
+                <?php endif; ?>
             </div>
-            <p>Bailey Fry </p>
+            <p>
+                <?php if(auth()->guard()->check()): ?>
+                    <?php echo e(Auth::user()->name); ?>
+
+                <?php endif; ?>
+            </p>
             <span class="caret"></span>
+            <div class="selectuser pull-left">
+                <div class="btn-group pull-right dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <?php if(auth()->guard()->guest()): ?>
+                            <li><a href="<?php echo e(route('login')); ?>">Sign In</a></li>
+                            <li><a href="<?php echo e(route('register')); ?>">Sign up</a></li>
+                        <?php endif; ?>
+                        <?php if(auth()->guard()->check()): ?>
+                            <li><a href="<?php echo e(route('public.home')); ?>">Dashboard</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <a href="#" class="btn mobile-menu-upload">
+        <a href="<?php echo e(Route('public.upload')); ?>" class="btn mobile-menu-upload">
             <i class="cv cvicon-cv-upload-video"></i>
             <span>Upload Video</span>
         </a>
         <div class="mobile-menu-list">
             <ul>
-                <li>
-                    <a href="#">
+                <li class="<?php echo e(Request::is('/') ? 'color-active': null); ?>">
+                    <a href="<?php echo e(Route('home')); ?>">
                         <i class="cv cvicon-cv-play-circle"></i>
                         <p>Popular Videos</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="cv cvicon-cv-playlist"></i>
-                        <p>Browse Categories</p>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="mobile-menu-categories">
-                        <li class="color-active">
-                            <a href="#">Pages <span class="caret"></span></a>
-                            <ul>
-                                <li><a href="index.html">Home Page</a></li>
-                                <li><a href="single-video.html">Single Video Page</a></li>
-                                <li><a href="single-video-youtube.html">Single Video Youtube Embedded Page</a></li>
-                                <li><a href="single-video-vimeo.html">Single Video Vimeo Embedded Page</a></li>
-                                <li><a href="upload.html">Upload Video Page</a></li>
-                                <li><a href="upload-edit.html">Upload Video Edit Page</a></li>
-                                <li><a href="search.html">Searched Videos Page</a></li>
-                                <li><a href="channel.html">Single Channel Page</a></li>
-                                <li><a href="channels.html">Channels Page</a></li>
-                                <li><a href="single-video-tabs.html">Single Videos Page With Tabs</a></li>
-                                <li><a href="single-video-playlist.html">Single Videos Page With Playlist</a></li>
-                                <li><a href="history.html">History Page</a></li>
-                                <li><a href="categories.html">Browse Categories Page</a></li>
-                                <li><a href="categories_side_menu.html">Browse Categories Side Menu Page</a></li>
-                                <li><a href="subscription.html">Subscription Page</a></li>
-                                <li><a href="<?php echo e(route('login')); ?>">Login Page</a></li>
-                                <li><a href="<?php echo e(route('register')); ?>">Signup Page</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="categories.html">Categories</a></li>
-                        <li><a href="channel.html">Channels</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="cv cvicon-cv-liked"></i>
-                        <p>Liked Videos</p>
+                <li class="<?php echo e(Request::is('music') ? 'color-active': null); ?>">
+                    <a href="<?php echo e(Route('music')); ?>">
+                        <i class="cv cvicon-cv-play-circle"></i>
+                        <p>Music</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="cv cvicon-cv-history"></i>
-                        <p>History</p>
+                <li class="<?php echo e(Request::is('comedy') ? 'color-active': null); ?>">
+                    <a href="<?php echo e(Route('comedy')); ?>">
+                        <i class="cv cvicon-cv-play-circle"></i>
+                        <p>Comedy</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="cv cvicon-cv-purchased"></i>
-                        <p>Purchased Videos</p>
+                <li class="<?php echo e(Request::is('talent') ? 'color-active': null); ?>">
+                    <a href="<?php echo e(Route('talent')); ?>">
+                        <i class="cv cvicon-cv-play-circle"></i>
+                        <p>Talent</p>
                     </a>
                 </li>
+                
+                
+                
             </ul>
         </div>
-        <a href="#" class="btn mobile-menu-logout">Log out</a>
+        <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn mobile-menu-logout">Sign out</a>
+            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                <?php echo csrf_field(); ?>
+            </form>
     </div>
-</div><?php /**PATH D:\laragon\www\2spiceart\resources\views/frontend/partials/mobile_menu.blade.php ENDPATH**/ ?>
+</div>
+<?php /**PATH D:\laragon\www\2spiceart\resources\views/frontend/partials/mobile_menu.blade.php ENDPATH**/ ?>

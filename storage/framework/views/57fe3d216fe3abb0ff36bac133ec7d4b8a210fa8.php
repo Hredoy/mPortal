@@ -78,7 +78,7 @@
                    </div>
                </div>
                <div class="hidden-xs">
-                   <a href="upload.html">
+                   <a href="<?php echo e(Route('public.upload')); ?>">
                        <div class="upload-button">
                            <i class="cv cvicon-cv-upload-video"></i>
                        </div>
