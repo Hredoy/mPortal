@@ -15,15 +15,10 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->stirng("header_name");
-            $table->stirng("header_link");
-            $table->stirng("header_type");
-            $table->stirng("footer_name");
-            $table->stirng("footer_link");
-            $table->stirng("footer_type");
-            $table->stirng("user_menu_name");
-            $table->stirng("user_menu_link");
-            $table->stirng("user_menu_type");
+            $table->string("menu_name")->nullable();
+            $table->string("menu_link")->nullable();
+            $table->string("menu_type")->nullable(); // 1 =header, 2= footer, 3 = user.
+            $table->boolean("status")->default(1);
             $table->timestamps();
         });
     }

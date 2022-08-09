@@ -15,10 +15,10 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->stirng("logo");
-            $table->stirng("app_name");
-            $table->stirng("favicon");
-            $table->stirng("description");
+            $table->string("logo")->nullable();
+            $table->string("app_name")->nullable();
+            $table->string("favicon")->nullable();
+            $table->string("description")->nullable();
             $table->timestamps();
         });
     }

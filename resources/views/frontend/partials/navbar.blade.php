@@ -59,7 +59,7 @@
                                 @auth
                                     {{Auth::user()->name}}
                                 @endauth
-                               
+
                                    <span class="caret"></span>
                                </button>
                                <ul class="dropdown-menu">
