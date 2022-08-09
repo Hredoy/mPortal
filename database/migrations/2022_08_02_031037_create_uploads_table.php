@@ -16,7 +16,7 @@ class CreateUploadsTable extends Migration
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->integer('category_id')->nullable();
+            $table->integer('category_id')->nullable(); // 1 = music, 2 = comedy, 3 = talent
             // $table->unsignedBigInteger('category_id')->unsigned()->index();
             // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
