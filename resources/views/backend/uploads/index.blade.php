@@ -33,9 +33,7 @@
                               <th class="hidden-xs">{!! trans('Thumbnail') !!}</th>
                               <th class="">{!! trans('Music') !!}</th>
                               <th class="">{!! trans('Sort') !!}</th>
-                              @role('admin')
                               <th colspan="5">{!! trans('Action') !!}</th>
-                              @endrole
 
                             </tr>
                          </thead>
