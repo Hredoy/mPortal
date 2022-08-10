@@ -35,7 +35,7 @@
 <!-- /logo -->
 
 <!-- goto -->
-<?php echo $__env->yieldContent('second_navbar'); ?>
+
 <!-- /goto -->
 
 <?php echo $__env->yieldContent('main_section'); ?>

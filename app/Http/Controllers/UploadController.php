@@ -223,7 +223,7 @@ class UploadController extends Controller
     {
        $page_title = 'Music Management';
        $empty_message = 'No Music is available.';
-       $uploads = Upload::where('category_id', 1 )->with('categories')->get();
+       $uploads = Upload::where([['category_id', 1],['user_id', Auth::user()->id]] )->with('categories')->get();
        $roles = Role::all();
        return View('backend.uploads.index', compact('uploads', 'roles', 'page_title', 'empty_message'));
     }
@@ -231,7 +231,7 @@ class UploadController extends Controller
     {
        $page_title = 'Comedy Management';
        $empty_message = 'No Comedy is available.';
-       $uploads = Upload::where('category_id', 2 )->with('categories')->get();
+       $uploads = Upload::where([['category_id', 2],['user_id', Auth::user()->id]]  )->with('categories')->get();
        $roles = Role::all();
        return View('backend.uploads.index', compact('uploads', 'roles', 'page_title', 'empty_message'));
     }
@@ -239,7 +239,7 @@ class UploadController extends Controller
     {
        $page_title = 'Talent Management';
        $empty_message = 'No Comedy is available.';
-       $uploads = Upload::where('category_id', 3 )->with('categories')->get();
+       $uploads = Upload::where([['category_id', 3],['user_id', Auth::user()->id]])->with('categories')->get();
        $roles = Role::all();
        return View('backend.uploads.index', compact('uploads', 'roles', 'page_title', 'empty_message'));
     }
