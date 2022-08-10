@@ -38,7 +38,7 @@
                         <tbody>
                            <?php $__empty_1 = true; $__currentLoopData = $uploads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $video): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                            <tr>
-                              <td contenteditable="true"><?php echo e($loop->iteration); ?></td>
+                              <td  contenteditable=" <?php echo e($loop->even ? 'true' : ''); ?>"><?php echo e($loop->iteration); ?></td>
                               <td contenteditable="true"><?php echo e($video->name); ?></td>
                               
                               <td contenteditable="true">
@@ -48,10 +48,10 @@
                                   <span class="badge badge-warning">Deactive</span>
                                   <?php endif; ?>
                               </td>
-                              <td contenteditable="true"><img src="<?php echo e(asset('/uploads/'.Auth::user()->name.'/images/'.$video->thumbnail_image)); ?>" class="msg-photo" alt="" style="width: 100px; height:60px;" /></td>
+                              <td contenteditable="true"><img src="<?php echo e(asset($video->thumbnail_image)); ?>" class="msg-photo" alt="" style="width: 100px; height:60px;" /></td>
                               <td contenteditable="true">
                                  <video width="320" height="100" controls>
-                                  <source src="<?php echo e(asset('/uploads/'.Auth::user()->name.'/video/'.$video->upload)); ?>" type="video/mp4">
+                                  <source src="<?php echo e(asset($video->upload)); ?>" type="video/mp4">
                                  </video>
                               </td>
                               <td>
@@ -66,7 +66,7 @@
                                     class="btn btn-primary btn-rounded btn-sm my-0">Remove</a>
                                  </span>
                               </td>
-                        </tbody>
+                            </tr>
                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                            <tr>
                                <td class="text-muted text-center" colspan="100%">

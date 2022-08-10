@@ -1,6 +1,6 @@
 <div class="iq-sidebar">
     <div class="iq-sidebar-logo d-flex justify-content-between">
-        <a href="<?php echo e(url('/')); ?>" class="header-logo">
+        <a href="<?php echo e(route('home')); ?>" class="header-logo">
             <img src="<?php echo e(asset('assets/frontend/../assets/images/logo.png')); ?>" class="img-fluid rounded-normal" alt="">
             <div class="logo-title">
                 <span class="text-primary text-uppercase"><?php echo e(config('app.name')); ?></span>
@@ -31,13 +31,16 @@
                         <li class="<?php echo e(Request::is('users/create') ? 'active' : null); ?>"><a href="<?php echo e(url('/users/create')); ?>"><i class="las la-plus"></i>Add New User</a></li>
                     </ul>
                 </li>
-                <li class="<?php echo e(Request::is('admin/category*')? 'active active-menu' : null); ?>">
-                    <a href="#category" class="iq-waves-effect collapsed" data-toggle="collapse"
-                        aria-expanded="<?php echo e(Request::is('admin/category*')? 'true' : 'false'); ?>"><i class="las la-list-ul"></i><span>Category</span><i
+                <!-- Category -->
+                
+                <!-- Menu -->
+                <li class="<?php echo e(Request::is('admin/menu*')? 'active active-menu' : null); ?>">
+                    <a href="#menu" class="iq-waves-effect collapsed" data-toggle="collapse"
+                        aria-expanded="<?php echo e(Request::is('admin/menu*')? 'true' : 'false'); ?>"><i class="las la-list-ul"></i><span>Menu</span><i
                             class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                    <ul id="category" class="iq-submenu collapse <?php echo e(Request::is('admin/category*')? 'show' : null); ?>" data-parent="#iq-sidebar-toggle">
-                        <li class="<?php echo e(Request::is('admin/category/create')? 'active' : null); ?>"><a href="<?php echo e(Route('categories.create')); ?>"><i class="las la-user-plus"></i>Add Category</a></li>
-                        <li class="<?php echo e(Request::is('admin/category')? 'active' : null); ?>"><a href="<?php echo e(Route('categories')); ?>"><i class="las la-eye"></i>Category List</a></li>
+                    <ul id="menu" class="iq-submenu collapse <?php echo e(Request::is('admin/menu*')? 'show' : null); ?>" data-parent="#iq-sidebar-toggle">
+                        <li class="<?php echo e(Request::is('admin/menu/create')? 'active' : null); ?>"><a href="<?php echo e(Route('public.menu.create')); ?>"><i class="las la-user-plus"></i>Add Menu</a></li>
+                        <li class="<?php echo e(Request::is('admin/menu')? 'active' : null); ?>"><a href="<?php echo e(Route('public.menu.index')); ?>"><i class="las la-eye"></i>Menu List</a></li>
                     </ul>
                 </li>
                 <?php endif; ?>
@@ -52,6 +55,9 @@
                 </li>
                 <li class="<?php echo e(Request::is('admin/comedy')? 'active' : null); ?>">
                     <a href="<?php echo e(Route('public.comedy')); ?>" class="iq-waves-effect"><i class="las la-smile"></i><span>Comedy List</span></a>
+                </li>
+                <li class="<?php echo e(Request::is('admin/site/settings')? 'active' : null); ?>">
+                    <a href="<?php echo e(Route('site.settings')); ?>" class="iq-waves-effect"><i class="las la-tools"></i><span>Site Settings</span></a>
                 </li>
                 <li>
                     <a href="<?php echo e(route('logout')); ?>"

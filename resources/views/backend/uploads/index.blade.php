@@ -40,7 +40,7 @@
                         <tbody>
                            @forelse($uploads as $video)
                            <tr>
-                              <td contenteditable="true">{{ $loop->iteration }}</td>
+                              <td  contenteditable=" {{$loop->even ? 'true' : ''}}">{{ $loop->iteration }}</td>
                               <td contenteditable="true">{{$video->name}}</td>
                               {{-- <td contenteditable="true">{{$video->categories->category_name}}</td> --}}
                               <td contenteditable="true">

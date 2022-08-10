@@ -193,6 +193,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
     'as'   => 'site.settings',
     'uses' => 'App\Http\Controllers\SiteSettingController@index',
 ]);
+  Route::post('site/settings', [
+    'as'   => 'site.settings.store',
+    'uses' => 'App\Http\Controllers\SiteSettingController@store',
+]);
+  Route::put('site/settings/1', [
+    'as'   => 'site.settings.update',
+    'uses' => 'App\Http\Controllers\SiteSettingController@update',
+]);
 
 // Registered, activated, and is current user routes.
 Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', 'twostep', 'checkblocked']], function () {

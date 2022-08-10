@@ -29,7 +29,7 @@
                                <div class="col-md-9 form-group form_gallery">
                                  <label id="gallery2" for="form_gallery-upload">Upload Image</label>
                                  <input data-name="#gallery2" id="form_gallery-upload" name="thumbnail_image" class="form_gallery-upload"
-                                    type="file" accept="png',jpg',jpeg">
+                                    type="file" accept="image/*">
                                     @if ($errors->has('thumbnail_image'))
                                <span class="help-block">
                                    <strong>{{ $errors->first('thumbnail_image') }}</strong>
@@ -101,7 +101,7 @@
                          <div class="col-lg-5">
                             <div class="d-block position-relative">
                                <div class="form_video-upload">
-                                  <input type="file" name="upload" accept="mp3, mpeg, mpg, wav, mp4,3gp,mpeg,mkv, amv, avi, mov, wmv, ogg" multiple>
+                                  <input type="file" name="upload" accept="video/* , audio/*">
                                   <p>Upload video</p>
                                </div>
                                @if ($errors->has('upload'))
