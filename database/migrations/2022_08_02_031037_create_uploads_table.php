@@ -27,6 +27,7 @@ class CreateUploadsTable extends Migration
             $table->string('region')->nullable();
             $table->integer('type_id')->nullable();
             $table->string('upload_duration')->nullable();
+            $table->bigInteger('view')->nullable()->default(0);
             $table->boolean('status')->default(1);
             $table->boolean('featured')->default(1);
             $table->timestamps();

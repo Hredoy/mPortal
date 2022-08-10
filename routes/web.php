@@ -188,20 +188,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
 
 });
 
-  // Site Settings Route.
-  Route::get('site/settings', [
-    'as'   => 'site.settings',
-    'uses' => 'App\Http\Controllers\SiteSettingController@index',
-]);
-  Route::post('site/settings', [
-    'as'   => 'site.settings.store',
-    'uses' => 'App\Http\Controllers\SiteSettingController@store',
-]);
-  Route::put('site/settings/1', [
-    'as'   => 'site.settings.update',
-    'uses' => 'App\Http\Controllers\SiteSettingController@update',
-]);
-
 // Registered, activated, and is current user routes.
 Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', 'twostep', 'checkblocked']], function () {
 
@@ -238,6 +224,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
 
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'App\Http\Controllers\ProfilesController@upload']);
+
 });
 
 // Registered, activated, and is admin routes.
@@ -267,7 +254,15 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         ],
     ]);
 
-
+         // Site Settings Route.
+  Route::get('site/settings', [
+    'as'   => 'site.settings',
+    'uses' => 'App\Http\Controllers\SiteSettingController@index',
+]);
+  Route::post('site/settings', [
+    'as'   => 'site.settings.store',
+    'uses' => 'App\Http\Controllers\SiteSettingController@store',
+]);
 
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

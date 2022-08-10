@@ -49,7 +49,7 @@
                                 @endif
                                <small> {{$upload->likes->count('count')}} Likes</small>
 
-                           <small> 2,7297 views</small>
+                           <small> {{$upload->view}} views</small>
                         </div>
                         <div class="sv-views-progress">
                             <div class="sv-views-progress-bar"></div>

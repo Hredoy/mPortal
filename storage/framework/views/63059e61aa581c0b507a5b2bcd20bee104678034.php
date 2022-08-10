@@ -39,10 +39,15 @@
                                         <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><?php echo e($item->name); ?></a>
                                     </div>
                                     <div class="v-views">
-                                        27,548 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
-                                    </div>
-                                    <div class="pull-right">
-                                        27,548 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
+                                        <?php echo e($item->view); ?> views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
+                                        <div class="pull-right">
+                                            <?php if( empty($likeChecks)): ?>
+                                            <a href="<?php echo e(Route('like', $item->id)); ?>" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                            <?php else: ?>
+                                            <a href="<?php echo e(Route('unlike', $item->id)); ?>" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                                            <?php endif; ?>
+                                           <small> <?php echo e($item->likes->count('count')); ?> Likes</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

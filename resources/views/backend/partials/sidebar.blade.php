@@ -51,6 +51,9 @@
                         <li class="{{ Request::is('admin/menu')? 'active' : null }}"><a href="{{Route('public.menu.index')}}"><i class="las la-eye"></i>Menu List</a></li>
                     </ul>
                 </li>
+                <li class="{{ (Request::is('roles') || Request::is('permissions') || Request::is('users*'))? 'active active-menu' : null }}">
+                    <a href="{{Route('site.settings')}}" class="iq-waves-effect"><i class="las la-tools"></i><span>Site Settings</span></a>
+                </li>
                 @endrole
                 <li class="{{ Request::is('admin/upload')? 'active' : null }}">
                     <a href="{{Route('public.upload')}}" class="iq-waves-effect"><i class="las la-upload"></i><span>Upload Content</span></a>
@@ -63,9 +66,6 @@
                 </li>
                 <li class="{{ Request::is('admin/comedy')? 'active' : null }}">
                     <a href="{{Route('public.comedy')}}" class="iq-waves-effect"><i class="las la-smile"></i><span>Comedy List</span></a>
-                </li>
-                <li class="{{ Request::is('admin/site/settings')? 'active' : null }}">
-                    <a href="{{Route('site.settings')}}" class="iq-waves-effect"><i class="las la-tools"></i><span>Site Settings</span></a>
                 </li>
                 <li>
                     <a href="{{ route('logout') }}"
