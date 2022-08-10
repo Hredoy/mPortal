@@ -60,6 +60,7 @@
                                  <span class="table-up"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a></span>
                                  <span class="table-down"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a></span>
                               </td>
+                              @role('admin')
                               <td>
                                     <a  href="{{route('public.upload.edit',$video->id)}}"
                                     class="btn btn-light btn-rounded btn-sm px-2 my-0"> Edit  </a>
@@ -68,6 +69,7 @@
                                     class="btn btn-primary btn-rounded btn-sm my-0">Remove</a>
                                  </span>
                               </td>
+                              @endrole
                             </tr>
                            @empty
                            <tr>

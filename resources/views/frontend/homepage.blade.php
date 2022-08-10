@@ -95,7 +95,7 @@
                                         <a href="{{route('singleVideo', $item->id)}}">{{$item->name}}</a>
                                     </div>
                                     <div class="v-views">
-                                        27,548 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
+                                        {{$item->view}} views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
                                         <div class="pull-right">
                                             @if ( empty($likeChecks))
                                             <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
