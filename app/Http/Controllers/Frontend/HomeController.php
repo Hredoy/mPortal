@@ -13,12 +13,8 @@ use Stevebauman\Location\Facades\Location;
 class HomeController extends Controller
 {
     public function index(){
-        $country = null;
-        $location = Location::get(request()->ip());
-        // $location = Location::get('37.111.238.84');
-        if(isset($location->countryName) && $location->countryName){
-            $country = $location->countryName;
-        };
+        $country = getLocation(); // Get location fron Helper fuction.
+
         $upload = Upload::whereStatus(1)
         ->when($country, function ($query, $country) {
             return $query->where('region', $country);
@@ -29,25 +25,17 @@ class HomeController extends Controller
         return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck]);
     }
     public function music(){
-        $country = null;
-        $location = Location::get(request()->ip());
-        if(isset($location->countryName) && $location->countryName){
-            $country = $location->countryName;
-        };
+        $country = getLocation(); // Get location fron Helper fuction.
 
         $upload = Upload::whereStatus(1)->where('category_id', '1')
         ->when($country, function ($query, $country) {
             return $query->where('region', $country);
         })->get();
-        // dd($upload);
+
         return view('frontend.categories.music', ['uploads'=>$upload]);
     }
     public function comedy(){
-        $country = null;
-        $location = Location::get(request()->ip());
-        if(isset($location->countryName) && $location->countryName){
-            $country = $location->countryName;
-        };
+        $country = getLocation(); // Get location fron Helper fuction.
 
         $upload = Upload::whereStatus(1)->where('category_id', '2')
         ->when($country, function ($query, $country) {

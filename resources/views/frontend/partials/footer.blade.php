@@ -1,11 +1,8 @@
 
 @php
 use Monarobase\CountryList\CountryListl;
-use Stevebauman\Location\Facades\Location;
 $countries  = Countries::getList('en', 'json');
 
-$location = Location::get(request()->ip());
-// echo request()->ip();
 
 
 @endphp
@@ -73,11 +70,12 @@ $location = Location::get(request()->ip());
                     <div class="f-last-line">
                         <div class="f-lang pull-right">
                             <!-- Small button group -->
-                            <form action="">
-                                <label for="forCountry">Country</label>
-                                <select class="form-control" name="country" style="padding: 0;" id="forCountry">
+                            <form action="{{route('getlocation')}}" method="get">
+                                <label for="forCountry">Region</label>
+                                <select class="form-control" name="country" style="padding: 0;" id="forCountry" onchange="this.form.submit()">
+                                    <option value="">All</option>
                                     @foreach (json_decode($countries) as $key => $val)
-                                    <option value="{{$val}}" @if($location && $val == $location->countryName) selected @endif>{{ $val}}</option>
+                                    <option value="{{$val}}" @if(getLocation() && $val == getLocation()) selected @endif>{{ $val}}</option>
                                     @endforeach
                                 </select>
                             </form>

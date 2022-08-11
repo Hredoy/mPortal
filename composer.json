@@ -74,7 +74,10 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/Helpers/FrontendHelper.php"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
