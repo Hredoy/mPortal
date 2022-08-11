@@ -280,3 +280,5 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
 });
 
 Route::redirect('/php', '/phpinfo', 301);
+// For Get Location/Region
+Route::get('/location/get-location', 'App\Http\Controllers\Frontend\LocationController@getLocation')->name('getlocation');
