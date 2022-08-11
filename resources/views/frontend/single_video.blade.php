@@ -3,6 +3,34 @@
 @section('second_navbar')
     @include('frontend.partials.second_navbar')
 @endsection
+@push('custom_css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<style>
+    .social-btn-sp #social-links {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+    .social-btn-sp #social-links ul li {
+        display: inline-block;
+    }
+    .social-btn-sp #social-links ul li a {
+        padding: 7.5px;
+        margin: 1px;
+        font-size: 20px;
+    }
+    table #social-links{
+        display: inline-table;
+    }
+    table #social-links ul li{
+        display: inline;
+    }
+    table #social-links ul li a{
+        padding: 2.5px;;
+        margin: .5px;
+        font-size: 7.5px;
+    }
+</style>
+@endpush
 @section('main_section')
 <div class="content-wrapper">
     <div class="container">
@@ -61,6 +89,11 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
+                    <br>
+                    {{-- Social Share with jorenvanhocht/laravel-share pack --}}
+                    <div class="social-btn-sp pull-right">
+                        {!! $shareButtons !!}
+                    </div>
 
                 </div>
                 <div class="info">
