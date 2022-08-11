@@ -59,11 +59,9 @@ class UploadController extends Controller
         $request->validate([
             'name' => 'required',
             'category_id' => 'required',
-            'thumbnail_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'upload' => 'required|mimes:mp3,mp4,3gp,mpeg,mkv,amv',
-            'description' => 'required',
-            'release_date' => 'required',
-
+            'thumbnail_image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'upload' => 'mimes:mp3,mp4,3gp,mpeg,mkv,amv',
+            'region' => 'required',
             // 'upload_duration' => 'required',
         ]);
         //for image
@@ -148,8 +146,7 @@ class UploadController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             'thumbnail_image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'upload' => 'mimes:mp3,mp4,3gp,mpeg',
-            'release_date' => 'required',
+            'upload' => 'mimes:mp3,mp4,3gp,mpeg,mkv,amv',
             'region' => 'required',
         ]);
 
