@@ -41,7 +41,7 @@
                                </div>
                                <div class="col-md-6 form-group">
                                   <select class="form-control" name="category_id" id="exampleFormControlSelect1">
-                                     <option  disabled="">Movie Category</option>
+                                     <option  disabled="">Category</option>
                                      @switch($upload->category_id)
                                      @case($upload->category_id == 1)
                                      <option selected value="1">Music</option>
@@ -102,7 +102,7 @@
                             <div class="d-block position-relative">
                                <div class="form_video-upload">
                                   <input type="file" name="upload" accept="video/* , audio/*">
-                                  <p>Upload video</p>
+                                  <p>Upload Audio/Video</p>
                                </div>
                                @if ($errors->has('upload'))
                                 <span class="help-block">

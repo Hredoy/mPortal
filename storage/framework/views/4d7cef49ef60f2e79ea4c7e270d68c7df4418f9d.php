@@ -9,7 +9,7 @@
                 <a href="index.html" class="header-logo">
                    <img src="<?php echo e(asset('assets/backend/images/logo.png')); ?>')}}" class="img-fluid rounded-normal" alt="">
                    <div class="logo-title">
-                      <span class="text-primary text-uppercase">Streamit</span>
+                      <span class="text-primary text-uppercase"><?php echo e(config('app.name')); ?></span>
                    </div>
                 </a>
              </div>

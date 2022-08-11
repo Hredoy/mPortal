@@ -40,7 +40,7 @@
                                </div>
                                <div class="col-md-6 form-group">
                                   <select class="form-control" name="category_id" id="exampleFormControlSelect1" required>
-                                     <option selected disabled="">Movie Category</option>
+                                     <option selected disabled="">Category</option>
                                      <option value="1">Music</option>
                                      <option value="2">Comedy</option>
                                      <option value="3">Talent</option>
@@ -84,7 +84,7 @@
                             <div class="d-block position-relative">
                                <div class="form_video-upload">
                                   <input type="file" name="upload" accept="video/mp4,video/x-m4v,video/*" multiple required>
-                                  <p>Upload video</p>
+                                  <p>Upload Audio/Video</p>
                                </div>
                                @if ($errors->has('upload'))
                                 <span class="help-block">
