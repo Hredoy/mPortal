@@ -1,8 +1,5 @@
 <div class="container-fluid">
    <div class="row">
-       <div class="btn-color-toggle">
-           <img src="<?php echo e(asset('assets/frontend/images/icon_bulb_light.png')); ?>" alt="">
-       </div>
        <div class="navbar-container">
            <div class="container">
                <div class="row">
@@ -11,8 +8,8 @@
                    </div>
                    <div class="col-lg-1 col-sm-2 col-xs-6">
                        <a class="navbar-brand" href="<?php echo e(route('home')); ?>">
-                           <img src="<?php echo e(asset('assets/frontend/images/logo.svg')); ?>" alt="Project name" class="logo" />
-                           <span><?php echo e(config('app.name')); ?></span>
+                           <img src="<?php echo e($settings->logo); ?>" alt="<?php echo e($settings->app_name); ?>" class="logo" />
+                           <span><?php echo e(($settings->app_name)? $settings->app_name : config('app_name')); ?></span>
                        </a>
                    </div>
                    <div class="col-lg-3 col-sm-10 hidden-xs">

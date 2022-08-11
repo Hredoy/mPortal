@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Menu;
+use App\Models\Setting;
 
 class ContentServiceProvider extends ServiceProvider
 {
@@ -25,9 +26,14 @@ class ContentServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->menuItems = Menu::get();
+        $this->settings = Setting::first();
+        
+        view()->composer('backend.layout.app', function($view) {
+            $view->with(['contents' => $this->menuItems , 'settings' => $this->settings]);
+        });
 
         view()->composer('frontend.layout.app', function($view) {
-            $view->with(['contents' => $this->menuItems]);
+            $view->with(['contents' => $this->menuItems , 'settings' => $this->settings]);
         });
     }
 }

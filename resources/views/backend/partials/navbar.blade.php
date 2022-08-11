@@ -6,10 +6,10 @@
                 <div class="main-circle"><i class="las la-bars"></i></div>
              </div>
              <div class="iq-navbar-logo d-flex justify-content-between">
-                <a href="index.html" class="header-logo">
-                   <img src="{{asset('assets/backend/images/logo.png')}}')}}" class="img-fluid rounded-normal" alt="">
+                <a href="{{route('home')}}" class="header-logo">
+                   <img src="{{$settings->logo}}" class="img-fluid rounded-normal" alt="">
                    <div class="logo-title">
-                      <span class="text-primary text-uppercase">{{config('app.name')}}</span>
+                      <span class="text-primary text-uppercase">{{($settings->app_name)? $settings->app_name : config('app_name')}}</span>
                    </div>
                 </a>
              </div>

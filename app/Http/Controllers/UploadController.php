@@ -60,11 +60,12 @@ class UploadController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             'thumbnail_image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'upload' => 'mimes:mp3,mp4,3gp,mpeg,mkv,amv',
+            'upload' => 'mimes:mp3,mp4,3gp,mpeg,mkv,amv,avi',
             'region' => 'required',
             // 'upload_duration' => 'required',
         ]);
         //for image
+        $newFileName = '';
         if ($request->hasFile('thumbnail_image')) {
             $fileName = $request->file('thumbnail_image')->getClientOriginalExtension();
             if ($fileName == 'jpg' || $fileName == 'png' || $fileName == 'jpeg' || $fileName == 'gif' || $fileName == 'svg') {
@@ -146,7 +147,7 @@ class UploadController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             'thumbnail_image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'upload' => 'mimes:mp3,mp4,3gp,mpeg,mkv,amv',
+            'upload' => 'mimes:mp3,mp4,3gp,mpeg,mkv,amv,avi',
             'region' => 'required',
         ]);
 
@@ -155,6 +156,7 @@ class UploadController extends Controller
 
           $input = $request->all();
 
+          $newFileName = '';
           if ($request->hasFile('thumbnail_image')) {
             if (file_exists(public_path($upload->thumbnail_image))) {
                 unlink(public_path($upload->thumbnail_image));

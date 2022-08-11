@@ -9,11 +9,11 @@
         <div class="row">
             <div class="col-lg-8 col-xs-12 col-sm-12">
                 <div class="sv-video">
-                    <video poster="<?php echo e(asset('assets/frontend/images/single-video.png')); ?>" style="width:100%;height:100%;" controls="controls" width="100%" height="100%">
-                        <source src="<?php echo e(asset('assets/frontend/videos/video-1.mp4')); ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
+                    <video poster="<?php echo e(asset($upload->thumbnail_image)); ?>" style="width:100%;height:100%;" controls="controls" width="100%" height="100%">
+                        <source src="<?php echo e(asset($upload->upload)); ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
                     </video>
                 </div>
-                <h1><a href="#">Analyzing the Mass Effect: Andromeda E3 2016 Trailer</a></h1>
+                <h1><a href="#"><?php echo e($upload->name); ?></a></h1>
                 <div class="acide-panel acide-panel-top">
                     <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
                     <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>
@@ -42,7 +42,6 @@
                     </div>
                     <div class="sv-views">
                         <div class="sv-views-count d-flex">
-                            <?php if(auth()->guard()->check()): ?>
                                 <?php if( empty($likeCheck)): ?>
                                 <a href="<?php echo e(Route('like', $upload->id)); ?>" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
                                 <?php else: ?>
@@ -50,8 +49,7 @@
                                 <?php endif; ?>
                                <small> <?php echo e($upload->likes->count('count')); ?> Likes</small>
 
-                            <?php endif; ?>
-                           <small> 2,7297 views</small>
+                           <small> <?php echo e($upload->view); ?> views</small>
                         </div>
                         <div class="sv-views-progress">
                             <div class="sv-views-progress-bar"></div>
@@ -71,10 +69,24 @@
                         <p>Nathan Drake , Victor Sullivan , Sam Drake , Elena Fisher</p>
 
                         <h4>Category :</h4>
-                        <p>Gaming , PS4 Exclusive , Gameplay , 1080p</p>
+                        <?php switch($upload->category_id):
+                            case ($upload->category_id == 1): ?>
+                                <p>Music</p>
+                                <?php break; ?>
+                            <?php case ($upload->category_id == 2): ?>
+                                <p>Talent</p>
+                                <?php break; ?>
+                            <?php case ($upload->category_id == 3): ?>
+                                <p>Comedy</p>
+                                <?php break; ?>
+
+                            <?php default: ?>
+                               <p>No category Found</p>
+                        <?php endswitch; ?>
+
 
                         <h4>About :</h4>
-                        <p>Three years after the events of Uncharted 3: Drake's Deception, Nathan Drake, now retired as a fortune hunter, has settled into a normal life with his wife Elena Fisher. His world is then turned upside down when his older brother Sam, long believed to be dead, suddenly reappears seeking Drake's help.</p>
+                        <p><?php echo $upload->description; ?></p>
 
                         <h4>Tags :</h4>
                         <p class="sv-tags">
@@ -89,7 +101,7 @@
                         <div class="row date-lic">
                             <div class="col-xs-6">
                                 <h4>Release Date:</h4>
-                                <p>2 Days ago</p>
+                                <p><?php echo e($upload->release_date); ?></p>
                             </div>
                             <div class="col-xs-6 ta-r">
                                 <h4>License:</h4>
@@ -222,7 +234,7 @@
                         <!-- comments -->
                         <div class="comments">
                             <div class="reply-comment">
-                                <div class="rc-header"><i class="cv cvicon-cv-comment"></i> <span class="semibold">236</span> Comments</div>
+                                <div class="rc-header"><i class="cv cvicon-cv-comment"></i> <span class="semibold"><?php echo e($upload->comments->count()); ?></span> Comments</div>
                                 <div class="rc-ava"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava5.png')); ?>" alt=""></a></div>
                                 <div class="rc-comment">
                                     <form action="<?php echo e(route('comment.add')); ?>" method="post">
@@ -255,24 +267,28 @@
                                         <div class="cl-name-date"><a href="#"><?php echo e($comment->user->name); ?></a> . <?php echo e($comment->created_at->diffForHumans()); ?></div>
                                         <div class="cl-text"><?php echo e($comment->body); ?></div>
                                         <div class="cl-meta"><span class="green"><span class="circle"></span> 121</span> <span class="grey"><span class="circle"></span> 2</span> . <a href="#">Reply</a></div>
-                                        <div class="cl-replies"><a href="#">View all 5 replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+                                        <div class="cl-replies"><a href="#">View all <?php echo e($comment->replies->count()); ?> replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
                                         <div class="cl-flag"><a href="#"><i class="cv cvicon-cv-flag"></i></a></div>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
 
                                 <!-- END comment -->
-                                <form method="post" action="<?php echo e(route('comment.add')); ?>">
-                                    <?php echo csrf_field(); ?>
-                                    <div class="form-group">
-                                        <input type="text" name="body" class="form-control" />
-                                        <input type="hidden" name="upload_id" value="<?php echo e($upload->id); ?>" />
+                                <div class="reply-comment">
+                                    <div class="rc-ava"><a href="#"><img src="<?php echo e(asset('assets/frontend/images/ava5.png')); ?>" alt=""></a></div>
+                                    <div class="rc-comment">
+                                        <form action="<?php echo e(route('comment.add')); ?>" method="post">
+                                            <?php echo csrf_field(); ?>
+                                            <textarea name="body" rows="3" placeholder="Share what you think?"></textarea >
+                                                <input type="hidden" name="upload_id" value="<?php echo e($upload->id); ?>" />
                                         <input type="hidden" name="parent_id" value="<?php echo e($comment->id); ?>" />
+                                            <button type="submit">
+                                                <i class="cv cvicon-cv-add-comment"></i>
+                                            </button>
+                                        </form>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="Reply" />
-                                    </div>
-                                </form>
+                                    <div class="clearfix"></div>
+                                </div>
                                 <?php $__currentLoopData = $comment->replies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reply): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <!-- reply comment -->
                                 <div class="cl-comment-reply">
@@ -328,16 +344,17 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="list">
+                    <?php $__currentLoopData = $relatedUpload; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="h-video row">
                         <div class="col-lg-6 col-sm-6">
                             <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-1.png')); ?>" alt=""></a>
+                                <a href="single-video-tabs.html"><img src="<?php echo e(asset($item->thumbnail_image)); ?>" alt=""></a>
                                 <div class="time">15:19</div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-6">
                             <div class="v-desc">
-                                <a href="single-video-tabs.html">Battlefield 3: Official Fault Line Gameplay</a>
+                                <a href="single-video-tabs.html"><?php echo e($item->name); ?></a>
                             </div>
                             <div class="v-views">
                                 2,729,347 views
@@ -346,45 +363,7 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-2.png')); ?>" alt=""></a>
-                                <div class="time">4:23</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">Kingdom Come: Deliverance ALPHA</a>
-                            </div>
-                            <div class="v-views">
-                                429,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 79%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-3.png')); ?>" alt=""></a>
-                                <div class="time">7:18</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">Markiplier Reacts to Mean Comments</a>
-                            </div>
-                            <div class="v-views">
-                                630,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 83%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 <!-- END up next -->
 
                 <div class="adblock">
