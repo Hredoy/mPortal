@@ -148,7 +148,7 @@ trait Creator
 
         $instance = new static($date->format('Y-m-d H:i:s.u'), $date->getTimezone());
 
-        if ($date instanceof CarbonInterface) {
+        if ($date instanceof CarbonInterface || $date instanceof Options) {
             $settings = $date->getSettings();
 
             if (!$date->hasLocalTranslator()) {

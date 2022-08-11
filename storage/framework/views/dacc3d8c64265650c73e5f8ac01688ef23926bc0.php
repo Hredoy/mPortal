@@ -31,9 +31,7 @@
                               <th class="hidden-xs"><?php echo trans('Thumbnail'); ?></th>
                               <th class=""><?php echo trans('Music'); ?></th>
                               <th class=""><?php echo trans('Sort'); ?></th>
-                              <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
                               <th colspan="5"><?php echo trans('Action'); ?></th>
-                              <?php endif; ?>
 
                             </tr>
                          </thead>
