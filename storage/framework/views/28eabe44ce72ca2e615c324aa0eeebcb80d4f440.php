@@ -17,10 +17,10 @@
     <div id="sidebar-scrollbar">
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="iq-menu">
+                <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
                 <li class="<?php echo e(Request::is('admin/home')? 'active' : null); ?>"><a href="<?php echo e(route('public.home')); ?>" class="iq-waves-effect"><i
                             class="las la-home iq-arrow-left"></i><span>Dashboard</span></a>
                 </li>
-                <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
                 <li class="<?php echo e((Request::is('roles') || Request::is('permissions') || Request::is('users*'))? 'active active-menu' : null); ?>">
                     <a href="#pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="<?php echo e((Request::is('roles') || Request::is('permissions') || Request::is('users*'))? 'true' : 'false'); ?>"><i
                             class="las la-file-alt iq-arrow-left"></i><span>Authentication</span><i
@@ -42,6 +42,9 @@
                         <li class="<?php echo e(Request::is('admin/menu/create')? 'active' : null); ?>"><a href="<?php echo e(Route('public.menu.create')); ?>"><i class="las la-user-plus"></i>Add Menu</a></li>
                         <li class="<?php echo e(Request::is('admin/menu')? 'active' : null); ?>"><a href="<?php echo e(Route('public.menu.index')); ?>"><i class="las la-eye"></i>Menu List</a></li>
                     </ul>
+                </li>
+                <li class="<?php echo e((Request::is('roles') || Request::is('permissions') || Request::is('users*'))? 'active active-menu' : null); ?>">
+                    <a href="<?php echo e(Route('site.settings')); ?>" class="iq-waves-effect"><i class="las la-tools"></i><span>Site Settings</span></a>
                 </li>
                 <?php endif; ?>
                 <li class="<?php echo e(Request::is('admin/upload')? 'active' : null); ?>">
