@@ -53,11 +53,18 @@
                         <div class="sv-name">
                             <div><a href="#">NaughtyDog</a> . 52 Videos</div>
                             <div class="c-sub hidden-xs">
-                                <div class="c-f">
-                                    Subscribe
-                                </div>
+                                @if (!$followCheck)
+                                <a  href="{{Route("public.follow", $upload->user_id)}}" class="c-f">
+                                    Follow
+                                </a>
+                                @else
+                                <a  href="{{Route("public.unfollow", $upload->user_id)}}" class="c-f">
+                                    Unfollow
+                                </a>
+
+                                @endif
                                 <div class="c-s">
-                                    22,548,145
+                                    {{$upload->user->followers()->get()->count()}}
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -71,9 +78,9 @@
                     <div class="sv-views">
                         <div class="sv-views-count d-flex">
                                 @if ( empty($likeCheck))
-                                <a href="{{Route('like', $upload->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                <a href="{{Route('like', $upload->id)}}" class="btn "><i class="fa fa-thumbs-up" style="font-size: 1.2em"></i></a>
                                 @else
-                                <a href="{{Route('unlike', $upload->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                                <a href="{{Route('unlike', $upload->id)}}" class="btn"><i class="fa fa-thumbs-down  " style="font-size: 1.2em"></i></a>
                                 @endif
                                <small> {{$upload->likes->count('count')}} Likes</small>
 
@@ -377,7 +384,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="list">
-                    @foreach ($relatedUpload as $item )
+                    @forelse ($relatedUpload as $item )
                     <div class="h-video row">
                         <div class="col-lg-6 col-sm-6">
                             <div class="v-img">
@@ -396,7 +403,18 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                        @endforeach
+                    @empty
+                    <div class="h-video row ">
+
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="v-desc ">
+                                <p class="text-center"><strong> No Video Available</strong></p>
+                            </div>
+                                                    </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    @endforelse
                 <!-- END up next -->
 
                 <div class="adblock">
@@ -406,7 +424,7 @@
                     </div>
                 </div>
 
-                <!-- Recomended Videos -->
+                {{-- <!-- Recomended Videos -->
                 <div class="caption">
                     <div class="left">
                         <a href="#">Recomended Videos</a>
@@ -621,7 +639,7 @@
                 <!-- load more -->
                 <div class="loadmore">
                     <a href="#">Show more videos</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

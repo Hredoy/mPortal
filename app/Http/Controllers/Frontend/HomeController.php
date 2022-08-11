@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Upload;
 use App\Models\Comment;
 use App\Models\Like;
+use App\Models\Follower;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -32,7 +33,7 @@ class HomeController extends Controller
 
     public function singleVideo($id){
        $upload = Upload::findOrFail($id);
-
+       $followCheck =Follower::whereFollowing_id($upload->user_id)->first();
        $viewCheck = Upload::where('user_id',Auth::id())->first();
        if (!$viewCheck) {
         $upload->increment('view');
@@ -52,6 +53,6 @@ class HomeController extends Controller
     ->whatsapp()
     ->reddit();
 
-        return view('frontend.single_video', compact('upload', "likeCheck", "relatedUpload", "shareButtons"));
+        return view('frontend.single_video', compact('upload', "likeCheck", "followCheck","relatedUpload", "shareButtons"));
     }
 }
