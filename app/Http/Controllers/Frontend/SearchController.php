@@ -44,6 +44,5 @@ class SearchController extends Controller
         $keyword = $request->keyword;
 
         return view('frontend.ajax.searchresult', ['uploads'=> $upload, 'keyword'=>$keyword]);
-        // return $upload;
     }
 }
