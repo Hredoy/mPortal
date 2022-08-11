@@ -8,8 +8,8 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
 {
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
@@ -33,11 +33,11 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
-        '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '17d016dc52a631c1e74d2eb8fdd57342' => __DIR__ . '/..' . '/laravel/helpers/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '65be70a72cd59c06e456f6762b75a0ae' => __DIR__ . '/..' . '/jeremykenedy/laravel-logger/src/App/Logic/helpers.php',
@@ -104,6 +104,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Stevebauman\\Location\\' => 21,
             'SocialiteProviders\\YouTube\\' => 27,
             'SocialiteProviders\\Twitch\\' => 26,
             'SocialiteProviders\\ThirtySevenSignals\\' => 38,
@@ -145,6 +146,9 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         array (
             'Monolog\\' => 8,
             'Monarobase\\CountryList\\' => 23,
+            'MaxMind\\WebService\\' => 19,
+            'MaxMind\\Exception\\' => 18,
+            'MaxMind\\Db\\' => 11,
         ),
         'L' => 
         array (
@@ -176,6 +180,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
             'GrahamCampbell\\ResultType\\' => 26,
+            'GeoIp2\\' => 7,
         ),
         'F' => 
         array (
@@ -210,6 +215,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         array (
             'Cron\\' => 5,
             'Creativeorange\\Gravatar\\' => 24,
+            'Composer\\CaBundle\\' => 18,
             'Collective\\Html\\' => 16,
             'Carbon\\' => 7,
         ),
@@ -389,6 +395,10 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Stevebauman\\Location\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stevebauman/location/src',
+        ),
         'SocialiteProviders\\YouTube\\' => 
         array (
             0 => __DIR__ . '/..' . '/socialiteproviders/youtube',
@@ -494,6 +504,18 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         array (
             0 => __DIR__ . '/..' . '/monarobase/country-list/src',
         ),
+        'MaxMind\\WebService\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maxmind/web-service-common/src/WebService',
+        ),
+        'MaxMind\\Exception\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maxmind/web-service-common/src/Exception',
+        ),
+        'MaxMind\\Db\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maxmind-db/reader/src/MaxMind/Db',
+        ),
         'League\\OAuth1\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/oauth1-client/src',
@@ -570,6 +592,10 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'GrahamCampbell\\ResultType\\' => 
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
+        ),
+        'GeoIp2\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/geoip2/geoip2/src',
         ),
         'Fruitcake\\Cors\\' => 
         array (
@@ -659,6 +685,10 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         array (
             0 => __DIR__ . '/..' . '/creativeorange/gravatar/src',
         ),
+        'Composer\\CaBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
+        ),
         'Collective\\Html\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
@@ -734,7 +764,6 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\API\\Backend\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Backend/CategoryController.php',
         'App\\Http\\Controllers\\API\\Backend\\UploadController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Backend/UploadController.php',
-        'App\\Http\\Controllers\\API\\Backend\\VideoController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Backend/VideoController.php',
         'App\\Http\\Controllers\\AdminDetailsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminDetailsController.php',
         'App\\Http\\Controllers\\Auth\\ActivateController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ActivateController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -747,9 +776,11 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Frontend\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/HomeController.php',
         'App\\Http\\Controllers\\LikeController' => __DIR__ . '/../..' . '/app/Http/Controllers/LikeController.php',
+        'App\\Http\\Controllers\\MenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/MenuController.php',
         'App\\Http\\Controllers\\ProfilesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfilesController.php',
         'App\\Http\\Controllers\\RegionController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegionController.php',
         'App\\Http\\Controllers\\RestoreUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/RestoreUserController.php',
+        'App\\Http\\Controllers\\SiteSettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/SiteSettingController.php',
         'App\\Http\\Controllers\\SocialController' => __DIR__ . '/../..' . '/app/Http/Controllers/SocialController.php',
         'App\\Http\\Controllers\\SoftDeletesController' => __DIR__ . '/../..' . '/app/Http/Controllers/SoftDeletesController.php',
         'App\\Http\\Controllers\\TermsController' => __DIR__ . '/../..' . '/app/Http/Controllers/TermsController.php',
@@ -779,8 +810,10 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
         'App\\Models\\Country' => __DIR__ . '/../..' . '/app/Models/Country.php',
         'App\\Models\\Like' => __DIR__ . '/../..' . '/app/Models/Like.php',
+        'App\\Models\\Menu' => __DIR__ . '/../..' . '/app/Models/Menu.php',
         'App\\Models\\Profile' => __DIR__ . '/../..' . '/app/Models/Profile.php',
         'App\\Models\\Region' => __DIR__ . '/../..' . '/app/Models/Region.php',
+        'App\\Models\\Setting' => __DIR__ . '/../..' . '/app/Models/Setting.php',
         'App\\Models\\Social' => __DIR__ . '/../..' . '/app/Models/Social.php',
         'App\\Models\\Theme' => __DIR__ . '/../..' . '/app/Models/Theme.php',
         'App\\Models\\Upload' => __DIR__ . '/../..' . '/app/Models/Upload.php',
@@ -791,6 +824,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\ComposerServiceProvider' => __DIR__ . '/../..' . '/app/Providers/ComposerServiceProvider.php',
+        'App\\Providers\\ContentServiceProvider' => __DIR__ . '/../..' . '/app/Providers/ContentServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\LocalEnvironmentServiceProvider' => __DIR__ . '/../..' . '/app/Providers/LocalEnvironmentServiceProvider.php',
         'App\\Providers\\MacroServiceProvider' => __DIR__ . '/../..' . '/app/Providers/MacroServiceProvider.php',
@@ -944,6 +978,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
+        'Composer\\CaBundle\\CaBundle' => __DIR__ . '/..' . '/composer/ca-bundle/src/CaBundle.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Creativeorange\\Gravatar\\Exceptions\\InvalidEmailException' => __DIR__ . '/..' . '/creativeorange/gravatar/src/Exceptions/InvalidEmailException.php',
         'Creativeorange\\Gravatar\\Facades\\Gravatar' => __DIR__ . '/..' . '/creativeorange/gravatar/src/Facades/Gravatar.php',
@@ -2005,7 +2040,6 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'Faker\\Provider\\nl_BE\\Payment' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_BE/Payment.php',
         'Faker\\Provider\\nl_BE\\Person' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_BE/Person.php',
         'Faker\\Provider\\nl_BE\\PhoneNumber' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_BE/PhoneNumber.php',
-        'Faker\\Provider\\nl_BE\\Text' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_BE/Text.php',
         'Faker\\Provider\\nl_NL\\Address' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_NL/Address.php',
         'Faker\\Provider\\nl_NL\\Color' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_NL/Color.php',
         'Faker\\Provider\\nl_NL\\Company' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/nl_NL/Company.php',
@@ -2128,6 +2162,37 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'Fideloper\\Proxy\\TrustedProxyServiceProvider' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
         'Fruitcake\\Cors\\CorsServiceProvider' => __DIR__ . '/..' . '/fruitcake/laravel-cors/src/CorsServiceProvider.php',
         'Fruitcake\\Cors\\HandleCors' => __DIR__ . '/..' . '/fruitcake/laravel-cors/src/HandleCors.php',
+        'GeoIp2\\Database\\Reader' => __DIR__ . '/..' . '/geoip2/geoip2/src/Database/Reader.php',
+        'GeoIp2\\Exception\\AddressNotFoundException' => __DIR__ . '/..' . '/geoip2/geoip2/src/Exception/AddressNotFoundException.php',
+        'GeoIp2\\Exception\\AuthenticationException' => __DIR__ . '/..' . '/geoip2/geoip2/src/Exception/AuthenticationException.php',
+        'GeoIp2\\Exception\\GeoIp2Exception' => __DIR__ . '/..' . '/geoip2/geoip2/src/Exception/GeoIp2Exception.php',
+        'GeoIp2\\Exception\\HttpException' => __DIR__ . '/..' . '/geoip2/geoip2/src/Exception/HttpException.php',
+        'GeoIp2\\Exception\\InvalidRequestException' => __DIR__ . '/..' . '/geoip2/geoip2/src/Exception/InvalidRequestException.php',
+        'GeoIp2\\Exception\\OutOfQueriesException' => __DIR__ . '/..' . '/geoip2/geoip2/src/Exception/OutOfQueriesException.php',
+        'GeoIp2\\Model\\AbstractModel' => __DIR__ . '/..' . '/geoip2/geoip2/src/Model/AbstractModel.php',
+        'GeoIp2\\Model\\AnonymousIp' => __DIR__ . '/..' . '/geoip2/geoip2/src/Model/AnonymousIp.php',
+        'GeoIp2\\Model\\Asn' => __DIR__ . '/..' . '/geoip2/geoip2/src/Model/Asn.php',
+        'GeoIp2\\Model\\City' => __DIR__ . '/..' . '/geoip2/geoip2/src/Model/City.php',
+        'GeoIp2\\Model\\ConnectionType' => __DIR__ . '/..' . '/geoip2/geoip2/src/Model/ConnectionType.php',
+        'GeoIp2\\Model\\Country' => __DIR__ . '/..' . '/geoip2/geoip2/src/Model/Country.php',
+        'GeoIp2\\Model\\Domain' => __DIR__ . '/..' . '/geoip2/geoip2/src/Model/Domain.php',
+        'GeoIp2\\Model\\Enterprise' => __DIR__ . '/..' . '/geoip2/geoip2/src/Model/Enterprise.php',
+        'GeoIp2\\Model\\Insights' => __DIR__ . '/..' . '/geoip2/geoip2/src/Model/Insights.php',
+        'GeoIp2\\Model\\Isp' => __DIR__ . '/..' . '/geoip2/geoip2/src/Model/Isp.php',
+        'GeoIp2\\ProviderInterface' => __DIR__ . '/..' . '/geoip2/geoip2/src/ProviderInterface.php',
+        'GeoIp2\\Record\\AbstractPlaceRecord' => __DIR__ . '/..' . '/geoip2/geoip2/src/Record/AbstractPlaceRecord.php',
+        'GeoIp2\\Record\\AbstractRecord' => __DIR__ . '/..' . '/geoip2/geoip2/src/Record/AbstractRecord.php',
+        'GeoIp2\\Record\\City' => __DIR__ . '/..' . '/geoip2/geoip2/src/Record/City.php',
+        'GeoIp2\\Record\\Continent' => __DIR__ . '/..' . '/geoip2/geoip2/src/Record/Continent.php',
+        'GeoIp2\\Record\\Country' => __DIR__ . '/..' . '/geoip2/geoip2/src/Record/Country.php',
+        'GeoIp2\\Record\\Location' => __DIR__ . '/..' . '/geoip2/geoip2/src/Record/Location.php',
+        'GeoIp2\\Record\\MaxMind' => __DIR__ . '/..' . '/geoip2/geoip2/src/Record/MaxMind.php',
+        'GeoIp2\\Record\\Postal' => __DIR__ . '/..' . '/geoip2/geoip2/src/Record/Postal.php',
+        'GeoIp2\\Record\\RepresentedCountry' => __DIR__ . '/..' . '/geoip2/geoip2/src/Record/RepresentedCountry.php',
+        'GeoIp2\\Record\\Subdivision' => __DIR__ . '/..' . '/geoip2/geoip2/src/Record/Subdivision.php',
+        'GeoIp2\\Record\\Traits' => __DIR__ . '/..' . '/geoip2/geoip2/src/Record/Traits.php',
+        'GeoIp2\\Util' => __DIR__ . '/..' . '/geoip2/geoip2/src/Util.php',
+        'GeoIp2\\WebService\\Client' => __DIR__ . '/..' . '/geoip2/geoip2/src/WebService/Client.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
         'GrahamCampbell\\ResultType\\Result' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Result.php',
         'GrahamCampbell\\ResultType\\Success' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Success.php',
@@ -3896,6 +3961,23 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'League\\OAuth1\\Client\\Signature\\RsaSha1Signature' => __DIR__ . '/..' . '/league/oauth1-client/src/Signature/RsaSha1Signature.php',
         'League\\OAuth1\\Client\\Signature\\Signature' => __DIR__ . '/..' . '/league/oauth1-client/src/Signature/Signature.php',
         'League\\OAuth1\\Client\\Signature\\SignatureInterface' => __DIR__ . '/..' . '/league/oauth1-client/src/Signature/SignatureInterface.php',
+        'MaxMind\\Db\\Reader' => __DIR__ . '/..' . '/maxmind-db/reader/src/MaxMind/Db/Reader.php',
+        'MaxMind\\Db\\Reader\\Decoder' => __DIR__ . '/..' . '/maxmind-db/reader/src/MaxMind/Db/Reader/Decoder.php',
+        'MaxMind\\Db\\Reader\\InvalidDatabaseException' => __DIR__ . '/..' . '/maxmind-db/reader/src/MaxMind/Db/Reader/InvalidDatabaseException.php',
+        'MaxMind\\Db\\Reader\\Metadata' => __DIR__ . '/..' . '/maxmind-db/reader/src/MaxMind/Db/Reader/Metadata.php',
+        'MaxMind\\Db\\Reader\\Util' => __DIR__ . '/..' . '/maxmind-db/reader/src/MaxMind/Db/Reader/Util.php',
+        'MaxMind\\Exception\\AuthenticationException' => __DIR__ . '/..' . '/maxmind/web-service-common/src/Exception/AuthenticationException.php',
+        'MaxMind\\Exception\\HttpException' => __DIR__ . '/..' . '/maxmind/web-service-common/src/Exception/HttpException.php',
+        'MaxMind\\Exception\\InsufficientFundsException' => __DIR__ . '/..' . '/maxmind/web-service-common/src/Exception/InsufficientFundsException.php',
+        'MaxMind\\Exception\\InvalidInputException' => __DIR__ . '/..' . '/maxmind/web-service-common/src/Exception/InvalidInputException.php',
+        'MaxMind\\Exception\\InvalidRequestException' => __DIR__ . '/..' . '/maxmind/web-service-common/src/Exception/InvalidRequestException.php',
+        'MaxMind\\Exception\\IpAddressNotFoundException' => __DIR__ . '/..' . '/maxmind/web-service-common/src/Exception/IpAddressNotFoundException.php',
+        'MaxMind\\Exception\\PermissionRequiredException' => __DIR__ . '/..' . '/maxmind/web-service-common/src/Exception/PermissionRequiredException.php',
+        'MaxMind\\Exception\\WebServiceException' => __DIR__ . '/..' . '/maxmind/web-service-common/src/Exception/WebServiceException.php',
+        'MaxMind\\WebService\\Client' => __DIR__ . '/..' . '/maxmind/web-service-common/src/WebService/Client.php',
+        'MaxMind\\WebService\\Http\\CurlRequest' => __DIR__ . '/..' . '/maxmind/web-service-common/src/WebService/Http/CurlRequest.php',
+        'MaxMind\\WebService\\Http\\Request' => __DIR__ . '/..' . '/maxmind/web-service-common/src/WebService/Http/Request.php',
+        'MaxMind\\WebService\\Http\\RequestFactory' => __DIR__ . '/..' . '/maxmind/web-service-common/src/WebService/Http/RequestFactory.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
@@ -5592,6 +5674,20 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'SocialiteProviders\\Twitch\\TwitchExtendSocialite' => __DIR__ . '/..' . '/socialiteproviders/twitch/TwitchExtendSocialite.php',
         'SocialiteProviders\\YouTube\\Provider' => __DIR__ . '/..' . '/socialiteproviders/youtube/Provider.php',
         'SocialiteProviders\\YouTube\\YouTubeExtendSocialite' => __DIR__ . '/..' . '/socialiteproviders/youtube/YouTubeExtendSocialite.php',
+        'Stevebauman\\Location\\Drivers\\Driver' => __DIR__ . '/..' . '/stevebauman/location/src/Drivers/Driver.php',
+        'Stevebauman\\Location\\Drivers\\GeoPlugin' => __DIR__ . '/..' . '/stevebauman/location/src/Drivers/GeoPlugin.php',
+        'Stevebauman\\Location\\Drivers\\IpApi' => __DIR__ . '/..' . '/stevebauman/location/src/Drivers/IpApi.php',
+        'Stevebauman\\Location\\Drivers\\IpApiPro' => __DIR__ . '/..' . '/stevebauman/location/src/Drivers/IpApiPro.php',
+        'Stevebauman\\Location\\Drivers\\IpData' => __DIR__ . '/..' . '/stevebauman/location/src/Drivers/IpData.php',
+        'Stevebauman\\Location\\Drivers\\IpInfo' => __DIR__ . '/..' . '/stevebauman/location/src/Drivers/IpInfo.php',
+        'Stevebauman\\Location\\Drivers\\Kloudend' => __DIR__ . '/..' . '/stevebauman/location/src/Drivers/Kloudend.php',
+        'Stevebauman\\Location\\Drivers\\MaxMind' => __DIR__ . '/..' . '/stevebauman/location/src/Drivers/MaxMind.php',
+        'Stevebauman\\Location\\Exceptions\\DriverDoesNotExistException' => __DIR__ . '/..' . '/stevebauman/location/src/Exceptions/DriverDoesNotExistException.php',
+        'Stevebauman\\Location\\Exceptions\\LocationException' => __DIR__ . '/..' . '/stevebauman/location/src/Exceptions/LocationException.php',
+        'Stevebauman\\Location\\Facades\\Location' => __DIR__ . '/..' . '/stevebauman/location/src/Facades/Location.php',
+        'Stevebauman\\Location\\Location' => __DIR__ . '/..' . '/stevebauman/location/src/Location.php',
+        'Stevebauman\\Location\\LocationServiceProvider' => __DIR__ . '/..' . '/stevebauman/location/src/LocationServiceProvider.php',
+        'Stevebauman\\Location\\Position' => __DIR__ . '/..' . '/stevebauman/location/src/Position.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Attribute\\AsCommand' => __DIR__ . '/..' . '/symfony/console/Attribute/AsCommand.php',

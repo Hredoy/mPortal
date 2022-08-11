@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
         App\Providers\ContentServiceProvider::class,
+        Stevebauman\Location\LocationServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -234,6 +235,7 @@ return [
         'Image'         => Intervention\Image\Facades\Image::class,
         'Uuid'          => jeremykenedy\Uuid\Uuid::class,
         'Countries'     => Monarobase\CountryList\CountryListFacade::class,
+        'Location'      => 'Stevebauman\Location\Facades\Location',
     ],
 
 ];

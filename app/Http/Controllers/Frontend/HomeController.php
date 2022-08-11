@@ -8,21 +8,51 @@ use App\Models\Upload;
 use App\Models\Comment;
 use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
+use Stevebauman\Location\Facades\Location;
 
 class HomeController extends Controller
 {
     public function index(){
-        $upload = Upload::whereStatus(1)->get();
+        $country = null;
+        $location = Location::get(request()->ip());
+        // $location = Location::get('37.111.238.84');
+        if(isset($location->countryName) && $location->countryName){
+            $country = $location->countryName;
+        };
+        $upload = Upload::whereStatus(1)
+        ->when($country, function ($query, $country) {
+            return $query->where('region', $country);
+        })
+        ->get();
+
         $likeCheck = Like::where('user_id',Auth::id())->first();
         return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck]);
     }
     public function music(){
-        $upload = Upload::whereStatus(1)->where('category_id', '1')->get();
+        $country = null;
+        $location = Location::get(request()->ip());
+        if(isset($location->countryName) && $location->countryName){
+            $country = $location->countryName;
+        };
+
+        $upload = Upload::whereStatus(1)->where('category_id', '1')
+        ->when($country, function ($query, $country) {
+            return $query->where('region', $country);
+        })->get();
         // dd($upload);
         return view('frontend.categories.music', ['uploads'=>$upload]);
     }
     public function comedy(){
-        $upload = Upload::whereStatus(1)->where('category_id', '2')->get();
+        $country = null;
+        $location = Location::get(request()->ip());
+        if(isset($location->countryName) && $location->countryName){
+            $country = $location->countryName;
+        };
+
+        $upload = Upload::whereStatus(1)->where('category_id', '2')
+        ->when($country, function ($query, $country) {
+            return $query->where('region', $country);
+        })->get();
         return view('frontend.categories.comedy', ['uploads'=>$upload]);
     }
     public function talent(){
