@@ -179,6 +179,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
         'as'   => 'unlike',
         'uses' => 'App\Http\Controllers\LikeController@unlike',
     ]);
+    //like Route
+    Route::get('follow/{id}', [
+        'as'   => 'public.follow',
+        'uses' => 'App\Http\Controllers\LikeController@follow',
+    ]);
+    Route::get('unfollow/{id}', [
+        'as'   => 'public.unfollow',
+        'uses' => 'App\Http\Controllers\LikeController@unfollow',
+    ]);
 
     // Show users profile - viewable by other users.
     Route::get('profile/{username}', [
