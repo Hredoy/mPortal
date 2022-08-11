@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['web', 'checkblocked']], function () {
     Route::view('/', 'frontend.layout.app');
     Route::get('/', 'App\Http\Controllers\Frontend\HomeController@index')->name('home');
+    // sort homepage
+    Route::get('/sort-latest', 'App\Http\Controllers\Frontend\HomeController@getLatest')->name('home.latest');
+    Route::get('/sort-view', 'App\Http\Controllers\Frontend\HomeController@getView')->name('home.view');
+    Route::get('/sort-like', 'App\Http\Controllers\Frontend\HomeController@getLike')->name('home.like');
+
     Route::get('/single-video/{id}', 'App\Http\Controllers\Frontend\HomeController@singleVideo')->name('singleVideo');
     Route::get('/music', 'App\Http\Controllers\Frontend\HomeController@music')->name('music');
     Route::get('/comedy', 'App\Http\Controllers\Frontend\HomeController@comedy')->name('comedy');

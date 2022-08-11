@@ -6,6 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+
                 <!-- Updates from Subscriptions -->
                 
                 <!-- /Updates from Subscriptions -->
@@ -22,6 +23,18 @@
                                         </a>
                                     </li>
                                 </ul>
+                                <div class="btn-group pull-right">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <span class="glyphicon glyphicon-filter"></span>
+                                      <span class="sr-only">Filters</span>
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="<?php echo e(Route("home.latest")); ?>">Latest</a></li>
+                                      <li><a href="<?php echo e(Route("home.view")); ?>">Mostly View</a></li>
+                                      <li><a href="<?php echo e(Route("home.like")); ?>">Mostly Liked</a></li>
+                                    </ul>
+                                  </div>
                             </div>
                             
                         </div>
@@ -41,7 +54,7 @@
                                     <div class="v-views">
                                         <?php echo e($item->view); ?> views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
                                         <div class="pull-right">
-                                            <?php if( empty($likeChecks)): ?>
+                                            <?php if( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() ): ?>
                                             <a href="<?php echo e(Route('like', $item->id)); ?>" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
                                             <?php else: ?>
                                             <a href="<?php echo e(Route('unlike', $item->id)); ?>" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>

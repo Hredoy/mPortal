@@ -55,4 +55,25 @@ class HomeController extends Controller
 
         return view('frontend.single_video', compact('upload', "likeCheck", "followCheck","relatedUpload", "shareButtons"));
     }
+    public function getLatest()
+    {
+        $upload = Upload::whereStatus(1)->orderBy('id','DESC')->get();
+        $likeCheck = Like::where('user_id',Auth::id())->first();
+        return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck]);
+    }
+    public function getView()
+    {
+        $upload = Upload::whereStatus(1)->orderBy('view','DESC')->get();
+        $likeCheck = Like::where('user_id',Auth::id())->first();
+        return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck]);
+    }
+    public function getLike()
+    {
+        $upload = Upload::with(['likes' => function ($q){
+            $q->orderBy('count', 'DESC');
+        }])->get();
+        // $upload = Upload::with('likes')->get()->sortByDesc('likes.count');
+        $likeCheck = Like::where('user_id',Auth::id())->first();
+        return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck]);
+    }
 }

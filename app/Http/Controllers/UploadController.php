@@ -19,20 +19,7 @@ class UploadController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        // $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        $page_title = 'Showing Video Management';
-        $empty_message = 'No Video is available.';
-        $uploads = Upload::with('categories')->get();
-        $roles = Role::all();
-        return View('backend.uploads.comedy', compact('uploads', 'roles', 'page_title', 'empty_message'));
-    }
+
 
     /**
      * Show the form for creating a new resource.
