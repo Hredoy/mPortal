@@ -43,6 +43,7 @@
                                     <option value="1">Header</option>
                                     <option value="2">Footer</option>
                                     <option value="3">User</option>
+                                    <option value="4">Social</option>
                                     </select>
                                     @if ($errors->has('type'))
                                 <span class="help-block">

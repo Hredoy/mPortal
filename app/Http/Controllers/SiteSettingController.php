@@ -12,7 +12,7 @@ class SiteSettingController extends Controller
     {
 
         $setting = Setting::first();
-       return view('backend.sitesettings.index', compact('setting'));
+       return view('backend.admin.sitesettings.index', compact('setting'));
     }
     public function store(Request $request)
     {

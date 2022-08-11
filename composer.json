@@ -44,6 +44,7 @@
         "socialiteproviders/linkedin": "^3.1",
         "socialiteproviders/twitch": "^5.1",
         "socialiteproviders/youtube": "^3.0",
+        "stevebauman/location": "^6.5",
         "wapmorgan/mp3info": "^0.0.8"
     },
     "require-dev": {
@@ -74,7 +75,10 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/Helpers/FrontendHelper.php"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

@@ -54,8 +54,10 @@
                               <td contenteditable="true">Header</td>
                            @elseif($menu->type == 2)
                               <td contenteditable="true">Footer</td>
-                           @else
+                           @elseif($menu->type == 3)
                               <td contenteditable="true">User</td>
+                           @else
+                              <td contenteditable="true">Social</td>
                            @endif
                               <td contenteditable="true">{{$menu->icon}}</td>
                               <td>
