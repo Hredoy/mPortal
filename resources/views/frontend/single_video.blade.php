@@ -51,7 +51,8 @@
                     <div class="author-head">
                         <a href="#"><img src="{{asset('assets/frontend/images/channel-user.png')}}" alt="" class="sv-avatar"></a>
                         <div class="sv-name">
-                            <div><a href="#">NaughtyDog</a> . 52 Videos</div>
+
+                            <div><a href="#">{{$upload->user->name}}</a> . {{ App\Models\Upload::where('user_id', $upload->user_id)->count() }} Videos</div>
                             <div class="c-sub hidden-xs">
                                 @if (!$followCheck)
                                 <a  href="{{Route("public.follow", $upload->user_id)}}" class="c-f">

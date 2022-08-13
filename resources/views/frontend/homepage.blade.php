@@ -7,6 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+
                 <!-- Updates from Subscriptions -->
                 {{-- <div class="content-block">
                     <div class="cb-header">
@@ -64,6 +65,18 @@
                                         </a>
                                     </li>
                                 </ul>
+                                <div class="btn-group pull-right">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <span class="glyphicon glyphicon-filter"></span>
+                                      <span class="sr-only">Filters</span>
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="{{Route("home.latest")}}">Latest</a></li>
+                                      <li><a href="{{Route("home.view")}}">Mostly View</a></li>
+                                      <li><a href="{{Route("home.like")}}">Mostly Liked</a></li>
+                                    </ul>
+                                  </div>
                             </div>
                             {{-- <div class="col-lg-2 col-sm-2 col-xs-4">
                                 <div class="btn-group pull-right bg-clean">
@@ -97,7 +110,7 @@
                                     <div class="v-views">
                                         {{$item->view}} views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
                                         <div class="pull-right">
-                                            @if ( empty($likeChecks))
+                                            @if ( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() )
                                             <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
                                             @else
                                             <a href="{{Route('unlike', $item->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>

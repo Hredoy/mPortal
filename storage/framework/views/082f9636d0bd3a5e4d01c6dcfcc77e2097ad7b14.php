@@ -4,7 +4,8 @@
    <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <title><?php echo e(config('app.name')); ?></title>
+   <link rel="icon" href="<?php echo e($settings->favicon); ?>">
+   <title><?php echo e($settings->app_name); ?></title>
    <!-- Favicon -->
    <link rel="shortcut icon" href="<?php echo e(asset('assets/backend/images/favicon.ico')); ?>" />
    <!-- Bootstrap CSS -->
