@@ -20,6 +20,10 @@ class Upload extends Model
     {
         return $this->belongsTo(Region::class,'region_id', 'id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id', 'id');
+    }
 
     public function comments()
     {

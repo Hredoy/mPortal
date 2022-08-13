@@ -18,6 +18,7 @@
    <!-- Responsive CSS -->
    <link rel="stylesheet" href="<?php echo e(asset('assets/backend/css/responsive.css')); ?>">
    <?php echo $__env->yieldPushContent('custom-css'); ?>
+   <?php echo $__env->yieldContent('template_linked_css'); ?>
 </head>
 <body>
    <!-- loader Start -->
@@ -36,6 +37,13 @@
       <!-- TOP Nav Bar END -->
       <!-- Page Content  -->
       <?php echo $__env->yieldContent('main_section'); ?>
+      <!-- Role Management section -->
+      <div id="content-page" class="content-page">
+         <div class="container-fluid my-5">
+            <?php echo $__env->yieldContent('content'); ?>
+         </div>
+      </div>
+      <!-- Role Management section END -->
       <!-- Page Content END -->
    </div>
    <!-- Wrapper END -->
@@ -75,5 +83,6 @@
    <!-- Custom JavaScript -->
    <script src="<?php echo e(asset('assets/backend/js/custom.js')); ?>"></script>
    <?php echo $__env->yieldPushContent('custom-script'); ?>
+   <?php echo $__env->yieldContent('footer_scripts'); ?>
 </body>
 </html><?php /**PATH C:\laragon\www\2spiceart\resources\views/backend/layout/app.blade.php ENDPATH**/ ?>

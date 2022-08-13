@@ -5,7 +5,7 @@
 
 @section('main_section')
 <div id="content-page" class="content-page">
-    <div class="container-fluid">
+    {{-- <div class="container-fluid">
        <div class="row">
           <div class="col-lg-8">
              <div class="row">
@@ -539,6 +539,6 @@
              </div>
           </div>
        </div>
-    </div>
+    </div> --}}
  </div>
 @endsection

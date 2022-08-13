@@ -1,4 +1,5 @@
 <div class="container-fluid">
+<<<<<<< HEAD
     <div class="row">
         <div class="btn-color-toggle">
             <img src="{{asset('assets/frontend/images/icon_bulb_light.png')}}" alt="">
@@ -24,6 +25,30 @@
                                 <a href="#">More</a>
                                 <ul>
                                     @foreach ($contents->where('type', 1)->where('status', 1) as $content)
+=======
+   <div class="row">
+       <div class="navbar-container">
+           <div class="container">
+               <div class="row">
+                   <div class="col-xs-3 visible-xs">
+                       <a href="{{route('home')}}" class="btn-menu-toggle"><i class="cv cvicon-cv-menu"></i></a>
+                   </div>
+                   <div class="col-lg-1 col-sm-2 col-xs-6">
+                       <a class="navbar-brand" href="{{route('home')}}">
+                           <img src="{{$settings->logo}}" alt="{{$settings->app_name}}" class="logo" />
+                           <span>{{($settings->app_name)? $settings->app_name : config('app_name')}}</span>
+                       </a>
+                   </div>
+                   <div class="col-lg-3 col-sm-10 hidden-xs">
+                       <ul class="list-inline menu">
+                           <li class="{{Request::is('music') ? 'color-active': null}}"><a href="{{route('music')}}">Music</a></li>
+                           <li class="{{Request::is('comedy') ? 'color-active': null}}"><a href="{{route('comedy')}}">Comedy</a></li>
+                           <li class="{{Request::is('talent') ? 'color-active': null}}"><a href="{{route('talent')}}">Talents</a></li>
+                           <li>
+                            <a href="#">More</a>
+                            <ul>
+                                @foreach ($contents->where('type', 1)->where('status', 1) as $content)
+>>>>>>> 3b9b1ddbd0b2a68c7ef3722a1027feed42531af2
                                     <li>
                                         <a href="{{$content->link}}">{{$content->name}} </a>
                                     </li>

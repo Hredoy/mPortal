@@ -29,7 +29,7 @@
                                <div class="col-md-9 form-group form_gallery">
                                  <label id="gallery2" for="form_gallery-upload">Upload Image</label>
                                  <input data-name="#gallery2" id="form_gallery-upload" name="thumbnail_image" class="form_gallery-upload"
-                                    type="file" accept="png',jpg',jpeg">
+                                    type="file" accept="image/*">
                                     @if ($errors->has('thumbnail_image'))
                                <span class="help-block">
                                    <strong>{{ $errors->first('thumbnail_image') }}</strong>
@@ -41,7 +41,7 @@
                                </div>
                                <div class="col-md-6 form-group">
                                   <select class="form-control" name="category_id" id="exampleFormControlSelect1">
-                                     <option  disabled="">Movie Category</option>
+                                     <option  disabled="">Category</option>
                                      @switch($upload->category_id)
                                      @case($upload->category_id == 1)
                                      <option selected value="1">Music</option>
@@ -101,8 +101,8 @@
                          <div class="col-lg-5">
                             <div class="d-block position-relative">
                                <div class="form_video-upload">
-                                  <input type="file" name="upload" accept="mp3, mpeg, mpg, wav, mp4,3gp,mpeg,mkv, amv, avi, mov, wmv, ogg" multiple>
-                                  <p>Upload video</p>
+                                  <input type="file" name="upload" accept="video/* , audio/*">
+                                  <p>Upload Audio/Video</p>
                                </div>
                                @if ($errors->has('upload'))
                                 <span class="help-block">

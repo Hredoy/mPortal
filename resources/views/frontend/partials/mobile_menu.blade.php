@@ -2,8 +2,8 @@
     <div class="mobile-menu-head">
         <a href="#" class="mobile-menu-close"></a>
         <a class="navbar-brand" href="index.html">
-            <img src="{{ asset('assets/frontend/images/logo.svg') }}" alt="Project name" class="logo" />
-            <span>Circle</span>
+            <img src="{{$settings->logo}}" alt="Project name" class="logo" />
+            <span>{{($settings->app_name)? $settings->app_name : config('app_name')}}</span>
         </a>
         <div class="mobile-menu-btn-color">
             <img src="{{ asset('assets/frontend/images/icon_bulb_light.png') }}" alt="">

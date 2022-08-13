@@ -31,7 +31,7 @@
                                <div class="col-12 form_gallery form-group">
                                   <label id="gallery2" for="form_gallery-upload">Upload Image</label>
                                   <input data-name="#gallery2" id="form_gallery-upload" name="thumbnail_image" class="form_gallery-upload"
-                                     type="file" accept="png',jpg',jpeg" required>
+                                     type="file" accept=".png,.jpg,.jpeg,.gif,.svg">
                                      @if ($errors->has('thumbnail_image'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('thumbnail_image') }}</strong>
@@ -40,7 +40,7 @@
                                </div>
                                <div class="col-md-6 form-group">
                                   <select class="form-control" name="category_id" id="exampleFormControlSelect1" required>
-                                     <option selected disabled="">Movie Category</option>
+                                     <option selected disabled="">Category</option>
                                      <option value="1">Music</option>
                                      <option value="2">Comedy</option>
                                      <option value="3">Talent</option>
@@ -60,8 +60,8 @@
                                  <select class="form-control" name="region" id="exampleFormControlSelect3" required>
                                     <option selected disabled="">Choose Region</option>
                                     @foreach ($countries as $country)
-                            <option value="{{ $country }}">{{ $country }}</option>
-                            @endforeach
+                                    <option value="{{ $country }}">{{ $country }}</option>
+                                    @endforeach
                                  </select>
                                  @if ($errors->has('region'))
                          <span class="help-block">
@@ -71,7 +71,7 @@
                                </div>
                                <div class="col-12 form-group">
                                   <textarea id="text" name="description" rows="5" class="form-control"
-                                     placeholder="Description" required></textarea>
+                                     placeholder="Description"></textarea>
                                      @if ($errors->has('description'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('description') }}</strong>
@@ -83,8 +83,8 @@
                          <div class="col-lg-5">
                             <div class="d-block position-relative">
                                <div class="form_video-upload">
-                                  <input type="file" name="upload" accept="video/mp4,video/x-m4v,video/*" multiple required>
-                                  <p>Upload video</p>
+                                  <input type="file" name="upload" accept=".mp3,.mp4,.3gp,.mkev,.mkv,.amv,.avi">
+                                  <p>Upload Audio/Video</p>
                                </div>
                                @if ($errors->has('upload'))
                                 <span class="help-block">
@@ -95,14 +95,14 @@
                          </div>
                       </div>
                       <div class="row">
-                         <div class="col-sm-12 form-group">
-                            <input type="date" class="form-control" name="release_date" placeholder="Release Date" required>
+                         {{-- <div class="col-sm-12 form-group">
+                            <input type="date" class="form-control" name="release_date" placeholder="Release Date">
                             @if ($errors->has('release_date'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('release_date') }}</strong>
                                 </span>
                             @endif
-                         </div>
+                         </div> --}}
 
                         {{-- <div class="col-sm-12 form-group">
                            <input type="time" class="form-control" name="upload_duration" placeholder="Movie Duration">

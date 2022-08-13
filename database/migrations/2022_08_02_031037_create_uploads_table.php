@@ -15,18 +15,19 @@ class CreateUploadsTable extends Migration
     {
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->integer('category_id')->nullable(); // 1 = music, 2 = comedy, 3 = talent
+            $table->string('name');
+            $table->integer('category_id'); // 1 = music, 2 = comedy, 3 = talent
             // $table->unsignedBigInteger('category_id')->unsigned()->index();
             // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->longtext('description');
+            $table->longtext('description')->nullable();
             $table->string('thumbnail_image')->nullable();
             $table->string('upload')->nullable();
             $table->date('release_date')->nullable();
-            $table->string('region')->nullable();
+            $table->string('region');
             $table->integer('type_id')->nullable();
             $table->string('upload_duration')->nullable();
+            $table->bigInteger('view')->nullable()->default(0);
             $table->boolean('status')->default(1);
             $table->boolean('featured')->default(1);
             $table->timestamps();

@@ -18,7 +18,7 @@ class CreateMenusTable extends Migration
             $table->string("icon")->nullable();
             $table->string("name");
             $table->string("link")->nullable();
-            $table->integer("type"); // 1 =header, 2= footer, 3 = user.
+            $table->integer("type"); // 1 =header, 2= footer, 3 = user, 4 = Social
             $table->boolean("status")->default(1);
             $table->timestamps();
         });
