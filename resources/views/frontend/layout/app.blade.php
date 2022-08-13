@@ -28,31 +28,70 @@
 </head>
 
 <body class="@yield('class') light">
-<!-- logo, menu, search, avatar -->
-@include('frontend.partials.navbar')
+    <!-- logo, menu, search, avatar -->
+    @include('frontend.partials.navbar')
 
-@include('frontend.partials.mobile_menu')
-<!-- /logo -->
+    @include('frontend.partials.mobile_menu')
+    <!-- /logo -->
 
-<!-- goto -->
-{{-- @yield('second_navbar') --}}
-<!-- /goto -->
+    <!-- goto -->
+    {{-- @yield('second_navbar') --}}
+    <!-- /goto -->
 
-@yield('main_section')
+    @yield('main_section')
 
-<!-- footer -->
-@include('frontend.partials.footer')
-<!-- /footer -->
+    <!-- footer -->
+    @include('frontend.partials.footer')
+    <!-- /footer -->
 
 
 
-<!-- Bootstrap core JavaScript
+    <!-- Bootstrap core JavaScript
 ================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="{{asset('assets/frontend/js/jquery.min.js')}}"></script>
-<script src="{{asset('assets/frontend/bootstrap/js/bootstrap.min.js')}}"></script>
-<script  src="{{asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelement-and-player.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/custom.js')}}"></script>
-@stack('custom_script')
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{asset('assets/frontend/js/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/frontend/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelement-and-player.min.js')}}"></script>
+    <script src="{{asset('assets/frontend/js/custom.js')}}"></script>
+    @stack('custom_script')
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $(document).on('keyup', 'input[name="keyword"]', function() {
+                    search();
+            });
+
+            function search() {
+                let keyword = $('input[name="keyword"]').val();
+                if (keyword.length > 0) {
+                    $('#searchResultDiv').css({'display':'block'})
+                    $.ajax({
+                        url: `/ajax/search/${keyword}`
+                        , type: 'GET'
+                        // , beforeSend: function() {
+                        //     console.log('beforesend')
+                        //     )
+                        // }
+                        , success: function(data) {
+                            $('#searchResultDiv').empty()
+                            $('#searchResultDiv').append(data)
+                        }
+                        , error: function(error) {
+                            console.log(error)
+                        }
+                    })
+                } else {
+                    $('#searchResultDiv').css({'display':'none'})
+                }
+            };
+
+        });
+
+    </script>
 </body>
 </html>
