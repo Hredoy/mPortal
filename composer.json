@@ -18,6 +18,7 @@
         "google/recaptcha": "^1.2",
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.5",
+        "james-heinrich/getid3": "^1.9",
         "jaybizzle/laravel-crawler-detect": "^1.2",
         "jeremykenedy/laravel-blocker": "^3.1",
         "jeremykenedy/laravel-exception-notifier": "1.2",
