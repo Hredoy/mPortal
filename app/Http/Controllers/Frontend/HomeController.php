@@ -51,7 +51,7 @@ class HomeController extends Controller
 
     public function singleVideo($id){
        $upload = Upload::findOrFail($id);
-       $followCheck =Follower::whereFollowing_id($upload->user_id)->first();
+       $followCheck =Follower::whereFollowing_id($upload->user_id)->whereFollower_id(Auth::id())->first();
        $viewCheck = Upload::where('user_id',Auth::id())->first();
        if (!$viewCheck) {
         $upload->increment('view');
