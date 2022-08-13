@@ -145,7 +145,7 @@ class UploadController extends Controller
 
           $newFileName = '';
           if ($request->hasFile('thumbnail_image')) {
-            if (file_exists(public_path($upload->thumbnail_image))) {
+            if (file_exists($upload->thumbnail_image)) {
                 unlink(public_path($upload->thumbnail_image));
             }
             $fileName = $request->file('thumbnail_image')->getClientOriginalExtension();
