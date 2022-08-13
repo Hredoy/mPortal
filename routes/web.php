@@ -65,10 +65,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
     //  Dashboard Route - Redirect based on user role is in controller.
     Route::get('/home', ['as' => 'public.home',   'uses' => 'App\Http\Controllers\UserController@index']);
     //region Routes.
-    Route::get('region', [
-        'as'   => 'public.region',
-        'uses' => 'App\Http\Controllers\RegionController@index',
-    ]);
+    // Route::get('region', [
+    //     'as'   => 'public.region',
+    //     'uses' => 'App\Http\Controllers\RegionController@index',
+    // ]);
 
     // Upload Routes.
     Route::get('upload/index', [
@@ -161,20 +161,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
         'as'   => 'reply.add',
         'uses' => 'App\Http\Controllers\CommentController@replyStore',
     ]);
-    // Route::resource('comment', \App\Http\Controllers\CommentController::class, [
-    //     'names' => [
-    //         'index'   => 'comments',
-    //         'create'   => 'comments.create',
-    //         'store'   => 'comments.store',
-    //         'edit'   => 'comments.edit',
-    //         'update'   => 'comments.update',
-    //         'destroy' => 'comments.destroy',
-
-    //     ],
-    //     'except' => [
-    //         'deleted',
-    //     ],
-    // ]);
     //like Route
     Route::get('like/{id}', [
         'as'   => 'like',
@@ -184,7 +170,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
         'as'   => 'unlike',
         'uses' => 'App\Http\Controllers\LikeController@unlike',
     ]);
-    //like Route
+    //follow Route
     Route::get('follow/{id}', [
         'as'   => 'public.follow',
         'uses' => 'App\Http\Controllers\LikeController@follow',
