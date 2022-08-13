@@ -40,9 +40,9 @@ class SearchController extends Controller
         $country = getLocation(); // Get location fron Helper fuction.
 
         $upload = Upload::whereStatus(1)->where('name', 'like', '%' . $request->keyword . '%')
-            // ->orWhereHas('user', function ($query) use ($request) {
-            //     $query->where('name', 'like', '%' . $request->keyword . '%');
-            // })
+            ->orWhereHas('user', function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->keyword . '%');
+            })
             ->when($country, function ($query, $country) {
                 return $query->where('region', $country);
             })
