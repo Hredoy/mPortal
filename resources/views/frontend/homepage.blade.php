@@ -110,11 +110,16 @@
                                     <div class="v-views">
                                         {{$item->view}} views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
                                         <div class="pull-right">
-                                            @if ( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() )
-                                            <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                            @if (!empty($likeChecks))
+                                                @if ( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() )
+                                                <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                                @else
+                                                <a href="{{Route('unlike', $item->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                                                @endif
                                             @else
-                                            <a href="{{Route('unlike', $item->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                                            <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
                                             @endif
+                                            
                                            <small> {{$item->likes->count('count')}} Likes</small>
                                         </div>
                                     </div>
