@@ -8,6 +8,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
 {
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
@@ -40,6 +41,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '65be70a72cd59c06e456f6762b75a0ae' => __DIR__ . '/..' . '/jeremykenedy/laravel-logger/src/App/Logic/helpers.php',
+        '78057ecb04519e7f0acca93a16ddfa4f' => __DIR__ . '/../..' . '/app/Helpers/FrontendHelper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -767,6 +769,8 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\API\\Backend\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Backend/CategoryController.php',
+        'App\\Http\\Controllers\\API\\Backend\\SettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Backend/SettingController.php',
+        'App\\Http\\Controllers\\API\\Backend\\SocialController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Backend/SocialController.php',
         'App\\Http\\Controllers\\API\\Backend\\UploadController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Backend/UploadController.php',
         'App\\Http\\Controllers\\AdminDetailsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminDetailsController.php',
         'App\\Http\\Controllers\\Auth\\ActivateController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ActivateController.php',
@@ -780,6 +784,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Frontend\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/HomeController.php',
         'App\\Http\\Controllers\\Frontend\\LocationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/LocationController.php',
+        'App\\Http\\Controllers\\Frontend\\SearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/SearchController.php',
         'App\\Http\\Controllers\\LikeController' => __DIR__ . '/../..' . '/app/Http/Controllers/LikeController.php',
         'App\\Http\\Controllers\\MenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/MenuController.php',
         'App\\Http\\Controllers\\ProfilesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfilesController.php',
