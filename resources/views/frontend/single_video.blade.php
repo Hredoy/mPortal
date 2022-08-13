@@ -111,10 +111,10 @@
                 </div>
                 <div class="info">
                     <div class="info-content">
-                        <h4>Cast:</h4>
-                        <p>Nathan Drake , Victor Sullivan , Sam Drake , Elena Fisher</p>
+                        {{-- <h4>Cast:</h4>
+                        <p>Nathan Drake , Victor Sullivan , Sam Drake , Elena Fisher</p> --}}
 
-                        <h4>Category :</h4>
+                        <h4>Category </h4>
                         @switch($upload->category_id)
                             @case($upload->category_id == 1)
                                 <p>Music</p>
@@ -131,10 +131,10 @@
                         @endswitch
 
 
-                        <h4>About :</h4>
+                        <h4>About </h4>
                         <p>{!! $upload->description !!}</p>
 
-                        <h4>Tags :</h4>
+                        {{-- <h4>Tags :</h4>
                         <p class="sv-tags">
                             <span><a href="#">Uncharted 4</a></span>
                             <span><a href="#">Playstation 4</a></span>
@@ -142,7 +142,7 @@
                             <span><a href="#">1080P</a></span>
                             <span><a href="#">ps4Share</a></span>
                             <span><a href="#">+ 6</a></span>
-                        </p>
+                        </p> --}}
 
                         <div class="row date-lic">
                             <div class="col-xs-6">
@@ -166,7 +166,7 @@
                         </div>
                     </div>
 
-                    <div class="adblock2">
+                    {{-- <div class="adblock2">
                         <div class="img">
                             <span class="hidden-xs">
                                 Google AdSense<br>728 x 90
@@ -175,17 +175,17 @@
                                 Google AdSense 320 x 50
                             </span>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- similar videos -->
                     <div class="caption hidden-xs">
-                        <div class="left">
+                        {{-- <div class="left">
                             <a href="#">Similar Videos</a>
-                        </div>
+                        </div> --}}
                         <div class="clearfix"></div>
                     </div>
                     <div class="single-v-footer">
-                        <div class="single-v-footer-switch">
+                        {{-- <div class="single-v-footer-switch">
                             <a href="#" class="active" data-toggle=".similar-v">
                                 <i class="cv cvicon-cv-play-circle"></i>
                                 <span>Similar Videos</span>
@@ -274,7 +274,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- END similar videos -->
 
                         <!-- comments -->
@@ -368,11 +368,11 @@
                     <div class="head-arrow-icon">
                         <i class="cv cvicon-cv-next"></i>
                     </div>
-                    <div class="adblock2 adblock2-v2">
+                    {{-- <div class="adblock2 adblock2-v2">
                         <div class="img">
                             <span>Google AdSense 300 x 250</span>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -423,12 +423,12 @@
                     @endforelse
                 <!-- END up next -->
 
-                <div class="adblock">
+                {{-- <div class="adblock">
                     <div class="img">
                         Google AdSense<br>
                         336 x 280
                     </div>
-                </div>
+                </div> --}}
 
                 {{-- <!-- Recomended Videos -->
                 <div class="caption">

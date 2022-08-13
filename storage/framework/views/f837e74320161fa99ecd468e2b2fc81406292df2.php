@@ -60,7 +60,6 @@
                                  <span class="table-up"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a></span>
                                  <span class="table-down"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a></span>
                               </td>
-                              <?php if (Auth::check() && Auth::user()->hasRole('admin')): ?>
                               <td>
                                     <a  href="<?php echo e(route('public.upload.edit',$video->id)); ?>"
                                     class="btn btn-light btn-rounded btn-sm px-2 my-0"> Edit  </a>
@@ -69,7 +68,6 @@
                                     class="btn btn-primary btn-rounded btn-sm my-0">Remove</a>
                                  </span>
                               </td>
-                              <?php endif; ?>
                             </tr>
                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                            <tr>

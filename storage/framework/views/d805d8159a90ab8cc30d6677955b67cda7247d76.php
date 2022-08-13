@@ -3,6 +3,34 @@
 <?php $__env->startSection('second_navbar'); ?>
     <?php echo $__env->make('frontend.partials.second_navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
+<?php $__env->startPush('custom_css'); ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<style>
+    .social-btn-sp #social-links {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+    .social-btn-sp #social-links ul li {
+        display: inline-block;
+    }
+    .social-btn-sp #social-links ul li a {
+        padding: 7.5px;
+        margin: 1px;
+        font-size: 20px;
+    }
+    table #social-links{
+        display: inline-table;
+    }
+    table #social-links ul li{
+        display: inline;
+    }
+    table #social-links ul li a{
+        padding: 2.5px;;
+        margin: .5px;
+        font-size: 7.5px;
+    }
+</style>
+<?php $__env->stopPush(); ?>
 <?php $__env->startSection('main_section'); ?>
 <div class="content-wrapper">
     <div class="container">
@@ -23,13 +51,22 @@
                     <div class="author-head">
                         <a href="#"><img src="<?php echo e(asset('assets/frontend/images/channel-user.png')); ?>" alt="" class="sv-avatar"></a>
                         <div class="sv-name">
-                            <div><a href="#">NaughtyDog</a> . 52 Videos</div>
+
+                            <div><a href="#"><?php echo e($upload->user->name); ?></a> . <?php echo e(App\Models\Upload::where('user_id', $upload->user_id)->count()); ?> Videos</div>
                             <div class="c-sub hidden-xs">
-                                <div class="c-f">
-                                    Subscribe
-                                </div>
+                                <?php if(!$followCheck): ?>
+                                <a  href="<?php echo e(Route("public.follow", $upload->user_id)); ?>" class="c-f">
+                                    Follow
+                                </a>
+                                <?php else: ?>
+                                <a  href="<?php echo e(Route("public.unfollow", $upload->user_id)); ?>" class="c-f">
+                                    Unfollow
+                                </a>
+
+                                <?php endif; ?>
                                 <div class="c-s">
-                                    22,548,145
+                                    <?php echo e($upload->user->followers()->get()->count()); ?>
+
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -43,9 +80,9 @@
                     <div class="sv-views">
                         <div class="sv-views-count d-flex">
                                 <?php if( empty($likeCheck)): ?>
-                                <a href="<?php echo e(Route('like', $upload->id)); ?>" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                <a href="<?php echo e(Route('like', $upload->id)); ?>" class="btn "><i class="fa fa-thumbs-up" style="font-size: 1.2em"></i></a>
                                 <?php else: ?>
-                                <a href="<?php echo e(Route('unlike', $upload->id)); ?>" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                                <a href="<?php echo e(Route('unlike', $upload->id)); ?>" class="btn"><i class="fa fa-thumbs-down  " style="font-size: 1.2em"></i></a>
                                 <?php endif; ?>
                                <small> <?php echo e($upload->likes->count('count')); ?> Likes</small>
 
@@ -61,14 +98,19 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
+                    <br>
+                    
+                    <div class="social-btn-sp pull-right">
+                        <?php echo $shareButtons; ?>
+
+                    </div>
 
                 </div>
                 <div class="info">
                     <div class="info-content">
-                        <h4>Cast:</h4>
-                        <p>Nathan Drake , Victor Sullivan , Sam Drake , Elena Fisher</p>
+                        
 
-                        <h4>Category :</h4>
+                        <h4>Category </h4>
                         <?php switch($upload->category_id):
                             case ($upload->category_id == 1): ?>
                                 <p>Music</p>
@@ -85,18 +127,10 @@
                         <?php endswitch; ?>
 
 
-                        <h4>About :</h4>
+                        <h4>About </h4>
                         <p><?php echo $upload->description; ?></p>
 
-                        <h4>Tags :</h4>
-                        <p class="sv-tags">
-                            <span><a href="#">Uncharted 4</a></span>
-                            <span><a href="#">Playstation 4</a></span>
-                            <span><a href="#">Gameplay</a></span>
-                            <span><a href="#">1080P</a></span>
-                            <span><a href="#">ps4Share</a></span>
-                            <span><a href="#">+ 6</a></span>
-                        </p>
+                        
 
                         <div class="row date-lic">
                             <div class="col-xs-6">
@@ -120,115 +154,15 @@
                         </div>
                     </div>
 
-                    <div class="adblock2">
-                        <div class="img">
-                            <span class="hidden-xs">
-                                Google AdSense<br>728 x 90
-                            </span>
-                            <span class="visible-xs">
-                                Google AdSense 320 x 50
-                            </span>
-                        </div>
-                    </div>
+                    
 
                     <!-- similar videos -->
                     <div class="caption hidden-xs">
-                        <div class="left">
-                            <a href="#">Similar Videos</a>
-                        </div>
+                        
                         <div class="clearfix"></div>
                     </div>
                     <div class="single-v-footer">
-                        <div class="single-v-footer-switch">
-                            <a href="#" class="active" data-toggle=".similar-v">
-                                <i class="cv cvicon-cv-play-circle"></i>
-                                <span>Similar Videos</span>
-                            </a>
-                            <a href="#" data-toggle=".comments">
-                                <i class="cv cvicon-cv-comment"></i>
-                                <span>236 Comments</span>
-                            </a>
-                        </div>
-                        <div class="similar-v single-video video-mobile-02">
-                            <div class="row">
-                                <div class="col-lg-3 col-sm-6 col-xs-12">
-                                    <div class="h-video row">
-                                        <div class="col-sm-12 col-xs-6">
-                                            <div class="v-img">
-                                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-12.png')); ?>" alt=""></a>
-                                                <div class="time">7:18</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-xs-6">
-                                            <div class="v-desc">
-                                                <a href="single-video-tabs.html">3DS Games Of 2016 that blew our mind</a>
-                                            </div>
-                                            <div class="v-views">
-                                                630,347 views
-                                            </div>
-                                            <div class="v-percent"><span class="v-circle"></span> 83%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 col-xs-12">
-                                    <div class="h-video row">
-                                        <div class="col-sm-12 col-xs-6">
-                                            <div class="v-img">
-                                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-13.png')); ?>" alt=""></a>
-                                                <div class="time">23:18</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-xs-6">
-                                            <div class="v-desc">
-                                                <a href="single-video-tabs.html">Cornfield Chase Outlast II Official Gameplay</a>
-                                            </div>
-                                            <div class="v-views">
-                                                2,630,347 views
-                                            </div>
-                                            <div class="v-percent"><span class="v-circle"></span> 96%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 col-xs-12">
-                                    <div class="h-video row">
-                                        <div class="col-sm-12 col-xs-6">
-                                            <div class="v-img">
-                                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-14.png')); ?>" alt=""></a>
-                                                <div class="time">15:36</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-xs-6">
-                                            <div class="v-desc">
-                                                <a href="single-video-tabs.html">No Man's Sky: 21 Minutes of Gameplay</a>
-                                            </div>
-                                            <div class="v-views">
-                                                71,347 views
-                                            </div>
-                                            <div class="v-percent"><span class="v-circle"></span> 63%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 col-xs-12">
-                                    <div class="h-video row">
-                                        <div class="col-sm-12 col-xs-6">
-                                            <div class="v-img">
-                                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-7.png')); ?>" alt=""></a>
-                                                <div class="time">27:18</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-xs-6">
-                                            <div class="v-desc">
-                                                <a href="single-video-tabs.html">No Man's Sky: 21 Minutes of Gameplay</a>
-                                            </div>
-                                            <div class="v-views">
-                                                10,347 views
-                                            </div>
-                                            <div class="v-percent"><span class="v-circle"></span> 43%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!-- END similar videos -->
 
                         <!-- comments -->
@@ -322,11 +256,7 @@
                     <div class="head-arrow-icon">
                         <i class="cv cvicon-cv-next"></i>
                     </div>
-                    <div class="adblock2 adblock2-v2">
-                        <div class="img">
-                            <span>Google AdSense 300 x 250</span>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -344,7 +274,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="list">
-                    <?php $__currentLoopData = $relatedUpload; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__empty_1 = true; $__currentLoopData = $relatedUpload; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <div class="h-video row">
                         <div class="col-lg-6 col-sm-6">
                             <div class="v-img">
@@ -363,232 +293,23 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                    <div class="h-video row ">
+
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="v-desc ">
+                                <p class="text-center"><strong> No Video Available</strong></p>
+                            </div>
+                                                    </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <?php endif; ?>
                 <!-- END up next -->
 
-                <div class="adblock">
-                    <div class="img">
-                        Google AdSense<br>
-                        336 x 280
-                    </div>
-                </div>
+                
 
-                <!-- Recomended Videos -->
-                <div class="caption">
-                    <div class="left">
-                        <a href="#">Recomended Videos</a>
-                    </div>
-                    <div class="right">
-                        <a href="#">Autoplay <i class="cv cvicon-cv-btn-off"></i></a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="list">
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-4.png')); ?>" alt=""></a>
-                                <div class="time">15:19</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">Cornfield Chase Outlast II Official Gameplay</a>
-                            </div>
-                            <div class="v-views">
-                                2,729,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 55%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-5.png')); ?>" alt=""></a>
-                                <div class="time">4:23</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">Amazing Facts About Nebulas ...</a>
-                            </div>
-                            <div class="v-views">
-                                429,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 79%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-6.png')); ?>" alt=""></a>
-                                <div class="time">7:18</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">3DS Games Of 2016 that blew our mind</a>
-                            </div>
-                            <div class="v-views">
-                                630,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 83%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-7.png')); ?>" alt=""></a>
-                                <div class="time">27:18</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">No Man's Sky: 21 Minutes of Gameplay</a>
-                            </div>
-                            <div class="v-views">
-                                10,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 43%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-8.png')); ?>" alt=""></a>
-                                <div class="time">5:18</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">There Can Only Be One! Introducing Tanc ...</a>
-                            </div>
-                            <div class="v-views">
-                                453,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 79%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-9.png')); ?>" alt=""></a>
-                                <div class="time">34:18</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">Game of Thrones Season 6: Event Promo</a>
-                            </div>
-                            <div class="v-views">
-                                1,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 93%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-10.png')); ?>" alt=""></a>
-                                <div class="time">6:18</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">Mirror's Edge Catalyst Beta: PS4 vs Xbox One</a>
-                            </div>
-                            <div class="v-views">
-                                420,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 73%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-11.png')); ?>" alt=""></a>
-                                <div class="time">21:18</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">Cornfield Chase Outlast II Official Gameplay</a>
-                            </div>
-                            <div class="v-views">
-                                50,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 94%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-12.png')); ?>" alt=""></a>
-                                <div class="time">7:18</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">3DS Games Of 2016 that blew our mind</a>
-                            </div>
-                            <div class="v-views">
-                                630,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 83%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-13.png')); ?>" alt=""></a>
-                                <div class="time">23:18</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">Cornfield Chase Outlast II Official Gameplay</a>
-                            </div>
-                            <div class="v-views">
-                                2,630,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 96%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="h-video row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset('assets/frontend/images/sv-14.png')); ?>" alt=""></a>
-                                <div class="time">15:36</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="v-desc">
-                                <a href="single-video-tabs.html">No Man's Sky: 21 Minutes of Gameplay</a>
-                            </div>
-                            <div class="v-views">
-                                71,347 views
-                            </div>
-                            <div class="v-percent"><span class="v-circle"></span> 63%</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <!-- END Recomended Videos -->
-
-                <!-- load more -->
-                <div class="loadmore">
-                    <a href="#">Show more videos</a>
-                </div>
+                
             </div>
         </div>
     </div>

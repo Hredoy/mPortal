@@ -2,8 +2,8 @@
     <div class="mobile-menu-head">
         <a href="#" class="mobile-menu-close"></a>
         <a class="navbar-brand" href="index.html">
-            <img src="<?php echo e(asset('assets/frontend/images/logo.svg')); ?>" alt="Project name" class="logo" />
-            <span>Circle</span>
+            <img src="<?php echo e($settings->logo); ?>" alt="Project name" class="logo" />
+            <span><?php echo e(($settings->app_name)? $settings->app_name : config('app_name')); ?></span>
         </a>
         <div class="mobile-menu-btn-color">
             <img src="<?php echo e(asset('assets/frontend/images/icon_bulb_light.png')); ?>" alt="">
