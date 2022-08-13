@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{$settings->favicon}}">
 
-    <title>{{$settings->app_name}}</title>
+    <title>{{($settings->app_name)? $settings->app_name : config('app.name')}}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('assets/frontend/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

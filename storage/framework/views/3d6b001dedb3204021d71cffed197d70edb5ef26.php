@@ -10,7 +10,7 @@ $countries = Countries::getList('en', 'json');
                 <div class="col-lg-1  col-sm-2 col-xs-12 footer-logo">
                     <a class="navbar-brand" href="<?php echo e(route('home')); ?>">
                         <img src="<?php echo e($settings->logo); ?>" alt="<?php echo e($settings->app_name); ?>" class="logo" />
-                        <span><?php echo e($settings->app_name); ?></span>
+                        <span><?php echo e(($settings->app_name)? $settings->app_name : config('app.name')); ?></span>
                     </a>
                 </div>
                 <div class="col-lg-7 col-sm-6 col-xs-12">

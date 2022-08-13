@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="<?php echo e($settings->favicon); ?>">
 
-    <title><?php echo e($settings->app_name); ?></title>
+    <title><?php echo e(($settings->app_name)? $settings->app_name : config('app.name')); ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo e(asset('assets/frontend/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
