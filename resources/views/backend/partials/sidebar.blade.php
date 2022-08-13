@@ -1,9 +1,9 @@
 <div class="iq-sidebar">
     <div class="iq-sidebar-logo d-flex justify-content-between">
         <a href="{{route('home')}}" class="header-logo">
-            <img src="{{asset('assets/frontend/../assets/images/logo.png')}}" class="img-fluid rounded-normal" alt="">
+            <img src="{{$settings->logo}}" class="img-fluid rounded-normal" alt="">
             <div class="logo-title">
-                <span class="text-primary text-uppercase">{{ config('app.name') }}</span>
+                <span class="text-primary text-uppercase">{{($settings->app_name)? $settings->app_name : config('app_name')}}</span>
             </div>
         </a>
         <div class="iq-menu-bt-sidebar">
@@ -17,10 +17,10 @@
     <div id="sidebar-scrollbar">
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="iq-menu">
+                @role('admin')
                 <li class="{{ Request::is('admin/home')? 'active' : null }}"><a href="{{ route('public.home') }}" class="iq-waves-effect"><i
                             class="las la-home iq-arrow-left"></i><span>Dashboard</span></a>
                 </li>
-                @role('admin')
                 <li class="{{ (Request::is('roles') || Request::is('permissions') || Request::is('users*'))? 'active active-menu' : null }}">
                     <a href="#pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="{{ (Request::is('roles') || Request::is('permissions') || Request::is('users*'))? 'true' : 'false' }}"><i
                             class="las la-file-alt iq-arrow-left"></i><span>Authentication</span><i
@@ -51,6 +51,9 @@
                         <li class="{{ Request::is('admin/menu')? 'active' : null }}"><a href="{{Route('public.menu.index')}}"><i class="las la-eye"></i>Menu List</a></li>
                     </ul>
                 </li>
+                <li class="{{ (Request::is('roles') || Request::is('permissions') || Request::is('users*'))? 'active active-menu' : null }}">
+                    <a href="{{Route('site.settings')}}" class="iq-waves-effect"><i class="las la-tools"></i><span>Site Settings</span></a>
+                </li>
                 @endrole
                 <li class="{{ Request::is('admin/upload')? 'active' : null }}">
                     <a href="{{Route('public.upload')}}" class="iq-waves-effect"><i class="las la-upload"></i><span>Upload Content</span></a>
@@ -63,9 +66,6 @@
                 </li>
                 <li class="{{ Request::is('admin/comedy')? 'active' : null }}">
                     <a href="{{Route('public.comedy')}}" class="iq-waves-effect"><i class="las la-smile"></i><span>Comedy List</span></a>
-                </li>
-                <li class="{{ Request::is('admin/site/settings')? 'active' : null }}">
-                    <a href="{{Route('site.settings')}}" class="iq-waves-effect"><i class="las la-tools"></i><span>Site Settings</span></a>
                 </li>
                 <li>
                     <a href="{{ route('logout') }}"

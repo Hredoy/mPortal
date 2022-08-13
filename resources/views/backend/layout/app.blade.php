@@ -4,7 +4,8 @@
    <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <title>{{config('app.name')}}</title>
+   <link rel="icon" href="{{$settings->favicon}}">
+   <title>{{$settings->app_name}}</title>
    <!-- Favicon -->
    <link rel="shortcut icon" href="{{asset('assets/backend/images/favicon.ico')}}" />
    <!-- Bootstrap CSS -->

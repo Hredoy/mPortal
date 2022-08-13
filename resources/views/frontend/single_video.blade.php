@@ -3,6 +3,34 @@
 @section('second_navbar')
     @include('frontend.partials.second_navbar')
 @endsection
+@push('custom_css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<style>
+    .social-btn-sp #social-links {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+    .social-btn-sp #social-links ul li {
+        display: inline-block;
+    }
+    .social-btn-sp #social-links ul li a {
+        padding: 7.5px;
+        margin: 1px;
+        font-size: 20px;
+    }
+    table #social-links{
+        display: inline-table;
+    }
+    table #social-links ul li{
+        display: inline;
+    }
+    table #social-links ul li a{
+        padding: 2.5px;;
+        margin: .5px;
+        font-size: 7.5px;
+    }
+</style>
+@endpush
 @section('main_section')
 <div class="content-wrapper">
     <div class="container">
@@ -23,13 +51,21 @@
                     <div class="author-head">
                         <a href="#"><img src="{{asset('assets/frontend/images/channel-user.png')}}" alt="" class="sv-avatar"></a>
                         <div class="sv-name">
-                            <div><a href="#">NaughtyDog</a> . 52 Videos</div>
+
+                            <div><a href="#">{{$upload->user->name}}</a> . {{ App\Models\Upload::where('user_id', $upload->user_id)->count() }} Videos</div>
                             <div class="c-sub hidden-xs">
-                                <div class="c-f">
-                                    Subscribe
-                                </div>
+                                @if (!$followCheck)
+                                <a  href="{{Route("public.follow", $upload->user_id)}}" class="c-f">
+                                    Follow
+                                </a>
+                                @else
+                                <a  href="{{Route("public.unfollow", $upload->user_id)}}" class="c-f">
+                                    Unfollow
+                                </a>
+
+                                @endif
                                 <div class="c-s">
-                                    22,548,145
+                                    {{$upload->user->followers()->get()->count()}}
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -43,13 +79,13 @@
                     <div class="sv-views">
                         <div class="sv-views-count d-flex">
                                 @if ( empty($likeCheck))
-                                <a href="{{Route('like', $upload->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                <a href="{{Route('like', $upload->id)}}" class="btn "><i class="fa fa-thumbs-up" style="font-size: 1.2em"></i></a>
                                 @else
-                                <a href="{{Route('unlike', $upload->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                                <a href="{{Route('unlike', $upload->id)}}" class="btn"><i class="fa fa-thumbs-down  " style="font-size: 1.2em"></i></a>
                                 @endif
                                <small> {{$upload->likes->count('count')}} Likes</small>
 
-                           <small> 2,7297 views</small>
+                           <small> {{$upload->view}} views</small>
                         </div>
                         <div class="sv-views-progress">
                             <div class="sv-views-progress-bar"></div>
@@ -61,6 +97,11 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
+                    <br>
+                    {{-- Social Share with jorenvanhocht/laravel-share pack --}}
+                    <div class="social-btn-sp pull-right">
+                        {!! $shareButtons !!}
+                    </div>
 
                 </div>
                 <div class="info">
@@ -344,7 +385,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="list">
-                    @foreach ($relatedUpload as $item )
+                    @forelse ($relatedUpload as $item )
                     <div class="h-video row">
                         <div class="col-lg-6 col-sm-6">
                             <div class="v-img">
@@ -363,7 +404,18 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                        @endforeach
+                    @empty
+                    <div class="h-video row ">
+
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="v-desc ">
+                                <p class="text-center"><strong> No Video Available</strong></p>
+                            </div>
+                                                    </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    @endforelse
                 <!-- END up next -->
 
                 <div class="adblock">
@@ -373,7 +425,7 @@
                     </div>
                 </div>
 
-                <!-- Recomended Videos -->
+                {{-- <!-- Recomended Videos -->
                 <div class="caption">
                     <div class="left">
                         <a href="#">Recomended Videos</a>
@@ -588,7 +640,7 @@
                 <!-- load more -->
                 <div class="loadmore">
                     <a href="#">Show more videos</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

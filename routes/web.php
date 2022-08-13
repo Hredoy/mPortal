@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['web', 'checkblocked']], function () {
     Route::view('/', 'frontend.layout.app');
     Route::get('/', 'App\Http\Controllers\Frontend\HomeController@index')->name('home');
+    // sort homepage
+    Route::get('/sort-latest', 'App\Http\Controllers\Frontend\HomeController@getLatest')->name('home.latest');
+    Route::get('/sort-view', 'App\Http\Controllers\Frontend\HomeController@getView')->name('home.view');
+    Route::get('/sort-like', 'App\Http\Controllers\Frontend\HomeController@getLike')->name('home.like');
+
     Route::get('/single-video/{id}', 'App\Http\Controllers\Frontend\HomeController@singleVideo')->name('singleVideo');
     Route::get('/music', 'App\Http\Controllers\Frontend\HomeController@music')->name('music');
     Route::get('/comedy', 'App\Http\Controllers\Frontend\HomeController@comedy')->name('comedy');
@@ -60,10 +65,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
     //  Dashboard Route - Redirect based on user role is in controller.
     Route::get('/home', ['as' => 'public.home',   'uses' => 'App\Http\Controllers\UserController@index']);
     //region Routes.
-    Route::get('region', [
-        'as'   => 'public.region',
-        'uses' => 'App\Http\Controllers\RegionController@index',
-    ]);
+    // Route::get('region', [
+    //     'as'   => 'public.region',
+    //     'uses' => 'App\Http\Controllers\RegionController@index',
+    // ]);
 
     // Upload Routes.
     Route::get('upload/index', [
@@ -156,20 +161,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
         'as'   => 'reply.add',
         'uses' => 'App\Http\Controllers\CommentController@replyStore',
     ]);
-    // Route::resource('comment', \App\Http\Controllers\CommentController::class, [
-    //     'names' => [
-    //         'index'   => 'comments',
-    //         'create'   => 'comments.create',
-    //         'store'   => 'comments.store',
-    //         'edit'   => 'comments.edit',
-    //         'update'   => 'comments.update',
-    //         'destroy' => 'comments.destroy',
-
-    //     ],
-    //     'except' => [
-    //         'deleted',
-    //     ],
-    // ]);
     //like Route
     Route::get('like/{id}', [
         'as'   => 'like',
@@ -179,6 +170,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
         'as'   => 'unlike',
         'uses' => 'App\Http\Controllers\LikeController@unlike',
     ]);
+    //follow Route
+    Route::get('follow/{id}', [
+        'as'   => 'public.follow',
+        'uses' => 'App\Http\Controllers\LikeController@follow',
+    ]);
+    Route::get('unfollow/{id}', [
+        'as'   => 'public.unfollow',
+        'uses' => 'App\Http\Controllers\LikeController@unfollow',
+    ]);
 
     // Show users profile - viewable by other users.
     Route::get('profile/{username}', [
@@ -187,12 +187,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
     ]);
 
 });
-
-  // Site Settings Route.
-  Route::get('site/settings', [
-    'as'   => 'site.settings',
-    'uses' => 'App\Http\Controllers\SiteSettingController@index',
-]);
 
 // Registered, activated, and is current user routes.
 Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', 'twostep', 'checkblocked']], function () {
@@ -230,6 +224,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
 
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'App\Http\Controllers\ProfilesController@upload']);
+
 });
 
 // Registered, activated, and is admin routes.
@@ -259,7 +254,15 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         ],
     ]);
 
-
+         // Site Settings Route.
+  Route::get('site/settings', [
+    'as'   => 'site.settings',
+    'uses' => 'App\Http\Controllers\SiteSettingController@index',
+]);
+  Route::post('site/settings', [
+    'as'   => 'site.settings.store',
+    'uses' => 'App\Http\Controllers\SiteSettingController@store',
+]);
 
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
@@ -268,3 +271,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
 });
 
 Route::redirect('/php', '/phpinfo', 301);
+// For Get Location/Region
+Route::get('/location/get-location', 'App\Http\Controllers\Frontend\LocationController@getLocation')->name('getlocation');
+Route::get('/search', 'App\Http\Controllers\Frontend\SearchController@index')->name('search');
+Route::get('/ajax/search/{keyword}', 'App\Http\Controllers\Frontend\SearchController@ajaxSearch')->name('search.ajax');

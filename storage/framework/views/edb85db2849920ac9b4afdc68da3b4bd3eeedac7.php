@@ -15,18 +15,23 @@
                    </div>
                 </div>
                 <div class="iq-card-body">
-                  <form method="POST" action="<?php echo e(route('public.upload.store')); ?>" enctype="multipart/form-data" class="needs-validation" file="true">
+                  <form method="POST" action="<?php echo e(route('public.upload.store')); ?>" enctype="multipart/form-data" >
                      <?php echo csrf_field(); ?>
                       <div class="row">
                          <div class="col-lg-7">
                             <div class="row">
                                <div class="col-12 form-group">
-                                  <input type="text" name="name" class="form-control" placeholder="Title">
+                                  <input type="text" name="name" class="form-control" placeholder="Title" required>
+                                  <?php if($errors->has('name')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('name')); ?></strong>
+                                </span>
+                                <?php endif; ?>
                                </div>
                                <div class="col-12 form_gallery form-group">
                                   <label id="gallery2" for="form_gallery-upload">Upload Image</label>
                                   <input data-name="#gallery2" id="form_gallery-upload" name="thumbnail_image" class="form_gallery-upload"
-                                     type="file" accept="png',jpg',jpeg">
+                                     type="file" accept=".png,.jpg,.jpeg,.gif,.svg">
                                      <?php if($errors->has('thumbnail_image')): ?>
                                 <span class="help-block">
                                     <strong><?php echo e($errors->first('thumbnail_image')); ?></strong>
@@ -34,8 +39,8 @@
                                 <?php endif; ?>
                                </div>
                                <div class="col-md-6 form-group">
-                                  <select class="form-control" name="category_id" id="exampleFormControlSelect1">
-                                     <option selected disabled="">Movie Category</option>
+                                  <select class="form-control" name="category_id" id="exampleFormControlSelect1" required>
+                                     <option selected disabled="">Category</option>
                                      <option value="1">Music</option>
                                      <option value="2">Comedy</option>
                                      <option value="3">Talent</option>
@@ -50,29 +55,34 @@
                                 <?php endif; ?>
                                </div>
                                <div class="col-sm-6 form-group">
-                                 <select class="form-control" name="region" id="exampleFormControlSelect3">
+                                 <select class="form-control" name="region" id="exampleFormControlSelect3" required>
                                     <option selected disabled="">Choose Region</option>
                                     <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($country); ?>"><?php echo e($country); ?></option>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($country); ?>"><?php echo e($country); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                  </select>
-                                 <?php if($errors->has('region_id')): ?>
+                                 <?php if($errors->has('region')): ?>
                          <span class="help-block">
-                             <strong><?php echo e($errors->first('region_id')); ?></strong>
+                             <strong><?php echo e($errors->first('region')); ?></strong>
                          </span>
                          <?php endif; ?>
                                </div>
                                <div class="col-12 form-group">
                                   <textarea id="text" name="description" rows="5" class="form-control"
                                      placeholder="Description"></textarea>
+                                     <?php if($errors->has('description')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('description')); ?></strong>
+                                </span>
+                            <?php endif; ?>
                                </div>
                             </div>
                          </div>
                          <div class="col-lg-5">
                             <div class="d-block position-relative">
                                <div class="form_video-upload">
-                                  <input type="file" name="upload" accept="video/mp4,video/x-m4v,video/*" multiple>
-                                  <p>Upload video</p>
+                                  <input type="file" name="upload" accept=".mp3,.mp4,.3gp,.mkev,.mkv,.amv,.avi">
+                                  <p>Upload Audio/Video</p>
                                </div>
                                <?php if($errors->has('upload')): ?>
                                 <span class="help-block">
@@ -83,14 +93,7 @@
                          </div>
                       </div>
                       <div class="row">
-                         <div class="col-sm-12 form-group">
-                            <input type="date" class="form-control" name="release_date" placeholder="Release Date">
-                            <?php if($errors->has('release_date')): ?>
-                                <span class="help-block">
-                                    <strong><?php echo e($errors->first('release_date')); ?></strong>
-                                </span>
-                                <?php endif; ?>
-                         </div>
+                         
 
                         
                          <div class="col-12 form-group ">

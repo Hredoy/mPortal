@@ -46,16 +46,25 @@
                                         <option value="1" selected>Header</option>
                                         <option value="2">Footer</option>
                                         <option value="3">User</option>
+                                        <option value="4">Social</option>
                                             @break
                                         @case($menu->type == 2)
                                         <option value="1">Header</option>
                                         <option value="2" selected>Footer</option>
                                         <option value="3">User</option>
+                                        <option value="4">Social</option>
                                             @break
                                         @case($menu->type == 3)
                                         <option value="1">Header</option>
                                         <option value="2">Footer</option>
                                         <option value="3" selected>User</option>
+                                        <option value="4">Social</option>
+                                            @break
+                                        @case($menu->type == 4)
+                                        <option value="1">Header</option>
+                                        <option value="2">Footer</option>
+                                        <option value="3">User</option>
+                                        <option value="4" selected>Social</option>
                                             @break
                                         @default
                                         <option  disabled="">>No Type Found</option>

@@ -6,10 +6,10 @@
                 <div class="main-circle"><i class="las la-bars"></i></div>
              </div>
              <div class="iq-navbar-logo d-flex justify-content-between">
-                <a href="index.html" class="header-logo">
-                   <img src="<?php echo e(asset('assets/backend/images/logo.png')); ?>')}}" class="img-fluid rounded-normal" alt="">
+                <a href="<?php echo e(route('home')); ?>" class="header-logo">
+                   <img src="<?php echo e($settings->logo); ?>" class="img-fluid rounded-normal" alt="">
                    <div class="logo-title">
-                      <span class="text-primary text-uppercase">Streamit</span>
+                      <span class="text-primary text-uppercase"><?php echo e(($settings->app_name)? $settings->app_name : config('app_name')); ?></span>
                    </div>
                 </a>
              </div>

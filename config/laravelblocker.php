@@ -37,7 +37,7 @@ return [
     |--------------------------------------------------------------------------
     */
     // The parent blade file
-    'laravelBlockerBladeExtended'   => env('LARAVEL_BLOCKER_BLADE_EXTENDED', 'layouts.app'),
+    'laravelBlockerBladeExtended'   => env('LARAVEL_BLOCKER_BLADE_EXTENDED', 'backend.layout.app'),
 
     // Titles placement extend
     'laravelBlockerTitleExtended'   => env('LARAVEL_BLOCKER_TITLE_EXTENDED', 'template_title'),

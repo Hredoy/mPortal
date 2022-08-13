@@ -4,7 +4,8 @@
    <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <title><?php echo e(config('app.name')); ?></title>
+   <link rel="icon" href="<?php echo e($settings->favicon); ?>">
+   <title><?php echo e($settings->app_name); ?></title>
    <!-- Favicon -->
    <link rel="shortcut icon" href="<?php echo e(asset('assets/backend/images/favicon.ico')); ?>" />
    <!-- Bootstrap CSS -->
@@ -18,6 +19,7 @@
    <!-- Responsive CSS -->
    <link rel="stylesheet" href="<?php echo e(asset('assets/backend/css/responsive.css')); ?>">
    <?php echo $__env->yieldPushContent('custom-css'); ?>
+   <?php echo $__env->yieldContent('template_linked_css'); ?>
 </head>
 <body>
    <!-- loader Start -->
@@ -36,6 +38,13 @@
       <!-- TOP Nav Bar END -->
       <!-- Page Content  -->
       <?php echo $__env->yieldContent('main_section'); ?>
+      <!-- Role Management section -->
+      <div id="content-page" class="content-page">
+         <div class="container-fluid my-5">
+            <?php echo $__env->yieldContent('content'); ?>
+         </div>
+      </div>
+      <!-- Role Management section END -->
       <!-- Page Content END -->
    </div>
    <!-- Wrapper END -->
@@ -75,5 +84,6 @@
    <!-- Custom JavaScript -->
    <script src="<?php echo e(asset('assets/backend/js/custom.js')); ?>"></script>
    <?php echo $__env->yieldPushContent('custom-script'); ?>
+   <?php echo $__env->yieldContent('footer_scripts'); ?>
 </body>
 </html><?php /**PATH C:\laragon\www\2spiceart\resources\views/backend/layout/app.blade.php ENDPATH**/ ?>
