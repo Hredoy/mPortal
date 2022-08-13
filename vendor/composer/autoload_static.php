@@ -769,6 +769,8 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\API\\Backend\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Backend/CategoryController.php',
+        'App\\Http\\Controllers\\API\\Backend\\SettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Backend/SettingController.php',
+        'App\\Http\\Controllers\\API\\Backend\\SocialController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Backend/SocialController.php',
         'App\\Http\\Controllers\\API\\Backend\\UploadController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Backend/UploadController.php',
         'App\\Http\\Controllers\\AdminDetailsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminDetailsController.php',
         'App\\Http\\Controllers\\Auth\\ActivateController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ActivateController.php',

@@ -97,7 +97,8 @@
                     </div>
                     <div class="cb-content videolist">
                         <div class="row">
-                            @foreach ($uploads->where('featured', 1) as $item)
+                            @forelse ($uploads->where('featured', 1) as $item)
+
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
@@ -120,7 +121,13 @@
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            @empty
+                            <div class="col-lg-3 col-sm-6 videoitem mx-2">
+                                <div class="b-video">
+                                    <p><strong>No File Available</strong></p>
+                                </div>
+                            </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>

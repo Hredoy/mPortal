@@ -18,6 +18,8 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\API\\Backend\\CategoryController' => $baseDir . '/app/Http/Controllers/API/Backend/CategoryController.php',
+    'App\\Http\\Controllers\\API\\Backend\\SettingController' => $baseDir . '/app/Http/Controllers/API/Backend/SettingController.php',
+    'App\\Http\\Controllers\\API\\Backend\\SocialController' => $baseDir . '/app/Http/Controllers/API/Backend/SocialController.php',
     'App\\Http\\Controllers\\API\\Backend\\UploadController' => $baseDir . '/app/Http/Controllers/API/Backend/UploadController.php',
     'App\\Http\\Controllers\\AdminDetailsController' => $baseDir . '/app/Http/Controllers/AdminDetailsController.php',
     'App\\Http\\Controllers\\Auth\\ActivateController' => $baseDir . '/app/Http/Controllers/Auth/ActivateController.php',

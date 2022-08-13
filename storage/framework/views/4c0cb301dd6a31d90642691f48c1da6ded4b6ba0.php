@@ -1,9 +1,9 @@
 <div class="iq-sidebar">
     <div class="iq-sidebar-logo d-flex justify-content-between">
         <a href="<?php echo e(route('home')); ?>" class="header-logo">
-            <img src="<?php echo e(asset('assets/frontend/../assets/images/logo.png')); ?>" class="img-fluid rounded-normal" alt="">
+            <img src="<?php echo e($settings->logo); ?>" class="img-fluid rounded-normal" alt="">
             <div class="logo-title">
-                <span class="text-primary text-uppercase"><?php echo e(config('app.name')); ?></span>
+                <span class="text-primary text-uppercase"><?php echo e(($settings->app_name)? $settings->app_name : config('app_name')); ?></span>
             </div>
         </a>
         <div class="iq-menu-bt-sidebar">

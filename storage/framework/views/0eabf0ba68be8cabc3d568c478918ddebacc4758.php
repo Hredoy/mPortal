@@ -7,9 +7,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.png">
+    <link rel="icon" href="<?php echo e($settings->favicon); ?>">
 
-    <title><?php echo e(config('app.name')); ?></title>
+    <title><?php echo e($settings->app_name); ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo e(asset('assets/frontend/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
