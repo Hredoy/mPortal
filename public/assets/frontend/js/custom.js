@@ -212,7 +212,7 @@ $( document ).ready(function() {
             $btn_menu.on('click', function(e) {
                 var wind_w = window.innerWidth;
 
-                if(wind_w < 768) {
+                if(wind_w < 1200) {
                     if(!$menu.hasClass('open')) {
                         $('body').addClass('ovf--hidden').css({ paddingRight: scroll_w });
 

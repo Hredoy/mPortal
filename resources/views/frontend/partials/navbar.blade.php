@@ -1,3 +1,4 @@
+<div style="display: none">
 <div class="navbar-container">
     <div class="container">
         <div class="row">
@@ -54,7 +55,7 @@
                 <div id="searchResultDiv" style="position: absolute;z-index:1; width:95%">
                 </div>
             </div>
-            <div class="col-lg-2 col-sm-4 hidden-xs">
+            <dv class="col-lg-2 col-sm-4 hidden-xs">
                 <div class="avatar pull-left">
                     @guest
                         <img src="{{ asset('assets/frontend/images/avatar.png') }}" alt="avatar" />
@@ -104,7 +105,7 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
-            </div>
+            </dv>
         </div>
         <div class="hidden-xs">
             <a href="{{ Route('public.upload') }}">
@@ -116,3 +117,130 @@
     </div>
 </div>
 </div>
+</div>
+
+<!-- header area  -->
+<header class="ls_bg-dark ls_header">
+    <div class="container-fluid">
+        <div class="row ls_d-flex ls_align-center">
+            <!-- left area  -->
+            <div class="col-md-5 ls_d-flex ls_align-center">
+                <div class="ls_logo">
+                    <!-- logo -->
+                    <a class="" href="{{ route('home') }}">
+                        <img src="{{ $settings->logo }}" alt="{{ $settings->app_name }}" class="img-responsive" />
+                        <span>{{ $settings->app_name ? $settings->app_name : config('app_name') }}</span>
+                    </a>
+                </div>
+
+                <!-- menu  -->
+                <ul class="list-inline menu ls_m-0 ls_menu ls_d-md-none">
+                    <li class="{{ Request::is('music') ? 'color-active' : null }}">
+                        <a href="{{ route('music') }}">Music</a>
+                    </li>
+                    <li class="{{ Request::is('comedy') ? 'color-active' : null }}">
+                        <a href="{{ route('comedy') }}">Comedy</a>
+                    </li>
+                    <li class="{{ Request::is('talent') ? 'color-active' : null }}">
+                        <a href="{{ route('talent') }}">Talents</a>
+                    </li>
+                    <li>
+                        <a href="#">More</a>
+                        <ul>
+                            @foreach ($contents->where('type', 1)->where('status', 1) as $content)
+                                <li>
+                                    <a href="{{ $content->link }}">{{ $content->name }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- middle area  -->
+            <div class="col-md-4">
+                <form action="{{ route('search') }}" method="get">
+                    <div class="topsearch ls_m-0">
+                        <i class="cv cvicon-cv-cancel topsearch-close"></i>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-search ls_color-primary"></i></span>
+                            <input type="text" name="keyword"
+                                @if (isset($_GET['keyword'])) value="{{ $_GET['keyword'] }}" @endif
+                                class="form-control" placeholder="Search for artists, song, albums!" aria-describedby="sizing-addon2">
+                            <div class="input-group-btn">
+                                <div type="text" class="btn btn-default"></div>
+                            </div><!-- /btn-group -->
+                        </div>
+                    </div>
+                </form>
+                <div id="searchResultDiv" style="position: absolute;z-index:1; width:95%">
+                </div>
+            </div>
+            
+            <!-- right area  -->
+            <div class="col-md-3 ls_d-flex ls_justify-end">
+                <div class="ls_d-flex ls_align-center ls_d-md-none">
+                    <ul class="list-inline menu ls_m-0 ls_menu ls_text-white">
+                        @guest
+                            <li class="ls_px-0"><a href="{{ route('login') }}" class="ls_px-0 ls_fw-600">Sign In</a>
+                            </li>
+                            <li class="ls_px-0">
+                                <span>/</span>
+                            </li>
+                            <li class="ls_px-0"><a href="{{ route('register') }}" class="ls_px-0 ls_fw-600">Sign
+                                    up</a></li>
+                        @endguest
+                        @auth
+                            <li><a href="{{ route('public.home') }}" class="ls_px-0  ls_fw-600">Dashboard</a>
+                            </li>
+                            <li class="ls_px-0">
+                                <span>/</span>
+                            </li>
+                            <li><a href="{{ route('logout') }}" class="ls_px-0  ls_fw-600"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign
+                                    out</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        @endauth
+                        @foreach ($contents->where('type', 3)->where('status', 1) as $content)
+                            <li>
+                                <a href="{{ $content->link }}">{{ $content->name }}
+                                </a>
+                            </li>
+                        @endforeach
+                        @auth
+                        <a href="{{ Route('public.upload') }}" class="ls_btn ls_btn-upload">
+                            <img src="{{ asset('assets/frontend/images/upload.svg') }}" alt="upload">
+                        </a>
+                        @endauth
+                    </ul>
+                    
+                    <div class="avatar ls_p-0">
+                        @guest
+                            <img src="{{ asset('assets/frontend/images/user.svg') }}" alt="avatar" class="ls_avatar-icon" />
+                        @endguest
+                        @auth
+                            <img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif"
+                                alt="{{ Auth::user()->name }}" height="44px" width="100%" class="user-logo" />
+                            <span class="status"></span>
+                        @endauth
+                    </div>
+
+                    @guest
+                    <a href="{{ Route('public.upload') }}" class="ls_btn">
+                        <img src="{{ asset('assets/frontend/images/upload.svg') }}" alt="upload">
+                        Upload
+                    </a>
+                    @endguest
+                </div>
+                
+                <a href="{{ route('home') }}" class="btn-menu-toggle ls_m-0 ls_d-none ls_d-md-block ls_text-white"><i class="cv cvicon-cv-menu"></i></a>
+            </div>
+
+        </div>
+    </div>
+</header>
