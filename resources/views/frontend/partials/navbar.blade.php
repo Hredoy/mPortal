@@ -124,7 +124,7 @@
     <div class="container-fluid">
         <div class="row ls_d-flex ls_align-center">
             <!-- left area  -->
-            <div class="col-md-5 ls_d-flex ls_align-center">
+            <div class="col-xs-5 ls_d-flex ls_align-center">
                 <div class="ls_logo">
                     <!-- logo -->
                     <a class="" href="{{ route('home') }}">
@@ -159,7 +159,7 @@
             </div>
 
             <!-- middle area  -->
-            <div class="col-md-4">
+            <div class="col-xs-4">
                 <form action="{{ route('search') }}" method="get">
                     <div class="topsearch ls_m-0">
                         <i class="cv cvicon-cv-cancel topsearch-close"></i>
@@ -179,7 +179,7 @@
             </div>
             
             <!-- right area  -->
-            <div class="col-md-3 ls_d-flex ls_justify-end">
+            <div class="col-xs-3 ls_d-flex ls_justify-end">
                 <div class="ls_d-flex ls_align-center ls_d-md-none">
                     <ul class="list-inline menu ls_m-0 ls_menu ls_text-white">
                         @guest

@@ -4,10 +4,34 @@
 @endsection
 @section('main_section')
 <div class="content-wrapper">
+    
+    <div class="ls_banner ls_d-flex ls_align-center" style="background-image: url({{ asset('assets/frontend/images/banner.jpg') }});">
+        <div class="ls_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center ls_text-white">
+                    <h2 class="ls_title-big">
+                        Let the World Hear You <br>
+                        Music, Comedy, Dance, All Forms of Arts and Talents
+                    </h2>
+                    <div class="clearfix ls_d-flex ls_justify-center ls_py-20">
+                        <p class="col-lg-8 ls_fz-18">
+                            Happiness is the center of all human endeavor. Good entertainment melts away stiffen sorrow to lift souls. This is why we are here. We want to stretch the limit. <br>
+                            SpiceArt is a place for all latent musical talents, comedy, and other forms of arts and entertainment to be seen, enjoyed, and rewarded. <br>
+                            We reward artistes (upcoming and established) with 2spice tokens just for uploading their work on our website for the listening/viewing pleasure of our beloved community people. Get paid per like on your post.
+                        </p>
+                    </div>
+                    <div class="clearfix">
+                        <a href="{{ route('register') }}" class="ls_btn ls_btn-big">SIGN UP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-
                 <!-- Updates from Subscriptions -->
                 {{-- <div class="content-block">
                     <div class="cb-header">
