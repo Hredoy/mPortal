@@ -1,7 +1,7 @@
 /* custom style  */
 :root {
     --ls_bg-dark: #101010; 
-    --ls_color-primary: #A44ECA
+    --ls_color-primary: #AD00EA;
 }
 .ls_header {
     padding: 14px 0;
@@ -33,6 +33,9 @@
 .ls_m-0 {
     margin: 0 !important;
 }
+.ls_mb-20 {
+    margin-bottom: 20px;
+}
 .ls_p-0 {
     padding: 0 !important;
 }
@@ -42,6 +45,9 @@
 }
 .ls_py-20 {
     padding: 20px 0;
+}
+.ls_py-40 {
+    padding: 40px 0;
 }
 .ls_logo img {
     max-width: 146px;
@@ -54,6 +60,9 @@
 }
 .ls_text-white {
     color: #fff;
+}
+.ls_w-100 {
+    width: 100%;
 }
 .ls_btn {
     display: inline-block;
@@ -78,6 +87,18 @@
 	width: 220px;
 	padding-top: 15px;
 	padding-bottom: 10px;
+}
+.ls_btn-select {
+	width: 150px;
+	border-radius: 100px;
+	background: #fff;
+	border: 10px solid #fff;
+	box-shadow: none;
+	font-weight: 600;
+    cursor: pointer;
+}
+.ls_btn-select:focus {
+    border-color: #fff;
 }
 .ls_fw-600 {
     font-weight: 600;
@@ -117,9 +138,19 @@
 .ls_fz-18 {
     font-size: 18px;
 }
+.ls_footer-nav ul {
+    list-style: none;
+    column-count: 3;
+}
+.ls_footer-nav li {
+    margin-bottom: 10px;
+}
+.ls_footer-nav li a {
+    color: #fff;
+}
 @media only screen and (min-width:1200px){
     .mobile-menu{
-        display:none !important
+        display:none !important;
     }
 }
 @media (max-width: 1199px) {
