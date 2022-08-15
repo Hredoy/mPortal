@@ -32,9 +32,6 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <!-- Updates from Subscriptions -->
-                
-                <!-- /Updates from Subscriptions -->
                 <!-- Featured Videos -->
                 <div class="content-block head-div">
                     <div class="cb-header">
@@ -61,13 +58,11 @@
                                     </ul>
                                   </div>
                             </div>
-                            
                         </div>
                     </div>
                     <div class="cb-content videolist">
                         <div class="row">
                             <?php $__empty_1 = true; $__currentLoopData = $uploads->where('featured', 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
@@ -88,13 +83,14 @@
                                              <?php endif; ?>
                                         
                                         <?php endif; ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
-                                    <p><strong>No File Available</strong></p>
+                                    <p><strong>No Video Available for this Region</strong></p>
                                 </div>
                             </div>
                             <?php endif; ?>
@@ -115,7 +111,6 @@
                                         </a>
                                     </li>
                                 </ul>
-                                
                             </div>
                         </div>
                     </div>
@@ -143,23 +138,6 @@
                 </div>
                 <?php endif; ?>
                 <!-- /Featured Videos -->
-
-                <!-- New Videos in Current Region -->
-                
-                <!-- /New Videos in Current Region -->
-
-                <!-- Popular Playlists -->
-                
-                <!-- /Popular Playlists -->
-
-                <!-- Popular Channels -->
-                
-                <!-- /Popular Channels -->
-
-                <!-- pagination -->
-                
-                <!-- /pagination -->
-
             </div>
         </div>
     </div>
