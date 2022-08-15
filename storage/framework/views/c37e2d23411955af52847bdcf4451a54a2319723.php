@@ -80,8 +80,15 @@
                                         <?php else: ?>
                                             <?php if(!$item->likes()->where('user_id', Auth::id())->first() ): ?>
                                                 <a href="<?php echo e(Route('like', $item->id)); ?>" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
-                                             <?php endif; ?>
-                                        
+                                            <?php endif; ?>
+                                            <div class="pull-right">
+                                                <?php if( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() ): ?>
+                                                <a href="<?php echo e(Route('like', $item->id)); ?>" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                                <?php else: ?>
+                                                    <a href="<?php echo e(Route('unlike', $item->id)); ?>" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                                                <?php endif; ?>
+                                                <small> <?php echo e($item->likes->count('count')); ?> Likes</small>
+                                            </div>
                                         <?php endif; ?>
                                         </div>
                                     </div>

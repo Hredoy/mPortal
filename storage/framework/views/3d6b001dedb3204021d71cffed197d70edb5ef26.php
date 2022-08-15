@@ -87,7 +87,7 @@ $countries = Countries::getList('en', 'json');
         <div class="row">
             <div class="col-lg-12">
                 <div class="ls_mb-20">
-                    
+                    <img src="<?php echo e($settings->logo); ?>" alt="<?php echo e($settings->app_name); ?>"/>
                 </div>
             </div>
         </div>

@@ -86,4 +86,5 @@
    <?php echo $__env->yieldPushContent('custom-script'); ?>
    <?php echo $__env->yieldContent('footer_scripts'); ?>
 </body>
-</html><?php /**PATH D:\laragon\www\2spiceart\resources\views/backend/layout/app.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH D:\laragon\www\2spiceart\resources\views/backend/layout/app.blade.php ENDPATH**/ ?>

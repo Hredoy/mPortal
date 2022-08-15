@@ -9,7 +9,7 @@
                 <a href="<?php echo e(route('home')); ?>" class="header-logo">
                    <img src="<?php echo e($settings->logo); ?>" class="img-fluid rounded-normal" alt="">
                    <div class="logo-title">
-                      <span class="text-primary text-uppercase"><?php echo e(($settings->app_name)? $settings->app_name : config('app_name')); ?></span>
+                      <span class="text-primary text-uppercase"><?php echo e(($settings->app_name)? $settings->app_name : config('app.name')); ?></span>
                    </div>
                 </a>
              </div>
