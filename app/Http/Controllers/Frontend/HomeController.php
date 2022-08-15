@@ -80,22 +80,34 @@ class HomeController extends Controller
     public function getLatest()
     {
         $upload = Upload::whereStatus(1)->orderBy('id','DESC')->get();
+        $others = null;
+        if(count($upload) < 20){
+            $others = Upload::latest()->paginate(20);
+        }
         $likeCheck = Like::where('user_id',Auth::id())->first();
-        return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck]);
+        return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck, 'others'=> $others]);
     }
     public function getView()
     {
         $upload = Upload::whereStatus(1)->orderBy('view','DESC')->get();
+        $others = null;
+        if(count($upload) < 20){
+            $others = Upload::latest()->paginate(20);
+        }
         $likeCheck = Like::where('user_id',Auth::id())->first();
-        return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck]);
+        return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck, 'others'=> $others]);
     }
     public function getLike()
     {
         $upload = Upload::with(['likes' => function ($q){
             $q->orderBy('count', 'DESC');
         }])->get();
+        $others = null;
+        if(count($upload) < 20){
+            $others = Upload::latest()->paginate(20);
+        }
         // $upload = Upload::with('likes')->get()->sortByDesc('likes.count');
         $likeCheck = Like::where('user_id',Auth::id())->first();
-        return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck]);
+        return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck, 'others'=> $others]);
     }
 }

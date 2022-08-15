@@ -54,16 +54,21 @@
 
                             <div><a href="#"><?php echo e($upload->user->name); ?></a> . <?php echo e(App\Models\Upload::where('user_id', $upload->user_id)->count()); ?> Videos</div>
                             <div class="c-sub hidden-xs">
-                                <?php if(!$followCheck): ?>
-                                <a  href="<?php echo e(Route("public.follow", $upload->user_id)); ?>" class="c-f">
-                                    Follow
-                                </a>
-                                <?php else: ?>
-                                <a  href="<?php echo e(Route("public.unfollow", $upload->user_id)); ?>" class="c-f">
-                                    Unfollow
-                                </a>
-
-                                <?php endif; ?>
+                               <?php if($upload->user_id == Auth::id()): ?>
+                               <button disabled class="c-f">
+                                Follow
+                            </button>
+                               <?php else: ?>
+                               <?php if(!$followCheck): ?>
+                               <a  href="<?php echo e(Route("public.follow", $upload->user_id)); ?>" class="c-f">
+                                   Follow
+                               </a>
+                               <?php else: ?>
+                               <a  href="<?php echo e(Route("public.unfollow", $upload->user_id)); ?>" class="c-f">
+                                   Unfollow
+                               </a>
+                               <?php endif; ?>
+                               <?php endif; ?>
                                 <div class="c-s">
                                     <?php echo e($upload->user->followers()->get()->count()); ?>
 

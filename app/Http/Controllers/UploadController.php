@@ -136,9 +136,7 @@ class UploadController extends Controller
      * @param  \App\Models\VideoManagement  $videoManagement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-
+    public function update(Request $request, $id){
 
         $request->validate([
             'name' => 'required',
@@ -152,16 +150,9 @@ class UploadController extends Controller
         $upload = Upload::findOrFail($id);
 
         $input = $request->all();
-
-<<<<<<< HEAD
-          $newFileName = '';
-          if ($request->hasFile('thumbnail_image')) {
-            if (file_exists($upload->thumbnail_image)) {
-=======
         $newFileName = '';
         if ($request->hasFile('thumbnail_image')) {
             if (file_exists(public_path($upload->thumbnail_image))) {
->>>>>>> bad94b7667e7068265413851e6a874f29378e408
                 unlink(public_path($upload->thumbnail_image));
             }
             $fileName = $request->file('thumbnail_image')->getClientOriginalExtension();
