@@ -3,6 +3,12 @@
     <?php echo $__env->make('frontend.partials.second_navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('main_section'); ?>
+
+<?php
+    use Monarobase\CountryList\CountryListl;
+    $countries = Countries::getList('en', 'json');
+?>
+
 <div class="content-wrapper">
     
     <div class="ls_banner ls_d-flex ls_align-center" style="background-image: url(<?php echo e(asset('assets/frontend/images/banner.jpg')); ?>);">
@@ -29,6 +35,38 @@
         </div>
     </div>
 
+    <div class="ls_banner-card">
+        <div class="container ls_bg-dark ls_py-20">
+            <div class="row ls_d-flex ls_align-center">
+                <div class="col-xs-6">
+                    <div class="ls_text-white ls_d-flex ls_align-center ls_d-block-mob">
+                        <img src="<?php echo e(asset('assets/frontend/images/increasing.svg')); ?>" alt="" class="ls_avatar-icon">
+                        <h5>Now Trending</h5>
+                    </div>
+                </div>
+                <div class="col-xs-6 ls_d-flex ls_justify-end">
+                    <div>
+                        <form action="<?php echo e(route('getlocation')); ?>" method="get">
+                            <div class="ls_d-flex ls_align-center">
+                                <label for="forCountry" class="ls_text-white ls_m-0 ls_mr-10">Region</label>
+                                <select class="form-control ls_btn-select " name="country" style="padding: 0;" id="forCountry"
+                                    onchange="this.form.submit()">
+                                    <option value="">All</option>
+                                    <?php $__currentLoopData = json_decode($countries); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($val); ?>"
+                                            <?php if(getLocation() && $val == getLocation()): ?> selected <?php endif; ?>><?php echo e($val); ?>
+
+                                        </option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -36,21 +74,20 @@
                 <div class="content-block head-div">
                     <div class="cb-header">
                         <div class="row">
-                            <div class="col-lg-10 col-sm-10 col-xs-8">
+                            <div class="col-xs-12 ls_d-flex ls_align-center ls_justify-between">
                                 <ul class="list-inline">
                                     <li>
-                                        <a href="#" class="color-active">
+                                        <a href="#" class="ls_color-primary">
                                             <span class="visible-xs">Featured</span>
                                             <span class="hidden-xs">Featured Videos</span>
                                         </a>
                                     </li>
                                 </ul>
                                 <div class="btn-group pull-right">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      <span class="glyphicon glyphicon-filter"></span>
-                                      <span class="sr-only">Filters</span>
+                                    <a href="javascript:void();" class="btn dropdown-toggle ls_color-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <span>Sort By</span>
                                       <span class="caret"></span>
-                                    </button>
+                                    </a>
                                     <ul class="dropdown-menu">
                                       <li><a href="<?php echo e(Route("home.latest")); ?>">Latest</a></li>
                                       <li><a href="<?php echo e(Route("home.view")); ?>">Mostly View</a></li>
@@ -66,11 +103,14 @@
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><img src="<?php echo e(asset($item->thumbnail_image)); ?>" alt="" width="100%" height="215px"></a>
-                                        <div class="time">3:50</div>
+                                        <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><img src="<?php echo e(asset($item->thumbnail_image)); ?>" alt="" width="100%" height="215px" class="ls_obj-cover"></a>
+                                        <div class="time"><?php echo e($item->upload_duration); ?></div>
                                     </div>
                                     <div class="v-desc">
-                                        <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><?php echo e($item->name); ?></a>
+                                        <a href="<?php echo e(route('singleVideo', $item->id)); ?>">
+                                            <?php echo e(substr($item->name,0, 50)."..."); ?>
+
+                                        </a>
                                     </div>
                                     <div class="v-views">
                                         <?php echo e($item->view); ?> views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
@@ -81,14 +121,7 @@
                                             <?php if(!$item->likes()->where('user_id', Auth::id())->first() ): ?>
                                                 <a href="<?php echo e(Route('like', $item->id)); ?>" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
                                             <?php endif; ?>
-                                            <div class="pull-right">
-                                                <?php if( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() ): ?>
-                                                <a href="<?php echo e(Route('like', $item->id)); ?>" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
-                                                <?php else: ?>
-                                                    <a href="<?php echo e(Route('unlike', $item->id)); ?>" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
-                                                <?php endif; ?>
-                                                <small> <?php echo e($item->likes->count('count')); ?> Likes</small>
-                                            </div>
+                                           
                                         <?php endif; ?>
                                         </div>
                                     </div>
@@ -127,11 +160,14 @@
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><img src="<?php echo e(asset($item->thumbnail_image)); ?>" alt="" width="100%" height="215px"></a>
-                                        <div class="time">3:50</div>
+                                        <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><img src="<?php echo e(asset($item->thumbnail_image)); ?>" alt="" width="100%" height="215px" class="ls_obj-cover"></a>
+                                        <div class="time"><?php echo e($item->upload_duration); ?></div>
                                     </div>
                                     <div class="v-desc">
-                                        <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><?php echo e($item->name); ?></a>
+                                        <a href="<?php echo e(route('singleVideo', $item->id)); ?>">
+                                            <?php echo e(substr($item->name,0, 50)."..."); ?>
+
+                                        </a>
                                     </div>
                                     <div class="v-views">
                                         <?php echo e($item->view); ?> views. <span class="v-percent"><span class="v-circle"></span> 78%</span>

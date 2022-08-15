@@ -53,8 +53,7 @@
                         </div>
                     </div>
                 </form>
-                <div id="searchResultDiv" style="position: absolute;z-index:1; width:95%">
-                </div>
+                
             </div>
             <dv class="col-lg-2 col-sm-4 hidden-xs">
                 <div class="avatar pull-left">
@@ -166,7 +165,7 @@
 
             <!-- middle area  -->
             <div class="col-xs-4">
-                <form action="<?php echo e(route('search')); ?>" method="get">
+                <form action="<?php echo e(route('search')); ?>" method="get" class="ls_d-none-mob">
                     <div class="topsearch ls_m-0">
                         <i class="cv cvicon-cv-cancel topsearch-close"></i>
                         <div class="input-group">
@@ -181,9 +180,10 @@
                     </div>
                 </form>
                 <div id="searchResultDiv" style="position: absolute;z-index:1; width:95%">
+
                 </div>
             </div>
-            
+
             <!-- right area  -->
             <div class="col-xs-3 ls_d-flex ls_justify-end">
                 <div class="ls_d-flex ls_align-center ls_d-md-none">
@@ -225,7 +225,7 @@
                         </a>
                         <?php endif; ?>
                     </ul>
-                    
+
                     <div class="avatar ls_p-0">
                         <?php if(auth()->guard()->guest()): ?>
                             <img src="<?php echo e(asset('assets/frontend/images/user.svg')); ?>" alt="avatar" class="ls_avatar-icon" />
@@ -244,10 +244,11 @@
                     </a>
                     <?php endif; ?>
                 </div>
-                
+
                 <a href="<?php echo e(route('home')); ?>" class="btn-menu-toggle ls_m-0 ls_d-none ls_d-md-block ls_text-white"><i class="cv cvicon-cv-menu"></i></a>
             </div>
 
         </div>
     </div>
-</header><?php /**PATH D:\laragon\www\2spiceart\resources\views/frontend/partials/navbar.blade.php ENDPATH**/ ?>
+</header>
+<?php /**PATH D:\laragon\www\2spiceart\resources\views/frontend/partials/navbar.blade.php ENDPATH**/ ?>

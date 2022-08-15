@@ -112,21 +112,14 @@ $countries = Countries::getList('en', 'json');
                 </nav>
             </div>
 
-            <div class="col-lg-2 ls_d-flex ls_justify-center">
+            <div class="col-lg-2">
                 <!-- Small button group -->
-                <form action="<?php echo e(route('getlocation')); ?>" method="get">
-                    <label for="forCountry" class="ls_text-white">Region</label>
-                    <select class="form-control ls_btn-select " name="country" style="padding: 0;" id="forCountry"
-                        onchange="this.form.submit()">
-                        <option value="">All</option>
-                        <?php $__currentLoopData = json_decode($countries); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($val); ?>"
-                                <?php if(getLocation() && $val == getLocation()): ?> selected <?php endif; ?>><?php echo e($val); ?>
-
-                            </option>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </select>
-                </form>
+                <div>
+                    <a href="#"><img src="<?php echo e(asset('assets/frontend/images/facebook.svg')); ?>" alt="facebook"></a>
+                    <a href="#"><img src="<?php echo e(asset('assets/frontend/images/twitter.svg')); ?>" alt="facebook"></a>
+                    <a href="#"><img src="<?php echo e(asset('assets/frontend/images/instagram.svg')); ?>" alt="facebook"></a>
+                    <a href="#"><img src="<?php echo e(asset('assets/frontend/images/youtube.svg')); ?>" alt="facebook"></a>
+                </div>
             </div>
         </div>
     </div>
