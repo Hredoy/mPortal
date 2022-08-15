@@ -24,6 +24,9 @@
 .ls_justify-end {
     justify-content: end;
 }
+.ls_justify-between {
+    justify-content: space-between;
+}
 .ls_align-center {
     align-items: center;
 }

@@ -70,24 +70,23 @@
         <div class="row">
             <div class="col-lg-12">
                 <!-- Featured Videos -->
-                <div class="content-block head-div" style="display:none;">
+                <div class="content-block head-div">
                     <div class="cb-header">
                         <div class="row">
-                            <div class="col-lg-10 col-sm-10 col-xs-8">
+                            <div class="col-xs-12 ls_d-flex ls_align-center ls_justify-between">
                                 <ul class="list-inline">
                                     <li>
-                                        <a href="#" class="color-active">
+                                        <a href="#" class="ls_color-primary">
                                             <span class="visible-xs">Featured</span>
                                             <span class="hidden-xs">Featured Videos</span>
                                         </a>
                                     </li>
                                 </ul>
                                 <div class="btn-group pull-right">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      <span class="glyphicon glyphicon-filter"></span>
-                                      <span class="sr-only">Filters</span>
+                                    <a href="javascript:void();" class="btn dropdown-toggle ls_color-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <span>Sort By</span>
                                       <span class="caret"></span>
-                                    </button>
+                                    </a>
                                     <ul class="dropdown-menu">
                                       <li><a href="{{Route("home.latest")}}">Latest</a></li>
                                       <li><a href="{{Route("home.view")}}">Mostly View</a></li>
@@ -152,8 +151,8 @@
                                 <ul class="list-inline">
                                     <li>
                                         <a href="#" class="color-active">
-                                            <!-- <span class="visible-xs">Others</span> -->
-                                            <!-- <span class="hidden-xs">Others Videos</span> -->
+                                            <span class="visible-xs">Others</span>
+                                            <span class="hidden-xs">Others Videos</span>
                                         </a>
                                     </li>
                                 </ul>
