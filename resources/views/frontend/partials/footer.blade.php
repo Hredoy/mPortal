@@ -3,7 +3,8 @@ use Monarobase\CountryList\CountryListl;
 $countries = Countries::getList('en', 'json');
 
 @endphp
-<footer>
+<footer class="ls_bg-dark ls_py-40">
+    <div style="display: none">
     <div class="container-fluid">
         <div class="row">
             <div class="container padding-def">
@@ -76,6 +77,54 @@ $countries = Countries::getList('en', 'json');
                     </div>
                     <div class="delimiter visible-xs"></div>
                 </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ls_mb-20">
+                    <img src="{{ $settings->logo }}" alt="{{ $settings->app_name }}"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div>
+                    <p class="ls_text-white">I had a good experience while using this app, what fascinated me was the live tracking feature There are many variations of passages of Lorem Ipsum available, but the majority.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <nav class="ls_footer-nav">
+                    <ul>
+                        <li><a href="#">Terms Of Use</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Account</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Media Center</a></li>
+                        <li><a href="#">Cookie Preferences</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="col-lg-2 ls_d-flex ls_justify-center">
+                <!-- Small button group -->
+                <form action="{{ route('getlocation') }}" method="get">
+                    <label for="forCountry" class="ls_text-white">Region</label>
+                    <select class="form-control ls_btn-select " name="country" style="padding: 0;" id="forCountry"
+                        onchange="this.form.submit()">
+                        <option value="">All</option>
+                        @foreach (json_decode($countries) as $key => $val)
+                            <option value="{{ $val }}"
+                                @if (getLocation() && $val == getLocation()) selected @endif>{{ $val }}
+                            </option>
+                        @endforeach
+                    </select>
+                </form>
             </div>
         </div>
     </div>

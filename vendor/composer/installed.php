@@ -1,12 +1,12 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => 'dev-develop',
-    'version' => 'dev-develop',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => 'b9d321f2185cebe16065a44d3264b1c8a4d22e63',
+    'reference' => '1e93ee2cbd2b0efac978bb3085097d6c0eaf9075',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -530,15 +530,6 @@
       ),
       'reference' => '04be355f8d6734c826045d02a1079ad658322dad',
     ),
-    'james-heinrich/getid3' => 
-    array (
-      'pretty_version' => 'v1.9.21',
-      'version' => '1.9.21.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '36f5dabb1325415a4b07a401113f8db2eb81eca1',
-    ),
     'jaybizzle/crawler-detect' => 
     array (
       'pretty_version' => 'v1.2.111',
@@ -665,12 +656,12 @@
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => 'dev-develop',
-      'version' => 'dev-develop',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => 'b9d321f2185cebe16065a44d3264b1c8a4d22e63',
+      'reference' => '1e93ee2cbd2b0efac978bb3085097d6c0eaf9075',
     ),
     'laravel/serializable-closure' => 
     array (
@@ -761,15 +752,6 @@
       array (
       ),
       'reference' => 'd6365b901b5c287dd41f143033315e2f777e1167',
-    ),
-    'livewire/livewire' => 
-    array (
-      'pretty_version' => 'v2.10.7',
-      'version' => '2.10.7.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'fa0441bf82f1674beecb3a8ad8a4ae428736ed18',
     ),
     'maximebf/debugbar' => 
     array (
