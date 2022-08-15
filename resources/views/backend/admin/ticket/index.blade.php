@@ -17,10 +17,18 @@
                     </div>
                     <div class="iq-card-body">
                         <div id="table" class="table-editable">
-                            <span class="table-add float-right mb-3 mr-2">
-                                <a href="{{Route('public.upload')}}" class="btn btn-sm iq-bg-success"><i class="ri-add-fill"><span class="pl-1">Add New</span></i>
-                                </a>
-                            </span>
+                            <form class="form-inline">
+                                <div class="form-group mb-2">
+                                    <label for="exampleFormControlSelect1" class="mr-2">Filter Ticket:  </label>
+                                    <select class="form-control" name="status" id="exampleFormControlSelect1">
+                                        <option value="pending">pending</option>
+                                        <option value="open">open</option>
+                                        <option value="completed">completed</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary ml-2">Filter</button>
+                            </form>
+
                             <table class="table table-bordered table-responsive-md table-striped text-center">
                                 <thead>
                                     <tr>
@@ -39,7 +47,15 @@
                                         <td>{{$ticket->ticket_number}}</td>
                                         <td>{{$ticket->title}}</td>
                                         <td>{{$ticket->created_at->format('g:i A | d M Y')}}</td>
-                                        <td>{{$ticket->status}}</td>
+                                        <td>
+                                            @if ($ticket->status == 'pending')
+                                            <span class="badge badge-primary">Pending</span>
+                                            @elseif($ticket->status == 'open')
+                                            <span class="badge badge-warning">Open</span>
+                                            @elseif ($ticket->status == 'completed')
+                                            <span class="badge badge-success">Completed</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{route('ticket.show', $ticket->id)}}" class="btn btn-primary">View</a>
                                         </td>

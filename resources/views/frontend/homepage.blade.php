@@ -3,14 +3,8 @@
     @include('frontend.partials.second_navbar')
 @endsection
 @section('main_section')
-
-@php
-    use Monarobase\CountryList\CountryListl;
-    $countries = Countries::getList('en', 'json');
-@endphp
-
 <div class="content-wrapper">
-    
+
     <div class="ls_banner ls_d-flex ls_align-center" style="background-image: url({{ asset('assets/frontend/images/banner.jpg') }});">
         <div class="ls_overlay"></div>
         <div class="container">
@@ -52,7 +46,7 @@
                                 <select class="form-control ls_btn-select " name="country" style="padding: 0;" id="forCountry"
                                     onchange="this.form.submit()">
                                     <option value="">All</option>
-                                    @foreach (json_decode($countries) as $key => $val)
+                                    @foreach ($countries as $val)
                                         <option value="{{ $val }}"
                                             @if (getLocation() && $val == getLocation()) selected @endif>{{ $val }}
                                         </option>

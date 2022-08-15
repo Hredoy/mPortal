@@ -25,9 +25,10 @@ class HomeController extends Controller
         if(count($upload) < 20){
             $others = Upload::latest()->paginate(20);
         }
+        $countries = Upload::whereStatus(1)->pluck('region');
 
         $likeCheck = Like::where('user_id',Auth::id())->first();
-        return view('frontend.homepage', ['uploads'=>$upload, 'others'=> $others, "likeChecks"=> $likeCheck]);
+        return view('frontend.homepage', ['uploads'=>$upload, 'others'=> $others, "likeChecks"=> $likeCheck, 'countries'=> $countries]);
     }
     public function music(){
         $country = getLocation(); // Get location fron Helper fuction.
