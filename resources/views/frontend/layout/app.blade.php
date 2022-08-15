@@ -64,11 +64,13 @@
             });
 
             $(document).on('keyup', 'input[name="keyword"]', function() {
-                    search();
+                    let keyword = $(this).val();
+                    search(keyword);
             });
 
-            function search() {
-                let keyword = $('input[name="keyword"]').val();
+            function search(keyword) {
+                // let keyword = $('input[name="keyword"]').val();
+                console.log(keyword)
                 if (keyword.length > 0) {
                     $('#searchResultDiv').css({'display':'block'})
                     $.ajax({
@@ -79,6 +81,7 @@
                         //     )
                         // }
                         , success: function(data) {
+                            console.log(data)
                             $('#searchResultDiv').empty()
                             $('#searchResultDiv').append(data)
                         }

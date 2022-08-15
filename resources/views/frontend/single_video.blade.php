@@ -29,6 +29,61 @@
         margin: .5px;
         font-size: 7.5px;
     }
+    /* Custon autoplay swich checkbox */
+    .custom-control.teleport-switch {
+  --color: #4cd964;
+  padding-left: 0; }
+  .custom-control.teleport-switch .teleport-switch-control-input {
+    display: none; }
+    .custom-control.teleport-switch .teleport-switch-control-input:checked ~ .teleport-switch-control-indicator {
+      border-color: var(--color); }
+      .custom-control.teleport-switch .teleport-switch-control-input:checked ~ .teleport-switch-control-indicator::after {
+        left: -14px; }
+      .custom-control.teleport-switch .teleport-switch-control-input:checked ~ .teleport-switch-control-indicator::before {
+        right: 2px;
+        background-color: var(--color); }
+    .custom-control.teleport-switch .teleport-switch-control-input:disabled ~ .teleport-switch-control-indicator {
+      opacity: .4; }
+  .custom-control.teleport-switch .teleport-switch-control-indicator {
+    display: inline-block;
+    position: relative;
+    margin: 0 10px;
+    top: 4px;
+    width: 32px;
+    height: 20px;
+    background: #fff;
+    border-radius: 16px;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    border: 2px solid #ccc;
+    overflow: hidden; }
+    .custom-control.teleport-switch .teleport-switch-control-indicator::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      -webkit-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s;
+      top: 2px;
+      left: 2px;
+      background: #ccc; }
+    .custom-control.teleport-switch .teleport-switch-control-indicator::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      -webkit-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s;
+      top: 2px;
+      right: -14px;
+      background: #ccc; }
 </style>
 @endpush
 @section('main_section')
@@ -384,8 +439,13 @@
                     <div class="left">
                         <a href="#">Up Next</a>
                     </div>
-                    <div class="right">
-                        <a href="#">Autoplay <i class="cv cvicon-cv-btn-off"></i></a>
+                    <div class="right" id="autoplayDiv">
+                        {{-- <a href="#">Autoplay <i class="cv cvicon-cv-btn-off"></i></a> --}}
+                        <label class="custom-control teleport-switch">
+                            <span class="teleport-switch-control-description">Auto Play</span>
+                            <input type="checkbox" name="autoplay" class="teleport-switch-control-input" @if(auth()->user()->auto_play) checked @endif>
+                            <span class="teleport-switch-control-indicator"></span>
+                        </label>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -651,3 +711,22 @@
     </div>
 </div>
 @endsection
+@push('custom_script')
+<script>
+    $(document).ready(function(){
+        $(document).on('change', 'input[name="autoplay"]', function(){
+            // alert('welcome')
+            $.ajax({
+                    url: '/ajax/autoplay'
+                    , type: 'GET'
+                    , success: function(data) {
+                        console.log(data);
+                    }
+                    , error: function(error) {
+                        console.log(error)
+                    }
+                })
+        });
+    });
+</script>
+@endpush
