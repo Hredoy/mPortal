@@ -1,3 +1,8 @@
+@php
+use App\Models\Ticket;
+$totalTickets = Ticket::where('status', 'pending')->get()->count();
+echo gettype($totalTickets);
+@endphp
 <div class="iq-sidebar">
     <div class="iq-sidebar-logo d-flex justify-content-between">
         <a href="{{route('home')}}" class="header-logo">
@@ -55,7 +60,12 @@
                     <a href="{{Route('site.settings')}}" class="iq-waves-effect"><i class="las la-tools"></i><span>Site Settings</span></a>
                 </li>
                 <li class="{{ (Request::is('roles') || Request::is('permissions') || Request::is('users*'))? 'active active-menu' : null }}">
-                    <a href="{{Route('ticket.index')}}" class="iq-waves-effect"><i class="las la-tools"></i><span>Tickets</span></a>
+                    <a href="{{Route('ticket.index')}}" class="iq-waves-effect"><i class="las la-tools"></i>
+                        <span>Tickets</span>
+                        @if($totalTickets)
+                            <span class="iq-arrow-right badge badge-primary p-1">{{$totalTickets}}</span>
+                        @endif
+                    </a>
                 </li>
                 @endrole
                 <li class="{{ Request::is('admin/upload')? 'active' : null }}">

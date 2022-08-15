@@ -284,3 +284,4 @@ Route::redirect('/php', '/phpinfo', 301);
 Route::get('/location/get-location', 'App\Http\Controllers\Frontend\LocationController@getLocation')->name('getlocation');
 Route::get('/search', 'App\Http\Controllers\Frontend\SearchController@index')->name('search');
 Route::get('/ajax/search/{keyword}', 'App\Http\Controllers\Frontend\SearchController@ajaxSearch')->name('search.ajax');
+Route::get('/ajax/autoplay', 'App\Http\Controllers\Frontend\HomeController@autoplayChange')->name('autoplay');

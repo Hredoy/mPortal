@@ -98,4 +98,11 @@ class HomeController extends Controller
         $likeCheck = Like::where('user_id',Auth::id())->first();
         return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck]);
     }
+    public function autoplayChange(Request $request)
+    {
+        $user = Auth::user();
+        $user->auto_play = !$user->auto_play;
+        $user->save();
+
+    }
 }

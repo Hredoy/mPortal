@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->ipAddress('admin_ip_address')->nullable();
             $table->ipAddress('updated_ip_address')->nullable();
             $table->ipAddress('deleted_ip_address')->nullable();
+            $table->boolean('auto_play')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

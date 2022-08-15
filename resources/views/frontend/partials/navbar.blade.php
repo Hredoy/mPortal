@@ -52,8 +52,8 @@
                         </div>
                     </div>
                 </form>
-                <div id="searchResultDiv" style="position: absolute;z-index:1; width:95%">
-                </div>
+                {{-- <div id="searchResultDiv" style="position: absolute;z-index:1; width:95%">
+                </div> --}}
             </div>
             <dv class="col-lg-2 col-sm-4 hidden-xs">
                 <div class="avatar pull-left">
@@ -177,9 +177,10 @@
                     </div>
                 </form>
                 <div id="searchResultDiv" style="position: absolute;z-index:1; width:95%">
+
                 </div>
             </div>
-            
+
             <!-- right area  -->
             <div class="col-xs-3 ls_d-flex ls_justify-end">
                 <div class="ls_d-flex ls_align-center ls_d-md-none">
@@ -220,7 +221,7 @@
                         </a>
                         @endauth
                     </ul>
-                    
+
                     <div class="avatar ls_p-0">
                         @guest
                             <img src="{{ asset('assets/frontend/images/user.svg') }}" alt="avatar" class="ls_avatar-icon" />
@@ -239,7 +240,7 @@
                     </a>
                     @endguest
                 </div>
-                
+
                 <a href="{{ route('home') }}" class="btn-menu-toggle ls_m-0 ls_d-none ls_d-md-block ls_text-white"><i class="cv cvicon-cv-menu"></i></a>
             </div>
 
