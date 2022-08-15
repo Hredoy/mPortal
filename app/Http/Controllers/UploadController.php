@@ -61,6 +61,7 @@ class UploadController extends Controller
                 $request->thumbnail_image->move($uploadPath, $newFileName);
             }
         }
+        $uploadFileName = '';
         if ($request->hasFile('upload')) {
             $upload_extension = $request->file('upload')->getClientOriginalExtension();
             if ($upload_extension == 'mp3') {
