@@ -443,7 +443,7 @@
                         {{-- <a href="#">Autoplay <i class="cv cvicon-cv-btn-off"></i></a> --}}
                         <label class="custom-control teleport-switch">
                             <span class="teleport-switch-control-description">Auto Play</span>
-                            <input type="checkbox" name="autoplay" class="teleport-switch-control-input" @if(auth()->user()->auto_play) checked @endif>
+                            {{-- <input type="checkbox" name="autoplay" class="teleport-switch-control-input" @if(auth()->user()->auto_play) checked @endif> --}}
                             <span class="teleport-switch-control-indicator"></span>
                         </label>
                     </div>
