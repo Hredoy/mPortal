@@ -11,100 +11,27 @@
                 <div class="iq-card">
                     <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                            <h4 class="card-title">Ticket Messaging</h4>
+                            <h4 class="card-title">Ticket</h4>
                             <p>#{{$ticket->ticket_number}}</p>
+                        </div>
+                        <div class="iq-header-title justify-content-between">
+                            <form action="{{route('ticket.update', $ticket->id)}}" method="POST" >
+                                @csrf
+                                @method('put')
+                                <span> Status:</span>
+                                <select name="status" id="" class="form-control" onchange="this.form.submit()">
+                                    <option value="pending" disabled>Pending</option>
+                                    <option value="open" @if($ticket->status == 'open') selected @endif>Open</option>
+                                    <option value="completed"  @if($ticket->status == 'completed') selected @endif>Completed</option>
+                                </select>
+                            </form>
                         </div>
 
                     </div>
                     <div class="iq-card-body">
+                        @if ($ticket->status == 'open' || $ticket->status == 'completed')
                         <div class="messaging">
                             <div class="inbox_msg">
-                                {{-- <div class="inbox_people">
-                                    <div class="headind_srch">
-                                        <div class="recent_heading">
-                                            <h4>Recent</h4>
-                                        </div>
-                                        <div class="srch_bar">
-                                            <div class="stylish-input-group">
-                                                <input type="text" class="search-bar" placeholder="Search">
-                                                <span class="input-group-addon">
-                                                    <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                                                </span> </div>
-                                        </div>
-                                    </div>
-                                    <div class="inbox_chat">
-                                        <div class="chat_list active_chat">
-                                            <div class="chat_people">
-                                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                                <div class="chat_ib">
-                                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                    <p>Test, which is a new approach to have all solutions
-                                                        astrology under one roof.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat_list">
-                                            <div class="chat_people">
-                                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                                <div class="chat_ib">
-                                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                    <p>Test, which is a new approach to have all solutions
-                                                        astrology under one roof.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat_list">
-                                            <div class="chat_people">
-                                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                                <div class="chat_ib">
-                                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                    <p>Test, which is a new approach to have all solutions
-                                                        astrology under one roof.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat_list">
-                                            <div class="chat_people">
-                                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                                <div class="chat_ib">
-                                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                    <p>Test, which is a new approach to have all solutions
-                                                        astrology under one roof.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat_list">
-                                            <div class="chat_people">
-                                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                                <div class="chat_ib">
-                                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                    <p>Test, which is a new approach to have all solutions
-                                                        astrology under one roof.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat_list">
-                                            <div class="chat_people">
-                                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                                <div class="chat_ib">
-                                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                    <p>Test, which is a new approach to have all solutions
-                                                        astrology under one roof.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat_list">
-                                            <div class="chat_people">
-                                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                                <div class="chat_ib">
-                                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                    <p>Test, which is a new approach to have all solutions
-                                                        astrology under one roof.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
                                 <div class="mesgs">
                                     <div class="msg_history">
                                         @foreach ($ticket->replies as $reply)
@@ -114,7 +41,7 @@
                                             <div class="received_msg">
                                                 <div class="received_withd_msg">
                                                     <p>{{$reply->message}}</p>
-                                                    <span class="time_date"> 11:01 AM | June 9</span>
+                                                    <span class="time_date"> {{$reply->created_at->format('g:i A | d M Y')}} </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,13 +51,14 @@
                                         <div class="outgoing_msg">
                                             <div class="sent_msg">
                                                 <p>{{$reply->message}}</p>
-                                                <span class="time_date"> 11:01 AM | June 9</span>
+                                                <span class="time_date"> {{$reply->created_at->format('g:i A | d M Y')}} </span>
                                             </div>
                                         </div>
                                         @endif
                                         @endforeach
                                     </div>
                                     <div class="type_msg">
+                                        @if ($ticket->status == 'open')
                                         <form action="{{route('adminticket.reply.store', $ticket->id)}}" method="post">
                                             @csrf
                                             <div class="input_msg_write">
@@ -138,10 +66,50 @@
                                                 <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                                             </div>
                                         </form>
+                                        @elseif($ticket->status == 'completed')
+                                            <p>Ticket has been closed.</p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        @elseif($ticket->status == 'pending')
+                        <form action="{{route('ticket.update', $ticket->id)}}" method="POST">
+                            @csrf
+                            @method('put')
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Ticket ID</td>
+                                        <td>: {{$ticket->ticket_number}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>User</td>
+                                        <td>: {{$ticket->user->name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td>
+                                            <select name="status" id="" class="form-control">
+                                                <option value="pending">Pending</option>
+                                                <option value="open">Open</option>
+                                                <option value="completed">Completed</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
+                        @endif
+
                     </div>
                 </div>
             </div>

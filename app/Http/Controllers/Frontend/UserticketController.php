@@ -49,7 +49,7 @@ class UserticketController extends Controller
             'user_id' => Auth::user()->id,
             'title' => $request->title,
             'message' => $request->message,
-            'status' => 'open'
+            'status' => 'pending'
         ];
 
         Ticket::create($data);

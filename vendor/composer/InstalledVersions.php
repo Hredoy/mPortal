@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'b1082eb3e59ac2ff7dac17c9d82bd768ed610e1b',
+    'reference' => 'b9d321f2185cebe16065a44d3264b1c8a4d22e63',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -694,7 +694,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'b1082eb3e59ac2ff7dac17c9d82bd768ed610e1b',
+      'reference' => 'b9d321f2185cebe16065a44d3264b1c8a4d22e63',
     ),
     'laravel/serializable-closure' => 
     array (
@@ -785,6 +785,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'd6365b901b5c287dd41f143033315e2f777e1167',
+    ),
+    'livewire/livewire' => 
+    array (
+      'pretty_version' => 'v2.10.7',
+      'version' => '2.10.7.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'fa0441bf82f1674beecb3a8ad8a4ae428736ed18',
     ),
     'maximebf/debugbar' => 
     array (

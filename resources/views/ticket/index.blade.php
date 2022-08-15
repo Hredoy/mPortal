@@ -28,6 +28,7 @@
                                         <th>T.Number</th>
                                         <th>title</th>
                                         <th>Date</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -37,9 +38,14 @@
                                         <td>1</td>
                                         <td>{{$ticket->ticket_number}}</td>
                                         <td>{{$ticket->title}}</td>
-                                        <td>{{$ticket->created_at}}</td>
+                                        <td>{{$ticket->created_at->format('g:i A | d M Y')}}</td>
+                                        <td>{{$ticket->status}}</td>
                                         <td>
-                                            <a href="{{route('user.ticket.show', $ticket->id)}}" class="btn btn-primary">View</a>
+                                            @if ($ticket->status == 'pending')
+                                            <button class="btn btn-primary">Pending</button>
+                                            @else
+                                            <a href="{{route('user.ticket.show', $ticket->id)}}"  class="btn btn-primary">View</a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

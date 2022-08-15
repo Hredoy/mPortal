@@ -48,7 +48,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        $ticket->load('replies');
+        $ticket->load('replies', 'user');
         // return $ticket;
         return view('backend.admin.ticket.inbox', compact('ticket'));
 
@@ -74,7 +74,13 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        //
+        $request->validate([
+            'status' => 'required'
+        ]);
+
+       $ticket->update(['status'=> $request->status]);
+
+       return redirect()->route('ticket.index');
     }
 
     /**

@@ -28,7 +28,7 @@
                                             <div class="received_msg">
                                                 <div class="received_withd_msg">
                                                     <p>{{$reply->message}}</p>
-                                                    <span class="time_date"> 11:01 AM | June 9</span>
+                                                    <span class="time_date"> {{$reply->created_at->format('g:i A | d M Y')}} </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -38,12 +38,13 @@
                                         <div class="outgoing_msg">
                                             <div class="sent_msg">
                                                 <p>{{$reply->message}}</p>
-                                                <span class="time_date"> 11:01 AM | June 9</span>
+                                                <span class="time_date"> {{$reply->created_at->format('g:i A | d M Y')}} </span>
                                             </div>
                                         </div>
                                         @endif
                                         @endforeach
                                     </div>
+                                    @if ($ticket->status == 'open')
                                     <div class="type_msg">
                                         <form action="{{route('user.ticket.reply.store', $ticket->id)}}" method="post">
                                             @csrf
@@ -53,6 +54,11 @@
                                             </div>
                                         </form>
                                     </div>
+                                    @else
+                                    <div>
+                                        <p>Ticket has been closed.</p>
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
