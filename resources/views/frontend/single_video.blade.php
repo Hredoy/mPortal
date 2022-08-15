@@ -54,16 +54,21 @@
 
                             <div><a href="#">{{$upload->user->name}}</a> . {{ App\Models\Upload::where('user_id', $upload->user_id)->count() }} Videos</div>
                             <div class="c-sub hidden-xs">
-                                @if (!$followCheck)
-                                <a  href="{{Route("public.follow", $upload->user_id)}}" class="c-f">
-                                    Follow
-                                </a>
-                                @else
-                                <a  href="{{Route("public.unfollow", $upload->user_id)}}" class="c-f">
-                                    Unfollow
-                                </a>
-
-                                @endif
+                               @if ($upload->user_id == Auth::id())
+                               <button disabled class="c-f">
+                                Follow
+                            </button>
+                               @else
+                               @if (!$followCheck)
+                               <a  href="{{Route("public.follow", $upload->user_id)}}" class="c-f">
+                                   Follow
+                               </a>
+                               @else
+                               <a  href="{{Route("public.unfollow", $upload->user_id)}}" class="c-f">
+                                   Unfollow
+                               </a>
+                               @endif
+                               @endif
                                 <div class="c-s">
                                     {{$upload->user->followers()->get()->count()}}
                                 </div>

@@ -48,14 +48,14 @@
                                     <span class="table-up"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a></span>
                                     <span class="table-down"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a></span>
                                  </td>
-                                 {{-- <td>
-                                    <a  :href="'admin/upload-edit/' +upload.id"
+                                 <td>
+                                    <a  :href="'/admin/upload-edit/' +upload.id"
                                     class="btn btn-light btn-rounded btn-sm px-2 my-0"> Edit  </a>
                                  <span class="table-remove">
-                                    <a  href="{{route('public.upload.destroy',1)}}"
+                                    <a   @click="delUpload(upload.id)"
                                     class="btn btn-primary btn-rounded btn-sm my-0">Remove</a>
                                  </span>
-                              </td> --}}
+                              </td>
                             </tr>
                          </tbody>
 
@@ -69,22 +69,36 @@
  </div>
 
 @endsection
+
 @push('custom-script')
 <script src="{{mix("js/app.js")}}"></script>
 <script>
   const app = new Vue({
  el: '#app',
  data: {
-      uploads:[],
+
+    uploads : [],
 
 
  },
   methods:{
-     alluploads(){
-         axios.get('/api/upload/')
-         .then(({data})=> this.uploads = data)
-         .catch()
-     },
+    alluploads(){
+        axios.get('/api/upload/')
+            .then(({data})=> this.uploads = data)
+            .catch()
+          },
+    delUpload(id){
+    axios.delete('/api/upload/'+id)
+    .then(()=>{
+    this.uploads = this.uploads.filter(upload =>{
+    return uploads.id != id
+    })
+      })
+      .catch(()=> {
+          this.$router.push({name: 'category'})
+      })
+      this.alluploads()
+          }
 
   },
   created() {

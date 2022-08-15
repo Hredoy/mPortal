@@ -40,8 +40,8 @@ class LikeController extends Controller
     }
     public function follow($id)
     {
-        $a = User::find($id);
-        $b = Auth::id();
+        $b = User::find($id);
+        $a = User::find(Auth::id());
        $test = $a->following()->attach($b);
        return redirect()->back()->with('create', 'followed successfully.');
     }
@@ -49,7 +49,7 @@ class LikeController extends Controller
     public function unfollow($id)
     {
         $a = User::find($id);
-        $b = Auth::id();
+        $b = User::find(Auth::id());
        $test = $a->following()->detach($b);
         return redirect()->back()->with('delete', 'Unfollowed successfully.');
     }

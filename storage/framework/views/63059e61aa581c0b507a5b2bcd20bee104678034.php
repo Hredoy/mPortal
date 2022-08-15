@@ -41,7 +41,8 @@
                     </div>
                     <div class="cb-content videolist">
                         <div class="row">
-                            <?php $__currentLoopData = $uploads->where('featured', 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__empty_1 = true; $__currentLoopData = $uploads->where('featured', 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
@@ -54,17 +55,27 @@
                                     <div class="v-views">
                                         <?php echo e($item->view); ?> views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
                                         <div class="pull-right">
-                                            <?php if( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() ): ?>
-                                            <a href="<?php echo e(Route('like', $item->id)); ?>" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                        <?php if($item->user_id == Auth::id()): ?>
+                                            <a href="#" disabled class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                        <?php else: ?>
+                                            <?php if(!$item->likes()->where('user_id', Auth::id())->first() ): ?>
+                                                <a href="<?php echo e(Route('like', $item->id)); ?>" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
                                             <?php else: ?>
-                                            <a href="<?php echo e(Route('unlike', $item->id)); ?>" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                                                <a href="<?php echo e(Route('unlike', $item->id)); ?>" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
                                             <?php endif; ?>
+                                        <?php endif; ?>
                                            <small> <?php echo e($item->likes->count('count')); ?> Likes</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            <div class="col-lg-3 col-sm-6 videoitem mx-2">
+                                <div class="b-video">
+                                    <p><strong>No File Available</strong></p>
+                                </div>
+                            </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

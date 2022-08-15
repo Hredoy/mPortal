@@ -18,6 +18,11 @@ class UploadController extends Controller
     {
         $this->middleware('auth');
     }
+    public function index()
+    {
+        $page_title = 'Create A New Upload';
+        return view('backend.uploads.comedy', compact('page_title'));
+    }
 
 
 

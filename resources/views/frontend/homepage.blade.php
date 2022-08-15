@@ -97,7 +97,8 @@
                     </div>
                     <div class="cb-content videolist">
                         <div class="row">
-                            @foreach ($uploads->where('featured', 1) as $item)
+                            @forelse ($uploads->where('featured', 1) as $item)
+
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
@@ -110,22 +111,27 @@
                                     <div class="v-views">
                                         {{$item->view}} views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
                                         <div class="pull-right">
-                                            @if (!empty($likeChecks))
-                                                @if ( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() )
+                                        @if ($item->user_id == Auth::id())
+                                            <a href="#" disabled class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                        @else
+                                            @if (!$item->likes()->where('user_id', Auth::id())->first() )
                                                 <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
-                                                @else
-                                                <a href="{{Route('unlike', $item->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
-                                                @endif
                                             @else
-                                            <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                                <a href="{{Route('unlike', $item->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
                                             @endif
-                                            
+                                        @endif
                                            <small> {{$item->likes->count('count')}} Likes</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            @empty
+                            <div class="col-lg-3 col-sm-6 videoitem mx-2">
+                                <div class="b-video">
+                                    <p><strong>No File Available</strong></p>
+                                </div>
+                            </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>
