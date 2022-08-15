@@ -21,6 +21,7 @@
     <link href="<?php echo e(asset('assets/frontend/css/style.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('assets/frontend/css/font-awesome.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('assets/frontend/css/font-circle-video.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/frontend/css/ls-custom-style.css')); ?>" rel="stylesheet">
     <?php echo $__env->yieldPushContent('custom_css'); ?>
 
     <!-- font-family: 'Hind', sans-serif; -->
