@@ -19,16 +19,19 @@ class SearchController extends Controller
         }
 
         $upload = Upload::whereStatus(1)
-        ->when($keyword, function ($query, $keyword) {
-            return $query->where('name', 'like', '%' . $keyword . '%');
-        })
-        ->when($country, function ($query, $country) {
-            return $query->where('region', $country);
-        })
-        ->get();
+            ->when($keyword, function ($query, $keyword) {
+                return $query->where('name', 'like', '%' . $keyword . '%')
+                    ->orWhereHas('user', function ($query) use ($keyword) {
+                        $query->where('name', 'like', '%' . $keyword . '%');
+                    });
+            })
+            ->when($country, function ($query, $country) {
+                return $query->where('region', $country);
+            })
+            ->get();
 
-        $likeCheck = Like::where('user_id',Auth::id())->first();
-        return view('frontend.searchpage', ['uploads'=>$upload, "likeChecks"=> $likeCheck]);
+        $likeCheck = Like::where('user_id', Auth::id())->first();
+        return view('frontend.searchpage', ['uploads' => $upload, "likeChecks" => $likeCheck]);
     }
 
 
@@ -37,12 +40,15 @@ class SearchController extends Controller
         $country = getLocation(); // Get location fron Helper fuction.
 
         $upload = Upload::whereStatus(1)->where('name', 'like', '%' . $request->keyword . '%')
-        ->when($country, function ($query, $country) {
-            return $query->where('region', $country);
-        })
-        ->take(7)->get();
+            ->orWhereHas('user', function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->keyword . '%');
+            })
+            ->when($country, function ($query, $country) {
+                return $query->where('region', $country);
+            })
+            ->take(7)->get();
         $keyword = $request->keyword;
 
-        return view('frontend.ajax.searchresult', ['uploads'=> $upload, 'keyword'=>$keyword]);
+        return view('frontend.ajax.searchresult', ['uploads' => $upload, 'keyword' => $keyword]);
     }
 }

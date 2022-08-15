@@ -21,9 +21,13 @@ class HomeController extends Controller
             return $query->where('region', $country);
         })
         ->get();
+        $others = null;
+        if(count($upload) < 20){
+            $others = Upload::latest()->paginate(20);
+        }
 
         $likeCheck = Like::where('user_id',Auth::id())->first();
-        return view('frontend.homepage', ['uploads'=>$upload, "likeChecks"=> $likeCheck]);
+        return view('frontend.homepage', ['uploads'=>$upload, 'others'=> $others, "likeChecks"=> $likeCheck]);
     }
     public function music(){
         $country = getLocation(); // Get location fron Helper fuction.

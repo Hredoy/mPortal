@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -185,6 +186,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
         'as'   => '{username}',
         'uses' => 'App\Http\Controllers\ProfilesController@show',
     ]);
+    // Ticket
+    Route::resource('ticket', TicketController::class);
+    Route::post('ticket/reply/{id}', 'App\Http\Controllers\TicketReplyController@store')->name('adminticket.reply.store');
 
 });
 
@@ -224,7 +228,12 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
 
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'App\Http\Controllers\ProfilesController@upload']);
-
+    // Ticket in user label
+    Route::get('ticket/create', 'App\Http\Controllers\Frontend\UserticketController@create')->name('user.ticket.create');
+    Route::post('ticket/create', 'App\Http\Controllers\Frontend\UserticketController@store')->name('user.ticket.store');
+    Route::get('tickets', 'App\Http\Controllers\Frontend\UserticketController@index')->name('user.ticket.index');
+    Route::get('ticket/{id}', 'App\Http\Controllers\Frontend\UserticketController@show')->name('user.ticket.show');
+    Route::post('ticket/reply/{id}', 'App\Http\Controllers\Frontend\UserticketController@replyStore')->name('user.ticket.reply.store');
 });
 
 // Registered, activated, and is admin routes.
@@ -254,15 +263,15 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         ],
     ]);
 
-         // Site Settings Route.
-  Route::get('site/settings', [
-    'as'   => 'site.settings',
-    'uses' => 'App\Http\Controllers\SiteSettingController@index',
-]);
-  Route::post('site/settings', [
-    'as'   => 'site.settings.store',
-    'uses' => 'App\Http\Controllers\SiteSettingController@store',
-]);
+    // Site Settings Route.
+    Route::get('site/settings', [
+        'as'   => 'site.settings',
+        'uses' => 'App\Http\Controllers\SiteSettingController@index',
+    ]);
+    Route::post('site/settings', [
+        'as'   => 'site.settings.store',
+        'uses' => 'App\Http\Controllers\SiteSettingController@store',
+    ]);
 
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
