@@ -3,6 +3,12 @@
     @include('frontend.partials.second_navbar')
 @endsection
 @section('main_section')
+
+@php
+    use Monarobase\CountryList\CountryListl;
+    $countries = Countries::getList('en', 'json');
+@endphp
+
 <div class="content-wrapper">
     
     <div class="ls_banner ls_d-flex ls_align-center" style="background-image: url({{ asset('assets/frontend/images/banner.jpg') }});">
@@ -29,11 +35,42 @@
         </div>
     </div>
 
+    <div class="ls_banner-card">
+        <div class="container ls_bg-dark ls_py-20">
+            <div class="row ls_d-flex ls_align-center">
+                <div class="col-xs-6">
+                    <div class="ls_text-white ls_d-flex ls_align-center ls_d-block-mob">
+                        <img src="{{ asset('assets/frontend/images/increasing.svg') }}" alt="" class="ls_avatar-icon">
+                        <h5>Now Trending</h5>
+                    </div>
+                </div>
+                <div class="col-xs-6 ls_d-flex ls_justify-end">
+                    <div>
+                        <form action="{{ route('getlocation') }}" method="get">
+                            <div class="ls_d-flex ls_align-center">
+                                <label for="forCountry" class="ls_text-white ls_m-0 ls_mr-10">Region</label>
+                                <select class="form-control ls_btn-select " name="country" style="padding: 0;" id="forCountry"
+                                    onchange="this.form.submit()">
+                                    <option value="">All</option>
+                                    @foreach (json_decode($countries) as $key => $val)
+                                        <option value="{{ $val }}"
+                                            @if (getLocation() && $val == getLocation()) selected @endif>{{ $val }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <!-- Featured Videos -->
-                <div class="content-block head-div">
+                <div class="content-block head-div" style="display:none;">
                     <div class="cb-header">
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-xs-8">
@@ -70,7 +107,9 @@
                                         <div class="time">3:50</div>
                                     </div>
                                     <div class="v-desc">
-                                        <a href="{{route('singleVideo', $item->id)}}">{{$item->name}}</a>
+                                        <a href="{{route('singleVideo', $item->id)}}">
+                                            {{ substr($item->name,0, 50)."..." }}
+                                        </a>
                                     </div>
                                     <div class="v-views">
                                         {{$item->view}} views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
@@ -81,14 +120,14 @@
                                             @if (!$item->likes()->where('user_id', Auth::id())->first() )
                                                 <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
                                             @endif
-                                            <div class="pull-right">
+                                           {{-- <div class="pull-right">
                                                 @if ( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() )
                                                 <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
                                                 @else
                                                     <a href="{{Route('unlike', $item->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
                                                 @endif
                                                 <small> {{$item->likes->count('count')}} Likes</small>
-                                            </div>
+                                            </div>--}}
                                         @endif
                                         </div>
                                     </div>
@@ -113,8 +152,8 @@
                                 <ul class="list-inline">
                                     <li>
                                         <a href="#" class="color-active">
-                                            <span class="visible-xs">Others</span>
-                                            <span class="hidden-xs">Others Videos</span>
+                                            <!-- <span class="visible-xs">Others</span> -->
+                                            <!-- <span class="hidden-xs">Others Videos</span> -->
                                         </a>
                                     </li>
                                 </ul>
@@ -127,11 +166,13 @@
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt="" width="100%" height="215px"></a>
+                                        <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt="" width="100%" height="215px" class="ls_obj-cover"></a>
                                         <div class="time">3:50</div>
                                     </div>
                                     <div class="v-desc">
-                                        <a href="{{route('singleVideo', $item->id)}}">{{$item->name}}</a>
+                                        <a href="{{route('singleVideo', $item->id)}}">
+                                            {{ substr($item->name,0, 50)."..." }}
+                                        </a>
                                     </div>
                                     <div class="v-views">
                                         {{$item->view}} views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
