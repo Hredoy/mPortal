@@ -162,7 +162,7 @@
 
             <!-- middle area  -->
             <div class="col-xs-4">
-                <form action="{{ route('search') }}" method="get">
+                <form action="{{ route('search') }}" method="get" class="ls_d-none-mob">
                     <div class="topsearch ls_m-0">
                         <i class="cv cvicon-cv-cancel topsearch-close"></i>
                         <div class="input-group">
