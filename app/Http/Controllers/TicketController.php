@@ -15,7 +15,16 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::get();
+        $status = null;
+        if (isset($_GET['status'])) {
+            $status = trim($_GET['status']);
+        }
+
+        $tickets = Ticket::when($status, function($query, $status){
+            return $query->where('status', $status);
+        })
+        ->get();
+
         return view('backend.admin.ticket.index', compact('tickets'));
     }
 

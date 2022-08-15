@@ -21,6 +21,12 @@
                             <div class="inbox_msg">
                                 <div class="mesgs">
                                     <div class="msg_history">
+                                        <div class="outgoing_msg">
+                                            <div class="sent_msg">
+                                                <p>Ticket Message: <strong>{{$ticket->message}}</strong></p>
+                                                <span class="time_date"> {{$ticket->created_at->format('g:i A | d M Y')}} </span>
+                                            </div>
+                                        </div>
                                         @foreach ($ticket->replies as $reply)
                                         @if($reply->is_admin == true)
                                         <div class="incoming_msg">

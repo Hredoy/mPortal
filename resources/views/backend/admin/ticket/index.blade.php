@@ -17,13 +17,14 @@
                     </div>
                     <div class="iq-card-body">
                         <div id="table" class="table-editable">
-                            <form class="form-inline">
+                            <form action="" method="GET" class="form-inline">
                                 <div class="form-group mb-2">
                                     <label for="exampleFormControlSelect1" class="mr-2">Filter Ticket:  </label>
                                     <select class="form-control" name="status" id="exampleFormControlSelect1">
-                                        <option value="pending">pending</option>
-                                        <option value="open">open</option>
-                                        <option value="completed">completed</option>
+                                        <option value="">All</option>
+                                        <option value="pending" @if (isset($_GET['status']) && $_GET['status'] == 'pending') selected @endif>Pending</option>
+                                        <option value="open" @if (isset($_GET['status']) && $_GET['status'] == 'open') selected @endif>Open</option>
+                                        <option value="completed" @if (isset($_GET['status']) && $_GET['status'] == 'completed') selected @endif>Completed</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary ml-2">Filter</button>

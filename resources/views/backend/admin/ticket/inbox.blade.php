@@ -14,6 +14,7 @@
                             <h4 class="card-title">Ticket</h4>
                             <p>#{{$ticket->ticket_number}}</p>
                         </div>
+                        @if ($ticket->status == 'open')
                         <div class="iq-header-title justify-content-between">
                             <form action="{{route('ticket.update', $ticket->id)}}" method="POST" >
                                 @csrf
@@ -26,6 +27,7 @@
                                 </select>
                             </form>
                         </div>
+                        @endif
 
                     </div>
                     <div class="iq-card-body">
@@ -34,6 +36,15 @@
                             <div class="inbox_msg">
                                 <div class="mesgs">
                                     <div class="msg_history">
+                                        <div class="incoming_msg">
+                                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                            <div class="received_msg">
+                                                <div class="received_withd_msg">
+                                                    <p>Ticket Message: <strong>{{$ticket->message}}</strong></p>
+                                                    <span class="time_date"> {{$ticket->created_at->format('g:i A | d M Y')}} </span>
+                                                </div>
+                                            </div>
+                                        </div>
                                         @foreach ($ticket->replies as $reply)
                                         @if($reply->is_user == true)
                                         <div class="incoming_msg">
@@ -79,26 +90,30 @@
                             @csrf
                             @method('put')
                             <table class="table table-bordered">
-                                <thead>
+                                {{-- <thead>
                                     <tr>
                                         <th scope="col">Name</th>
                                         <th scope="col">Description</th>
                                     </tr>
-                                </thead>
+                                </thead> --}}
                                 <tbody>
                                     <tr>
-                                        <td>Ticket ID</td>
-                                        <td>: {{$ticket->ticket_number}}</td>
+                                        <td colspan="2">
+                                            <strong>Title:</strong> <br>
+                                            <p>{{$ticket->title}}</p>
+                                            <strong>Message: </strong> <br>
+                                            <p>{{$ticket->message}}</p>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>User</td>
-                                        <td>: {{$ticket->user->name}}</td>
+                                        <td>: {{$ticket->user->name}} <a href="{{route('users.show', $ticket->user_id)}}" target="_blank" class="badge badge-primary btn-sm">Click Details</a></td>
                                     </tr>
                                     <tr>
                                         <td>Status</td>
                                         <td>
                                             <select name="status" id="" class="form-control">
-                                                <option value="pending">Pending</option>
+                                                <option value="pending" disabled>Pending</option>
                                                 <option value="open">Open</option>
                                                 <option value="completed">Completed</option>
                                             </select>

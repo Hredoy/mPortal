@@ -39,7 +39,15 @@
                                         <td>{{$ticket->ticket_number}}</td>
                                         <td>{{$ticket->title}}</td>
                                         <td>{{$ticket->created_at->format('g:i A | d M Y')}}</td>
-                                        <td>{{$ticket->status}}</td>
+                                        <td>
+                                            @if ($ticket->status == 'pending')
+                                            <span class="badge badge-primary">Pending</span>
+                                            @elseif($ticket->status == 'open')
+                                            <span class="badge badge-warning">Open</span>
+                                            @elseif ($ticket->status == 'completed')
+                                            <span class="badge badge-success">Completed</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             @if ($ticket->status == 'pending')
                                             <button class="btn btn-primary">Pending</button>
