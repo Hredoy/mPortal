@@ -91,7 +91,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-xs-12 col-sm-12">
-                <div class="sv-video">
+                <div class="sv-video ls_video-container">
                     <video poster="{{asset($upload->thumbnail_image)}}" style="width:100%;height:100%;" controls="controls" width="100%" height="100%">
                         <source src="{{asset($upload->upload)}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
                     </video>
@@ -103,7 +103,7 @@
                     <a href="#"><i class="cv cvicon-cv-flag" data-toggle="tooltip" data-placement="top" title="Flag"></i></a>
                 </div>
                 <div class="author">
-                    <div class="author-head">
+                    <div class="author-head ls_avatar-img">
                         <a href="#"><img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif"
                             alt="{{ Auth::user()->name }}" class="sv-avatar"></a>
                         <div class="sv-name">
@@ -148,7 +148,7 @@
                            <small> {{$upload->view}} views</small>
                         </div>
                         <div class="sv-views-progress">
-                            <div class="sv-views-progress-bar"></div>
+                            <div class="sv-views-progress-bar ls_progress-bar"></div>
                         </div>
                         {{-- <div class="sv-views-stats">
                             <span class="percent">95%</span>

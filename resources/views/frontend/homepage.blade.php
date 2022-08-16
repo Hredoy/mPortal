@@ -99,13 +99,13 @@
                                         <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt="" width="100%" height="215px" class="ls_obj-cover"></a>
                                         <div class="time">{{$item->upload_duration}}</div>
                                     </div>
-                                    <div class="v-desc">
+                                    <div class="ls_height-1 v-desc">
                                         <a href="{{route('singleVideo', $item->id)}}">
                                             {{ substr($item->name,0, 50)."..." }}
                                         </a>
                                     </div>
-                                    <div class="v-views">
-                                        {{$item->view}} views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
+                                    <div class="v-views ls_d-flex ls_align-center ls_justify-between">
+                                        {{$item->view}} views.
                                         <div class="pull-right">
                                         @if ($item->user_id == Auth::id())
                                             <a href="#" disabled class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
@@ -162,13 +162,13 @@
                                         <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt="" width="100%" height="215px" class="ls_obj-cover"></a>
                                         <div class="time">{{$item->upload_duration}}</div>
                                     </div>
-                                    <div class="v-desc">
+                                    <div class="ls_height-1 v-desc">
                                         <a href="{{route('singleVideo', $item->id)}}">
                                             {{ substr($item->name,0, 50)."..." }}
                                         </a>
                                     </div>
-                                    <div class="v-views">
-                                        {{$item->view}} views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
+                                    <div class="v-views ls_d-flex ls_align-center ls_justify-between">
+                                        {{$item->view}} views.
                                         {{-- <div class="pull-right">
                                             @if ( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() )
                                             <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
