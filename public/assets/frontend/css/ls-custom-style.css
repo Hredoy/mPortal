@@ -9,6 +9,9 @@
 .ls_bg-dark {
     background: var(--ls_bg-dark);
 }
+.ls_bg-primary {
+    background: var(--ls_color-primary);
+}
 .ls_color-primary {
     color: var(--ls_color-primary) !important;
 }
@@ -38,6 +41,9 @@
 }
 .ls_mr-10 {
     margin-right: 10px !important;
+}
+.ls_mb-20 {
+    margin-bottom: 20px;
 }
 .ls_mb-20 {
     margin-bottom: 20px;
