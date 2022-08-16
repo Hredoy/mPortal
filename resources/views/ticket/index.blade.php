@@ -21,6 +21,18 @@
                                 <a href="{{Route('user.ticket.create')}}" class="btn btn-sm iq-bg-success"><i class="ri-add-fill"><span class="pl-1">Submit Ticket</span></i>
                                 </a>
                             </span>
+                            <form action="" method="GET" class="form-inline">
+                                <div class="form-group mb-2">
+                                    <label for="exampleFormControlSelect1" class="mr-2">Filter Ticket:  </label>
+                                    <select class="form-control" name="status" id="exampleFormControlSelect1">
+                                        <option value="">All</option>
+                                        <option value="pending" @if (isset($_GET['status']) && $_GET['status'] == 'pending') selected @endif>Pending</option>
+                                        <option value="open" @if (isset($_GET['status']) && $_GET['status'] == 'open') selected @endif>Open</option>
+                                        <option value="completed" @if (isset($_GET['status']) && $_GET['status'] == 'completed') selected @endif>Completed</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary ml-2">Filter</button>
+                            </form>
                             <table class="table table-bordered table-responsive-md table-striped text-center">
                                 <thead>
                                     <tr>
@@ -35,7 +47,7 @@
                                 <tbody>
                                     @foreach ($tickets as $ticket)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{$tickets->firstItem() + $loop->index}}</td>
                                         <td>{{$ticket->ticket_number}}</td>
                                         <td>{{$ticket->title}}</td>
                                         <td>{{$ticket->created_at->format('g:i A | d M Y')}}</td>
@@ -59,6 +71,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{$tickets->appends($_GET)->links()}}
                         </div>
                     </div>
                 </div>

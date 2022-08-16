@@ -44,7 +44,7 @@
                                 <tbody>
                                     @foreach ($tickets as $ticket)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{$tickets->firstItem() + $loop->index}}</td>
                                         <td>{{$ticket->ticket_number}}</td>
                                         <td>{{$ticket->title}}</td>
                                         <td>{{$ticket->created_at->format('g:i A | d M Y')}}</td>
@@ -64,6 +64,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{$tickets->appends($_GET)->links()}}
                         </div>
                     </div>
                 </div>

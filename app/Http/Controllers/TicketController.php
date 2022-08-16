@@ -23,7 +23,8 @@ class TicketController extends Controller
         $tickets = Ticket::when($status, function($query, $status){
             return $query->where('status', $status);
         })
-        ->get();
+        ->latest()
+        ->paginate(10);
 
         return view('backend.admin.ticket.index', compact('tickets'));
     }

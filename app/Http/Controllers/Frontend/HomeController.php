@@ -60,7 +60,7 @@ class HomeController extends Controller
         $upload = Upload::findOrFail($id);
         $is_purchased = false;
 
-        if($upload->sell){
+        if($upload->sell && Auth::user()){
             $check = Sell::where('upload_id', $upload->id)->where('buyer_id', Auth::user()->id)->first();
             if($check){
                 $is_purchased = true;

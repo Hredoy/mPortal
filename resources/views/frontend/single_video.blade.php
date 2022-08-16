@@ -121,8 +121,8 @@
                 </div>
                 <div class="author">
                     <div class="author-head ls_avatar-img">
-                        <a href="#"><img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif"
-                            alt="{{ Auth::user()->name }}" class="sv-avatar"></a>
+                        <a href="#"><img src="@if ($upload->user->profile && $upload->user->profile->avatar_status == 1) {{ $upload->user->profile->avatar }} @else {{ Gravatar::get($upload->user->email) }} @endif"
+                            alt="{{ $upload->user->name }}" class="sv-avatar"></a>
                         <div class="sv-name">
                             <div><a href="#">{{$upload->user->name}}</a> . {{ App\Models\Upload::where('user_id', $upload->user_id)->count() }} Videos</div>
                             <div class="c-sub hidden-xs">
@@ -356,11 +356,22 @@
                     </div>
                     <div class="right" id="autoplayDiv">
                         {{-- <a href="#">Autoplay <i class="cv cvicon-cv-btn-off"></i></a> --}}
+                        @auth
                         <label class="custom-control teleport-switch">
                             <span class="teleport-switch-control-description">Auto Play</span>
                             <input type="checkbox" name="autoplay" class="teleport-switch-control-input" @if(auth()->user()->auto_play) checked @endif>
                             <span class="teleport-switch-control-indicator"></span>
                         </label>
+                        @endauth
+                        @guest
+                        <a href="{{route('login')}}">
+                            <label class="custom-control teleport-switch">
+                                <span class="teleport-switch-control-description">Auto Play</span>
+                                <input type="checkbox" disabled class="teleport-switch-control-input"  checked>
+                                <span class="teleport-switch-control-indicator"></span>
+                            </label>
+                        </a>
+                        @endguest
                     </div>
                     <div class="clearfix"></div>
                 </div>

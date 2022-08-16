@@ -17,7 +17,17 @@ class UserticketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::where('user_id', Auth::user()->id)->get();
+        $status = null;
+        if (isset($_GET['status'])) {
+            $status = trim($_GET['status']);
+        };
+
+        $tickets = Ticket::where('user_id', Auth::user()->id)
+        ->when($status, function($query, $status){
+            return $query->where('status', $status);
+        })
+        ->latest()
+        ->paginate(10);
         return view('ticket.index', compact('tickets'));
     }
 
