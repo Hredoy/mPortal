@@ -85,7 +85,7 @@ $countries = Countries::getList('en', 'json');
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="ls_mb-20">
+                <div>
                     <img src="{{ $settings->logo }}" alt="{{ $settings->app_name }}"/>
                 </div>
             </div>
@@ -94,7 +94,7 @@ $countries = Countries::getList('en', 'json');
         <div class="row">
             <div class="col-lg-4">
                 <div>
-                    <p class="ls_text-white">I had a good experience while using this app, what fascinated me was the live tracking feature There are many variations of passages of Lorem Ipsum available, but the majority.</p>
+                    <p class="ls_text-white ls_py-20">I had a good experience while using this app, what fascinated me was the live tracking feature There are many variations of passages of Lorem Ipsum available, but the majority.</p>
                 </div>
             </div>
 
