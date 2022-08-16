@@ -29,6 +29,61 @@
         margin: .5px;
         font-size: 7.5px;
     }
+    /* Custon autoplay swich checkbox */
+    .custom-control.teleport-switch {
+  --color: #4cd964;
+  padding-left: 0; }
+  .custom-control.teleport-switch .teleport-switch-control-input {
+    display: none; }
+    .custom-control.teleport-switch .teleport-switch-control-input:checked ~ .teleport-switch-control-indicator {
+      border-color: var(--color); }
+      .custom-control.teleport-switch .teleport-switch-control-input:checked ~ .teleport-switch-control-indicator::after {
+        left: -14px; }
+      .custom-control.teleport-switch .teleport-switch-control-input:checked ~ .teleport-switch-control-indicator::before {
+        right: 2px;
+        background-color: var(--color); }
+    .custom-control.teleport-switch .teleport-switch-control-input:disabled ~ .teleport-switch-control-indicator {
+      opacity: .4; }
+  .custom-control.teleport-switch .teleport-switch-control-indicator {
+    display: inline-block;
+    position: relative;
+    margin: 0 10px;
+    top: 4px;
+    width: 32px;
+    height: 20px;
+    background: #fff;
+    border-radius: 16px;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    border: 2px solid #ccc;
+    overflow: hidden; }
+    .custom-control.teleport-switch .teleport-switch-control-indicator::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      -webkit-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s;
+      top: 2px;
+      left: 2px;
+      background: #ccc; }
+    .custom-control.teleport-switch .teleport-switch-control-indicator::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      -webkit-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s;
+      top: 2px;
+      right: -14px;
+      background: #ccc; }
 </style>
 <?php $__env->stopPush(); ?>
 <?php $__env->startSection('main_section'); ?>
@@ -49,9 +104,9 @@
                 </div>
                 <div class="author">
                     <div class="author-head">
-                        <a href="#"><img src="<?php echo e(asset('assets/frontend/images/channel-user.png')); ?>" alt="" class="sv-avatar"></a>
+                        <a href="#"><img src="<?php if(Auth::user()->profile && Auth::user()->profile->avatar_status == 1): ?> <?php echo e(Auth::user()->profile->avatar); ?> <?php else: ?> <?php echo e(Gravatar::get(Auth::user()->email)); ?> <?php endif; ?>"
+                            alt="<?php echo e(Auth::user()->name); ?>" class="sv-avatar"></a>
                         <div class="sv-name">
-
                             <div><a href="#"><?php echo e($upload->user->name); ?></a> . <?php echo e(App\Models\Upload::where('user_id', $upload->user_id)->count()); ?> Videos</div>
                             <div class="c-sub hidden-xs">
                                <?php if($upload->user_id == Auth::id()): ?>
@@ -96,11 +151,7 @@
                         <div class="sv-views-progress">
                             <div class="sv-views-progress-bar"></div>
                         </div>
-                        <div class="sv-views-stats">
-                            <span class="percent">95%</span>
-                            <span class="green"><span class="circle"></span> 39,852</span>
-                            <span class="grey"><span class="circle"></span> 852</span>
-                        </div>
+                        
                     </div>
                     <div class="clearfix"></div>
                     <br>
@@ -150,7 +201,7 @@
                     </div>
 
                     <div class="showless hidden-xs">
-                        <a href="#">Show Less</a>
+                        <a>Tell Us What You Think</a>
                     </div>
 
                     <div class="content-block head-div head-arrow head-arrow-top visible-xs">
@@ -167,9 +218,6 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="single-v-footer">
-                        
-                        <!-- END similar videos -->
-
                         <!-- comments -->
                         <div class="comments">
                             <div class="reply-comment">
@@ -188,16 +236,6 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="comments-list">
-
-                                <div class="cl-header">
-                                    <div class="c-nav">
-                                        <ul class="list-inline">
-                                            <li><a href="#" class="active">Popular <span class="hidden-xs">Comments</span></a></li>
-                                            <li><a href="#">Newest <span class="hidden-xs">Comments</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
                                 <?php $__currentLoopData = $upload->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <!-- comment -->
                                 <div class="cl-comment">
@@ -243,15 +281,7 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                                <div class="row hidden-xs">
-                                    <div class="col-lg-12">
-                                        <div class="loadmore-comments">
-                                            <form action="#" method="post">
-                                                <button class="btn btn-default h-btn">Load more Comments</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                         <!-- END comments -->
@@ -273,8 +303,13 @@
                     <div class="left">
                         <a href="#">Up Next</a>
                     </div>
-                    <div class="right">
-                        <a href="#">Autoplay <i class="cv cvicon-cv-btn-off"></i></a>
+                    <div class="right" id="autoplayDiv">
+                        
+                        <label class="custom-control teleport-switch">
+                            <span class="teleport-switch-control-description">Auto Play</span>
+                            <input type="checkbox" name="autoplay" class="teleport-switch-control-input" <?php if(auth()->user()->auto_play): ?> checked <?php endif; ?>>
+                            <span class="teleport-switch-control-indicator"></span>
+                        </label>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -283,18 +318,17 @@
                     <div class="h-video row">
                         <div class="col-lg-6 col-sm-6">
                             <div class="v-img">
-                                <a href="single-video-tabs.html"><img src="<?php echo e(asset($item->thumbnail_image)); ?>" alt=""></a>
-                                <div class="time">15:19</div>
+                                <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><img src="<?php echo e(asset($item->thumbnail_image)); ?>" alt=""></a>
+                                <div class="time"><?php echo e($item->upload_duration); ?></div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-6">
                             <div class="v-desc">
-                                <a href="single-video-tabs.html"><?php echo e($item->name); ?></a>
+                                <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><?php echo e($item->name); ?></a>
                             </div>
                             <div class="v-views">
-                                2,729,347 views
+                                <?php echo e($upload->view); ?> views
                             </div>
-                            <div class="v-percent"><span class="v-circle"></span> 55%</div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -311,14 +345,29 @@
 
                     <?php endif; ?>
                 <!-- END up next -->
-
-                
-
-                
             </div>
         </div>
     </div>
 </div>
 <?php $__env->stopSection(); ?>
+<?php $__env->startPush('custom_script'); ?>
+<script>
+    $(document).ready(function(){
+        $(document).on('change', 'input[name="autoplay"]', function(){
+            // alert('welcome')
+            $.ajax({
+                    url: '/ajax/autoplay'
+                    , type: 'GET'
+                    , success: function(data) {
+                        console.log(data);
+                    }
+                    , error: function(error) {
+                        console.log(error)
+                    }
+                })
+        });
+    });
+</script>
+<?php $__env->stopPush(); ?>
 
 <?php echo $__env->make('frontend.layout.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\2spiceart\resources\views/frontend/single_video.blade.php ENDPATH**/ ?>

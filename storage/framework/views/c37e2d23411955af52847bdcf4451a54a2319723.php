@@ -3,14 +3,8 @@
     <?php echo $__env->make('frontend.partials.second_navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('main_section'); ?>
-
-<?php
-    use Monarobase\CountryList\CountryListl;
-    $countries = Countries::getList('en', 'json');
-?>
-
 <div class="content-wrapper">
-    
+
     <div class="ls_banner ls_d-flex ls_align-center" style="background-image: url(<?php echo e(asset('assets/frontend/images/banner.jpg')); ?>);">
         <div class="ls_overlay"></div>
         <div class="container">
@@ -52,7 +46,7 @@
                                 <select class="form-control ls_btn-select " name="country" style="padding: 0;" id="forCountry"
                                     onchange="this.form.submit()">
                                     <option value="">All</option>
-                                    <?php $__currentLoopData = json_decode($countries); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($val); ?>"
                                             <?php if(getLocation() && $val == getLocation()): ?> selected <?php endif; ?>><?php echo e($val); ?>
 

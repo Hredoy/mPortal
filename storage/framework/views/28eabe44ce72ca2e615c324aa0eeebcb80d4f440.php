@@ -1,3 +1,8 @@
+<?php
+use App\Models\Ticket;
+$totalTickets = Ticket::where('status', 'pending')->get()->count();
+echo gettype($totalTickets);
+?>
 <div class="iq-sidebar">
     <div class="iq-sidebar-logo d-flex justify-content-between">
         <a href="<?php echo e(route('home')); ?>" class="header-logo">
@@ -47,7 +52,12 @@
                     <a href="<?php echo e(Route('site.settings')); ?>" class="iq-waves-effect"><i class="las la-tools"></i><span>Site Settings</span></a>
                 </li>
                 <li class="<?php echo e((Request::is('roles') || Request::is('permissions') || Request::is('users*'))? 'active active-menu' : null); ?>">
-                    <a href="<?php echo e(Route('ticket.index')); ?>" class="iq-waves-effect"><i class="las la-tools"></i><span>Tickets</span></a>
+                    <a href="<?php echo e(Route('ticket.index')); ?>" class="iq-waves-effect"><i class="las la-tools"></i>
+                        <span>Tickets</span>
+                        <?php if($totalTickets): ?>
+                            <span class="iq-arrow-right badge badge-primary p-1"><?php echo e($totalTickets); ?></span>
+                        <?php endif; ?>
+                    </a>
                 </li>
                 <?php endif; ?>
                 <li class="<?php echo e(Request::is('admin/upload')? 'active' : null); ?>">

@@ -31,7 +31,7 @@
                                <div class="col-12 form_gallery form-group">
                                   <label id="gallery2" for="form_gallery-upload">Upload Image</label>
                                   <input data-name="#gallery2" id="form_gallery-upload" name="thumbnail_image" class="form_gallery-upload"
-                                     type="file" accept=".png,.jpg,.jpeg,.gif,.svg">
+                                     type="file" accept=".png,.jpg,.jpeg,.gif,.svg" required>
                                      <?php if($errors->has('thumbnail_image')): ?>
                                 <span class="help-block">
                                     <strong><?php echo e($errors->first('thumbnail_image')); ?></strong>
