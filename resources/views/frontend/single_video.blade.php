@@ -120,7 +120,7 @@
                     <a href="#"><i class="cv cvicon-cv-flag" data-toggle="tooltip" data-placement="top" title="Flag"></i></a>
                 </div>
                 <div class="author">
-                    <div class="author-head">
+                    <div class="author-head ls_avatar-img">
                         <a href="#"><img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif"
                             alt="{{ Auth::user()->name }}" class="sv-avatar"></a>
                         <div class="sv-name">
@@ -165,7 +165,7 @@
                            <small> {{$upload->view}} views</small>
                         </div>
                         <div class="sv-views-progress">
-                            <div class="sv-views-progress-bar"></div>
+                            <div class="sv-views-progress-bar ls_progress-bar"></div>
                         </div>
                         {{-- <div class="sv-views-stats">
                             <span class="percent">95%</span>
@@ -368,7 +368,7 @@
                     @forelse ($relatedUpload as $item )
                     <div class="h-video row">
                         <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
+                            <div class="v-img ls_video-thumbnail">
                                 <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt=""></a>
                                 <div class="time">{{$item->upload_duration}}</div>
                             </div>

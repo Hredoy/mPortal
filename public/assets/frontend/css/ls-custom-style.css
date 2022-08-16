@@ -169,6 +169,33 @@
 .ls_obj-cover {
     object-fit: cover;
 }
+.ls_height-1.v-desc a {
+	min-height: 55px !important;
+	display: block;
+}
+.ls_video-container .mejs-container {
+    width: 770px !important;
+    height: 433px !important;
+}
+.ls_video-container video {
+    object-fit: contain !important;
+}
+.ls_video-container .mejs-poster {
+    background-size: contain !important;
+}
+.ls_avatar-img img {
+    border-radius: 100px;
+    object-fit: contain;
+}
+.ls_progress-bar {
+    width: 100% !important;
+}
+.ls_video-thumbnail img {
+    width: 170px;
+    height: 120px;
+    object-fit: cover;
+}
+
 @media only screen and (min-width:1200px){
     .mobile-menu{
         display:none !important;
