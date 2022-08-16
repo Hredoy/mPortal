@@ -100,6 +100,8 @@ class UploadController extends Controller
         $upload->region = $request->region;
         $upload->type_id = $type;
         $upload->upload_duration = $duration;
+        $upload->sell = $request->sell;
+        $upload->price = $request->price;
         $upload->save();
         return redirect()->route('public.upload')->with('create', 'File has been created successfully.');
     }
@@ -187,11 +189,14 @@ class UploadController extends Controller
             } else {
                 $input['type'] = 3;
             }
+            $input['sell'] = $request->sell;
+            $input['price'] = $request->price;
             // For calculate file duration
             $getID3 = new \getID3;
             $durationtime =  $getID3->analyze($uploadFileName);
             $duration =  $durationtime['playtime_string'];
             $input['upload_duration'] = $duration;
+
         }
         $upload->update($input);
 

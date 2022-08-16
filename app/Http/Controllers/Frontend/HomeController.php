@@ -8,6 +8,8 @@ use App\Models\Upload;
 use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Follower;
+use App\Models\Sell;
+use Facade\FlareClient\Flare;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Location\Facades\Location;
 
@@ -55,7 +57,16 @@ class HomeController extends Controller
     }
 
     public function singleVideo($id){
-       $upload = Upload::findOrFail($id);
+        $upload = Upload::findOrFail($id);
+        $is_purchased = false;
+
+        if($upload->sell){
+            $check = Sell::where('upload_id', $upload->id)->where('buyer_id', Auth::user()->id)->first();
+            if($check){
+                $is_purchased = true;
+            }
+        };
+
        $followCheck =Follower::whereFollowing_id($upload->user_id)->whereFollower_id(Auth::id())->first();
        $viewCheck = Upload::where('user_id',Auth::id())->first();
        if (!$viewCheck) {
@@ -76,7 +87,7 @@ class HomeController extends Controller
     ->whatsapp()
     ->reddit();
 
-        return view('frontend.single_video', compact('upload', "likeCheck", "followCheck","relatedUpload", "shareButtons"));
+        return view('frontend.single_video', compact('upload', "likeCheck", "followCheck","relatedUpload", "shareButtons", 'is_purchased'));
     }
     public function getLatest()
     {

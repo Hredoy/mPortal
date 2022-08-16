@@ -836,6 +836,7 @@ class ComposerStaticInitd9ca8247bb37e4f5c0aa5e98ff8bc9cd
         'App\\Models\\Menu' => __DIR__ . '/../..' . '/app/Models/Menu.php',
         'App\\Models\\Profile' => __DIR__ . '/../..' . '/app/Models/Profile.php',
         'App\\Models\\Region' => __DIR__ . '/../..' . '/app/Models/Region.php',
+        'App\\Models\\Sell' => __DIR__ . '/../..' . '/app/Models/Sell.php',
         'App\\Models\\Setting' => __DIR__ . '/../..' . '/app/Models/Setting.php',
         'App\\Models\\Social' => __DIR__ . '/../..' . '/app/Models/Social.php',
         'App\\Models\\Theme' => __DIR__ . '/../..' . '/app/Models/Theme.php',

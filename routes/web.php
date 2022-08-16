@@ -285,3 +285,6 @@ Route::get('/location/get-location', 'App\Http\Controllers\Frontend\LocationCont
 Route::get('/search', 'App\Http\Controllers\Frontend\SearchController@index')->name('search');
 Route::get('/ajax/search/{keyword}', 'App\Http\Controllers\Frontend\SearchController@ajaxSearch')->name('search.ajax');
 Route::get('/ajax/autoplay', 'App\Http\Controllers\Frontend\HomeController@autoplayChange')->name('autoplay');
+// Buy Now
+Route::get('buy-now/{id}', 'App\Http\Controllers\Frontend\UserbuyController@buyNowPage')->name('user.buynow')->middleware('auth');
+Route::post('buy-now/{id}', 'App\Http\Controllers\Frontend\UserbuyController@buyNow')->name('user.buynow.store')->middleware('auth');

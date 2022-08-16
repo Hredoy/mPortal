@@ -79,6 +79,7 @@ return array(
     'App\\Models\\Menu' => $baseDir . '/app/Models/Menu.php',
     'App\\Models\\Profile' => $baseDir . '/app/Models/Profile.php',
     'App\\Models\\Region' => $baseDir . '/app/Models/Region.php',
+    'App\\Models\\Sell' => $baseDir . '/app/Models/Sell.php',
     'App\\Models\\Setting' => $baseDir . '/app/Models/Setting.php',
     'App\\Models\\Social' => $baseDir . '/app/Models/Social.php',
     'App\\Models\\Theme' => $baseDir . '/app/Models/Theme.php',

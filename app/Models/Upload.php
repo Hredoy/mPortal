@@ -10,6 +10,7 @@ class Upload extends Model
     use HasFactory;
     protected $guarded = ['id'];
     protected $table = 'uploads';
+    protected $fillable = ['name', 'category_id', 'user_id', 'description', 'thumbnail_image', 'upload', 'release_date', 'region', 'type_id', 'upload_duration', 'view', 'status', 'price', 'sell', 'featured'];
     // Relation
 
     public function categories()

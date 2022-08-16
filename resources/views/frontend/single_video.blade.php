@@ -91,12 +91,29 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-xs-12 col-sm-12">
+                @if ($upload->sell && !$is_purchased)
+                <div class="sv-video">
+                    <a href=""><img src="{{asset('images/premium.png')}}" alt="" width="auto" height="350px" class="ls_obj-cover"></a>
+                </div>
+                @else
                 <div class="sv-video">
                     <video poster="{{asset($upload->thumbnail_image)}}" style="width:100%;height:100%;" controls="controls" width="100%" height="100%">
                         <source src="{{asset($upload->upload)}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
                     </video>
                 </div>
+                @endif
                 <h1><a href="#">{{$upload->name}}</a></h1>
+                @if($upload->sell)
+                <div class="card">
+                    <div class="card-body">
+                        @if ($upload->sell && $is_purchased)
+                        <a href="{{route('user.buynow', $upload->id)}}" class="btn btn-success my-2">Purched !</a>
+                        @else
+                        <a href="{{route('user.buynow', $upload->id)}}" class="btn btn-success my-2">Buy Now</a>
+                        @endif
+                    </div>
+                </div>
+                @endif
                 <div class="acide-panel acide-panel-top">
                     <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
                     <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>
