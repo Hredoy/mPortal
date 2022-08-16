@@ -190,6 +190,11 @@
 .ls_progress-bar {
     width: 100% !important;
 }
+.ls_video-thumbnail img {
+    width: 170px;
+    height: 120px;
+    object-fit: cover;
+}
 
 @media only screen and (min-width:1200px){
     .mobile-menu{

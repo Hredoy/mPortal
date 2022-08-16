@@ -351,7 +351,7 @@
                     @forelse ($relatedUpload as $item )
                     <div class="h-video row">
                         <div class="col-lg-6 col-sm-6">
-                            <div class="v-img">
+                            <div class="v-img ls_video-thumbnail">
                                 <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt=""></a>
                                 <div class="time">{{$item->upload_duration}}</div>
                             </div>
