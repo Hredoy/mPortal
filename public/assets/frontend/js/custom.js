@@ -100,7 +100,7 @@ $( document ).ready(function() {
                 $activeTab = $tabs.find('.tabs-panel > .active'),
                 vCategor_Right = $('.v-categories.side-menu .content-block .cb-content > .row > div:last-child'),
                 vCategor_Left = $('.v-categories.side-menu .content-block .cb-content > .row > div:first-child'),
-                $search_btn = $('.topsearch').find('.input-group-addon'),
+                $search_btn = $('#ls_search-btn'),
                 $search_btn_close = $('.topsearch-close'),
                 $btn_menu = $('.btn-menu-toggle'),
                 $btn_menu_close = $('.mobile-menu-close'),
@@ -200,8 +200,8 @@ $( document ).ready(function() {
             $search_btn.on('click', function() {
                 var wind_w = window.innerWidth;
 
-                if(wind_w < 768) {
-                    $('.navbar-container').addClass('search-open');
+                if(wind_w < 1200) {
+                    $('#ls_form-expand').toggleClass('ls_visible-hidden-mob');
                 }
             });
 

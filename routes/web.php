@@ -29,6 +29,7 @@ Route::group(['middleware' => ['web', 'checkblocked']], function () {
     Route::get('/music', 'App\Http\Controllers\Frontend\HomeController@music')->name('music');
     Route::get('/comedy', 'App\Http\Controllers\Frontend\HomeController@comedy')->name('comedy');
     Route::get('/talent', 'App\Http\Controllers\Frontend\HomeController@talent')->name('talent');
+    Route::get('/contact', 'App\Http\Controllers\Frontend\ContactController@index')->name('contactPage');
 });
 
 // Authentication Routes

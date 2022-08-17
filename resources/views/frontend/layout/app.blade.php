@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelementplayer.min.css')}}" />
 
     <!-- Theme CSS -->
-    <link href="{{asset('assets/frontend/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/frontend/css/custom-style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/frontend/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/frontend/css/font-circle-video.css')}}" rel="stylesheet">
     <link href="{{asset('assets/frontend/css/ls-custom-style.css')}}" rel="stylesheet">
