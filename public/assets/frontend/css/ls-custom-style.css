@@ -262,6 +262,24 @@
         no-repeat top left / 15px 15px;
     padding-left: 20px;
 }
+.ls_dark-mode-btn {
+	position: fixed;
+    bottom: 0;
+    right: 5px;
+    transform: translateY(-50%);
+    background: var(--ls_color-primary);
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 57px;
+    color: #fff !important;
+    font-size: 20px;
+    border: 1px solid #fff;
+}
+.ls_dark-mode-btn i:hover {
+    color: #fff !important;
+}
 
 @media only screen and (min-width:1200px){
     .mobile-menu{

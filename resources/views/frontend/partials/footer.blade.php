@@ -3,6 +3,11 @@ use Monarobase\CountryList\CountryListl;
 $countries = Countries::getList('en', 'json');
 
 @endphp
+<div class="mobile-menu-btn-color ls_dark-mode-btn">
+    <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+    <!-- <img src="{{ asset('assets/frontend/images/icon_bulb_light.png') }}" alt=""> -->
+</div>
+
 <footer class="ls_bg-primary ls_py-40">
     <div style="display: none">
     <div class="container-fluid">
