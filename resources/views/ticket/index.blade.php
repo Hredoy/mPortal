@@ -56,6 +56,9 @@
                                             <span class="badge badge-primary">Pending</span>
                                             @elseif($ticket->status == 'open')
                                             <span class="badge badge-warning">Open</span>
+                                                {{-- @if( count($ticket->replies) > 0 )
+                                                    <span class="badge badge-primary">{{count($ticket->replies)}}</span>
+                                                @endif --}}
                                             @elseif ($ticket->status == 'completed')
                                             <span class="badge badge-success">Completed</span>
                                             @endif

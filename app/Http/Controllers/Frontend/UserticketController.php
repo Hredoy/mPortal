@@ -22,12 +22,13 @@ class UserticketController extends Controller
             $status = trim($_GET['status']);
         };
 
-        $tickets = Ticket::where('user_id', Auth::user()->id)
+        $tickets = Ticket::with('replies')->where('user_id', Auth::user()->id)
         ->when($status, function($query, $status){
             return $query->where('status', $status);
         })
         ->latest()
         ->paginate(10);
+
         return view('ticket.index', compact('tickets'));
     }
 
@@ -77,7 +78,7 @@ class UserticketController extends Controller
     {
         $ticket = Ticket::with('replies')->where('id', $id)->first();
 
-        // return $ticket;
+        $data = TicketReply::where('ticket_id', $id)->where('is_admin', 1)->update(['is_seen'=> 1]);
 
         return view('ticket.inbox', compact('ticket'));
     }

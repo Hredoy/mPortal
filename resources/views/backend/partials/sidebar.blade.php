@@ -1,7 +1,11 @@
 @php
 use App\Models\Ticket;
+use App\Models\TicketReply;
+
 $totalTickets = Ticket::where('status', 'pending')->get()->count();
-echo gettype($totalTickets);
+$userticekt = Ticket::where('user_id', auth()->user()->id)->pluck('id');
+$totalusermessage = TicketReply::whereIn('ticket_id', $userticekt)->where('is_admin', 1)->where('is_seen', 0)->count();
+
 @endphp
 <div class="iq-sidebar">
     <div class="iq-sidebar-logo d-flex justify-content-between">
@@ -81,7 +85,12 @@ echo gettype($totalTickets);
                     <a href="{{Route('public.comedy')}}" class="iq-waves-effect"><i class="las la-smile"></i><span>Comedy List</span></a>
                 </li>
                 <li class="{{ Request::is('admin/comedy')? 'active' : null }}">
-                    <a href="{{Route('user.ticket.index')}}" class="iq-waves-effect"><i class="las la-smile"></i><span>Ticket</span></a>
+                    <a href="{{Route('user.ticket.index')}}" class="iq-waves-effect"><i class="las la-smile"></i>
+                        <span>Ticket</span>
+                        @if($totalusermessage> 0)
+                        <span class="iq-arrow-right badge badge-primary p-1">{{$totalusermessage}}</span>
+                        @endif
+                    </a>
                 </li>
                 <li>
                     <a href="{{ route('logout') }}"
