@@ -3,7 +3,12 @@ use Monarobase\CountryList\CountryListl;
 $countries = Countries::getList('en', 'json');
 
 @endphp
-<footer class="ls_bg-dark ls_py-40">
+<div class="mobile-menu-btn-color ls_dark-mode-btn">
+    <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+    <!-- <img src="{{ asset('assets/frontend/images/icon_bulb_light.png') }}" alt=""> -->
+</div>
+
+<footer class="ls_bg-primary ls_py-40">
     <div style="display: none">
     <div class="container-fluid">
         <div class="row">
@@ -84,17 +89,9 @@ $countries = Countries::getList('en', 'json');
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div>
-                    <img src="{{ $settings->logo }}" alt="{{ $settings->app_name }}"/>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
             <div class="col-lg-4">
                 <div>
-                    <p class="ls_text-white ls_py-20">I had a good experience while using this app, what fascinated me was the live tracking feature There are many variations of passages of Lorem Ipsum available, but the majority.</p>
+                    <img src="{{ $settings->logo }}" alt="{{ $settings->app_name }}"/>
                 </div>
             </div>
 

@@ -201,6 +201,85 @@
     height: 120px;
     object-fit: cover;
 }
+.ls_contact-form ul {
+    list-style: none;
+}
+.ls_contact-form h1 {
+  margin-bottom: 1.5rem;
+}
+.ls_contact-form li,
+.ls_contact-form .grid > *:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+.ls_contact-form select,
+.ls_contact-form input,
+.ls_contact-form textarea,
+.ls_contact-form button {
+  width: 100%;
+  line-height: 1.5;
+  padding: 15px 10px;
+  border: 1px solid var(--ls_bg-dark);
+  color: #fff;
+  background: var(--ls_bg-dark);
+}
+.ls_contact-form input[type="tel"] {
+    height: 40px;
+}
+.ls_contact-form textarea {
+  height: 170px;
+}
+
+.ls_contact-form ::placeholder {
+  color: inherit;
+  /*Fix opacity issue on Firefox*/
+  opacity: 1;
+}
+.ls_contact-form select:focus,
+.ls_contact-form input:focus,
+.ls_contact-form textarea:focus,
+.ls_contact-form button:enabled:hover,
+.ls_contact-form button:focus,
+.ls_contact-form input[type="checkbox"]:focus + label {
+  background: var(--ls_bg-dark);
+}
+.ls_contact-form *:required,
+.ls_contact-form select {
+  background-repeat: no-repeat;
+  background-position: center right 12px;
+  background-size: 15px 15px;
+}
+
+.ls_contact-form *:required {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/asterisk.svg);  
+}
+
+.ls_contact-form select {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/down.svg);
+}
+.ls_contact-form .required-msg {
+    display: none;
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/asterisk.svg)
+        no-repeat top left / 15px 15px;
+    padding-left: 20px;
+}
+.ls_dark-mode-btn {
+	position: fixed;
+    bottom: 0;
+    right: 5px;
+    transform: translateY(-50%);
+    background: var(--ls_color-primary);
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 57px;
+    color: #fff !important;
+    font-size: 20px;
+    border: 2px solid #fff;
+}
+.ls_dark-mode-btn i:hover {
+    color: #fff !important;
+}
 
 @media only screen and (min-width:1200px){
     .mobile-menu{
@@ -215,7 +294,11 @@
         display: block;
     }
     .ls_d-none-mob {
-        display: none;
+        display: none !important;
+    }
+    .ls_visible-hidden-mob {
+        visibility: hidden;
+        opacity: 0;
     }
 }
 @media (max-width: 767px) {
@@ -237,4 +320,27 @@
     .ls_d-block-mob {
         display: block;
     }
+}
+@media screen and (min-width: 600px) {
+  .ls_contact-form .grid {
+    display: grid;
+    grid-gap: 1.5rem;
+  }
+
+  .ls_contact-form .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ls_contact-form .grid-3 {
+    grid-template-columns: auto auto;
+    align-items: center;
+  }
+
+  .ls_contact-form .grid > *:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .ls_contact-form .required-msg {
+    display: block;
+  }
 }
