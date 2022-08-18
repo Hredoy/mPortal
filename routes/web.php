@@ -234,6 +234,8 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
     Route::get('tickets', 'App\Http\Controllers\Frontend\UserticketController@index')->name('user.ticket.index');
     Route::get('ticket/{id}', 'App\Http\Controllers\Frontend\UserticketController@show')->name('user.ticket.show');
     Route::post('ticket/reply/{id}', 'App\Http\Controllers\Frontend\UserticketController@replyStore')->name('user.ticket.reply.store');
+    // Sell Music
+    Route::get('sell-list', 'App\Http\Controllers\Frontend\UsersellController@sellsList')->name('user.sellslist');
 });
 
 // Registered, activated, and is admin routes.

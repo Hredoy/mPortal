@@ -84,6 +84,7 @@ $totalusermessage = TicketReply::whereIn('ticket_id', $userticekt)->where('is_ad
                 <li class="{{ Request::is('admin/comedy')? 'active' : null }}">
                     <a href="{{Route('public.comedy')}}" class="iq-waves-effect"><i class="las la-smile"></i><span>Comedy List</span></a>
                 </li>
+                @role('user')
                 <li class="{{ Request::is('admin/comedy')? 'active' : null }}">
                     <a href="{{Route('user.ticket.index')}}" class="iq-waves-effect"><i class="las la-smile"></i>
                         <span>Ticket</span>
@@ -92,6 +93,12 @@ $totalusermessage = TicketReply::whereIn('ticket_id', $userticekt)->where('is_ad
                         @endif
                     </a>
                 </li>
+                <li class="{{ Request::is('admin/sell-list')? 'active' : null }}">
+                    <a href="{{Route('user.sellslist')}}" class="iq-waves-effect"><i class="las la-smile"></i>
+                        <span>Selling List</span>
+                    </a>
+                </li>
+                @endrole
                 <li>
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
