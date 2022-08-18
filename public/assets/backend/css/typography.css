@@ -114,7 +114,7 @@ textarea {
 /*----------------------------------------------
 loading
 ------------------------------------------------*/
-#loading { background: var(--iq-body-bg) url(../images/loader.gif) no-repeat scroll center center; height: 100%; width: 100%; background-size: 15%; position: fixed; margin-top: 0px; top: 0px; left: 0px; bottom: 0px; overflow: hidden !important; right: 0px; z-index: 999999; }
+#loading { background: var(--iq-body-bg) url(../images/logo.png) no-repeat scroll center center; height: 100%; width: 100%; background-size: 15%; position: fixed; margin-top: 0px; top: 0px; left: 0px; bottom: 0px; overflow: hidden !important; right: 0px; z-index: 999999; }
 #loading-center { width: 100%; height: 100%; position: relative; }
 .loader { width: 3em; height: 3em; margin: auto; left: 0; right: 0; top: 0; bottom: 0; position: absolute; }
 
@@ -329,8 +329,8 @@ Buttons
 /*--------------*/
 .btn-primary { background: var(--iq-primary); border-color: var(--iq-primary); }
 .btn-secondary { background-color: var(--iq-secondary); border-color: var(--iq-secondary); }
-.btn-success { background-color: var(--iq-success); border-color: var(--iq-success); }
-.btn-danger { background-color: var(--iq-danger); border-color: var(--iq-danger); }
+.btn-success { background-color: var(--success); border-color: var(--success); }
+.btn-danger { background-color: var(--danger); border-color: var(--danger); }
 .btn-warning { background-color: var(--iq-warning); border-color: var(--iq-warning); }
 .btn-info { background-color: var(--iq-info); border-color: var(--iq-info); }
 .btn-light { background-color: var(--iq-light); border-color: var(--iq-light); }

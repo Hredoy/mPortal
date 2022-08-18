@@ -18,6 +18,8 @@
    <link rel="stylesheet" href="{{asset('assets/backend/css/style.css')}}">
    <!-- Responsive CSS -->
    <link rel="stylesheet" href="{{asset('assets/backend/css/responsive.css')}}">
+   <!-- ls_custom_backend CSS -->
+   <link rel="stylesheet" href="{{asset('assets/backend/css/ls_custom_backend.css')}}">
    @stack('custom-css')
    @yield('template_linked_css')
 </head>
