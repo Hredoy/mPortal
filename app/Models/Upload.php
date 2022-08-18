@@ -34,4 +34,9 @@ class Upload extends Model
     {
         return $this->hasMany(Like::class, 'upload_id', 'id');
     }
+
+    public function sells()
+    {
+        return $this->hasMany(Sell::class);
+    }
 }

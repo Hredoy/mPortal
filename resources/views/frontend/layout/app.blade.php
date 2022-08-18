@@ -15,7 +15,7 @@
     <link href="{{asset('assets/frontend/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- player -->
-    <link rel="stylesheet" href="{{asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelementplayer.min.css')}}" />
+    {{-- <link rel="stylesheet" href="{{asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelementplayer.min.css')}}" /> --}}
 
     <!-- Theme CSS -->
     <link href="{{asset('assets/frontend/css/custom-style.css')}}" rel="stylesheet">
@@ -52,8 +52,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{asset('assets/frontend/js/jquery.min.js')}}"></script>
     <script src="{{asset('assets/frontend/bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelement-and-player.min.js')}}"></script>
-    <script src="{{asset('assets/frontend/js/custom.js')}}"></script>
+    {{-- <script src="{{asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelement-and-player.min.js')}}"></script> --}}
+    {{-- <script src="{{asset('assets/frontend/js/custom.js')}}"></script> --}}
     @stack('custom_script')
     <script>
         $(document).ready(function() {

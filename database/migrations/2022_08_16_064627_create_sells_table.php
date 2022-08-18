@@ -16,6 +16,7 @@ class CreateSellsTable extends Migration
         Schema::create('sells', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('upload_id');
+            $table->unsignedBigInteger('seller_id');
             $table->unsignedBigInteger('buyer_id');
             $table->float('price');
             $table->timestamps();

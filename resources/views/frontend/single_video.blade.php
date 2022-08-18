@@ -1,89 +1,116 @@
 @extends('frontend.layout.app')
 @section('class', 'single-video')
 @section('second_navbar')
-    @include('frontend.partials.second_navbar')
+@include('frontend.partials.second_navbar')
 @endsection
 @push('custom_css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet" />
+<link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet" />
 <style>
     .social-btn-sp #social-links {
         margin: 0 auto;
         max-width: 500px;
     }
+
     .social-btn-sp #social-links ul li {
         display: inline-block;
     }
+
     .social-btn-sp #social-links ul li a {
         padding: 7.5px;
         margin: 1px;
         font-size: 20px;
     }
-    table #social-links{
+
+    table #social-links {
         display: inline-table;
     }
-    table #social-links ul li{
+
+    table #social-links ul li {
         display: inline;
     }
-    table #social-links ul li a{
-        padding: 2.5px;;
+
+    table #social-links ul li a {
+        padding: 2.5px;
+        ;
         margin: .5px;
         font-size: 7.5px;
     }
+
     /* Custon autoplay swich checkbox */
     .custom-control.teleport-switch {
-  --color: #4cd964;
-  padding-left: 0; }
-  .custom-control.teleport-switch .teleport-switch-control-input {
-    display: none; }
-    .custom-control.teleport-switch .teleport-switch-control-input:checked ~ .teleport-switch-control-indicator {
-      border-color: var(--color); }
-      .custom-control.teleport-switch .teleport-switch-control-input:checked ~ .teleport-switch-control-indicator::after {
-        left: -14px; }
-      .custom-control.teleport-switch .teleport-switch-control-input:checked ~ .teleport-switch-control-indicator::before {
+        --color: #4cd964;
+        padding-left: 0;
+    }
+
+    .custom-control.teleport-switch .teleport-switch-control-input {
+        display: none;
+    }
+
+    .custom-control.teleport-switch .teleport-switch-control-input:checked~.teleport-switch-control-indicator {
+        border-color: var(--color);
+    }
+
+    .custom-control.teleport-switch .teleport-switch-control-input:checked~.teleport-switch-control-indicator::after {
+        left: -14px;
+    }
+
+    .custom-control.teleport-switch .teleport-switch-control-input:checked~.teleport-switch-control-indicator::before {
         right: 2px;
-        background-color: var(--color); }
-    .custom-control.teleport-switch .teleport-switch-control-input:disabled ~ .teleport-switch-control-indicator {
-      opacity: .4; }
-  .custom-control.teleport-switch .teleport-switch-control-indicator {
-    display: inline-block;
-    position: relative;
-    margin: 0 10px;
-    top: 4px;
-    width: 32px;
-    height: 20px;
-    background: #fff;
-    border-radius: 16px;
-    -webkit-transition: .3s;
-    -o-transition: .3s;
-    transition: .3s;
-    border: 2px solid #ccc;
-    overflow: hidden; }
+        background-color: var(--color);
+    }
+
+    .custom-control.teleport-switch .teleport-switch-control-input:disabled~.teleport-switch-control-indicator {
+        opacity: .4;
+    }
+
+    .custom-control.teleport-switch .teleport-switch-control-indicator {
+        display: inline-block;
+        position: relative;
+        margin: 0 10px;
+        top: 4px;
+        width: 32px;
+        height: 20px;
+        background: #fff;
+        border-radius: 16px;
+        -webkit-transition: .3s;
+        -o-transition: .3s;
+        transition: .3s;
+        border: 2px solid #ccc;
+        overflow: hidden;
+    }
+
     .custom-control.teleport-switch .teleport-switch-control-indicator::after {
-      content: '';
-      display: block;
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      -webkit-transition: .3s;
-      -o-transition: .3s;
-      transition: .3s;
-      top: 2px;
-      left: 2px;
-      background: #ccc; }
+        content: '';
+        display: block;
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        -webkit-transition: .3s;
+        -o-transition: .3s;
+        transition: .3s;
+        top: 2px;
+        left: 2px;
+        background: #ccc;
+    }
+
     .custom-control.teleport-switch .teleport-switch-control-indicator::before {
-      content: '';
-      display: block;
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      -webkit-transition: .3s;
-      -o-transition: .3s;
-      transition: .3s;
-      top: 2px;
-      right: -14px;
-      background: #ccc; }
+        content: '';
+        display: block;
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        -webkit-transition: .3s;
+        -o-transition: .3s;
+        transition: .3s;
+        top: 2px;
+        right: -14px;
+        background: #ccc;
+    }
+
 </style>
 @endpush
 @section('main_section')
@@ -96,11 +123,22 @@
                     <a href=""><img src="{{asset('images/premium.png')}}" alt="" width="auto" height="350px" class="ls_obj-cover"></a>
                 </div>
                 @else
-                <div class="sv-video">
-                    <video poster="{{asset($upload->thumbnail_image)}}" style="width:100%;height:100%;" controls="controls" width="100%" height="100%">
-                        <source src="{{asset($upload->upload)}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
-                    </video>
-                </div>
+                <video id="my-video" class="video-js" controls
+                    preload="auto" width="640" height="264" poster="{{asset($upload->thumbnail_image)}}" data-setup="{}"
+                    @auth @if(auth()->user()->auto_play == false)
+                    autoplay="false"
+                    @else
+                    muted autoplay
+                    @endif
+                    @endauth
+                    @guest
+                    muted autoplay
+                    @endguest
+                    >
+                    <source src="{{asset($upload->upload)}}" type="video/mp4" />
+                </video>
+                {{-- For Next Link --}}
+                <input type="hidden" name="nextlink" value="{{route('singleVideo', $relatedUpload[0]['id'])}}">
                 @endif
                 <h1><a href="#">{{$upload->name}}</a></h1>
                 @if($upload->sell)
@@ -121,26 +159,25 @@
                 </div>
                 <div class="author">
                     <div class="author-head ls_avatar-img">
-                        <a href="#"><img src="@if ($upload->user->profile && $upload->user->profile->avatar_status == 1) {{ $upload->user->profile->avatar }} @else {{ Gravatar::get($upload->user->email) }} @endif"
-                            alt="{{ $upload->user->name }}" class="sv-avatar"></a>
+                        <a href="#"><img src="@if ($upload->user->profile && $upload->user->profile->avatar_status == 1) {{ $upload->user->profile->avatar }} @else {{ Gravatar::get($upload->user->email) }} @endif" alt="{{ $upload->user->name }}" class="sv-avatar"></a>
                         <div class="sv-name">
                             <div><a href="#">{{$upload->user->name}}</a> . {{ App\Models\Upload::where('user_id', $upload->user_id)->count() }} Videos</div>
                             <div class="c-sub hidden-xs">
-                               @if ($upload->user_id == Auth::id())
-                               <button disabled class="c-f">
-                                Follow
-                            </button>
-                               @else
-                               @if (!$followCheck)
-                               <a  href="{{Route("public.follow", $upload->user_id)}}" class="c-f">
-                                   Follow
-                               </a>
-                               @else
-                               <a  href="{{Route("public.unfollow", $upload->user_id)}}" class="c-f">
-                                   Unfollow
-                               </a>
-                               @endif
-                               @endif
+                                @if ($upload->user_id == Auth::id())
+                                <button disabled class="c-f">
+                                    Follow
+                                </button>
+                                @else
+                                @if (!$followCheck)
+                                <a href="{{Route("public.follow", $upload->user_id)}}" class="c-f">
+                                    Follow
+                                </a>
+                                @else
+                                <a href="{{Route("public.unfollow", $upload->user_id)}}" class="c-f">
+                                    Unfollow
+                                </a>
+                                @endif
+                                @endif
                                 <div class="c-s">
                                     {{$upload->user->followers()->get()->count()}}
                                 </div>
@@ -155,14 +192,14 @@
                     </div>
                     <div class="sv-views">
                         <div class="sv-views-count d-flex">
-                                @if ( empty($likeCheck))
-                                <a href="{{Route('like', $upload->id)}}" class="btn "><i class="fa fa-thumbs-up" style="font-size: 1.2em"></i></a>
-                                @else
-                                <a href="{{Route('unlike', $upload->id)}}" class="btn"><i class="fa fa-thumbs-down  " style="font-size: 1.2em"></i></a>
-                                @endif
-                               <small> {{$upload->likes->count('count')}} Likes</small>
+                            @if ( empty($likeCheck))
+                            <a href="{{Route('like', $upload->id)}}" class="btn "><i class="fa fa-thumbs-up" style="font-size: 1.2em"></i></a>
+                            @else
+                            <a href="{{Route('unlike', $upload->id)}}" class="btn"><i class="fa fa-thumbs-down  " style="font-size: 1.2em"></i></a>
+                            @endif
+                            <small> {{$upload->likes->count('count')}} Likes</small>
 
-                           <small> {{$upload->view}} views</small>
+                            <small> {{$upload->view}} views</small>
                         </div>
                         <div class="sv-views-progress">
                             <div class="sv-views-progress-bar ls_progress-bar"></div>
@@ -188,18 +225,18 @@
 
                         <h4>Category </h4>
                         @switch($upload->category_id)
-                            @case($upload->category_id == 1)
-                                <p>Music</p>
-                                @break
-                            @case($upload->category_id == 2)
-                                <p>Talent</p>
-                                @break
-                            @case($upload->category_id == 3)
-                                <p>Comedy</p>
-                                @break
+                        @case($upload->category_id == 1)
+                        <p>Music</p>
+                        @break
+                        @case($upload->category_id == 2)
+                        <p>Talent</p>
+                        @break
+                        @case($upload->category_id == 3)
+                        <p>Comedy</p>
+                        @break
 
-                            @default
-                               <p>No category Found</p>
+                        @default
+                        <p>No category Found</p>
                         @endswitch
 
 
@@ -265,8 +302,8 @@
                                 <div class="rc-comment">
                                     <form action="{{ route('comment.add') }}" method="post">
                                         @csrf
-                                        <textarea name="body" rows="3" placeholder="Share what you think?"></textarea >
-                                            <input type="hidden" name="upload_id" value="{{$upload->id}}" id="">
+                                        <textarea name="body" rows="3" placeholder="Share what you think?"></textarea>
+                                        <input type="hidden" name="upload_id" value="{{$upload->id}}" id="">
                                         <button type="submit">
                                             <i class="cv cvicon-cv-add-comment"></i>
                                         </button>
@@ -295,9 +332,9 @@
                                     <div class="rc-comment">
                                         <form action="{{ route('comment.add') }}" method="post">
                                             @csrf
-                                            <textarea name="body" rows="3" placeholder="Share what you think?"></textarea >
-                                                <input type="hidden" name="upload_id" value="{{ $upload->id }}" />
-                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
+                                            <textarea name="body" rows="3" placeholder="Share what you think?"></textarea>
+                                            <input type="hidden" name="upload_id" value="{{ $upload->id }}" />
+                                            <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
                                             <button type="submit">
                                                 <i class="cv cvicon-cv-add-comment"></i>
                                             </button>
@@ -367,7 +404,7 @@
                         <a href="{{route('login')}}">
                             <label class="custom-control teleport-switch">
                                 <span class="teleport-switch-control-description">Auto Play</span>
-                                <input type="checkbox" disabled class="teleport-switch-control-input"  checked>
+                                <input type="checkbox" disabled class="teleport-switch-control-input" checked>
                                 <span class="teleport-switch-control-indicator"></span>
                             </label>
                         </a>
@@ -401,23 +438,25 @@
                             <div class="v-desc ">
                                 <p class="text-center"><strong> No Video Available</strong></p>
                             </div>
-                                                    </div>
+                        </div>
                         <div class="clearfix"></div>
                     </div>
 
                     @endforelse
-                <!-- END up next -->
+                    <!-- END up next -->
+                </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
-@push('custom_script')
-<script>
-    $(document).ready(function(){
-        $(document).on('change', 'input[name="autoplay"]', function(){
-            // alert('welcome')
-            $.ajax({
+    @endsection
+    @push('custom_script')
+    {{-- Video Js Plugin --}}
+    <script src="https://vjs.zencdn.net/7.20.2/video.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(document).on('change', 'input[name="autoplay"]', function() {
+                // alert('welcome')
+                $.ajax({
                     url: '/ajax/autoplay'
                     , type: 'GET'
                     , success: function(data) {
@@ -427,7 +466,18 @@
                         console.log(error)
                     }
                 })
+            });
+            let myVideo = document.getElementById('my-video');
+            myVideo.addEventListener('ended', videoCompleted, false);
+
+
+            function videoCompleted(e) {
+                let nextvideo = $('input[name="nextlink"]').val();
+                window.location.href = nextvideo;
+            }
+
+
         });
-    });
-</script>
-@endpush
+
+    </script>
+    @endpush

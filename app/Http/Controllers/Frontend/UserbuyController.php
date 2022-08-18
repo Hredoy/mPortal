@@ -21,6 +21,7 @@ class UserbuyController extends Controller
     {
         Sell::create([
             'upload_id' => $request->upload_id,
+            'seller_id' => $request->seller_id,
             'buyer_id'  => Auth::user()->id,
             'price'     => $request->price
         ]);

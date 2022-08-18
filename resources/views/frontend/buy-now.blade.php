@@ -35,6 +35,7 @@
                     <form action="{{route('user.buynow.store', $upload->id)}}" method="POST">
                         @csrf
                         <input type="hidden" name="upload_id" value="{{$upload->id}}">
+                        <input type="hidden" name="seller_id" value="{{$upload->user_id}}">
                         <input type="hidden" name="price" value="{{$upload->price}}">
 
                         <button class="btn btn-primary"> Confirm Order</button>
