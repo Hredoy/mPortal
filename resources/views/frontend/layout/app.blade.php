@@ -53,7 +53,7 @@
     <script src="{{asset('assets/frontend/js/jquery.min.js')}}"></script>
     <script src="{{asset('assets/frontend/bootstrap/js/bootstrap.min.js')}}"></script>
     {{-- <script src="{{asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelement-and-player.min.js')}}"></script> --}}
-    {{-- <script src="{{asset('assets/frontend/js/custom.js')}}"></script> --}}
+    <script src="{{asset('assets/frontend/js/custom.js')}}"></script>
     @stack('custom_script')
     <script>
         $(document).ready(function() {

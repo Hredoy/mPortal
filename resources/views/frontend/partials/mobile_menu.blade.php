@@ -54,12 +54,12 @@
         </a>
         <div class="mobile-menu-list">
             <ul>
-                <li class="{{Request::is('/') ? 'color-active': null}}">
+                {{-- <li class="{{Request::is('/') ? 'color-active': null}}">
                     <a href="{{Route('home')}}">
                         <i class="cv cvicon-cv-play-circle ls_color-primary"></i>
                         <p>Popular Videos</p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="{{Request::is('music') ? 'color-active': null}}">
                     <a href="{{Route('music')}}">
                         <i class="cv cvicon-cv-play-circle ls_color-primary"></i>
