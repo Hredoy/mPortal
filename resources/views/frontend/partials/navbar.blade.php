@@ -150,7 +150,7 @@
                         </li>
                         <li>
                             <a href="#">More</a>
-                            <ul>
+                            <ul class="ls_dynamic-menu">
                                 @foreach ($contents->where('type', 1)->where('status', 1) as $content)
                                     <li>
                                         <a href="{{ $content->link }}">{{ $content->name }}

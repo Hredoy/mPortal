@@ -277,6 +277,9 @@
 .ls_dark-mode-btn i:hover {
     color: #fff !important;
 }
+.ls_menu .ls_dynamic-menu li a {
+    color: var(--ls_bg-dark) !important;
+}
 
 @media only screen and (min-width:1200px){
     .mobile-menu{

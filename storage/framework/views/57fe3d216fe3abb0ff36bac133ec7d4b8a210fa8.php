@@ -152,7 +152,7 @@
                         </li>
                         <li>
                             <a href="#">More</a>
-                            <ul>
+                            <ul class="ls_dynamic-menu">
                                 <?php $__currentLoopData = $contents->where('type', 1)->where('status', 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $content): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li>
                                         <a href="<?php echo e($content->link); ?>"><?php echo e($content->name); ?>
