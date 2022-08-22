@@ -168,7 +168,7 @@
 
             <!-- middle area  -->
             <div class="col-xs-4">
-                <form action="<?php echo e(route('search')); ?>" method="get" class="ls_visible-hidden-mob" id="ls_form-expand">
+                <form action="<?php echo e(route('search')); ?>" method="get" class="ls_d-md-none">
                     <div class="topsearch ls_m-0">
                         <i class="cv cvicon-cv-cancel topsearch-close"></i>
                         <div class="input-group">
@@ -182,7 +182,7 @@
                         </div>
                     </div>
                 </form>
-                <div id="searchResultDiv" style="position: absolute;z-index:1; width:95%">
+                <div id="searchResultDiv" class="ls_d-md-none" style="position: absolute;z-index:1; width:95%">
 
                 </div>
             </div>
@@ -255,4 +255,22 @@
         </div>
     </div>
 </header>
+
+<div class="container-fluid ls_mob-search ls_visible-hidden-mob" id="ls_form-expand">
+    <form action="<?php echo e(route('search')); ?>" method="get">
+        <div class="topsearch ls_m-0">
+            <i class="cv cvicon-cv-cancel topsearch-close"></i>
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-search ls_color-primary"></i></span>
+                <input type="text" name="keyword"
+                    <?php if(isset($_GET['keyword'])): ?> value="<?php echo e($_GET['keyword']); ?>" <?php endif; ?>
+                    class="form-control" placeholder="Search for artists, song, albums!" aria-describedby="sizing-addon2">
+                <div class="input-group-btn">
+                    <div type="text" class="btn btn-default"></div>
+                </div><!-- /btn-group -->
+            </div>
+        </div>
+    </form>
+    <div id="searchResultDiv2"></div>
+</div>
 <?php /**PATH D:\laragon\www\2spiceart\resources\views/frontend/partials/navbar.blade.php ENDPATH**/ ?>

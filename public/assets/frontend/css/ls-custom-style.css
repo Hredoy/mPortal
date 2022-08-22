@@ -282,10 +282,13 @@
     .mobile-menu{
         display:none !important;
     }
+    .ls_mob-search {
+        display: none !important;
+    }
 }
 @media (max-width: 1199px) {
     .ls_d-md-none {
-        display: none;
+        display: none !important;
     }
     .ls_d-md-block {
         display: block;
@@ -296,6 +299,11 @@
     .ls_visible-hidden-mob {
         visibility: hidden;
         opacity: 0;
+    }
+    .ls_mob-search {
+        position: absolute;
+        width: 100%;
+        z-index: 999;
     }
 }
 @media (max-width: 767px) {
