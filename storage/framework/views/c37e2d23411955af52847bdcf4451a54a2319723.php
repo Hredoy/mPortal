@@ -100,14 +100,14 @@
                                         <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><img src="<?php echo e(asset($item->thumbnail_image)); ?>" alt="" width="100%" height="215px" class="ls_obj-cover"></a>
                                         <div class="time"><?php echo e($item->upload_duration); ?></div>
                                     </div>
-                                    <div class="v-desc">
+                                    <div class="ls_height-1 v-desc">
                                         <a href="<?php echo e(route('singleVideo', $item->id)); ?>">
                                             <?php echo e(substr($item->name,0, 50)."..."); ?>
 
                                         </a>
                                     </div>
-                                    <div class="v-views">
-                                        <?php echo e($item->view); ?> views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
+                                    <div class="v-views ls_d-flex ls_align-center ls_justify-between">
+                                        <?php echo e($item->view); ?> views.
                                         <div class="pull-right">
                                         <?php if($item->user_id == Auth::id()): ?>
                                             <a href="#" disabled class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
@@ -157,14 +157,14 @@
                                         <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><img src="<?php echo e(asset($item->thumbnail_image)); ?>" alt="" width="100%" height="215px" class="ls_obj-cover"></a>
                                         <div class="time"><?php echo e($item->upload_duration); ?></div>
                                     </div>
-                                    <div class="v-desc">
+                                    <div class="ls_height-1 v-desc">
                                         <a href="<?php echo e(route('singleVideo', $item->id)); ?>">
                                             <?php echo e(substr($item->name,0, 50)."..."); ?>
 
                                         </a>
                                     </div>
-                                    <div class="v-views">
-                                        <?php echo e($item->view); ?> views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
+                                    <div class="v-views ls_d-flex ls_align-center ls_justify-between">
+                                        <?php echo e($item->view); ?> views.
                                         
                                     </div>
                                 </div>

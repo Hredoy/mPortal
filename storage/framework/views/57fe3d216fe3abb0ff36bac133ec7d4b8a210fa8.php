@@ -147,6 +147,9 @@
                         <li class="<?php echo e(Request::is('talent') ? 'color-active' : null); ?>">
                             <a href="<?php echo e(route('talent')); ?>">Talents</a>
                         </li>
+                        <li class="<?php echo e(Request::is('contact') ? 'color-active' : null); ?>">
+                            <a href="<?php echo e(route('contactPage')); ?>">Contact</a>
+                        </li>
                         <li>
                             <a href="#">More</a>
                             <ul>
@@ -165,7 +168,7 @@
 
             <!-- middle area  -->
             <div class="col-xs-4">
-                <form action="<?php echo e(route('search')); ?>" method="get" class="ls_d-none-mob">
+                <form action="<?php echo e(route('search')); ?>" method="get" class="ls_visible-hidden-mob" id="ls_form-expand">
                     <div class="topsearch ls_m-0">
                         <i class="cv cvicon-cv-cancel topsearch-close"></i>
                         <div class="input-group">
@@ -245,6 +248,7 @@
                     <?php endif; ?>
                 </div>
 
+                <a href="javascript:void(0)" id="ls_search-btn" class="ls_d-none ls_d-md-block ls_text-white ls_mr-10"><i class="fa fa-search ls_color-primary"></i></a>
                 <a href="<?php echo e(route('home')); ?>" class="btn-menu-toggle ls_m-0 ls_d-none ls_d-md-block ls_text-white"><i class="cv cvicon-cv-menu"></i></a>
             </div>
 

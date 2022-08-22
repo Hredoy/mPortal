@@ -179,15 +179,12 @@
 	min-height: 55px !important;
 	display: block;
 }
-.ls_video-container .mejs-container {
-    width: 770px !important;
+.ls_video-container {
+    width: 100% !important;
     height: 433px !important;
 }
 .ls_video-container video {
     object-fit: contain !important;
-}
-.ls_video-container .mejs-poster {
-    background-size: contain !important;
 }
 .ls_avatar-img img {
     border-radius: 100px;
@@ -319,6 +316,13 @@
     }
     .ls_d-block-mob {
         display: block;
+    }
+    .social-btn-sp {
+        width: 100%;
+        text-align: center;
+    }
+    .social-btn-sp ul {
+        padding: 0;
     }
 }
 @media screen and (min-width: 600px) {

@@ -1,8 +1,8 @@
 <div class="mobile-menu">
-    <div class="mobile-menu-head">
+    <div class="mobile-menu-head ls_bg-dark">
         <a href="#" class="mobile-menu-close"></a>
-        <a class="navbar-brand" href="index.html">
-            <img src="<?php echo e($settings->logo); ?>" alt="Project name" class="logo" />
+        <a class="navbar-brand" href="/">
+            <img src="<?php echo e($settings->logo); ?>" alt="Project name" class="" />
             <span><?php echo e(($settings->app_name)? $settings->app_name : config('app_name')); ?></span>
         </a>
         <div class="mobile-menu-btn-color">
@@ -49,33 +49,28 @@
                 </div>
             </div>
         </div>
-        <a href="<?php echo e(Route('public.upload')); ?>" class="btn mobile-menu-upload">
+        <a href="<?php echo e(Route('public.upload')); ?>" class="btn ls_bg-primary mobile-menu-upload">
             <i class="cv cvicon-cv-upload-video"></i>
             <span>Upload Video</span>
         </a>
         <div class="mobile-menu-list">
             <ul>
-                <li class="<?php echo e(Request::is('/') ? 'color-active': null); ?>">
-                    <a href="<?php echo e(Route('home')); ?>">
-                        <i class="cv cvicon-cv-play-circle"></i>
-                        <p>Popular Videos</p>
-                    </a>
-                </li>
+                
                 <li class="<?php echo e(Request::is('music') ? 'color-active': null); ?>">
                     <a href="<?php echo e(Route('music')); ?>">
-                        <i class="cv cvicon-cv-play-circle"></i>
+                        <i class="cv cvicon-cv-play-circle ls_color-primary"></i>
                         <p>Music</p>
                     </a>
                 </li>
                 <li class="<?php echo e(Request::is('comedy') ? 'color-active': null); ?>">
                     <a href="<?php echo e(Route('comedy')); ?>">
-                        <i class="cv cvicon-cv-play-circle"></i>
+                        <i class="cv cvicon-cv-play-circle ls_color-primary"></i>
                         <p>Comedy</p>
                     </a>
                 </li>
                 <li class="<?php echo e(Request::is('talent') ? 'color-active': null); ?>">
                     <a href="<?php echo e(Route('talent')); ?>">
-                        <i class="cv cvicon-cv-play-circle"></i>
+                        <i class="cv cvicon-cv-play-circle ls_color-primary"></i>
                         <p>Talent</p>
                     </a>
                 </li>
