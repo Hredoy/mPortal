@@ -155,11 +155,11 @@
                     <?php endif; ?>
                 </div>
 
-                <div class="acide-panel acide-panel-top">
+                <!-- <div class="acide-panel acide-panel-top">
                     <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
                     <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>
                     <a href="#"><i class="cv cvicon-cv-flag" data-toggle="tooltip" data-placement="top" title="Flag"></i></a>
-                </div>
+                </div> -->
                 <div class="author clearfix">
                     <div class="author-head ls_avatar-img">
                         <a href="#"><img src="<?php if($upload->user->profile && $upload->user->profile->avatar_status == 1): ?> <?php echo e($upload->user->profile->avatar); ?> <?php else: ?> <?php echo e(Gravatar::get($upload->user->email)); ?> <?php endif; ?>" alt="<?php echo e($upload->user->name); ?>" class="sv-avatar"></a>
