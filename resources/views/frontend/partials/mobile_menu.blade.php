@@ -54,12 +54,12 @@
         </a>
         <div class="mobile-menu-list">
             <ul>
-                <li class="{{Request::is('/') ? 'color-active': null}}">
+                {{-- <li class="{{Request::is('/') ? 'color-active': null}}">
                     <a href="{{Route('home')}}">
                         <i class="cv cvicon-cv-play-circle ls_color-primary"></i>
                         <p>Popular Videos</p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="{{Request::is('music') ? 'color-active': null}}">
                     <a href="{{Route('music')}}">
                         <i class="cv cvicon-cv-play-circle ls_color-primary"></i>
@@ -101,9 +101,15 @@
                 </li> --}}
             </ul>
         </div>
-        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn mobile-menu-logout">Sign out</a>
+        @guest
+        <a href="{{ route('login') }}" class="btn mobile-menu-logout">Sign In</a>
+        @endguest
+        @auth
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn mobile-menu-logout">Sign out</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
+        @endauth
+        
     </div>
 </div>

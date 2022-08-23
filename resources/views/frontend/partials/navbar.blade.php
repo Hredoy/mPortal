@@ -1,4 +1,4 @@
-<div style="display: none">
+{{-- <div style="display: none">
 <div class="navbar-container">
     <div class="container">
         <div class="row">
@@ -46,14 +46,12 @@
                                 class="form-control" placeholder="Search" aria-describedby="sizing-addon2">
                             <div class="input-group-btn">
                                 <div type="text" class="btn btn-default">
-                                    <i class="cv cvicon-cv-video-file"></i>&nbsp;&nbsp;&nbsp;{{-- <span class="caret"></span> --}}
+                                    <i class="cv cvicon-cv-video-file"></i>&nbsp;&nbsp;&nbsp;
                                 </div>
                             </div><!-- /btn-group -->
                         </div>
                     </div>
                 </form>
-                {{-- <div id="searchResultDiv" style="position: absolute;z-index:1; width:95%">
-                </div> --}}
             </div>
             <dv class="col-lg-2 col-sm-4 hidden-xs">
                 <div class="avatar pull-left">
@@ -117,7 +115,7 @@
     </div>
 </div>
 </div>
-</div>
+</div> --}}
 
 <!-- header area  -->
 <header class="ls_bg-dark ls_header">

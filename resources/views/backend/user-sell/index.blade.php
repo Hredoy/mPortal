@@ -29,7 +29,7 @@
                                         <th>S.N</th>
                                         <th>Title</th>
                                         <th>price</th>
-                                        <th>Seels</th>
+                                        <th>Quantity</th>
                                         <th>Total</th>
                                     </tr>
                                 </thead>
