@@ -101,9 +101,15 @@
                 </li> --}}
             </ul>
         </div>
-        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn mobile-menu-logout">Sign out</a>
+        @guest
+        <a href="{{ route('login') }}" class="btn mobile-menu-logout">Sign In</a>
+        @endguest
+        @auth
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn mobile-menu-logout">Sign out</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
+        @endauth
+        
     </div>
 </div>
