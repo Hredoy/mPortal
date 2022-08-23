@@ -49,7 +49,7 @@
     }
 
     .custom-control.teleport-switch .teleport-switch-control-input:checked~.teleport-switch-control-indicator {
-        border-color: var(--color);
+        border-color: var( --ls_color-primary);
     }
 
     .custom-control.teleport-switch .teleport-switch-control-input:checked~.teleport-switch-control-indicator::after {
@@ -58,7 +58,7 @@
 
     .custom-control.teleport-switch .teleport-switch-control-input:checked~.teleport-switch-control-indicator::before {
         right: 2px;
-        background-color: var(--color);
+        background-color: var( --ls_color-primary);
     }
 
     .custom-control.teleport-switch .teleport-switch-control-input:disabled~.teleport-switch-control-indicator {
@@ -118,46 +118,49 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-xs-12 col-sm-12">
-                @if ($upload->sell && !$is_purchased)
-                <div class="sv-video">
-                    <a href=""><img src="{{asset('images/premium.png')}}" alt="" width="auto" height="350px" class="ls_obj-cover"></a>
-                </div>
-                @else
-                <video id="my-video" class="video-js" controls
-                    preload="auto" width="640" height="264" poster="{{asset($upload->thumbnail_image)}}" data-setup="{}"
-                    @auth @if(auth()->user()->auto_play == false)
-                    autoplay="false"
-                    @else
-                    muted autoplay
-                    @endif
-                    @endauth
-                    @guest
-                    muted autoplay
-                    @endguest
-                    >
-                    <source src="{{asset($upload->upload)}}" type="video/mp4" />
-                </video>
-                {{-- For Next Link --}}
-                <input type="hidden" name="nextlink" value="{{route('singleVideo', $relatedUpload[0]['id'])}}">
-                @endif
-                <h1><a href="#">{{$upload->name}}</a></h1>
-                @if($upload->sell)
-                <div class="card">
-                    <div class="card-body">
-                        @if ($upload->sell && $is_purchased)
-                        <button class="btn btn-success my-2">Purched !</button>
-                        @else
-                        <a href="{{route('user.buynow', $upload->id)}}" class="btn btn-success my-2">Buy Now</a>
-                        @endif
+                <div class="@if($upload->sell && !$is_purchased) ls_purchase-box @endif">
+                    @if ($upload->sell && !$is_purchased)
+                    <div class="sv-video">
+                        <a href=""><img src="{{asset('images/premium.png')}}" alt="" width="auto" height="350px" class="ls_obj-cover"></a>
                     </div>
+                    @else
+                    <video id="my-video" class="video-js ls_video-container" controls
+                        preload="auto" poster="{{asset($upload->thumbnail_image)}}" data-setup="{}"
+                        @auth @if(auth()->user()->auto_play == false)
+                        autoplay="false"
+                        @else
+                        muted autoplay
+                        @endif
+                        @endauth
+                        @guest
+                        muted autoplay
+                        @endguest
+                        >
+                        <source src="{{asset($upload->upload)}}" type="video/mp4" />
+                    </video>
+                    {{-- For Next Link --}}
+                    <input type="hidden" name="nextlink" value="{{route('singleVideo', $relatedUpload[0]['id'])}}">
+                    @endif
+                    <h1><a href="#">{{$upload->name}}</a></h1>
+                    @if($upload->sell)
+                    <div class="card">
+                        <div class="card-body">
+                            @if ($upload->sell && $is_purchased)
+                            <a href="{{route('user.buynow', $upload->id)}}" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Purched !</a>
+                            @else
+                            <a href="{{route('user.buynow', $upload->id)}}" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Buy Now</a>
+                            @endif
+                        </div>
+                    </div>
+                    @endif
                 </div>
-                @endif
+
                 <div class="acide-panel acide-panel-top">
                     <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
                     <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>
                     <a href="#"><i class="cv cvicon-cv-flag" data-toggle="tooltip" data-placement="top" title="Flag"></i></a>
                 </div>
-                <div class="author">
+                <div class="author clearfix">
                     <div class="author-head ls_avatar-img">
                         <a href="#"><img src="@if ($upload->user->profile && $upload->user->profile->avatar_status == 1) {{ $upload->user->profile->avatar }} @else {{ Gravatar::get($upload->user->email) }} @endif" alt="{{ $upload->user->name }}" class="sv-avatar"></a>
                         <div class="sv-name">
@@ -269,11 +272,11 @@
                         <a>Tell Us What You Think</a>
                     </div>
 
-                    <div class="content-block head-div head-arrow head-arrow-top visible-xs">
+                    <!-- <div class="content-block head-div head-arrow head-arrow-top visible-xs">
                         <div class="head-arrow-icon">
                             <i class="cv cvicon-cv-next"></i>
                         </div>
-                    </div>
+                    </div> -->
 
                     {{-- <div class="adblock2">
                         <div class="img">
@@ -372,9 +375,9 @@
                     </div>
                 </div>
                 <div class="content-block head-div head-arrow visible-xs">
-                    <div class="head-arrow-icon">
+                    <!-- <div class="head-arrow-icon">
                         <i class="cv cvicon-cv-next"></i>
-                    </div>
+                    </div> -->
                     {{-- <div class="adblock2 adblock2-v2">
                         <div class="img">
                             <span>Google AdSense 300 x 250</span>

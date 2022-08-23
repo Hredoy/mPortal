@@ -97,5 +97,48 @@
         });
 
     </script>
+
+<script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $(document).on('keyup', 'input[name="keyword"]', function() {
+                    let keyword = $(this).val();
+                    search(keyword);
+            });
+
+            function search(keyword) {
+                // let keyword = $('input[name="keyword"]').val();
+                console.log(keyword)
+                if (keyword.length > 0) {
+                    $('#searchResultDiv2').css({'display':'block'})
+                    $.ajax({
+                        url: `/ajax/search/${keyword}`
+                        , type: 'GET'
+                        // , beforeSend: function() {
+                        //     console.log('beforesend')
+                        //     )
+                        // }
+                        , success: function(data) {
+                            console.log(data)
+                            $('#searchResultDiv2').empty()
+                            $('#searchResultDiv2').append(data)
+                        }
+                        , error: function(error) {
+                            console.log(error)
+                        }
+                    })
+                } else {
+                    $('#searchResultDiv2').css({'display':'none'})
+                }
+            };
+
+        });
+
+    </script>
 </body>
 </html>

@@ -15,10 +15,10 @@
     <link href="<?php echo e(asset('assets/frontend/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
 
     <!-- player -->
-    <link rel="stylesheet" href="<?php echo e(asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelementplayer.min.css')); ?>" />
+    
 
     <!-- Theme CSS -->
-    <link href="<?php echo e(asset('assets/frontend/css/style.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/frontend/css/custom-style.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('assets/frontend/css/font-awesome.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('assets/frontend/css/font-circle-video.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('assets/frontend/css/ls-custom-style.css')); ?>" rel="stylesheet">
@@ -52,7 +52,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="<?php echo e(asset('assets/frontend/js/jquery.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/frontend/bootstrap/js/bootstrap.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelement-and-player.min.js')); ?>"></script>
+    
     <script src="<?php echo e(asset('assets/frontend/js/custom.js')); ?>"></script>
     <?php echo $__env->yieldPushContent('custom_script'); ?>
     <script>
@@ -91,6 +91,49 @@
                     })
                 } else {
                     $('#searchResultDiv').css({'display':'none'})
+                }
+            };
+
+        });
+
+    </script>
+
+<script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $(document).on('keyup', 'input[name="keyword"]', function() {
+                    let keyword = $(this).val();
+                    search(keyword);
+            });
+
+            function search(keyword) {
+                // let keyword = $('input[name="keyword"]').val();
+                console.log(keyword)
+                if (keyword.length > 0) {
+                    $('#searchResultDiv2').css({'display':'block'})
+                    $.ajax({
+                        url: `/ajax/search/${keyword}`
+                        , type: 'GET'
+                        // , beforeSend: function() {
+                        //     console.log('beforesend')
+                        //     )
+                        // }
+                        , success: function(data) {
+                            console.log(data)
+                            $('#searchResultDiv2').empty()
+                            $('#searchResultDiv2').append(data)
+                        }
+                        , error: function(error) {
+                            console.log(error)
+                        }
+                    })
+                } else {
+                    $('#searchResultDiv2').css({'display':'none'})
                 }
             };
 

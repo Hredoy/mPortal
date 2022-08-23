@@ -1,7 +1,11 @@
 <?php
 use App\Models\Ticket;
+use App\Models\TicketReply;
+
 $totalTickets = Ticket::where('status', 'pending')->get()->count();
-echo gettype($totalTickets);
+$userticekt = Ticket::where('user_id', auth()->user()->id)->pluck('id');
+$totalusermessage = TicketReply::whereIn('ticket_id', $userticekt)->where('is_admin', 1)->where('is_seen', 0)->count();
+
 ?>
 <div class="iq-sidebar">
     <div class="iq-sidebar-logo d-flex justify-content-between">
@@ -72,9 +76,21 @@ echo gettype($totalTickets);
                 <li class="<?php echo e(Request::is('admin/comedy')? 'active' : null); ?>">
                     <a href="<?php echo e(Route('public.comedy')); ?>" class="iq-waves-effect"><i class="las la-smile"></i><span>Comedy List</span></a>
                 </li>
+                <?php if (Auth::check() && Auth::user()->hasRole('user')): ?>
                 <li class="<?php echo e(Request::is('admin/comedy')? 'active' : null); ?>">
-                    <a href="<?php echo e(Route('user.ticket.index')); ?>" class="iq-waves-effect"><i class="las la-smile"></i><span>Ticket</span></a>
+                    <a href="<?php echo e(Route('user.ticket.index')); ?>" class="iq-waves-effect"><i class="las la-smile"></i>
+                        <span>Ticket</span>
+                        <?php if($totalusermessage> 0): ?>
+                        <span class="iq-arrow-right badge badge-primary p-1"><?php echo e($totalusermessage); ?></span>
+                        <?php endif; ?>
+                    </a>
                 </li>
+                <li class="<?php echo e(Request::is('admin/sell-list')? 'active' : null); ?>">
+                    <a href="<?php echo e(Route('user.sellslist')); ?>" class="iq-waves-effect"><i class="las la-smile"></i>
+                        <span>Selling List</span>
+                    </a>
+                </li>
+                <?php endif; ?>
                 <li>
                     <a href="<?php echo e(route('logout')); ?>"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"

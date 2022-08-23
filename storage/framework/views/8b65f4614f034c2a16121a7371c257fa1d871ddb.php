@@ -18,6 +18,8 @@
    <link rel="stylesheet" href="<?php echo e(asset('assets/backend/css/style.css')); ?>">
    <!-- Responsive CSS -->
    <link rel="stylesheet" href="<?php echo e(asset('assets/backend/css/responsive.css')); ?>">
+   <!-- ls_custom_backend CSS -->
+   <link rel="stylesheet" href="<?php echo e(asset('assets/backend/css/ls_custom_backend.css')); ?>">
    <?php echo $__env->yieldPushContent('custom-css'); ?>
    <?php echo $__env->yieldContent('template_linked_css'); ?>
 </head>

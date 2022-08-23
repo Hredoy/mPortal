@@ -89,13 +89,13 @@
                                 <div class="b-video">
                                     <div class="v-img">
                                         <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt="" width="100%" height="215px"></a>
-                                        <div class="time">3:50</div>
+                                        <div class="time"></div>
                                     </div>
-                                    <div class="v-desc">
+                                    <div class="ls_height-1 v-desc">
                                         <a href="{{route('singleVideo', $item->id)}}">{{$item->name}}</a>
                                     </div>
-                                    <div class="v-views">
-                                        27,548 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
+                                    <div class="v-views ls_d-flex ls_align-center ls_justify-between">
+                                        {{$item->view}} views.
                                         <div class="pull-right">
                                             @if ( empty($likeChecks))
                                             <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
