@@ -30,8 +30,8 @@ class CreateUploadsTable extends Migration
             $table->bigInteger('view')->nullable()->default(0);
             $table->boolean('status')->default(1);
             $table->boolean('featured')->default(1);
-            $table->boolean('sell')->default(0);
-            $table->float('price')->default(null);
+            $table->boolean('sell')->nullable();
+            $table->float('price')->nullable();
             $table->timestamps();
         });
     }

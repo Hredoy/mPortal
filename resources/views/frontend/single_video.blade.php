@@ -146,7 +146,7 @@
                     <div class="card">
                         <div class="card-body">
                             @if ($upload->sell && $is_purchased)
-                            <a href="{{route('user.buynow', $upload->id)}}" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Purched !</a>
+                            <a href="#" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Download!</a>
                             @else
                             <a href="{{route('user.buynow', $upload->id)}}" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Buy Now</a>
                             @endif
