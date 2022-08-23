@@ -113,14 +113,19 @@
                          </div>
                       </div>
                       <div class="row">
-                         <div class="col-sm-12 form-group">
-                            <input type="date" class="form-control" value="{{$upload->release_date}}" name="release_date" placeholder="Release Date">
-                            @if ($errors->has('release_date'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('release_date') }}</strong>
-                                </span>
-                                @endif
-                         </div>
+                        <div class="col-md-6 form-group">
+                            <Label for="contentType">Content Type: </Label>
+                            <select name="sell" id="contentType" class="form-control">
+                                <option value="0" selected>Free</option>
+                                <option value="1" @if($upload->sell == true) selected @endif>Premium</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group" id="inputPrice" @if($upload->sell == true) style="display: block"@else style="display: none" @endif  >
+                            <Label for="priceID">Price: </Label>
+                            <input type="number" name="price" value="{{$upload->price}}" id="priceID" class="form-control">
+                        </div>
+                    </div>
+                      <div class="row">
                         {{-- <div class="col-sm-12 form-group">
                            <input type="time" class="form-control" value="{{$upload->upload_duration}}" name="upload_duration" placeholder="Movie Duration">
                         </div> --}}
@@ -137,3 +142,20 @@
     </div>
  </div>
 @endsection
+@push('custom-script')
+<script>
+    $(document).ready(function() {
+        let contenttype = $('select[name="sell"]');
+        $(document).on('change', 'select[name="sell"]', function() {
+            let data = $(this).val();
+            if (data == 1) {
+                $('#inputPrice').css('display', 'block');
+            } else if (data == 0) {
+                $('#inputPrice').css('display', 'none');
+            }
+            // console.log(data);
+        });
+    });
+</script>
+
+@endpush
