@@ -30,6 +30,7 @@ Route::group(['middleware' => ['web', 'checkblocked']], function () {
     Route::get('/comedy', 'App\Http\Controllers\Frontend\HomeController@comedy')->name('comedy');
     Route::get('/talent', 'App\Http\Controllers\Frontend\HomeController@talent')->name('talent');
     Route::get('/contact', 'App\Http\Controllers\Frontend\ContactController@index')->name('contactPage');
+    Route::post('/send-message', 'App\Http\Controllers\Frontend\ContactController@sendEmail')->name('sendmail');
 });
 
 // Authentication Routes
