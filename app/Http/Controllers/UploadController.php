@@ -98,8 +98,8 @@ class UploadController extends Controller
         $upload->upload = $uploadFileName;
         $upload->release_date = $request->release_date;
         $upload->region = $request->region;
-        $upload->type_id = $type;
-        $upload->upload_duration = $duration;
+        $upload->type_id = $type ?? null;
+        $upload->upload_duration = $duration ?? null;
         $upload->sell = $request->sell;
         $upload->price = $request->price;
         $upload->save();
