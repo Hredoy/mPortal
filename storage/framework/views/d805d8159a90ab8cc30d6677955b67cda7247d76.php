@@ -118,40 +118,43 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-xs-12 col-sm-12">
-                <?php if($upload->sell && !$is_purchased): ?>
-                <div class="sv-video">
-                    <a href=""><img src="<?php echo e(asset('images/premium.png')); ?>" alt="" width="auto" height="350px" class="ls_obj-cover"></a>
-                </div>
-                <?php else: ?>
-                <video id="my-video" class="video-js ls_video-container" controls
-                    preload="auto" poster="<?php echo e(asset($upload->thumbnail_image)); ?>" data-setup="{}"
-                    <?php if(auth()->guard()->check()): ?> <?php if(auth()->user()->auto_play == false): ?>
-                    autoplay="false"
-                    <?php else: ?>
-                    muted autoplay
-                    <?php endif; ?>
-                    <?php endif; ?>
-                    <?php if(auth()->guard()->guest()): ?>
-                    muted autoplay
-                    <?php endif; ?>
-                    >
-                    <source src="<?php echo e(asset($upload->upload)); ?>" type="video/mp4" />
-                </video>
-                
-                <input type="hidden" name="nextlink" value="<?php echo e(route('singleVideo', $relatedUpload[0]['id'])); ?>">
-                <?php endif; ?>
-                <h1><a href="#"><?php echo e($upload->name); ?></a></h1>
-                <?php if($upload->sell): ?>
-                <div class="card">
-                    <div class="card-body">
-                        <?php if($upload->sell && $is_purchased): ?>
-                        <a href="<?php echo e(route('user.buynow', $upload->id)); ?>" class="btn btn-success my-2">Purched !</a>
-                        <?php else: ?>
-                        <a href="<?php echo e(route('user.buynow', $upload->id)); ?>" class="btn btn-success my-2">Buy Now</a>
-                        <?php endif; ?>
+                <div class="<?php if($upload->sell && !$is_purchased): ?> ls_purchase-box <?php endif; ?>">
+                    <?php if($upload->sell && !$is_purchased): ?>
+                    <div class="sv-video">
+                        <a href=""><img src="<?php echo e(asset('images/premium.png')); ?>" alt="" width="auto" height="350px" class="ls_obj-cover"></a>
                     </div>
+                    <?php else: ?>
+                    <video id="my-video" class="video-js ls_video-container" controls
+                        preload="auto" poster="<?php echo e(asset($upload->thumbnail_image)); ?>" data-setup="{}"
+                        <?php if(auth()->guard()->check()): ?> <?php if(auth()->user()->auto_play == false): ?>
+                        autoplay="false"
+                        <?php else: ?>
+                        muted autoplay
+                        <?php endif; ?>
+                        <?php endif; ?>
+                        <?php if(auth()->guard()->guest()): ?>
+                        muted autoplay
+                        <?php endif; ?>
+                        >
+                        <source src="<?php echo e(asset($upload->upload)); ?>" type="video/mp4" />
+                    </video>
+                    
+                    <input type="hidden" name="nextlink" value="<?php echo e(route('singleVideo', $relatedUpload[0]['id'])); ?>">
+                    <?php endif; ?>
+                    <h1><a href="#"><?php echo e($upload->name); ?></a></h1>
+                    <?php if($upload->sell): ?>
+                    <div class="card">
+                        <div class="card-body">
+                            <?php if($upload->sell && $is_purchased): ?>
+                            <a href="<?php echo e(route('user.buynow', $upload->id)); ?>" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Purched !</a>
+                            <?php else: ?>
+                            <a href="<?php echo e(route('user.buynow', $upload->id)); ?>" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Buy Now</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
                 </div>
-                <?php endif; ?>
+
                 <div class="acide-panel acide-panel-top">
                     <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
                     <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>

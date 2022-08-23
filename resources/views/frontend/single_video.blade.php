@@ -118,40 +118,43 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-xs-12 col-sm-12">
-                @if ($upload->sell && !$is_purchased)
-                <div class="sv-video">
-                    <a href=""><img src="{{asset('images/premium.png')}}" alt="" width="auto" height="350px" class="ls_obj-cover"></a>
-                </div>
-                @else
-                <video id="my-video" class="video-js ls_video-container" controls
-                    preload="auto" poster="{{asset($upload->thumbnail_image)}}" data-setup="{}"
-                    @auth @if(auth()->user()->auto_play == false)
-                    autoplay="false"
-                    @else
-                    muted autoplay
-                    @endif
-                    @endauth
-                    @guest
-                    muted autoplay
-                    @endguest
-                    >
-                    <source src="{{asset($upload->upload)}}" type="video/mp4" />
-                </video>
-                {{-- For Next Link --}}
-                <input type="hidden" name="nextlink" value="{{route('singleVideo', $relatedUpload[0]['id'])}}">
-                @endif
-                <h1><a href="#">{{$upload->name}}</a></h1>
-                @if($upload->sell)
-                <div class="card">
-                    <div class="card-body">
-                        @if ($upload->sell && $is_purchased)
-                        <a href="{{route('user.buynow', $upload->id)}}" class="btn btn-success my-2">Purched !</a>
-                        @else
-                        <a href="{{route('user.buynow', $upload->id)}}" class="btn btn-success my-2">Buy Now</a>
-                        @endif
+                <div class="@if($upload->sell && !$is_purchased) ls_purchase-box @endif">
+                    @if ($upload->sell && !$is_purchased)
+                    <div class="sv-video">
+                        <a href=""><img src="{{asset('images/premium.png')}}" alt="" width="auto" height="350px" class="ls_obj-cover"></a>
                     </div>
+                    @else
+                    <video id="my-video" class="video-js ls_video-container" controls
+                        preload="auto" poster="{{asset($upload->thumbnail_image)}}" data-setup="{}"
+                        @auth @if(auth()->user()->auto_play == false)
+                        autoplay="false"
+                        @else
+                        muted autoplay
+                        @endif
+                        @endauth
+                        @guest
+                        muted autoplay
+                        @endguest
+                        >
+                        <source src="{{asset($upload->upload)}}" type="video/mp4" />
+                    </video>
+                    {{-- For Next Link --}}
+                    <input type="hidden" name="nextlink" value="{{route('singleVideo', $relatedUpload[0]['id'])}}">
+                    @endif
+                    <h1><a href="#">{{$upload->name}}</a></h1>
+                    @if($upload->sell)
+                    <div class="card">
+                        <div class="card-body">
+                            @if ($upload->sell && $is_purchased)
+                            <a href="{{route('user.buynow', $upload->id)}}" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Purched !</a>
+                            @else
+                            <a href="{{route('user.buynow', $upload->id)}}" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Buy Now</a>
+                            @endif
+                        </div>
+                    </div>
+                    @endif
                 </div>
-                @endif
+
                 <div class="acide-panel acide-panel-top">
                     <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
                     <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>

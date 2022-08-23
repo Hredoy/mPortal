@@ -280,6 +280,21 @@
 .ls_menu .ls_dynamic-menu li a {
     color: var(--ls_bg-dark) !important;
 }
+.ls_purchase-box {
+    margin-bottom: 35px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    padding: 30px;
+}
+.ls_purchase-box img {
+    width: 100%;
+    min-height: 400px;
+}
+.ls_shadow-1 {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
+.ls_border-0 {
+    border: none;
+}
 
 @media only screen and (min-width:1200px){
     .mobile-menu{

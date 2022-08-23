@@ -4,10 +4,10 @@
 @endsection
 @section('main_section')
 <div class="content-wrapper">
-    <div class="container">
+    <div class="container ful_height">
         <div class="row">
             <div class="col-lg-12">
-                <div class="jumbotron">
+                <div class="jumbotron ls_shadow-1">
 
                     <table class="table">
                         <thead>
@@ -38,10 +38,20 @@
                         <input type="hidden" name="seller_id" value="{{$upload->user_id}}">
                         <input type="hidden" name="price" value="{{$upload->price}}">
 
-                        <button class="btn btn-primary"> Confirm Order</button>
+                        <button class="ls_btn ls_shadow-1 ls_border-0"> Confirm Order</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <style>
+        .jumbotron {
+            background: #fff;
+            margin: 50px 0;
+        }
+        .ful_height {
+            height: calc(100vh - 226.15px);
+        }
+    </style>
     @endsection
