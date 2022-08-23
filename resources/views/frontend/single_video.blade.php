@@ -145,7 +145,7 @@
                 <div class="card">
                     <div class="card-body">
                         @if ($upload->sell && $is_purchased)
-                        <a href="{{route('user.buynow', $upload->id)}}" class="btn btn-success my-2">Purched !</a>
+                        <button class="btn btn-success my-2">Purched !</button>
                         @else
                         <a href="{{route('user.buynow', $upload->id)}}" class="btn btn-success my-2">Buy Now</a>
                         @endif
@@ -161,7 +161,7 @@
                     <div class="author-head ls_avatar-img">
                         <a href="#"><img src="@if ($upload->user->profile && $upload->user->profile->avatar_status == 1) {{ $upload->user->profile->avatar }} @else {{ Gravatar::get($upload->user->email) }} @endif" alt="{{ $upload->user->name }}" class="sv-avatar"></a>
                         <div class="sv-name">
-                            <div><a href="#">{{$upload->user->name}}</a> . {{ App\Models\Upload::where('user_id', $upload->user_id)->count() }} Videos</div>
+                            <div><a href="{{route('channelpage', $upload->user_id)}}">{{$upload->user->name}}</a> . {{ App\Models\Upload::where('user_id', $upload->user_id)->count() }} Videos</div>
                             <div class="c-sub hidden-xs">
                                 @if ($upload->user_id == Auth::id())
                                 <button disabled class="c-f">

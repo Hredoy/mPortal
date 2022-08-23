@@ -15,7 +15,7 @@ class CreateSellsTable extends Migration
     {
         Schema::create('sells', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('upload_id');
+            $table->foreignId('upload_id')->constrained('uploads')->onDelete('cascade');
             $table->unsignedBigInteger('seller_id');
             $table->unsignedBigInteger('buyer_id');
             $table->float('price');

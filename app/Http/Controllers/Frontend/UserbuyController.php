@@ -12,13 +12,26 @@ class UserbuyController extends Controller
 {
     public function buyNowPage(Request $request, $id)
     {
+
         $upload = Upload::firstWhere('id', $id);
-        // return $upload;
+        $check = Sell::where('buyer_id', Auth::user()->id)->where('upload_id', $upload->id)->count();
+
+        if($upload->sell == false || $check && $check > 0){
+            return  redirect()->back();
+        };
+
         return view('frontend.buy-now', compact('upload'));
     }
 
     public function buyNow(Request $request, $id)
     {
+        $upload = Upload::firstWhere('id', $id);
+        $check = Sell::where('buyer_id', Auth::user()->id)->where('upload_id', $upload->id)->count();
+
+        if($check && $check > 0){
+            return  redirect()->back();
+        };
+
         Sell::create([
             'upload_id' => $request->upload_id,
             'seller_id' => $request->seller_id,
