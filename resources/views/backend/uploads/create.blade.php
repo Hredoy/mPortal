@@ -15,7 +15,17 @@
                         </div>
                     </div>
                     <div class="iq-card-body">
-                        <form method="POST" action="{{ route('public.upload.store') }}" enctype="multipart/form-data">
+                        @if($errors->any())
+                        <div class="alert alert-danger">
+                            <p><strong>Opps Something went wrong</strong></p>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        <form method="POST" action="{{ route('public.upload.store') }}" enctype="multipart/form-data" id="uplodFrom">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-7">
@@ -95,14 +105,14 @@
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <Label for="contentType">Content Type: </Label>
-                                  <select name="sell" id="contentType" class="form-control">
-                                    <option value="0" selected>Free</option>
-                                    <option value="1">Premium</option>
-                                  </select>
+                                    <select name="sell" id="contentType" class="form-control">
+                                        <option value="0" selected>Free</option>
+                                        <option value="1">Premium</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-6 form-group" id="inputPrice" style="display: none">
                                     <Label for="priceID">Price: </Label>
-                                    <input type="number" name="price" id="priceID" class="form-control" required step="any">
+                                    <input type="number" name="price" id="priceID" class="form-control">
                                 </div>
                             </div>
 
@@ -134,19 +144,18 @@
 @endsection
 @push('custom-script')
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         let contenttype = $('select[name="sell"]');
-        $(document).on('change', 'select[name="sell"]', function(){
+        $(document).on('change', 'select[name="sell"]', function() {
             let data = $(this).val();
-            if(data == 1){
-                $('#inputPrice').css('display','block');
-            }else if(data == 0){
-                $('#inputPrice').css('display','none');
+            if (data == 1) {
+                $('#inputPrice').css('display', 'block');
+            } else if (data == 0) {
+                $('#inputPrice').css('display', 'none');
             }
             // console.log(data);
         });
     });
-
 
 </script>
 
