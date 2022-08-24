@@ -19,7 +19,7 @@
                 </div>
                 <div class="login-window">
                     <div class="l-head">
-                        Log Into Your Circle Account
+                        Log Into Your Account
                     </div>
                     <div class="l-form">
                         <form method="POST" action="<?php echo e(route('login')); ?>">

@@ -87,10 +87,16 @@
                 
             </ul>
         </div>
-        <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn mobile-menu-logout">Sign out</a>
+        <?php if(auth()->guard()->guest()): ?>
+        <a href="<?php echo e(route('login')); ?>" class="btn mobile-menu-logout">Sign In</a>
+        <?php endif; ?>
+        <?php if(auth()->guard()->check()): ?>
+            <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn mobile-menu-logout">Sign out</a>
             <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                 <?php echo csrf_field(); ?>
             </form>
+        <?php endif; ?>
+        
     </div>
 </div>
 <?php /**PATH D:\laragon\www\2spiceart\resources\views/frontend/partials/mobile_menu.blade.php ENDPATH**/ ?>

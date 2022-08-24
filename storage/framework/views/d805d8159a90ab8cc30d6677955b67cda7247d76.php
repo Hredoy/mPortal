@@ -146,7 +146,7 @@
                     <div class="card">
                         <div class="card-body">
                             <?php if($upload->sell && $is_purchased): ?>
-                            <a href="<?php echo e(route('user.buynow', $upload->id)); ?>" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Purched !</a>
+                            <a href="#" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Download!</a>
                             <?php else: ?>
                             <a href="<?php echo e(route('user.buynow', $upload->id)); ?>" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Buy Now</a>
                             <?php endif; ?>
@@ -164,7 +164,7 @@
                     <div class="author-head ls_avatar-img">
                         <a href="#"><img src="<?php if($upload->user->profile && $upload->user->profile->avatar_status == 1): ?> <?php echo e($upload->user->profile->avatar); ?> <?php else: ?> <?php echo e(Gravatar::get($upload->user->email)); ?> <?php endif; ?>" alt="<?php echo e($upload->user->name); ?>" class="sv-avatar"></a>
                         <div class="sv-name">
-                            <div><a href="#"><?php echo e($upload->user->name); ?></a> . <?php echo e(App\Models\Upload::where('user_id', $upload->user_id)->count()); ?> Videos</div>
+                            <div><a href="<?php echo e(route('channelpage', $upload->user_id)); ?>"><?php echo e($upload->user->name); ?></a> . <?php echo e(App\Models\Upload::where('user_id', $upload->user_id)->count()); ?> Videos</div>
                             <div class="c-sub hidden-xs">
                                 <?php if($upload->user_id == Auth::id()): ?>
                                 <button disabled class="c-f">

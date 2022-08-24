@@ -5,10 +5,22 @@
 @section('main_section')
 <div class="content-wrapper">
     <div class="container">
-        <div class="row">
-            <div class="jumbotron">
-                <h4>Channel Name: {{$channel->name}}</h4>
+        <div class="row ls_d-flex ls_align-center jumbotron ls_shadow-1 ls_pl-0">
+            <div class="col-md-6">
+                <div class="ls_d-flex ls_align-center ls_channel">
+                    <img src=" https://www.gravatar.com/avatar/64e1b8d34f425d19e1ee2ea7236d3028.jpg?d=http%3A%2F%2Fc1940652.r52.cf0.rackcdn.com%2F51ce28d0fb4f442061000000%2FScreen-Shot-2013-06-28-at-5.22.23-PM.png&r=g " alt="">
+                    <h4>{{$channel->name}}</h4>
+                </div>
+            </div>
+            <div class="col-md-6 ls_d-flex ls_justify-end">
+                <div class="ls_channel">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
         </div>
+
         <div class="row">
             <div class="col-lg-12">
 
@@ -34,14 +46,14 @@
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt="" width="100%" height="215px"></a>
-                                        <div class="time">3:50</div>
+                                        <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt="" width="100%" height="215px" class="ls_obj-cover"></a>
+                                        <div class="time">{{$item->upload_duration}}</div>
                                     </div>
-                                    <div class="v-desc">
-                                        <a href="{{route('singleVideo', $item->id)}}">{{$item->name}}</a>
+                                    <div class="ls_height-1 v-desc">
+                                        <a href="{{route('singleVideo', $item->id)}}">{{ substr($item->name,0, 50)."..." }}</a>
                                     </div>
-                                    <div class="v-views">
-                                        27,548 views. <span class="v-percent"><span class="v-circle"></span> 78%</span>
+                                    <div class="v-views ls_d-flex ls_align-center ls_justify-between">
+                                        {{$item->view}} views.
                                         <div class="pull-right">
                                             @if ( empty($likeChecks))
                                             <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
@@ -459,4 +471,11 @@
         </div>
     </div>
 </div>
+
+<style>
+    .jumbotron {
+        background: #fff;
+        margin: 50px 0;
+    }
+</style>
 @endsection

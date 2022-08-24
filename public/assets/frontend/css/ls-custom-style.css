@@ -51,6 +51,9 @@
 .ls_p-0 {
     padding: 0 !important;
 }
+.ls_pl-0 {
+    padding-left: 0 !important;
+}
 .ls_px-0 {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -294,6 +297,26 @@
 }
 .ls_border-0 {
     border: none;
+}
+.ls_channel img {
+    width: 75px;
+    border-radius: 100px;
+    object-fit: contain;
+    margin-right: 20px;
+}
+.ls_channel h4 {
+    flex: 1;
+}
+.ls_channel a {
+    width: 40px;
+    height: 40px;
+    background: var(--ls_color-primary);
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 100px;
+    margin-right: 15px;
+    color: #fff;
 }
 
 @media only screen and (min-width:1200px){

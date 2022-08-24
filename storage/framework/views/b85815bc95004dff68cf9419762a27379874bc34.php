@@ -15,7 +15,17 @@
                         </div>
                     </div>
                     <div class="iq-card-body">
-                        <form method="POST" action="<?php echo e(route('public.upload.store')); ?>" enctype="multipart/form-data">
+                        <?php if($errors->any()): ?>
+                        <div class="alert alert-danger">
+                            <p><strong>Opps Something went wrong</strong></p>
+                            <ul>
+                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($error); ?></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </ul>
+                        </div>
+                        <?php endif; ?>
+                        <form method="POST" action="<?php echo e(route('public.upload.store')); ?>" enctype="multipart/form-data" id="uplodFrom">
                             <?php echo csrf_field(); ?>
                             <div class="row">
                                 <div class="col-lg-7">
@@ -93,14 +103,14 @@
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <Label for="contentType">Content Type: </Label>
-                                  <select name="sell" id="contentType" class="form-control">
-                                    <option value="0" selected>Free</option>
-                                    <option value="1">Premium</option>
-                                  </select>
+                                    <select name="sell" id="contentType" class="form-control">
+                                        <option value="0" selected>Free</option>
+                                        <option value="1">Premium</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-6 form-group" id="inputPrice" style="display: none">
                                     <Label for="priceID">Price: </Label>
-                                    <input type="number" name="price" id="priceID" class="form-control" required step="any">
+                                    <input type="number" name="price" id="priceID" class="form-control">
                                 </div>
                             </div>
 
@@ -123,20 +133,18 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('custom-script'); ?>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         let contenttype = $('select[name="sell"]');
-        $(document).on('change', 'select[name="sell"]', function(){
+        $(document).on('change', 'select[name="sell"]', function() {
             let data = $(this).val();
-            if(data == 1){
-                $('#inputPrice').css('display','block');
-            }else if(data == 0){
-                $('#inputPrice').css('display','none');
+            if (data == 1) {
+                $('#inputPrice').css('display', 'block');
+            } else if (data == 0) {
+                $('#inputPrice').css('display', 'none');
             }
             // console.log(data);
         });
     });
-
-
 </script>
 
 <?php $__env->stopPush(); ?>
