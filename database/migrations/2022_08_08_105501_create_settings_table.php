@@ -20,6 +20,7 @@ class CreateSettingsTable extends Migration
             $table->string("footer_text")->nullable();
             $table->string("logo")->nullable();
             $table->string("favicon")->nullable();
+            $table->string("contact_mail")->nullable();
             $table->timestamps();
         });
 
