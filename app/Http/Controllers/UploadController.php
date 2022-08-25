@@ -11,6 +11,7 @@ use jeremykenedy\LaravelRoles\Models\Role;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 use Monarobase\CountryList\CountryListFacade;
+use File;
 
 class UploadController extends Controller
 {
@@ -212,13 +213,14 @@ class UploadController extends Controller
     public function destroy($id)
     {
         $delete =  Upload::findOrFail($id);
-        if (file_exists(public_path($delete->upload))) {
+        if (File::exists($delete->upload)) {
             unlink(public_path($delete->upload));
         }
-        if (file_exists(public_path($delete->thumbnail_image))) {
+        if (File::exists($delete->thumbnail_image)) {
             unlink(public_path($delete->thumbnail_image));
         }
         $delete->delete();
+
         return redirect()->back()->with('delete', 'File has been delete successfully.');
     }
     public function getMusic()

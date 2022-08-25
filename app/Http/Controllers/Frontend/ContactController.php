@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ContactMail;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -15,6 +16,7 @@ class ContactController extends Controller
 
     public function sendEmail(Request $request)
     {
+        $setting = Setting::first();
         $data = [
             'name'    => $request->name,
             'email'   => $request->email,
@@ -24,7 +26,7 @@ class ContactController extends Controller
 
         // return $data;
 
-        Mail::to('faruqhossen30@gmail.com')->send(new ContactMail($data));
+        Mail::to($setting->contact_mail)->send(new ContactMail($data));
         return back()->with('message_sent', 'We have got your mail. We will contact with you very soon. Thank you.');
     }
 }

@@ -7,126 +7,24 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet" />
 <link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet" />
-<style>
-    .social-btn-sp #social-links {
-        margin: 0 auto;
-        max-width: 500px;
-    }
+<link href="{{asset('assets/frontend/css/single-video.css')}}" rel="stylesheet" />
 
-    .social-btn-sp #social-links ul li {
-        display: inline-block;
-    }
-
-    .social-btn-sp #social-links ul li a {
-        padding: 7.5px;
-        margin: 1px;
-        font-size: 20px;
-    }
-
-    table #social-links {
-        display: inline-table;
-    }
-
-    table #social-links ul li {
-        display: inline;
-    }
-
-    table #social-links ul li a {
-        padding: 2.5px;
-        ;
-        margin: .5px;
-        font-size: 7.5px;
-    }
-
-    /* Custon autoplay swich checkbox */
-    .custom-control.teleport-switch {
-        --color: #4cd964;
-        padding-left: 0;
-    }
-
-    .custom-control.teleport-switch .teleport-switch-control-input {
-        display: none;
-    }
-
-    .custom-control.teleport-switch .teleport-switch-control-input:checked~.teleport-switch-control-indicator {
-        border-color: var( --ls_color-primary);
-    }
-
-    .custom-control.teleport-switch .teleport-switch-control-input:checked~.teleport-switch-control-indicator::after {
-        left: -14px;
-    }
-
-    .custom-control.teleport-switch .teleport-switch-control-input:checked~.teleport-switch-control-indicator::before {
-        right: 2px;
-        background-color: var( --ls_color-primary);
-    }
-
-    .custom-control.teleport-switch .teleport-switch-control-input:disabled~.teleport-switch-control-indicator {
-        opacity: .4;
-    }
-
-    .custom-control.teleport-switch .teleport-switch-control-indicator {
-        display: inline-block;
-        position: relative;
-        margin: 0 10px;
-        top: 4px;
-        width: 32px;
-        height: 20px;
-        background: #fff;
-        border-radius: 16px;
-        -webkit-transition: .3s;
-        -o-transition: .3s;
-        transition: .3s;
-        border: 2px solid #ccc;
-        overflow: hidden;
-    }
-
-    .custom-control.teleport-switch .teleport-switch-control-indicator::after {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        -webkit-transition: .3s;
-        -o-transition: .3s;
-        transition: .3s;
-        top: 2px;
-        left: 2px;
-        background: #ccc;
-    }
-
-    .custom-control.teleport-switch .teleport-switch-control-indicator::before {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        -webkit-transition: .3s;
-        -o-transition: .3s;
-        transition: .3s;
-        top: 2px;
-        right: -14px;
-        background: #ccc;
-    }
-
-</style>
 @endpush
 @section('main_section')
+{{-- For get upload for ajax like/unlike  --}}
+<input type="hidden" name="upload_id" value="{{$upload->id}}">
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-xs-12 col-sm-12">
                 <div class="@if($upload->sell && !$is_purchased) ls_purchase-box @endif">
-                    @if ($upload->sell && !$is_purchased)
+                    @if ($upload->sell && !$is_purchased && !$is_author)
                     <div class="sv-video">
                         <a href=""><img src="{{asset('images/premium.png')}}" alt="" width="auto" height="350px" class="ls_obj-cover"></a>
                     </div>
                     @else
-                    <video id="my-video" class="video-js ls_video-container" controls
-                        preload="auto" poster="{{asset($upload->thumbnail_image)}}" data-setup="{}"
-                        @auth @if(auth()->user()->auto_play == false)
+                    @if($upload->upload)
+                    <video id="my-video" class="video-js ls_video-container" controls preload="auto" poster="{{asset($upload->thumbnail_image)}}" data-setup="{}" @auth @if(auth()->user()->auto_play == false)
                         autoplay="false"
                         @else
                         muted autoplay
@@ -138,6 +36,9 @@
                         >
                         <source src="{{asset($upload->upload)}}" type="video/mp4" />
                     </video>
+                    @else
+                    <a href=""><img src="{{asset($upload->thumbnail_image)}}" alt="" width="auto" height="350px" class="ls_obj-cover"></a>
+                    @endif
                     {{-- For Next Link --}}
                     <input type="hidden" name="nextlink" value="{{route('singleVideo', $relatedUpload[0]['id'])}}">
                     @endif
@@ -145,8 +46,8 @@
                     @if($upload->sell)
                     <div class="card">
                         <div class="card-body">
-                            @if ($upload->sell && $is_purchased)
-                            <a href="#" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Download!</a>
+                            @if ($upload->sell && $is_purchased || $is_author)
+                            <a href="{{route('user.download', $upload->id)}}" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Download!</a>
                             @else
                             <a href="{{route('user.buynow', $upload->id)}}" class="ls_btn ls_shadow-1 ls_mb-20 my-2">Buy Now</a>
                             @endif
@@ -196,11 +97,16 @@
                     <div class="sv-views">
                         <div class="sv-views-count d-flex">
                             @if ( empty($likeCheck))
-                            <a href="{{Route('like', $upload->id)}}" class="btn "><i class="fa fa-thumbs-up" style="font-size: 1.2em"></i></a>
+                                @auth
+                                <span class="btn like-icon"><i class="fa fa-thumbs-up" style="font-size: 1.2em"></i></span>
+                                @endauth
+                                @guest
+                                <a href="{{route('like', $upload->id)}}" class="btn"><i class="fa fa-thumbs-up" style="font-size: 1.2em"></i></a>
+                                @endguest
                             @else
-                            <a href="{{Route('unlike', $upload->id)}}" class="btn"><i class="fa fa-thumbs-down  " style="font-size: 1.2em"></i></a>
+                            <span class="btn like-icon"><i class="fa fa-thumbs-down  " style="font-size: 1.2em"></i></span>
                             @endif
-                            <small> {{$upload->likes->count('count')}} Likes</small>
+                            <small id="totalLikeshow"> {{$upload->likes->count('count')}} Likes</small>
 
                             <small> {{$upload->view}} views</small>
                         </div>
@@ -478,6 +384,28 @@
                 let nextvideo = $('input[name="nextlink"]').val();
                 window.location.href = nextvideo;
             }
+
+            // Like Video
+            $(document).on('click', '.like-icon', function() {
+                let upload_id = $('input[name="upload_id"]').val();
+                $.ajax({
+                    url: `/video/like/${upload_id}`
+                    , type: 'GET'
+                    , success: function(data) {
+                        // console.log(data);
+                        if(data.data.click == 'like'){
+                            $('.like-icon').html('<i class="fa fa-thumbs-down" style="font-size: 1.2em"></i>')
+                        }else if(data.data.click == 'unlike'){
+                            $('.like-icon').html('<i class="fa fa-thumbs-up" style="font-size: 1.2em"></i>')
+                        }
+                        $('#totalLikeshow').html(`${data.data.likecount} like`)
+
+                    }
+                    , error: function(error) {
+                        console.log(error)
+                    }
+                })
+            });
 
 
         });

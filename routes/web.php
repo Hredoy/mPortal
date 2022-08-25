@@ -292,5 +292,9 @@ Route::get('/ajax/autoplay', 'App\Http\Controllers\Frontend\HomeController@autop
 // Buy Now
 Route::get('buy-now/{id}', 'App\Http\Controllers\Frontend\UserbuyController@buyNowPage')->name('user.buynow')->middleware('auth');
 Route::post('buy-now/{id}', 'App\Http\Controllers\Frontend\UserbuyController@buyNow')->name('user.buynow.store')->middleware('auth');
+// Download
+Route::get('download/{id}', 'App\Http\Controllers\Frontend\HomeController@download')->name('user.download')->middleware('auth');
+// Like/Unlike
+Route::get('video/like/{id}', 'App\Http\Controllers\Frontend\SinglevideoController@like')->name('user.like');
 // Channel content
 Route::get('channel/{id}', 'App\Http\Controllers\Frontend\ChannelpageController@channelpage')->name('channelpage');

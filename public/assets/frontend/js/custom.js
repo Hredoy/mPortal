@@ -308,7 +308,7 @@ $( document ).ready(function() {
                     grid: true
                 });
             }
-            
+
             $(window).on('load resize', function() {
                 $menu.removeClass('open');
                 $('body').removeClass('ovf--hidden').removeAttr('style');
@@ -352,16 +352,16 @@ $( document ).ready(function() {
         },
 
         ready: function() {
-            if($('video').length) {
-                $('video').mediaelementplayer({
-                    alwaysShowControls: false,
-                    videoVolume: 'horizontal',
-                    features: ['playpause','progress','current','duration','tracks','volume','fullscreen'],
-                    enableKeyboard: true,
-                    pauseOtherPlayers: true,
-                    enableAutosize: true
-                });
-            }
+            // if($('video').length) {
+            //     $('video').mediaelementplayer({
+            //         alwaysShowControls: false,
+            //         videoVolume: 'horizontal',
+            //         features: ['playpause','progress','current','duration','tracks','volume','fullscreen'],
+            //         enableKeyboard: true,
+            //         pauseOtherPlayers: true,
+            //         enableAutosize: true
+            //     });
+            // }
         }
     };
 

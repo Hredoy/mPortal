@@ -63,7 +63,7 @@
                               <td>
                                     <a  href="{{route('public.upload.edit',$video->id)}}"
                                     class="btn btn-light btn-rounded btn-sm px-2 my-0"> Edit  </a>
-                                 <span class="table-remove">
+                                 <span class="table-remove" onclick="return confirm('Want to delete ?')">
                                     <a  href="{{route('public.upload.destroy',$video->id)}}"
                                     class="btn btn-primary btn-rounded btn-sm my-0">Remove</a>
                                  </span>

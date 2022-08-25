@@ -40,6 +40,16 @@
                                        </span>
                                     @endif
                                </div>
+                               <div class="col-12 form-group">
+                                <label id="gallery2" for="form_gallery-upload">Contact Mail</label>
+                                  <input id="text" name="contact_mail" rows="5" class="form-control"
+                                     placeholder="info@domain.com" >{{$setting ? $setting->contact_mail: '' }}
+                                     @if ($errors->has('contact_mail'))
+                                       <span class="help-block">
+                                             <strong>{{ $errors->first('contact_mail') }}</strong>
+                                       </span>
+                                    @endif
+                               </div>
                             </div>
                          </div>
                          <div class="col-12 form-group">

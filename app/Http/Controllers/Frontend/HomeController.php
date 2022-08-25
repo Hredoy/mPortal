@@ -13,6 +13,10 @@ use Facade\FlareClient\Flare;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Location\Facades\Location;
 
+use File;
+use Illuminate\Support\Facades\Storage;
+use Repsonse;
+
 class HomeController extends Controller
 {
     public function index(){
@@ -59,11 +63,15 @@ class HomeController extends Controller
     public function singleVideo($id){
         $upload = Upload::findOrFail($id);
         $is_purchased = false;
+        $is_author = false;
 
         if($upload->sell && Auth::user()){
             $check = Sell::where('upload_id', $upload->id)->where('buyer_id', Auth::user()->id)->first();
             if($check){
                 $is_purchased = true;
+            }
+            if($upload->user_id == Auth::user()->id){
+                $is_author = true;
             }
         };
 
@@ -87,7 +95,7 @@ class HomeController extends Controller
     ->whatsapp()
     ->reddit();
 
-        return view('frontend.single_video', compact('upload', "likeCheck", "followCheck","relatedUpload", "shareButtons", 'is_purchased'));
+        return view('frontend.single_video', compact('upload', "likeCheck", "followCheck","relatedUpload", "shareButtons", 'is_purchased', 'is_author'));
     }
     public function getLatest()
     {
@@ -130,6 +138,21 @@ class HomeController extends Controller
         $user = Auth::user();
         $user->auto_play = !$user->auto_play;
         $user->save();
+
+    }
+
+
+    public function download($id)
+    {
+        // return "doenload video";
+        $upload = Upload::firstWhere('id', $id);
+        // $filePath = public_path($upload->upload);
+
+        // return $upload;
+        // response()->download(public_path('uploads/User/video/1661331255.mp4'));
+        // Storage::download($filePath);
+        // return $filePath;
+        return back();
 
     }
 }
