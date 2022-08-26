@@ -146,6 +146,7 @@
                         <li class="{{ Request::is('contact') ? 'color-active' : null }}">
                             <a href="{{ route('contactPage') }}">Contact</a>
                         </li>
+                        @if(count($contents->where('type', 1)->where('status', 1)) > 0)
                         <li>
                             <a href="#">More</a>
                             <ul class="ls_dynamic-menu">
@@ -157,6 +158,7 @@
                                 @endforeach
                             </ul>
                         </li>
+                        @endif
                     </ul>
                 </div>
             </div>

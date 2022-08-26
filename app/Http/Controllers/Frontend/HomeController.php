@@ -144,15 +144,15 @@ class HomeController extends Controller
 
     public function download($id)
     {
-        // return "doenload video";
+
         $upload = Upload::firstWhere('id', $id);
-        // $filePath = public_path($upload->upload);
+        $file = public_path($upload->upload);
+        $fileExtension = explode('.',$file);
 
-        // return $upload;
-        // response()->download(public_path('uploads/User/video/1661331255.mp4'));
-        // Storage::download($filePath);
-        // return $filePath;
-        return back();
+        $headers = array(
+            'Content-Type: application/'.$fileExtension[1],
+        );
 
+        return response()->download($file, $upload->name, $headers);
     }
 }

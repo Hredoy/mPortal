@@ -32,6 +32,7 @@
                               <th class="hidden-xs">{!! trans('Status') !!}</th>
                               <th class="hidden-xs">{!! trans('Thumbnail') !!}</th>
                               <th class="">{!! trans('Music') !!}</th>
+                              <th class="">{!! trans('Price') !!}</th>
                               <th class="">{!! trans('Sort') !!}</th>
                               <th colspan="5">{!! trans('Action') !!}</th>
 
@@ -56,6 +57,7 @@
                                   <source src="{{ asset($video->upload) }}" type="video/mp4">
                                  </video>
                               </td>
+                              <td contenteditable="true">{{$video->price}}</td>
                               <td>
                                  <span class="table-up"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a></span>
                                  <span class="table-down"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a></span>
