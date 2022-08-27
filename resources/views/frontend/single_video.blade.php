@@ -8,11 +8,11 @@
 <link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet" />
 <link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet" />
 <link href="{{asset('assets/frontend/css/single-video.css')}}" rel="stylesheet" />
-
 @endpush
 @section('main_section')
 {{-- For get upload for ajax like/unlike  --}}
 <input type="hidden" name="upload_id" value="{{$upload->id}}">
+<input type="hidden" name="user_id" value="{{$upload->user_id}}">
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
@@ -67,22 +67,18 @@
                         <div class="sv-name">
                             <div><a href="{{route('channelpage', $upload->user_id)}}">{{$upload->user->name}}</a> . {{ App\Models\Upload::where('user_id', $upload->user_id)->count() }} Videos</div>
                             <div class="c-sub hidden-xs">
-                                @if ($upload->user_id == Auth::id())
-                                <button disabled class="c-f">
-                                    Follow
-                                </button>
-                                @else
-                                @if (!$followCheck)
-                                <a href="{{Route("public.follow", $upload->user_id)}}" class="c-f">
-                                    Follow
-                                </a>
-                                @else
-                                <a href="{{Route("public.unfollow", $upload->user_id)}}" class="c-f">
-                                    Unfollow
-                                </a>
-                                @endif
-                                @endif
-                                <div class="c-s">
+                                @if (empty($followCheck))
+                                @auth
+                                <span class="c-f btn follow-btn">Follow</i></span>
+                                @endauth
+                                @guest
+                                 <span class="c-f btn follow-btn ">Follow</i></span>
+
+                                @endguest
+                            @else
+                            <span class="c-f btn follow-btn">Unfollow</i></span>
+                            @endif
+                                <div class="c-s" id="totalFollowShow">
                                     {{$upload->user->followers()->get()->count()}}
                                 </div>
                                 <div class="clearfix"></div>
@@ -224,7 +220,7 @@
                                 @foreach ($upload->comments as $comment)
                                 <!-- comment -->
                                 <div class="cl-comment">
-                                    <div class="cl-avatar"><a href="#"><img src="{{asset('assets/frontend/images/ava8.png')}}" alt=""></a></div>
+                                    <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="@if ($comment->user->profile && $comment->user->profile->avatar_status == 1) {{ $comment->user->profile->avatar }} @else {{ Gravatar::get($comment->user->email) }} @endif" alt="{{ $comment->user->name }}" ></a></div>
                                     <div class="cl-comment-text">
                                         <div class="cl-name-date"><a href="#">{{ $comment->user->name }}</a> . {{$comment->created_at->diffForHumans()}}</div>
                                         <div class="cl-text">{{ $comment->body }}</div>
@@ -256,7 +252,7 @@
                                 @foreach ($comment->replies as $reply)
                                 <!-- reply comment -->
                                 <div class="cl-comment-reply">
-                                    <div class="cl-avatar"><a href="#"><img src="{{asset('assets/frontend/images/ava7.png')}}" alt=""></a></div>
+                                    <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="@if ($reply->user->profile && $reply->user->profile->avatar_status == 1) {{ $reply->user->profile->avatar }} @else {{ Gravatar::get($reply->user->email) }} @endif" alt="{{ $reply->user->name }}" ></a></div>
                                     <div class="cl-comment-text">
                                         <div class="cl-name-date"><a href="#">{{ $reply->user->name }}</a> . {{$reply->created_at->diffForHumans()}}</div>
                                         <div class="cl-text">{{ $reply->body }}</div>
@@ -408,6 +404,28 @@
                     }
                 })
             });
+
+// -------- FOLLOW AUTHOR --------//
+        $(document).on('click', '.follow-btn', function() {
+            let user_id = $('input[name="user_id"]').val();
+            $.ajax({
+                url: `/author/follow/${user_id}`,
+                    type: 'GET',
+                    success: function(data) {
+                    if(data.data.click == 'follow'){
+                        $('.follow-btn').html('Follow')
+                    }else if(data.data.click == 'unfollow'){
+                        $('.follow-btn').html('Unfollow')
+                    }
+                    $('#totalFollowShow').html(data.data.followcount)
+
+                }
+                , error: function(error) {
+                    console.log(error)
+                }
+            })
+        });
+// -------- FOLLOW AUTHOR --------//
 
 
         });

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Like;
+use App\Models\Follower;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,6 +45,51 @@ class SinglevideoController extends Controller
                     'data' => [
                         'likecount'=>$like,
                         'click'=> 'unlike'
+                    ]
+                ]);
+            }
+        } else {
+            return response()->json([
+                'success' => true,
+                'code' => 401
+            ]);
+        }
+    }
+    public function follow($id)
+    {
+
+        // return 'follow function';
+
+
+        if (Auth::check()) {
+
+
+            $exists = Follower::where('follower_id', Auth::id())->where("following_id", $id)->first();
+            $a = User::find(Auth::id());
+            $b = User::find($id);
+            if (!$exists) {
+
+                $test =$a->following()->attach($b);
+
+                $follow = Follower::where('following_id', $id)->count();
+
+                return response()->json([
+                    'success' => true,
+                    'code' => 200,
+                    'data' => [
+                        'followcount'=>$follow,
+                        'click'=> 'follow'
+                    ]
+                ]);
+            }elseif($exists){
+                $test = $a->following()->detach($b);
+                $follow = Follower::where('following_id', $id)->count();
+                return response()->json([
+                    'success' => true,
+                    'code' => 200,
+                    'data' => [
+                        'followcount'=>$follow,
+                        'click'=> 'unfollow'
                     ]
                 ]);
             }

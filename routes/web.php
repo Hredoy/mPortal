@@ -296,5 +296,7 @@ Route::post('buy-now/{id}', 'App\Http\Controllers\Frontend\UserbuyController@buy
 Route::get('download/{id}', 'App\Http\Controllers\Frontend\HomeController@download')->name('user.download')->middleware('auth');
 // Like/Unlike
 Route::get('video/like/{id}', 'App\Http\Controllers\Frontend\SinglevideoController@like')->name('user.like');
+// Follow/Unlfollow
+Route::get('/author/follow/{id}', 'App\Http\Controllers\Frontend\SinglevideoController@follow')->name('user.follow');
 // Channel content
 Route::get('channel/{id}', 'App\Http\Controllers\Frontend\ChannelpageController@channelpage')->name('channelpage');

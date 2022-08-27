@@ -48,9 +48,9 @@ class LikeController extends Controller
 
     public function unfollow($id)
     {
-        $a = User::find($id);
-        $b = User::find(Auth::id());
-       $test = $a->following()->detach($b);
+        $b = User::find($id);
+        $a = User::find(Auth::id());
+        $test = $a->following()->detach($b);
         return redirect()->back()->with('delete', 'Unfollowed successfully.');
     }
 
