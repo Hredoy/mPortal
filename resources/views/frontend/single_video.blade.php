@@ -8,7 +8,6 @@
 <link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet" />
 <link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet" />
 <link href="{{asset('assets/frontend/css/single-video.css')}}" rel="stylesheet" />
-
 @endpush
 @section('main_section')
 {{-- For get upload for ajax like/unlike  --}}
@@ -221,7 +220,7 @@
                                 @foreach ($upload->comments as $comment)
                                 <!-- comment -->
                                 <div class="cl-comment">
-                                    <div class="cl-avatar"><a href="#"><img src="{{asset('assets/frontend/images/ava8.png')}}" alt=""></a></div>
+                                    <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="@if ($comment->user->profile && $comment->user->profile->avatar_status == 1) {{ $comment->user->profile->avatar }} @else {{ Gravatar::get($comment->user->email) }} @endif" alt="{{ $comment->user->name }}" ></a></div>
                                     <div class="cl-comment-text">
                                         <div class="cl-name-date"><a href="#">{{ $comment->user->name }}</a> . {{$comment->created_at->diffForHumans()}}</div>
                                         <div class="cl-text">{{ $comment->body }}</div>
@@ -253,7 +252,7 @@
                                 @foreach ($comment->replies as $reply)
                                 <!-- reply comment -->
                                 <div class="cl-comment-reply">
-                                    <div class="cl-avatar"><a href="#"><img src="{{asset('assets/frontend/images/ava7.png')}}" alt=""></a></div>
+                                    <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="@if ($reply->user->profile && $reply->user->profile->avatar_status == 1) {{ $reply->user->profile->avatar }} @else {{ Gravatar::get($reply->user->email) }} @endif" alt="{{ $reply->user->name }}" ></a></div>
                                     <div class="cl-comment-text">
                                         <div class="cl-name-date"><a href="#">{{ $reply->user->name }}</a> . {{$reply->created_at->diffForHumans()}}</div>
                                         <div class="cl-text">{{ $reply->body }}</div>
@@ -426,7 +425,7 @@
                 }
             })
         });
-// --------END FOLLOW AUTHOR --------//
+// -------- FOLLOW AUTHOR --------//
 
 
         });
