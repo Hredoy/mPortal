@@ -13,6 +13,7 @@
 @section('main_section')
 {{-- For get upload for ajax like/unlike  --}}
 <input type="hidden" name="upload_id" value="{{$upload->id}}">
+<input type="hidden" name="user_id" value="{{$upload->user_id}}">
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
@@ -67,22 +68,18 @@
                         <div class="sv-name">
                             <div><a href="{{route('channelpage', $upload->user_id)}}">{{$upload->user->name}}</a> . {{ App\Models\Upload::where('user_id', $upload->user_id)->count() }} Videos</div>
                             <div class="c-sub hidden-xs">
-                                @if ($upload->user_id == Auth::id())
-                                <button disabled class="c-f">
-                                    Follow
-                                </button>
-                                @else
-                                @if (!$followCheck)
-                                <a href="{{Route("public.follow", $upload->user_id)}}" class="c-f">
-                                    Follow
-                                </a>
-                                @else
-                                <a href="{{Route("public.unfollow", $upload->user_id)}}" class="c-f">
-                                    Unfollow
-                                </a>
-                                @endif
-                                @endif
-                                <div class="c-s">
+                                @if (empty($followCheck))
+                                @auth
+                                <span class="c-f btn follow-btn">Follow</i></span>
+                                @endauth
+                                @guest
+                                 <span class="c-f btn follow-btn ">Follow</i></span>
+
+                                @endguest
+                            @else
+                            <span class="c-f btn follow-btn">Unfollow</i></span>
+                            @endif
+                                <div class="c-s" id="totalFollowShow">
                                     {{$upload->user->followers()->get()->count()}}
                                 </div>
                                 <div class="clearfix"></div>
@@ -408,6 +405,28 @@
                     }
                 })
             });
+
+// -------- FOLLOW AUTHOR --------//
+        $(document).on('click', '.follow-btn', function() {
+            let user_id = $('input[name="user_id"]').val();
+            $.ajax({
+                url: `/author/follow/${user_id}`,
+                    type: 'GET',
+                    success: function(data) {
+                    if(data.data.click == 'follow'){
+                        $('.follow-btn').html('Follow')
+                    }else if(data.data.click == 'unfollow'){
+                        $('.follow-btn').html('Unfollow')
+                    }
+                    $('#totalFollowShow').html(data.data.followcount)
+
+                }
+                , error: function(error) {
+                    console.log(error)
+                }
+            })
+        });
+// --------END FOLLOW AUTHOR --------//
 
 
         });
