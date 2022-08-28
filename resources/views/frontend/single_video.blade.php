@@ -4,6 +4,7 @@
 @include('frontend.partials.second_navbar')
 @endsection
 @push('custom_css')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet" />
 <link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet" />
@@ -13,6 +14,7 @@
 {{-- For get upload for ajax like/unlike  --}}
 <input type="hidden" name="upload_id" value="{{$upload->id}}">
 <input type="hidden" name="user_id" value="{{$upload->user_id}}">
+<input type="hidden" name="image" value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif">
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
@@ -205,11 +207,11 @@
                                 <div class="rc-header"><i class="cv cvicon-cv-comment"></i> <span class="semibold">{{$upload->comments->count()}}</span> Comments</div>
                                 <div class="rc-ava"><a href="#"><img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" alt=""></a></div>
                                 <div class="rc-comment">
-                                    <form action="{{ route('comment.add') }}" method="post">
+                                    <form id="commentStore">
                                         @csrf
-                                        <textarea name="body" rows="3" placeholder="Share what you think?"></textarea>
-                                        <input type="hidden" name="upload_id" value="{{$upload->id}}" id="">
-                                        <input type="hidden" name="image" value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" id="">
+                                        <textarea id="body" rows="3" placeholder="Share what you think?"></textarea>
+                                        <input type="hidden" id="upload_id" value="{{$upload->id}}" id="">
+                                        <input type="hidden" id="image" value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" id="">
                                         <button type="submit">
                                             <i class="cv cvicon-cv-add-comment"></i>
                                         </button>
@@ -217,7 +219,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="comments-list">
+                            <div class="comments-list" id="commentList">
                                 @foreach ($upload->comments as $comment)
                                 <!-- comment -->
                                 <div class="cl-comment">
@@ -226,7 +228,7 @@
                                         <div class="cl-name-date"><a href="#">{{ $comment->user->name }}</a> . {{$comment->created_at->diffForHumans()}}</div>
                                         <div class="cl-text">{{ $comment->body }}</div>
                                         @if(count($comment->replies)>0)
-                                        <div class="cl-meta"><span class="green"><span class="circle"></span> {{$comment->replies->count()}}</span> <span class="grey"></span> <a href="#">Reply</a></div>
+                                        <div class="cl-meta"><span class="green"><span class="circle"></span> {{$comment->replies->count()}}</span> <span class="grey"></span> <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Reply</a></div>
                                         @endif
                                         @if ($comment->user->id == Auth::id())
 
@@ -237,24 +239,28 @@
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-
                                 <!-- END comment -->
-                                <div class="reply-comment">
-                                    <div class="rc-ava"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}" alt=""></a></div>
-                                    <div class="rc-comment">
-                                        <form action="{{ route('comment.add') }}" method="post">
-                                            @csrf
-                                            <textarea name="body" rows="3" placeholder="Share what you think?"></textarea>
-                                            <input type="hidden" name="upload_id" value="{{ $upload->id }}" />
-                                            <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
-                                            <input type="hidden" name="image" value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" id="">
-                                            <button type="submit">
-                                                <i class="cv cvicon-cv-add-comment"></i>
-                                            </button>
-                                        </form>
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                        <div class="reply-comment">
+                                            <div class="rc-ava"><a href="#"><img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" alt=""></a></div>
+                                            <div class="rc-comment">
+                                                <form id="replyStore">
+                                                    @csrf
+                                                    <textarea name="body" rows="3" placeholder="Reply what you think?"></textarea>
+                                                    <input type="hidden" name="upload_id" value="{{$upload->id}}" id="">
+                                                    <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
+                                                    <input type="hidden" name="image" value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" id="">
+                                                    <button type="submit">
+                                                        <i class="cv cvicon-cv-add-comment"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
                                     </div>
-                                    <div class="clearfix"></div>
-                                </div>
+                                  </div>
+
                                 @foreach ($comment->replies as $reply)
                                 <!-- reply comment -->
                                 <div class="cl-comment-reply">
@@ -433,6 +439,51 @@
         });
 // -------- FOLLOW AUTHOR --------//
 
+// -------- ADD COMMENT --------//
+$( "#commentStore" ).submit(function( event ) {
+  event.preventDefault();
+
+    var body        = $('#body').val();
+    var upload_id   = $('#upload_id').val();
+    var image       = $('#image').val();
+
+
+    $.ajax({
+        url: "{{  url('/comment-store') }}",
+        type: "POST",
+        dataType: 'json',
+        data:{
+            body:body, upload_id:upload_id, image:image
+        },
+
+        success:function(data){
+            $('#commentStore')[0].reset();
+            commentList();
+            // window.location.reload();
+
+        }
+    })
+});
+// -------- END ADD COMMENT --------//
+// -------- ADD COMMENT --------//
+$( "#replyStore" ).submit(function( event ) {
+  event.preventDefault();
+
+    $.ajax({
+        url: "{{  url('/comment-store') }}",
+        type: "POST",
+        dataType: 'json',
+        data: $(this).serialize(),
+
+        success:function(data){
+            $('#replyStore')[0].reset();
+            commentList();
+
+        }
+    })
+});
+// -------- END ADD COMMENT --------//
+
 // -------- DELETE COMMENT --------//
 $(document).on('click', '.comment-del', function(e) {
             e.preventDefault();
@@ -441,8 +492,8 @@ $(document).on('click', '.comment-del', function(e) {
                 url: "{{  url('/comment-delete/') }}/"+id,
                     type: 'get',
                     success: function(data) {
-                        window.location.reload()
-                        // commentList();
+                        // window.location.reload()
+                        commentList();
 
                 }
                 , error: function(error) {
@@ -458,13 +509,14 @@ $(document).on('click', '.comment-del', function(e) {
 
 function commentList(){
     let id = $('input[name="upload_id"]').val();
+    let userImg = $('input[name="image"]').val();
         $.ajax({
             url: "{{url('/get-comment/') }}/"+id,
                   type:"GET",
                   dataType:"json",
             success:function(data){
                 var replyCount = 0;
-                console.log(data.data);
+                // console.log(data.data);
                 var row = ""
 
                 $.each(data.data, function(key,value){
@@ -474,7 +526,7 @@ function commentList(){
                                 <div class="cl-name-date"><a href="#" id="comment-name">${value.user.name}</a> . ${value.created_at}</div>
                                 <div class="cl-text" id="comment-body">${value.body}</div>
 
-                                <div class="cl-meta"><span class="green"><span class="circle"></span> ${replyCount}</span> <span class="grey"></span> <a href="#">Reply</a></div>
+                                <div class="cl-meta"><span class="green"><span class="circle"></span> ${replyCount}</span> <span class="grey"></span>  <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Reply</a></div>
 
 
                                 <span class="btn btn-sm pull-right comment-del" id="${value.id}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
@@ -483,13 +535,36 @@ function commentList(){
                             </div>
                             <div class="clearfix"></div>
                         </div>
+
+                        <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                        <div class="reply-comment">
+                                            <div class="rc-ava"><a href="#"><img src="" alt=""></a></div>
+                                            <div class="rc-comment">
+                                                <form id="replyStore">
+
+                                                    <textarea name="body" rows="3" placeholder="Reply what you think?"></textarea>
+                                                    <input type="hidden" name="upload_id" value="${id}" id="">
+                                                    <input type="hidden" name="parent_id" value="${value.id}" />
+                                                    <input type="hidden" name="image" value="${userImg}" id="">
+                                                    <button type="submit">
+                                                        <i class="cv cvicon-cv-add-comment"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+
                         `;
-                        $.each(data.data.replies, function(key,reply){
-                            console.log(data.data)
-                    let   de =      `<div class="cl-comment-reply">
+                        $.each(value.replies, function(key,reply){
+
+                            row =  row +    `<div class="cl-comment-reply">
     <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="${reply.image}" ></a></div>
     <div class="cl-comment-text">
-        <div class="cl-name-date"><a href="#">${reply.user.name}</a> .${reply.created_at}</div>
+        <div class="cl-name-date"><a href="#">${reply.user_id}</a> .${reply.created_at}</div>
         <div class="cl-text">${reply.body }</div>
         <div class="cl-meta">
 
@@ -505,7 +580,6 @@ function commentList(){
         })
 
      }
- commentList();
-
+//  commentList();
     </script>
     @endpush

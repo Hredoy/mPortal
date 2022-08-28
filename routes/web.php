@@ -160,10 +160,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
         'as'   => 'comment.add',
         'uses' => 'App\Http\Controllers\CommentController@store',
     ]);
-    Route::post('/reply/store', [
-        'as'   => 'reply.add',
-        'uses' => 'App\Http\Controllers\CommentController@replyStore',
-    ]);
+
     //like Route
     Route::get('like/{id}', [
         'as'   => 'like',
@@ -298,6 +295,8 @@ Route::get('download/{id}', 'App\Http\Controllers\Frontend\HomeController@downlo
 Route::get('video/like/{id}', 'App\Http\Controllers\Frontend\SinglevideoController@like')->name('user.like');
 // Follow/Unlfollow
 Route::get('/author/follow/{id}', 'App\Http\Controllers\Frontend\SinglevideoController@follow')->name('user.follow');
+// Store Comment
+Route::post('/comment-store/', 'App\Http\Controllers\CommentController@storeComment')->name('comment.store');
 // Get Comment
 Route::get('/get-comment/{id}', 'App\Http\Controllers\CommentController@getComment')->name('comment.get');
 // Delete Comment

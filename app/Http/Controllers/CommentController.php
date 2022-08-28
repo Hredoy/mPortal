@@ -23,26 +23,6 @@ class CommentController extends Controller
         return back();
     }
 
-    public function replyStore(Request $request)
-    {
-        $reply = new Comment();
-
-        $reply->comment = $request->get('comment');
-
-        $reply->upload_id = $request->upload_id;
-
-        $reply->user()->associate($request->user());
-
-        $reply->parent_id = $request->get('comment_id');
-
-        $upload = Upload::find($request->upload_id);
-
-        $upload->comments()->save($reply);
-
-        return back();
-
-    }
-
     public function delComment($id)
     {
        if (Auth::check()) {
@@ -70,6 +50,23 @@ class CommentController extends Controller
         // "replycount"=> $comment->replies->count(),
 
     ]);
+    }
+
+    public function storeComment(Request $request)
+    {
+
+        $input = $request->all();
+        $request->validate([
+            'body'=>'required',
+        ]);
+        $input['user_id'] = Auth::id();
+       $comment = Comment::create($input);
+
+        return response()->json([
+            'success' => true,
+            'code' => 200,
+            'data' => $comment
+        ]);
     }
 
 }
