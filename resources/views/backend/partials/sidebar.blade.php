@@ -72,6 +72,10 @@ $totalusermessage = TicketReply::whereIn('ticket_id', $userticekt)->where('is_ad
                     </a>
                 </li>
                 @endrole
+                {{-- For referral --}}
+                <li class="{{ Request::is('admin/referral')? 'active' : null }}">
+                    <a href="{{route('referrallist')}}" class="iq-waves-effect"><i class="las la-upload"></i><span>My Referral</span></a>
+                </li>
                 <li class="{{ Request::is('admin/upload')? 'active' : null }}">
                     <a href="{{Route('public.upload')}}" class="iq-waves-effect"><i class="las la-upload"></i><span>Upload Content</span></a>
                 </li>

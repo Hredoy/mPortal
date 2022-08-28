@@ -169,6 +169,7 @@ return [
          */
         App\Providers\ContentServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
+        \Questocat\Referral\ReferralServiceProvider::class,
         /*
          * Application Service Providers...
          */
