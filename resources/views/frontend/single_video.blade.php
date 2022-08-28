@@ -227,9 +227,11 @@
                                     <div class="cl-comment-text">
                                         <div class="cl-name-date"><a href="#">{{ $comment->user->name }}</a> . {{$comment->created_at->diffForHumans()}}</div>
                                         <div class="cl-text">{{ $comment->body }}</div>
+                                        <div class="cl-meta">
                                         @if(count($comment->replies)>0)
-                                        <div class="cl-meta"><span class="green"><span class="circle"></span> {{$comment->replies->count()}}</span> <span class="grey"></span> <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Reply</a></div>
+                                            <span class="green"><span class="circle"></span> {{$comment->replies->count()}}</span> <span class="grey"></span>
                                         @endif
+                                        <a data-toggle="collapse" href="#collapse{{$comment->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">Reply</a></div>
                                         @if ($comment->user->id == Auth::id())
 
                                         <span class="btn btn-sm pull-right comment-del" id="{{$comment->id}}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
@@ -240,12 +242,11 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <!-- END comment -->
-                                <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
+                                <div class="collapse" id="collapse{{$comment->id}}">
                                         <div class="reply-comment">
                                             <div class="rc-ava"><a href="#"><img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" alt=""></a></div>
                                             <div class="rc-comment">
-                                                <form id="replyStore">
+                                                <form id="replyStore{{ $comment->id }}">
                                                     @csrf
                                                     <textarea name="body" rows="3" placeholder="Reply what you think?"></textarea>
                                                     <input type="hidden" name="upload_id" value="{{$upload->id}}" id="">
@@ -258,7 +259,6 @@
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
-                                    </div>
                                   </div>
 
                                 @foreach ($comment->replies as $reply)
@@ -466,7 +466,10 @@ $( "#commentStore" ).submit(function( event ) {
 });
 // -------- END ADD COMMENT --------//
 // -------- ADD COMMENT --------//
-$( "#replyStore" ).submit(function( event ) {
+let parntId = $('input[name="parent_id"]').val();
+ let check =$( "#replyStore" +parntId)
+console.log(check)
+check.submit(function( event ) {
   event.preventDefault();
 
     $.ajax({
@@ -476,7 +479,7 @@ $( "#replyStore" ).submit(function( event ) {
         data: $(this).serialize(),
 
         success:function(data){
-            $('#replyStore')[0].reset();
+            check[0].reset();
             commentList();
 
         }
@@ -526,7 +529,7 @@ function commentList(){
                                 <div class="cl-name-date"><a href="#" id="comment-name">${value.user.name}</a> . ${value.created_at}</div>
                                 <div class="cl-text" id="comment-body">${value.body}</div>
 
-                                <div class="cl-meta"><span class="green"><span class="circle"></span> ${replyCount}</span> <span class="grey"></span>  <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Reply</a></div>
+                                <div class="cl-meta"><span class="green"><span class="circle"></span> ${replyCount}</span> <span class="grey"></span>  <a data-toggle="collapse" href="#collapse${value.id}" role="button" aria-expanded="false" aria-controls="collapseExample">Reply</a></div>
 
 
                                 <span class="btn btn-sm pull-right comment-del" id="${value.id}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
@@ -536,7 +539,7 @@ function commentList(){
                             <div class="clearfix"></div>
                         </div>
 
-                        <div class="collapse" id="collapseExample">
+                        <div class="collapse" id="collapse${value.id}">
                                     <div class="card card-body">
                                         <div class="reply-comment">
                                             <div class="rc-ava"><a href="#"><img src="" alt=""></a></div>
