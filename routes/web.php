@@ -298,5 +298,9 @@ Route::get('download/{id}', 'App\Http\Controllers\Frontend\HomeController@downlo
 Route::get('video/like/{id}', 'App\Http\Controllers\Frontend\SinglevideoController@like')->name('user.like');
 // Follow/Unlfollow
 Route::get('/author/follow/{id}', 'App\Http\Controllers\Frontend\SinglevideoController@follow')->name('user.follow');
+// Get Comment
+Route::get('/get-comment/{id}', 'App\Http\Controllers\CommentController@getComment')->name('comment.get');
+// Delete Comment
+Route::get('/comment-delete/{id}', 'App\Http\Controllers\CommentController@delComment')->name('comment.delete');
 // Channel content
 Route::get('channel/{id}', 'App\Http\Controllers\Frontend\ChannelpageController@channelpage')->name('channelpage');
