@@ -14,7 +14,10 @@
 {{-- For get upload for ajax like/unlike  --}}
 <input type="hidden" name="upload_id" value="{{$upload->id}}">
 <input type="hidden" name="user_id" value="{{$upload->user_id}}">
+@auth
+
 <input type="hidden" name="image" value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif">
+@endauth
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
@@ -205,13 +208,21 @@
                         <div class="comments">
                             <div class="reply-comment">
                                 <div class="rc-header"><i class="cv cvicon-cv-comment"></i> <span class="semibold">{{$upload->comments->count()}}</span> Comments</div>
+                                @auth
                                 <div class="rc-ava"><a href="#"><img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" alt=""></a></div>
+                                @endauth
+                                @guest
+                                <div class="rc-ava"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}"></a></div>
+                                @endguest
                                 <div class="rc-comment">
                                     <form id="commentStore">
-                                        @csrf
                                         <textarea id="body" rows="3" placeholder="Share what you think?"></textarea>
                                         <input type="hidden" id="upload_id" value="{{$upload->id}}" id="">
+                                        @auth
+
                                         <input type="hidden" id="image" value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" id="">
+                                        @endauth
+                                        <input type="hidden" id="image" value="{{asset('assets/frontend/images/ava5.png')}}" id="">
                                         <button type="submit">
                                             <i class="cv cvicon-cv-add-comment"></i>
                                         </button>
@@ -244,14 +255,20 @@
                                 <!-- END comment -->
                                 <div class="collapse" id="collapse{{$comment->id}}">
                                         <div class="reply-comment">
+                                            @auth
                                             <div class="rc-ava"><a href="#"><img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" alt=""></a></div>
+                                            @endauth
+                                            @guest
+                                            <div class="rc-ava"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}" alt=""></a></div>
+                                            @endguest
                                             <div class="rc-comment">
                                                 <form id="replyStore{{ $comment->id }}">
-                                                    @csrf
                                                     <textarea name="body" rows="3" placeholder="Reply what you think?"></textarea>
                                                     <input type="hidden" name="upload_id" value="{{$upload->id}}" id="">
                                                     <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
+                                                    @auth
                                                     <input type="hidden" name="image" value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" id="">
+                                                    @endauth
                                                     <button type="submit">
                                                         <i class="cv cvicon-cv-add-comment"></i>
                                                     </button>
@@ -264,11 +281,15 @@
                                 @foreach ($comment->replies as $reply)
                                 <!-- reply comment -->
                                 <div class="cl-comment-reply">
-                                    <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="@if ($reply->user->profile && $reply->user->profile->avatar_status == 1) {{ $reply->user->profile->avatar }} @else {{ Gravatar::get($reply->user->email) }} @endif" alt="{{ $reply->user->name }}" ></a></div>
+                                    <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="{{ asset($reply->image) }}" ></a></div>
                                     <div class="cl-comment-text">
                                         <div class="cl-name-date"><a href="#">{{ $reply->user->name }}</a> . {{$reply->created_at->diffForHumans()}}</div>
                                         <div class="cl-text">{{ $reply->body }}</div>
-                                        {{-- <div class="cl-meta"><span class="green"><span class="circle"></span> 70</span> <span class="grey"><span class="circle"></span> 9</span> . <a href="#">Reply</a></div> --}}
+                                        <div class="cl-meta">
+                                            @if ($reply->user->id == Auth::id())
+                                                <span class="btn btn-sm pull-right comment-del" id="{{$reply->id}}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
+                                            @endif
+                                        </div>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -468,8 +489,9 @@ $( "#commentStore" ).submit(function( event ) {
 // -------- ADD COMMENT --------//
 let parntId = $('input[name="parent_id"]').val();
  let check =$( "#replyStore" +parntId)
-console.log(check)
+console.log($( "#replyStore"))
 check.submit(function( event ) {
+    alert(check);
   event.preventDefault();
 
     $.ajax({
@@ -519,7 +541,7 @@ function commentList(){
                   dataType:"json",
             success:function(data){
                 var replyCount = 0;
-                // console.log(data.data);
+
                 var row = ""
 
                 $.each(data.data, function(key,value){
@@ -564,17 +586,17 @@ function commentList(){
                         `;
                         $.each(value.replies, function(key,reply){
 
-                            row =  row +    `<div class="cl-comment-reply">
-    <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="${reply.image}" ></a></div>
-    <div class="cl-comment-text">
-        <div class="cl-name-date"><a href="#">${reply.user_id}</a> .${reply.created_at}</div>
-        <div class="cl-text">${reply.body }</div>
-        <div class="cl-meta">
+                            row =  row + `<div class="cl-comment-reply">
+                                            <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="${reply.image}" ></a></div>
+                                            <div class="cl-comment-text">
+                                                <div class="cl-name-date"><a href="#">${reply.user_id}</a> .${reply.created_at}</div>
+                                                <div class="cl-text">${reply.body }</div>
+                                                <div class="cl-meta">
 
-        </div>
-    </div>
-    <div class="clearfix"></div>
-</div>`
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>`
                         });
         });
 
