@@ -26,6 +26,17 @@ class SiteSettingController extends Controller
         if ( $count == 0 ) {
             $input = $request->all();
 
+            $image=$request->file('banner_image');
+                if ($image) {
+                    $image_name=hexdec(uniqid());
+                    $ext=strtolower($image->getClientOriginalExtension());
+                    $image_full_name=$image_name.'.'.$ext;
+                    $upload_path='uploads/sitesetting/';
+                    $image_url=$upload_path.$image_full_name;
+                    $success=$image->move($upload_path,$image_full_name);
+                    $input['banner_image']=$image_url;
+            }
+
             $image=$request->file('logo');
                 if ($image) {
                     $image_name=hexdec(uniqid());
@@ -53,6 +64,21 @@ class SiteSettingController extends Controller
 
             $input = $request->all();
 
+            $image=$request->file('banner_image');
+            if ($image) {
+                $image_name=hexdec(uniqid());
+                $ext=strtolower($image->getClientOriginalExtension());
+                $image_full_name=$image_name.'.'.$ext;
+                $upload_path='uploads/sitesetting/';
+                $image_url=$upload_path.$image_full_name;
+                $success=$image->move($upload_path,$image_full_name);
+                $input['banner_image']=$image_url;
+
+                if (file_exists(public_path($request->old_banner_image))) {
+                    unlink(public_path($request->old_banner_image));
+                }
+            }
+
             $image=$request->file('logo');
             if ($image) {
                 $image_name=hexdec(uniqid());
@@ -66,7 +92,7 @@ class SiteSettingController extends Controller
                 if (file_exists(public_path($request->old_logo))) {
                     unlink(public_path($request->old_logo));
                 }
-        }
+            }
             $image=$request->file('favicon');
             if ($image) {
                 $image_name=hexdec(uniqid());

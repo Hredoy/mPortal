@@ -9,6 +9,7 @@ use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Follower;
 use App\Models\Sell;
+use App\Models\Setting;
 use Facade\FlareClient\Flare;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Location\Facades\Location;
@@ -26,7 +27,7 @@ class HomeController extends Controller
         ->when($country, function ($query, $country) {
             return $query->where('region', $country);
         })
-        ->get();
+        ->latest()->get();
         $others = null;
         if(count($upload) < 20){
             $others = Upload::latest()->paginate(20);
@@ -34,7 +35,8 @@ class HomeController extends Controller
         $countries = Upload::whereStatus(1)->pluck('region');
 
         $likeCheck = Like::where('user_id',Auth::id())->first();
-        return view('frontend.homepage', ['uploads'=>$upload, 'others'=> $others, "likeChecks"=> $likeCheck, 'countries'=> $countries]);
+        $settings = Setting::first();
+        return view('frontend.homepage', ['uploads'=>$upload, 'others'=> $others, "likeChecks"=> $likeCheck, 'countries'=> $countries, 'settings' => $settings]);
     }
     public function music(){
         $country = getLocation(); // Get location fron Helper fuction.
@@ -42,7 +44,7 @@ class HomeController extends Controller
         $upload = Upload::whereStatus(1)->where('category_id', '1')
         ->when($country, function ($query, $country) {
             return $query->where('region', $country);
-        })->get();
+        })->latest()->get();
 
         return view('frontend.categories.music', ['uploads'=>$upload]);
     }
@@ -52,11 +54,11 @@ class HomeController extends Controller
         $upload = Upload::whereStatus(1)->where('category_id', '2')
         ->when($country, function ($query, $country) {
             return $query->where('region', $country);
-        })->get();
+        })->latest()->get();
         return view('frontend.categories.comedy', ['uploads'=>$upload]);
     }
     public function talent(){
-        $upload = Upload::whereStatus(1)->where('category_id', '3')->get();
+        $upload = Upload::whereStatus(1)->where('category_id', '3')->latest()->get();
         return view('frontend.categories.talent', ['uploads'=>$upload]);
     }
 

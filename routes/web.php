@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TicketController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +26,7 @@ Route::group(['middleware' => ['web', 'checkblocked']], function () {
     Route::get('/sort-view', 'App\Http\Controllers\Frontend\HomeController@getView')->name('home.view');
     Route::get('/sort-like', 'App\Http\Controllers\Frontend\HomeController@getLike')->name('home.like');
 
-    Route::get('/single-video/{id}', 'App\Http\Controllers\Frontend\HomeController@singleVideo')->name('singleVideo');
+    Route::get('/single-content/{id}', 'App\Http\Controllers\Frontend\HomeController@singleVideo')->name('singleVideo');
     Route::get('/music', 'App\Http\Controllers\Frontend\HomeController@music')->name('music');
     Route::get('/comedy', 'App\Http\Controllers\Frontend\HomeController@comedy')->name('comedy');
     Route::get('/talent', 'App\Http\Controllers\Frontend\HomeController@talent')->name('talent');
@@ -188,8 +189,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
     // Ticket
     Route::resource('ticket', TicketController::class);
     Route::post('ticket/reply/{id}', 'App\Http\Controllers\TicketReplyController@store')->name('adminticket.reply.store');
-
+    // Referral System
+    Route::get('referral', 'App\Http\Controllers\ReferralController@index')->name('referrallist');
 });
+// Referral redirect link
+Route::get('/referrel-redirect/link', 'App\Http\Controllers\ReferralController@refereellink')->name('refereellink')->middleware('referral');
 
 // Registered, activated, and is current user routes.
 Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', 'twostep', 'checkblocked']], function () {

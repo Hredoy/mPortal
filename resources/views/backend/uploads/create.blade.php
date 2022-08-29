@@ -103,11 +103,17 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col">
+                                    <small> <strong>Note</strong> : For upload premium content, you have to reach minimum 10,000 Followers.</small>
+                                </div>
+                            </div>
+                            <div class="row">
+
                                 <div class="col-md-6 form-group">
                                     <Label for="contentType">Content Type: </Label>
                                     <select name="sell" id="contentType" class="form-control">
                                         <option value="0" selected>Free</option>
-                                        <option value="1">Premium</option>
+                                        <option value="1" @if(auth()->user()->followers->count() < 10000) disabled @endif>Premium</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 form-group" id="inputPrice" style="display: none">

@@ -38,6 +38,7 @@
         "livewire/livewire": "^2.10",
         "monarobase/country-list": "^3.3",
         "pusher/pusher-php-server": "^4.1",
+        "questocat/laravel-referral": "^1.0",
         "rap2hpoutre/laravel-log-viewer": "^1.4",
         "shvetsgroup/laravel-email-database-log": "^8.0.0",
         "socialiteproviders/37signals": "^3.0",

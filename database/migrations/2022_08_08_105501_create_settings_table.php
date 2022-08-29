@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateSettingsTable extends Migration
@@ -21,6 +22,9 @@ class CreateSettingsTable extends Migration
             $table->string("logo")->nullable();
             $table->string("favicon")->nullable();
             $table->string("contact_mail")->nullable();
+            $table->string("banner_image")->nullable();
+            $table->string("banner_title")->nullable();
+            $table->string("banner_description")->nullable();
             $table->timestamps();
         });
 
@@ -28,6 +32,7 @@ class CreateSettingsTable extends Migration
             array(
                 'logo' => '/uploads/sitesetting/logo.png',
                 'favicon' => '/uploads/sitesetting/favicon.png',
+                'banner_image' => '/uploads/sitesetting/banner.jpg',
             )
         );
     }

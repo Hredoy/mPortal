@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use App\Models\ReferralBonus;
 use App\Models\User;
 use App\Traits\ActivationTrait;
 use App\Traits\CaptchaTrait;
@@ -72,8 +73,8 @@ class RegisterController extends Controller
                 'email'                 => 'required|email|max:255|unique:users',
                 'password'              => 'required|min:6|max:30|confirmed',
                 'password_confirmation' => 'required|same:password',
-                'g-recaptcha-response'  => '',
-                'captcha'               => 'required|min:1',
+                // 'g-recaptcha-response'  => '',
+                // 'captcha'               => 'required|min:1',
             ],
             [
                 'name.unique'                   => trans('auth.userNameTaken'),
@@ -85,8 +86,8 @@ class RegisterController extends Controller
                 'password.required'             => trans('auth.passwordRequired'),
                 'password.min'                  => trans('auth.PasswordMin'),
                 'password.max'                  => trans('auth.PasswordMax'),
-                'g-recaptcha-response.required' => trans('auth.captchaRequire'),
-                'captcha.min'                   => trans('auth.CaptchaWrong'),
+                // 'g-recaptcha-response.required' => trans('auth.captchaRequire'),
+                // 'captcha.min'                   => trans('auth.CaptchaWrong'),
             ]
         );
     }
@@ -126,6 +127,16 @@ class RegisterController extends Controller
         $profile = new Profile();
         $user->profile()->save($profile);
         $user->save();
+
+        if($user->referred_by == !null){
+            $referredUser  = User::where('affiliate_id', $user->referred_by)->first();
+            ReferralBonus::create([
+                'user_id'      => $user->id,
+                'referred_by'  => $referredUser->id,
+                'affiliate_id' => $user->referred_by,
+                'price'        => 7
+            ]);
+        }
 
         return $user;
     }
