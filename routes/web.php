@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TicketController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +26,7 @@ Route::group(['middleware' => ['web', 'checkblocked']], function () {
     Route::get('/sort-view', 'App\Http\Controllers\Frontend\HomeController@getView')->name('home.view');
     Route::get('/sort-like', 'App\Http\Controllers\Frontend\HomeController@getLike')->name('home.like');
 
-    Route::get('/single-video/{id}', 'App\Http\Controllers\Frontend\HomeController@singleVideo')->name('singleVideo');
+    Route::get('/single-content/{id}', 'App\Http\Controllers\Frontend\HomeController@singleVideo')->name('singleVideo');
     Route::get('/music', 'App\Http\Controllers\Frontend\HomeController@music')->name('music');
     Route::get('/comedy', 'App\Http\Controllers\Frontend\HomeController@comedy')->name('comedy');
     Route::get('/talent', 'App\Http\Controllers\Frontend\HomeController@talent')->name('talent');
@@ -160,10 +161,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
         'as'   => 'comment.add',
         'uses' => 'App\Http\Controllers\CommentController@store',
     ]);
-    Route::post('/reply/store', [
-        'as'   => 'reply.add',
-        'uses' => 'App\Http\Controllers\CommentController@replyStore',
-    ]);
+
     //like Route
     Route::get('like/{id}', [
         'as'   => 'like',
@@ -191,8 +189,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
     // Ticket
     Route::resource('ticket', TicketController::class);
     Route::post('ticket/reply/{id}', 'App\Http\Controllers\TicketReplyController@store')->name('adminticket.reply.store');
-
+    // Referral System
+    Route::get('referral', 'App\Http\Controllers\ReferralController@index')->name('referrallist');
 });
+// Referral redirect link
+Route::get('/referrel-redirect/link', 'App\Http\Controllers\ReferralController@refereellink')->name('refereellink')->middleware('referral');
 
 // Registered, activated, and is current user routes.
 Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', 'twostep', 'checkblocked']], function () {
@@ -298,5 +299,11 @@ Route::get('download/{id}', 'App\Http\Controllers\Frontend\HomeController@downlo
 Route::get('video/like/{id}', 'App\Http\Controllers\Frontend\SinglevideoController@like')->name('user.like');
 // Follow/Unlfollow
 Route::get('/author/follow/{id}', 'App\Http\Controllers\Frontend\SinglevideoController@follow')->name('user.follow');
+// Store Comment
+Route::post('/comment-store/', 'App\Http\Controllers\CommentController@storeComment')->name('comment.store');
+// Get Comment
+Route::get('/get-comment/{id}', 'App\Http\Controllers\CommentController@getComment')->name('comment.get');
+// Delete Comment
+Route::get('/comment-delete/{id}', 'App\Http\Controllers\CommentController@delComment')->name('comment.delete');
 // Channel content
 Route::get('channel/{id}', 'App\Http\Controllers\Frontend\ChannelpageController@channelpage')->name('channelpage');

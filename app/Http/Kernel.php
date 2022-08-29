@@ -70,5 +70,6 @@ class Kernel extends HttpKernel
         'permission'        => \jeremykenedy\LaravelRoles\App\Http\Middleware\VerifyPermission::class,
         'level'             => \jeremykenedy\LaravelRoles\App\Http\Middleware\VerifyLevel::class,
         'currentUser'       => \App\Http\Middleware\CheckCurrentUser::class,
+        'referral'          => \Questocat\Referral\Http\Middleware\CheckReferral::class,
     ];
 }

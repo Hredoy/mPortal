@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Upload;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,120 +13,60 @@ class CommentController extends Controller
 {
     public function store(Request $request)
     {
+        $user = User::find(Auth::id());
         $input = $request->all();
         $request->validate([
             'body'=>'required',
         ]);
-        $input['user_id'] = auth()->user()->id;
+        $input['user_id'] = Auth::id();
         Comment::create($input);
         return back();
     }
 
-    public function replyStore(Request $request)
+    public function delComment($id)
     {
-        $reply = new Comment();
+       if (Auth::check()) {
+        $comment =Comment::findOrFail($id);
+        $comment->delete();
+        $reply =Comment::where('parent_id',$id)->first();
+        if($reply){
+            $reply->delete();
+        }
 
-        $reply->comment = $request->get('comment');
-        $reply->upload_id = $request->upload_id;
+        return response()->json([
+            'success' => true,
+            'code' => 200,
 
-        $reply->user()->associate($request->user());
-
-        $reply->parent_id = $request->get('comment_id');
-
-        $upload = Upload::find($request->upload_id);
-
-        $upload->comments()->save($reply);
-
-        return back();
-
+        ]);
+       }
     }
-    // /**
-    //  * Display a listing of the resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function index()
-    // {
-    //     $comments =Comment::with('uploads')->get();
-    //     return view('backend.comment.index', compact('comments'));
-    // }
+    public function getComment($id)
+    {
+       $comment =Comment::with('user', "replies")->where('upload_id', $id)->get();
+       return response()->json([
+        'success' => true,
+        'code' => 200,
+        "data"=> $comment,
+        // "replycount"=> $comment->replies->count(),
 
-    // /**
-    //  * Show the form for creating a new resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function create()
-    // {
-    //     //
-    // }
+    ]);
+    }
 
-    // /**
-    //  * Store a newly created resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'body' => 'required|max:255',
+    public function storeComment(Request $request)
+    {
 
-    //     ]);
-    //     Comment::create([
-    //         "author" => Auth::user()->name,
-    //         "upload_id" => $request->upload_id,
-    //         "body" => $request->body
-    //     ]);
-    //     return redirect()->back()->with('create', 'Comment has been created successfully.');
-    // }
+        $input = $request->all();
+        $request->validate([
+            'body'=>'required',
+        ]);
+        $input['user_id'] = Auth::id();
+       $comment = Comment::create($input);
 
-    // /**
-    //  * Display the specified resource.
-    //  *
-    //  * @param  \App\Models\Comment  $comment
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function show($id)
-    // {
-    //     Comment::findOrFail($id);
-    //     return view('backend.comment.show');
-    // }
+        return response()->json([
+            'success' => true,
+            'code' => 200,
+            'data' => $comment
+        ]);
+    }
 
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  *
-    //  * @param  \App\Models\Comment  $comment
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function edit($id)
-    // {
-    //    $comment = Comment::findOrFail($id);
-    //     return view('backend.comment.edit', compact('comment'));
-    // }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @param  \App\Models\Comment  $comment
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function update(Request $request, $id)
-    // {
-    //     Comment::findOrFail($id)->update(($request->all()));
-    //     return redirect()->back()->with('update', 'Comment has been update successfully.');
-    // }
-
-    // /**
-    //  * Remove the specified resource from storage.
-    //  *
-    //  * @param  \App\Models\Comment  $comment
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function destroy($id)
-    // {
-    //     Comment::findOrFail($id)->delete();
-    //     return redirect()->back()->with('delete', 'Comment has been delete successfully.');
-    // }
 }
