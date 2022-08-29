@@ -606,7 +606,7 @@ $(document).on('click', '.comment-del', function() {
         });
 // -------- END DELETE COMMENT --------//
 
-commentList();
+// commentList();
 });
 
 
