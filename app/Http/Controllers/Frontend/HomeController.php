@@ -27,7 +27,7 @@ class HomeController extends Controller
         ->when($country, function ($query, $country) {
             return $query->where('region', $country);
         })
-        ->get();
+        ->latest()->get();
         $others = null;
         if(count($upload) < 20){
             $others = Upload::latest()->paginate(20);
@@ -44,7 +44,7 @@ class HomeController extends Controller
         $upload = Upload::whereStatus(1)->where('category_id', '1')
         ->when($country, function ($query, $country) {
             return $query->where('region', $country);
-        })->get();
+        })->latest()->get();
 
         return view('frontend.categories.music', ['uploads'=>$upload]);
     }
@@ -54,11 +54,11 @@ class HomeController extends Controller
         $upload = Upload::whereStatus(1)->where('category_id', '2')
         ->when($country, function ($query, $country) {
             return $query->where('region', $country);
-        })->get();
+        })->latest()->get();
         return view('frontend.categories.comedy', ['uploads'=>$upload]);
     }
     public function talent(){
-        $upload = Upload::whereStatus(1)->where('category_id', '3')->get();
+        $upload = Upload::whereStatus(1)->where('category_id', '3')->latest()->get();
         return view('frontend.categories.talent', ['uploads'=>$upload]);
     }
 
