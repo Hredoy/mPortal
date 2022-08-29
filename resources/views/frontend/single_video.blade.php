@@ -269,7 +269,7 @@
                     @auth
                     <input type="hidden" name="image" value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" id="">
                     @endauth
-                    <button class="replybtn" type="submit">
+                    <button id="replybtn" type="submit">
                         <i class="cv cvicon-cv-add-comment"></i>
                     </button>
                 </form>
@@ -492,7 +492,7 @@ function commentList(){
                         </div>`
                         row =  row +`
 
-
+                                <div class="collapse" id="collapse${value.id}">
                                     <div class="reply-comment">
                                         @auth
                                         <div class="rc-ava"><a href="#"><img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" alt=""></a></div>
@@ -515,7 +515,7 @@ function commentList(){
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
-
+                                </div>
 
                                         `;
                         $.each(value.replies, function(key,reply){
@@ -559,8 +559,7 @@ $( "#commentStore" ).submit(function( event ) {
 
         success:function(data){
             $('#commentStore')[0].reset();
-            window.location.reload();
-            // commentList();
+            commentList();
 
         }
     })
@@ -576,10 +575,11 @@ $(this).parent("form").submit(function( event ) {
         dataType: 'json',
         data: $(this).serialize(),
 
+
         success:function(data){
-            $('#commentStore')[0].reset();
-            // commentList();
-            window.location.reload();
+            $('#replybtn')[0].reset();
+            commentList();
+            // window.location.reload();
 
         }
     })
@@ -596,8 +596,7 @@ $(document).on('click', '.comment-del', function() {
                     type: 'get',
                     success: function(res) {
                         // $(this).closest(".cl-comment").remove();
-                        // commentList();
-                        window.location.reload();
+                        commentList();
 
                 }
                 , error: function(error) {
@@ -607,7 +606,7 @@ $(document).on('click', '.comment-del', function() {
         });
 // -------- END DELETE COMMENT --------//
 
-// commentList();
+commentList();
 });
 
 
