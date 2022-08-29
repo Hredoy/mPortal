@@ -188,8 +188,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'activated', 'activi
     // Ticket
     Route::resource('ticket', TicketController::class);
     Route::post('ticket/reply/{id}', 'App\Http\Controllers\TicketReplyController@store')->name('adminticket.reply.store');
-
+    // Referral System
+    Route::get('referral', 'App\Http\Controllers\ReferralController@index')->name('referrallist');
 });
+// Referral redirect link
+Route::get('/referrel-redirect/link', 'App\Http\Controllers\ReferralController@refereellink')->name('refereellink')->middleware('referral');
 
 // Registered, activated, and is current user routes.
 Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', 'twostep', 'checkblocked']], function () {

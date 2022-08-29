@@ -7,12 +7,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
+use Questocat\Referral\Traits\UserReferral;
 
 class User extends Authenticatable
 {
     use HasRoleAndPermission;
     use Notifiable;
     use SoftDeletes;
+    use UserReferral;
+
+    public function getReferralLink()
+    {
+        return url('/referrel-redirect/link').'/?ref='.$this->affiliate_id;
+    }
 
     /**
      * The database table used by the model.
@@ -175,5 +182,10 @@ class User extends Authenticatable
     // users that follow this user
     public function followers() {
         return $this->belongsToMany(User::class, 'followers', 'following_id', 'follower_id');
+    }
+
+    public function referral()
+    {
+        return $this->hasOne(ReferralBonus::class);
     }
 }
