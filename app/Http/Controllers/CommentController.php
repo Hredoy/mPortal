@@ -59,14 +59,16 @@ class CommentController extends Controller
         $request->validate([
             'body'=>'required',
         ]);
+       if (Auth::check()) {
         $input['user_id'] = Auth::id();
-       $comment = Comment::create($input);
+        $comment = Comment::create($input);
 
-        return response()->json([
-            'success' => true,
-            'code' => 200,
-            'data' => $comment
-        ]);
+         return response()->json([
+             'success' => true,
+             'code' => 200,
+             'data' => $comment
+         ]);
+       }
     }
 
 }
