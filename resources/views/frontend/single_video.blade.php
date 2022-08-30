@@ -242,12 +242,12 @@
         @if(count($comment->replies)>0)
             <span class="green reply-count" id="{{$comment->id}}"><span class="circle"></span> {{$comment->replies->count()}}</span> <span class="grey"></span>
         @endif
-        <a data-toggle="collapse" href="#collapse{{$comment->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">Reply</a></div>
+        <a data-toggle="collapse" href="#collapse{{$comment->id}}" role="button" aria-expanded="false" aria-controls="#collapse{{$comment->id}}">Reply</a></div>
         @if ($comment->user->id == Auth::id())
 
         <span class="btn btn-sm pull-right comment-del" id="{{$comment->id}}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
         @endif
-        {{-- <div class="cl-replies"><a href="#">View all {{$comment->replies->count()}} replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div> --}}
+        <div class="cl-replies"><a  data-toggle="collapse" href="#collapseReply{{ $comment->id }}" role="button" aria-expanded="false" aria-controls="collapseReply{{ $comment->id }}">View all {{$comment->replies->count()}} replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
         <div class="cl-flag"><a href="#"><i class="cv cvicon-cv-flag"></i></a></div>
     </div>
     <div class="clearfix"></div>
@@ -276,8 +276,9 @@
             </div>
             <div class="clearfix"></div>
         </div>
+    </div>
 
-
+<div class="collapse" id="collapseReply{{ $comment->id }}">
 @foreach ($comment->replies as $reply)
 <!-- reply comment -->
 <div class="cl-comment-reply" id="reply{{$comment->id}}}">
