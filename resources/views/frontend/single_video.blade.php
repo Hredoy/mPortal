@@ -233,7 +233,7 @@
                             <div class="comments-list" id="commentList">
                                 @foreach ($upload->comments as $comment)
 <!-- comment -->
-<div class="cl-comment">
+<div class="cl-comment" id="comment{{$comment->id}}">
     <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="{{ asset($comment->image) }}" ></a></div>
     <div class="cl-comment-text">
         <div class="cl-name-date"><a href="#">{{ $comment->user->name }}</a> . {{$comment->created_at->diffForHumans()}}</div>
@@ -262,7 +262,7 @@
             <div class="rc-ava"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}" alt=""></a></div>
             @endguest
             <div class="rc-comment">
-                <form id="reply{{ $comment->id }}">
+                <form id="replyStore">
                     <textarea name="body" rows="3" placeholder="Reply what you think?"></textarea>
                     <input type="hidden" name="upload_id" value="{{$upload->id}}" id="">
                     <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
@@ -280,7 +280,7 @@
 
 @foreach ($comment->replies as $reply)
 <!-- reply comment -->
-<div class="cl-comment-reply">
+<div class="cl-comment-reply" id="reply{{$comment->id}}}">
     <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="{{ asset($reply->image) }}" ></a></div>
     <div class="cl-comment-text">
         <div class="cl-name-date"><a href="#">{{ $reply->user->name }}</a> . {{$reply->created_at->diffForHumans()}}</div>
@@ -289,7 +289,7 @@
         </div>
     </div>
     @if ($reply->user->id == Auth::id())
-        <span class="btn btn-sm pull-right comment-del" id="{{$reply->id}}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
+        <span class="btn btn-sm pull-right comment-del" id="{{$comment->id}}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
     @endif
     <div class="clearfix"></div>
 </div>
@@ -458,89 +458,12 @@
                 }
             })
         });
-// -------- FOLLOW AUTHOR --------//
+// --------END FOLLOW AUTHOR --------//
 
 
-
-function commentList(){
-    let id = $('input[name="upload_id"]').val();
-    let userImg = $('input[name="image"]').val();
-        $.ajax({
-            url: "{{url('/get-comment/') }}/"+id,
-                  type:"GET",
-                  dataType:"json",
-            success:function(data){
-                var replyCount = 0;
-
-                var row = ""
-
-                $.each(data.data, function(key,value){
-                    row += `<div class="cl-comment">
-                            <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" id="comment-img" src="${value.image}" ></a></div>
-                            <div class="cl-comment-text">
-                                <div class="cl-name-date"><a href="#" id="comment-name">${value.user.name}</a> . ${value.created_at}</div>
-                                <div class="cl-text" id="comment-body">${value.body}</div>
-
-                                <div class="cl-meta"><span class="green"><span class="circle"></span> ${replyCount}</span> <span class="grey"></span>  <a data-toggle="collapse" href="#collapse${value.id}" role="button" aria-expanded="false" aria-controls="collapseExample">Reply</a></div>
-
-
-                                <span class="btn btn-sm pull-right comment-del" id="${value.id}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
-
-                                <div class="cl-flag"><a href="#"><i class="cv cvicon-cv-flag"></i></a></div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>`
-                        row =  row +`
-
-                                <div class="collapse" id="collapse${value.id}">
-                                    <div class="reply-comment">
-                                        @auth
-                                        <div class="rc-ava"><a href="#"><img src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" alt=""></a></div>
-                                        @endauth
-                                        @guest
-                                        <div class="rc-ava"><a href="#"><img src="{{asset('assets/frontend/images/ava5.png')}}" alt=""></a></div>
-                                        @endguest
-                                        <div class="rc-comment">
-                                            <form id="reply${value.id}">
-                                                <textarea name="body" rows="3" placeholder="Reply what you think?"></textarea>
-                                                <input type="hidden" name="upload_id" value="${id}" id="">
-                                                <input type="hidden" name="parent_id" value="${value.id}" />
-                                                @auth
-                                                <input type="hidden" name="image" value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif" id="">
-                                                @endauth
-                                                <button id="replybtn" type="submit">
-                                                    <i class="cv cvicon-cv-add-comment"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-                                        `;
-                        $.each(value.replies, function(key,reply){
-
-                            row =  row + `<div class="cl-comment-reply">
-                                            <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="${reply.image}" ></a></div>
-                                            <div class="cl-comment-text">
-                                                <div class="cl-name-date"><a href="#">${reply.user_id}</a> .${reply.created_at}</div>
-                                                <div class="cl-text">${reply.body }</div>
-                                                <div class="cl-meta">
-
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>`
-                        });
-        });
-
-                $('#commentList').html(row);
-            }
-        });
-
-     }
 
 // -------- ADD COMMENT --------//
+
 $( "#commentStore" ).submit(function( event ) {
   event.preventDefault();
 
@@ -559,44 +482,41 @@ $( "#commentStore" ).submit(function( event ) {
 
         success:function(data){
             $('#commentStore')[0].reset();
-            commentList();
+            var getData = `<div class="cl-comment" id="increment">
+                            <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" id="comment-img" src="${data.data.comment.image}" ></a></div>
+                            <div class="cl-comment-text">
+                                <div class="cl-name-date"><a href="#" id="comment-name">${data.data.comment.user.name}</a> . ${data.data.time}</div>
+                                <div class="cl-text" id="comment-body">${data.data.comment.body}</div>
+                                <span class="btn btn-sm pull-right comment-del" id="${data.data.comment.id}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
+
+                                <div class="cl-flag"><a href="#"><i class="cv cvicon-cv-flag"></i></a></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>`;
+
+
+
+            $('#commentList').append(getData);
+            // commentList();
 
         }
     })
 });
 
-$("#replybtn").click(function() {
-//Select the parent form and submit
-$(this).parent("form").submit(function( event ) {
-  event.preventDefault();
-    $.ajax({
-        url: "{{  url('/comment-store') }}",
-        type: "POST",
-        dataType: 'json',
-        data: $(this).serialize(),
-
-
-        success:function(data){
-            $('#replybtn')[0].reset();
-            commentList();
-            // window.location.reload();
-
-        }
-    })
-});
-
-});
-
+// -------- END ADD COMMENT --------//
 
 // -------- DELETE COMMENT --------//
 $(document).on('click', '.comment-del', function() {
+            let get_id =$(this);
             var id = this.id;
             $.ajax({
                 url: "{{  url('/comment-delete/') }}/"+id,
                     type: 'get',
                     success: function(res) {
-                        // $(this).closest(".cl-comment").remove();
-                        commentList();
+                        get_id.parents(".cl-comment-text").parents(".cl-comment").remove();
+                        $(".cl-comment-reply").remove()
+
+
 
                 }
                 , error: function(error) {
@@ -606,10 +526,46 @@ $(document).on('click', '.comment-del', function() {
         });
 // -------- END DELETE COMMENT --------//
 
-// commentList();
+
+$( "form" ).each( function() {
+
+/* addEventListener onsubmit each form */
+$( this ).bind( "submit", function(event) {
+
+    event.preventDefault();
+
+    if ( event.target.id == "replyStore") {
+
+        $.ajax({
+            url: "{{  url('/comment-store') }}",
+            type: "POST",
+            dataType: 'json',
+            data: $(this).serialize(),
+            success:function(data){
+
+            var getData =  `<div class="cl-comment-reply" id="reply${data.data.comment.parent_id}">
+                                <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="${data.data.comment.image}}" ></a></div>
+                                <div class="cl-comment-text">
+                                    <div class="cl-name-date"><a href="#">${data.data.userName}</a> .${data.data.time}</div>
+                                    <div class="cl-text">${data.data.comment.body }</div>
+                                    <div class="cl-meta">
+
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>`
+
+                       var commentId =  '#comment'+ data.data.comment.parent_id;
+
+            $(commentId).append(getData);
+
+            }
+        });
+    }
+
+} );
+
 });
-
-
-
+});
     </script>
     @endpush

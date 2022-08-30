@@ -60,14 +60,27 @@ class CommentController extends Controller
             'body'=>'required',
         ]);
        if (Auth::check()) {
-        $input['user_id'] = Auth::id();
-        $comment = Comment::create($input);
+            $input['user_id'] = Auth::id();
+            $input['created_at'] = \Carbon\Carbon::now();
+            $id = Comment::insertGetId($input);
 
-         return response()->json([
-             'success' => true,
-             'code' => 200,
-             'data' => $comment
-         ]);
+            if ($request->parent_id) {
+                $comment=  Comment::whereParent_id($request->parent_id)->with("user")->first();
+            } else {
+                $comment=  Comment::whereId($id)->with("user")->first();
+            }
+
+                return response()->json([
+                    'success' => true,
+                    'code' => 200,
+                    'data' => [
+                        "comment"=>$comment,
+                        "time"=>$comment->created_at->diffForHumans(),
+                        "userName"=>$comment->user->name,
+                        ]
+                ]);
+
+
        }
     }
 
