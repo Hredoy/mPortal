@@ -64,10 +64,11 @@ class CommentController extends Controller
             $input['created_at'] = \Carbon\Carbon::now();
             $id = Comment::insertGetId($input);
 
+            $comment=  Comment::whereId($id)->with("user")->first();
             if ($request->parent_id) {
-                $comment=  Comment::whereParent_id($request->parent_id)->with("user")->first();
+                $count=  Comment::whereUpload_id($request->upload_id)->whereParent_id($request->parent_id)->sum("user_id");
             } else {
-                $comment=  Comment::whereId($id)->with("user")->first();
+                $count=  Comment::whereUpload_id($request->upload_id)->where('parent_id', null)->sum("user_id");
             }
 
                 return response()->json([
@@ -77,6 +78,7 @@ class CommentController extends Controller
                         "comment"=>$comment,
                         "time"=>$comment->created_at->diffForHumans(),
                         "userName"=>$comment->user->name,
+                        "count"=>$count,
                         ]
                 ]);
 

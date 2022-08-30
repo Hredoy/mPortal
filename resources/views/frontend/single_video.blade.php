@@ -240,7 +240,7 @@
         <div class="cl-text">{{ $comment->body }}</div>
         <div class="cl-meta">
         @if(count($comment->replies)>0)
-            <span class="green"><span class="circle"></span> {{$comment->replies->count()}}</span> <span class="grey"></span>
+            <span class="green reply-count" id="{{$comment->id}}"><span class="circle"></span> {{$comment->replies->count()}}</span> <span class="grey"></span>
         @endif
         <a data-toggle="collapse" href="#collapse{{$comment->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">Reply</a></div>
         @if ($comment->user->id == Auth::id())
@@ -276,7 +276,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
-  </div>
+
 
 @foreach ($comment->replies as $reply)
 <!-- reply comment -->
@@ -295,6 +295,7 @@
 </div>
 <!-- END reply comment -->
 @endforeach
+</div>
 @endforeach
 
                                 {{-- <div class="row hidden-xs">
