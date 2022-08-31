@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Region;
 use App\Models\Upload;
+use App\Models\Multi_image;
 use jeremykenedy\LaravelRoles\Models\Role;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 use Monarobase\CountryList\CountryListFacade;
 use File;
+use Image;
 
 class UploadController extends Controller
 {
@@ -49,24 +51,43 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
+        return response()->json($request->file('thumbnail_image'));
         $request->validate([
             'name' => 'required',
             'category_id' => 'required',
-            'thumbnail_image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'thumbnail_image' => 'required',
+            'thumbnail_image.*' => 'mimes:jpg,png,jpeg,gif,svg|max:2048',
             'upload' => 'mimes:mp3,mp4,3gp,mpeg,mkv,amv,avi',
             'region' => 'required',
             // 'upload_duration' => 'required',
         ]);
         //for image
-        $newFileName = '';
+          $newFileName = '';
         if ($request->hasFile('thumbnail_image')) {
-            $fileName = $request->file('thumbnail_image')->getClientOriginalExtension();
-            if ($fileName == 'jpg' || $fileName == 'png' || $fileName == 'jpeg' || $fileName == 'gif' || $fileName == 'svg') {
-                $uploadPath = 'uploads/' . Auth::user()->name . '/images/';
-                $newFileName = $uploadPath . time() . '.' . $fileName;
-                $request->thumbnail_image->move($uploadPath, $newFileName);
+            $images = $request->file('thumbnail_image');
+            foreach ($images as $key => $img) {
+                if ($key === array_key_first($images)) {
+                    $fileName = $img->getClientOriginalExtension();
+                    if ($fileName == 'jpg' || $fileName == 'png' || $fileName == 'jpeg' || $fileName == 'gif' || $fileName == 'svg') {
+                        $uploadPath = 'uploads/' . Auth::user()->name . '/images/';
+                        $newFileName = $uploadPath . time() . $fileName;
+                        Image::make($img)->resize(215,346)->save($newFileName);
+                }
+            }
+
+                $fileName = $img->getClientOriginalExtension();
+                if ($fileName == 'jpg' || $fileName == 'png' || $fileName == 'jpeg' || $fileName == 'gif' || $fileName == 'svg') {
+                    $uploadPath = 'uploads/' . Auth::user()->name . '/images/multi_img';
+                    $multiImgName = $uploadPath . time() . '.' . $fileName;
+                    $img->move($uploadPath, $multiImgName);
+                    $imgName[] =$multiImgName;
+                }
+
+
+
             }
         }
+
         $uploadFileName = '';
         if ($request->hasFile('upload')) {
             $upload_extension = $request->file('upload')->getClientOriginalExtension();
@@ -104,6 +125,16 @@ class UploadController extends Controller
         $upload->sell = $request->sell;
         $upload->price = $request->price;
         $upload->save();
+
+        //multi img odj
+        Multi_image::create([
+
+            'upload_id' => $upload->id,
+            'image' => json_encode($imgName),
+
+
+        ]);
+
         return redirect()->route('public.upload')->with('create', 'File has been created successfully.');
     }
 

@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Multi_image extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'upload_id',
-        'image',
-    ];
+    protected $guarded = ['id'];
+    protected $table = 'multi_images';
+
+    public function upload()
+    {
+        return $this->belongsTo(Upload::class, 'upload_id', 'id');
+    }
 }

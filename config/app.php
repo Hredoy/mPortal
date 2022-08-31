@@ -179,6 +179,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         \SocialiteProviders\Manager\ServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class
     ],
 
     /*
@@ -236,7 +237,8 @@ return [
         'Image'         => Intervention\Image\Facades\Image::class,
         'Uuid'          => jeremykenedy\Uuid\Uuid::class,
         'Countries'     => Monarobase\CountryList\CountryListFacade::class,
-        'Location'      => 'Stevebauman\Location\Facades\Location',
+        'Image'         => Intervention\Image\Facades\Image::class,
+        'Location'      => Stevebauman\Location\Facades\Location::class
     ],
 
 ];
