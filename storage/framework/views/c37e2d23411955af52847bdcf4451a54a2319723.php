@@ -5,20 +5,30 @@
 <?php $__env->startSection('main_section'); ?>
 <div class="content-wrapper">
 
-    <div class="ls_banner ls_d-flex ls_align-center" style="background-image: url(<?php echo e(asset('assets/frontend/images/banner.jpg')); ?>);">
+    <div class="ls_banner ls_d-flex ls_align-center" style="background-image: url(<?php echo e(asset($settings->banner_image)); ?>);">
         <div class="ls_overlay"></div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center ls_text-white">
                     <h2 class="ls_title-big">
-                        Let the World Hear You <br>
-                        Music, Comedy, Dance, All Forms of Arts and Talents
+                        <?php if(!empty($settings->banner_title)): ?>
+                            <?php echo e($settings->banner_title); ?>
+
+                        <?php else: ?>
+                            Let the World Hear You <br>
+                            Music, Comedy, Dance, All Forms of Arts and Talents
+                        <?php endif; ?>
                     </h2>
                     <div class="clearfix ls_d-flex ls_justify-center ls_py-20">
                         <p class="col-lg-8 ls_fz-18">
+                            <?php if(!empty($settings->banner_description)): ?>
+                            <?php echo e($settings->banner_description); ?>
+
+                        <?php else: ?>
                             Happiness is the center of all human endeavor. Good entertainment melts away stiffen sorrow to lift souls. This is why we are here. We want to stretch the limit. <br>
                             SpiceArt is a place for all latent musical talents, comedy, and other forms of arts and entertainment to be seen, enjoyed, and rewarded. <br>
                             We reward artistes (upcoming and established) with 2spice tokens just for uploading their work on our website for the listening/viewing pleasure of our beloved community people. Get paid per like on your post.
+                        <?php endif; ?>
                         </p>
                     </div>
                     <div class="clearfix">
@@ -115,7 +125,16 @@
                                             <?php if(!$item->likes()->where('user_id', Auth::id())->first() ): ?>
                                                 <a href="<?php echo e(Route('like', $item->id)); ?>" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
                                             <?php endif; ?>
-                                           
+                                           <div class="pull-right">
+                                            <?php if(!empty($likeChecks)): ?>
+                                                <?php if( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() ): ?>
+                                                    <a href="<?php echo e(Route('like', $item->id)); ?>" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                                <?php else: ?>
+                                                    <a href="<?php echo e(Route('unlike', $item->id)); ?>" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                                <small> <?php echo e($item->likes->count('count')); ?> Likes</small>
+                                            </div>
                                         <?php endif; ?>
                                         </div>
                                     </div>
@@ -154,7 +173,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><img src="<?php echo e(asset($item->thumbnail_image)); ?>" alt="" width="100%" height="215px" class="ls_obj-cover"></a>
+                                        <a href="<?php echo e(route('singleVideo', $item->id)); ?>"><img src="<?php echo e(asset($item->thumbnail_image)); ?>" alt="" width="270px" height="215px" class="ls_obj-cover"></a>
                                         <div class="time"><?php echo e($item->upload_duration); ?></div>
                                     </div>
                                     <div class="ls_height-1 v-desc">

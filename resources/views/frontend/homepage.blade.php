@@ -169,7 +169,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt="" width="100%" height="215px" class="ls_obj-cover"></a>
+                                        <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt="" width="270px" height="215px" class="ls_obj-cover"></a>
                                         <div class="time">{{$item->upload_duration}}</div>
                                     </div>
                                     <div class="ls_height-1 v-desc">
