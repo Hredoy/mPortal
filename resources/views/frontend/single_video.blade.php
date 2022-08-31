@@ -4,8 +4,6 @@
 @include('frontend.partials.second_navbar')
 @endsection
 @push('custom_css')
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet" />
 <link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet" />
 <link href="{{asset('assets/frontend/css/single-video.css')}}" rel="stylesheet" />
@@ -13,6 +11,7 @@
 @section('main_section')
 {{-- For get upload for ajax like/unlike  --}}
 <input type="hidden" name="upload_id" value="{{$upload->id}}">
+{{-- For get user for ajax follow/follow  --}}
 <input type="hidden" name="user_id" value="{{$upload->user_id}}">
 @auth
 
@@ -420,27 +419,27 @@
                 window.location.href = nextvideo;
             }
 
-            // Like Video
-            $(document).on('click', '.like-icon', function() {
-                let upload_id = $('input[name="upload_id"]').val();
-                $.ajax({
-                    url: `/video/like/${upload_id}`
-                    , type: 'GET'
-                    , success: function(data) {
-                        // console.log(data);
-                        if(data.data.click == 'like'){
-                            $('.like-icon').html('<i class="fa fa-thumbs-down" style="font-size: 1.2em"></i>')
-                        }else if(data.data.click == 'unlike'){
-                            $('.like-icon').html('<i class="fa fa-thumbs-up" style="font-size: 1.2em"></i>')
-                        }
-                        $('#totalLikeshow').html(`${data.data.likecount} like`)
+// Like Video
+$(document).on('click', '.like-icon', function() {
+    let upload_id = $('input[name="upload_id"]').val();
+    $.ajax({
+        url: `/video/like/${upload_id}`
+        , type: 'GET'
+        , success: function(data) {
+            // console.log(data);
+            if(data.data.click == 'like'){
+                $('.like-icon').html('<i class="fa fa-thumbs-down" style="font-size: 1.2em"></i>')
+            }else if(data.data.click == 'unlike'){
+                $('.like-icon').html('<i class="fa fa-thumbs-up" style="font-size: 1.2em"></i>')
+            }
+            $('#totalLikeshow').html(`${data.data.likecount} like`)
 
-                    }
-                    , error: function(error) {
-                        console.log(error)
-                    }
-                })
-            });
+        }
+        , error: function(error) {
+            console.log(error)
+        }
+    })
+});
 
 // -------- FOLLOW AUTHOR --------//
         $(document).on('click', '.follow-btn', function() {
@@ -511,13 +510,12 @@ $( "#commentStore" ).submit(function( event ) {
 
 // -------- DELETE COMMENT --------//
 $(document).on('click', '.comment-del', function() {
-            let get_id =$(this);
             var id = this.id;
             $.ajax({
                 url: "{{  url('/comment-delete/') }}/"+id,
                     type: 'get',
                     success: function(res) {
-                        get_id.parents(".cl-comment-text").parents(".cl-comment").remove();
+                        $(this).parents(".cl-comment-text").parents(".cl-comment").remove();
                         $(".cl-comment-reply#reply" +id).remove()
 
 
