@@ -240,14 +240,16 @@
         <div class="cl-text">{{ $comment->body }}</div>
         <div class="cl-meta">
         @if(count($comment->replies)>0)
-            <span class="green reply-count" id="{{$comment->id}}"><span class="circle"></span> {{$comment->replies->count()}}</span> <span class="grey"></span>
+            <span class="green reply-count" id="reply-count{{$comment->id}}"><span class="circle"></span> {{$comment->replies->count()}}</span> <span class="grey"></span>
         @endif
         <a data-toggle="collapse" href="#collapse{{$comment->id}}" role="button" aria-expanded="false" aria-controls="#collapse{{$comment->id}}">Reply</a></div>
         @if ($comment->user->id == Auth::id())
 
         <span class="btn btn-sm pull-right comment-del" id="{{$comment->id}}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
         @endif
-        <div class="cl-replies"><a  data-toggle="collapse" href="#collapseReply{{ $comment->id }}" role="button" aria-expanded="false" aria-controls="collapseReply{{ $comment->id }}">View all {{$comment->replies->count()}} replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+        @if(count($comment->replies)>0)
+        <div class="cl-replies"><a  data-toggle="collapse" href="#collapseReply{{ $comment->id }}" id="reply-count{{$comment->id}}" role="button" aria-expanded="false" aria-controls="collapseReply{{ $comment->id }}">View all {{$comment->replies->count()}} replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+        @endif
         <div class="cl-flag"><a href="#"><i class="cv cvicon-cv-flag"></i></a></div>
     </div>
     <div class="clearfix"></div>
@@ -516,7 +518,7 @@ $(document).on('click', '.comment-del', function() {
                     type: 'get',
                     success: function(res) {
                         get_id.parents(".cl-comment-text").parents(".cl-comment").remove();
-                        $(".cl-comment-reply").remove()
+                        $(".cl-comment-reply#reply" +id).remove()
 
 
 
@@ -544,6 +546,8 @@ $( this ).bind( "submit", function(event) {
             dataType: 'json',
             data: $(this).serialize(),
             success:function(data){
+                $("#replyStore").trigger("reset");
+            var count =   $('span#reply-count' +data.data.comment.parent_id ).empty().prepend(data.data.count);
 
             var getData =  `<div class="cl-comment-reply" id="reply${data.data.comment.parent_id}">
                                 <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="${data.data.comment.image}}" ></a></div>
