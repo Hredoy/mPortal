@@ -29,6 +29,7 @@
                         <li class="<?php echo e(Request::is('contact') ? 'color-active' : null); ?>">
                             <a href="<?php echo e(route('contactPage')); ?>">Contact</a>
                         </li>
+                        <?php if(count($contents->where('type', 1)->where('status', 1)) > 0): ?>
                         <li>
                             <a href="#">More</a>
                             <ul class="ls_dynamic-menu">
@@ -41,6 +42,7 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
