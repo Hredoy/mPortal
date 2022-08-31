@@ -4,8 +4,6 @@
 @include('frontend.partials.second_navbar')
 @endsection
 @push('custom_css')
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link href="https://vjs.zencdn.net/7.20.2/video-js.css" rel="stylesheet" />
 <link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet" />
 <link href="{{asset('assets/frontend/css/single-video.css')}}" rel="stylesheet" />
@@ -13,6 +11,7 @@
 @section('main_section')
 {{-- For get upload for ajax like/unlike  --}}
 <input type="hidden" name="upload_id" value="{{$upload->id}}">
+{{-- For get user for ajax follow/follow  --}}
 <input type="hidden" name="user_id" value="{{$upload->user_id}}">
 @auth
 
@@ -240,14 +239,16 @@
         <div class="cl-text">{{ $comment->body }}</div>
         <div class="cl-meta">
         @if(count($comment->replies)>0)
-            <span class="green reply-count" id="{{$comment->id}}"><span class="circle"></span> {{$comment->replies->count()}}</span> <span class="grey"></span>
+            <span class="green reply-count" id="reply-count{{$comment->id}}"><span class="circle"></span> {{$comment->replies->count()}}</span> <span class="grey"></span>
         @endif
         <a data-toggle="collapse" href="#collapse{{$comment->id}}" role="button" aria-expanded="false" aria-controls="#collapse{{$comment->id}}">Reply</a></div>
         @if ($comment->user->id == Auth::id())
 
         <span class="btn btn-sm pull-right comment-del" id="{{$comment->id}}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
         @endif
-        <div class="cl-replies"><a  data-toggle="collapse" href="#collapseReply{{ $comment->id }}" role="button" aria-expanded="false" aria-controls="collapseReply{{ $comment->id }}">View all {{$comment->replies->count()}} replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+        @if(count($comment->replies)>0)
+        <div class="cl-replies"><a  data-toggle="collapse" href="#collapseReply{{ $comment->id }}" id="reply-count{{$comment->id}}" role="button" aria-expanded="false" aria-controls="collapseReply{{ $comment->id }}">View all {{$comment->replies->count()}} replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+        @endif
         <div class="cl-flag"><a href="#"><i class="cv cvicon-cv-flag"></i></a></div>
     </div>
     <div class="clearfix"></div>
@@ -418,27 +419,27 @@
                 window.location.href = nextvideo;
             }
 
-            // Like Video
-            $(document).on('click', '.like-icon', function() {
-                let upload_id = $('input[name="upload_id"]').val();
-                $.ajax({
-                    url: `/video/like/${upload_id}`
-                    , type: 'GET'
-                    , success: function(data) {
-                        // console.log(data);
-                        if(data.data.click == 'like'){
-                            $('.like-icon').html('<i class="fa fa-thumbs-down" style="font-size: 1.2em"></i>')
-                        }else if(data.data.click == 'unlike'){
-                            $('.like-icon').html('<i class="fa fa-thumbs-up" style="font-size: 1.2em"></i>')
-                        }
-                        $('#totalLikeshow').html(`${data.data.likecount} like`)
+// Like Video
+$(document).on('click', '.like-icon', function() {
+    let upload_id = $('input[name="upload_id"]').val();
+    $.ajax({
+        url: `/video/like/${upload_id}`
+        , type: 'GET'
+        , success: function(data) {
+            // console.log(data);
+            if(data.data.click == 'like'){
+                $('.like-icon').html('<i class="fa fa-thumbs-down" style="font-size: 1.2em"></i>')
+            }else if(data.data.click == 'unlike'){
+                $('.like-icon').html('<i class="fa fa-thumbs-up" style="font-size: 1.2em"></i>')
+            }
+            $('#totalLikeshow').html(`${data.data.likecount} like`)
 
-                    }
-                    , error: function(error) {
-                        console.log(error)
-                    }
-                })
-            });
+        }
+        , error: function(error) {
+            console.log(error)
+        }
+    })
+});
 
 // -------- FOLLOW AUTHOR --------//
         $(document).on('click', '.follow-btn', function() {
@@ -509,14 +510,13 @@ $( "#commentStore" ).submit(function( event ) {
 
 // -------- DELETE COMMENT --------//
 $(document).on('click', '.comment-del', function() {
-            let get_id =$(this);
             var id = this.id;
             $.ajax({
                 url: "{{  url('/comment-delete/') }}/"+id,
                     type: 'get',
                     success: function(res) {
-                        get_id.parents(".cl-comment-text").parents(".cl-comment").remove();
-                        $(".cl-comment-reply").remove()
+                        $(this).parents(".cl-comment-text").parents(".cl-comment").remove();
+                        $(".cl-comment-reply#reply" +id).remove()
 
 
 
@@ -544,6 +544,8 @@ $( this ).bind( "submit", function(event) {
             dataType: 'json',
             data: $(this).serialize(),
             success:function(data){
+                $("#replyStore").trigger("reset");
+            var count =   $('span#reply-count' +data.data.comment.parent_id ).empty().prepend(data.data.count);
 
             var getData =  `<div class="cl-comment-reply" id="reply${data.data.comment.parent_id}">
                                 <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="${data.data.comment.image}}" ></a></div>
