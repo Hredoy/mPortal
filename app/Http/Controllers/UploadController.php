@@ -51,43 +51,27 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json($request->file('thumbnail_image'));
+
         $request->validate([
             'name' => 'required',
             'category_id' => 'required',
             'thumbnail_image' => 'required',
-            'thumbnail_image.*' => 'mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'thumbnail_image.*' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'upload' => 'mimes:mp3,mp4,3gp,mpeg,mkv,amv,avi',
             'region' => 'required',
             // 'upload_duration' => 'required',
         ]);
         //for image
-          $newFileName = '';
+        $newFileName = '';
         if ($request->hasFile('thumbnail_image')) {
-            $images = $request->file('thumbnail_image');
-            foreach ($images as $key => $img) {
-                if ($key === array_key_first($images)) {
-                    $fileName = $img->getClientOriginalExtension();
-                    if ($fileName == 'jpg' || $fileName == 'png' || $fileName == 'jpeg' || $fileName == 'gif' || $fileName == 'svg') {
-                        $uploadPath = 'uploads/' . Auth::user()->name . '/images/';
-                        $newFileName = $uploadPath . time() . $fileName;
-                        Image::make($img)->resize(215,346)->save($newFileName);
-                }
-            }
-
-                $fileName = $img->getClientOriginalExtension();
-                if ($fileName == 'jpg' || $fileName == 'png' || $fileName == 'jpeg' || $fileName == 'gif' || $fileName == 'svg') {
-                    $uploadPath = 'uploads/' . Auth::user()->name . '/images/multi_img';
-                    $multiImgName = $uploadPath . time() . '.' . $fileName;
-                    $img->move($uploadPath, $multiImgName);
-                    $imgName[] =$multiImgName;
-                }
-
-
-
+            $thumb = $request['thumbnail_image'][0];
+            $fileName = $thumb->getClientOriginalExtension();
+            if ($fileName == 'jpg' || $fileName == 'png' || $fileName == 'jpeg' || $fileName == 'gif' || $fileName == 'svg') {
+                $uploadPath = 'uploads/' . Auth::user()->name . '/images/';
+                $newFileName = $uploadPath . time() . '.' . $fileName;
+                Image::make($thumb)->resize(346,215)->save($newFileName);
             }
         }
-
         $uploadFileName = '';
         if ($request->hasFile('upload')) {
             $upload_extension = $request->file('upload')->getClientOriginalExtension();
@@ -126,15 +110,20 @@ class UploadController extends Controller
         $upload->price = $request->price;
         $upload->save();
 
-        //multi img odj
-        Multi_image::create([
 
-            'upload_id' => $upload->id,
-            'image' => json_encode($imgName),
-
-
-        ]);
-
+        $multiImg =[];
+        if ($request->hasFile('thumbnail_image')) {
+            foreach ($request->file('thumbnail_image') as $img) {
+                // $uploadPath = 'uploads/' . Auth::user()->name . '/images/multi_img/';
+                $multiImgName = 'uploads/' . Auth::user()->name . '/images/multi_img/'.time() . '.' . $img->extension();
+                $img->move( 'uploads/' . Auth::user()->name . '/images/multi_img/' , $multiImgName);
+                $multiImg[] =$multiImgName;
+            }
+        }
+        $mImg= new Multi_image();
+        $mImg->upload_id = $upload->id;
+        $mImg->image = $multiImg;
+        $mImg->save();
         return redirect()->route('public.upload')->with('create', 'File has been created successfully.');
     }
 
@@ -144,7 +133,7 @@ class UploadController extends Controller
      * @param  \App\Models\VideoManagement  $videoManagement
      * @return \Illuminate\Http\Response
      */
-    public function show(VideoManagement $videoManagement)
+    public function show(Upload $upload)
     {
         //
     }
@@ -152,7 +141,7 @@ class UploadController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\VideoManagement  $videoManagement
+     * @param  \App\Models\Upload  $Upload
      * @return \Illuminate\Http\Response
      */
     public function edit($id)

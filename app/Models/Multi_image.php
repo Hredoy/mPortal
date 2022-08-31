@@ -15,4 +15,8 @@ class Multi_image extends Model
     {
         return $this->belongsTo(Upload::class, 'upload_id', 'id');
     }
+    public function setImageAttribute($value)
+    {
+        $this->attributes['image'] = json_encode($value);
+    }
 }
