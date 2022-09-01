@@ -41,6 +41,42 @@
                         >
                         <source src="{{asset($upload->upload)}}" type="video/mp4" />
                     </video>
+                    <div class="ls_single-img ls_mb-20">
+                        <div>
+                            <img src="https://images.pexels.com/photos/12774767/pexels-photo-12774767.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+                        </div>
+
+                        <div>
+                            <img src="https://images.pexels.com/photos/5689624/pexels-photo-5689624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+                        </div>
+
+                        <div>
+                            <img src="https://images.pexels.com/photos/96620/pexels-photo-96620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+                        </div>
+
+                        <div>
+                            <img src="https://images.pexels.com/photos/13010695/pexels-photo-13010695.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="">
+                        </div>
+                    </div>
+
+                    
+                    <div class="ls_multiple-img">
+                        <div>
+                            <img src="https://images.pexels.com/photos/12774767/pexels-photo-12774767.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+                        </div>
+
+                        <div>
+                            <img src="https://images.pexels.com/photos/5689624/pexels-photo-5689624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+                        </div>
+
+                        <div>
+                            <img src="https://images.pexels.com/photos/96620/pexels-photo-96620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+                        </div>
+
+                        <div>
+                            <img src="https://images.pexels.com/photos/13010695/pexels-photo-13010695.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="">
+                        </div>
+                    </div>
                     @else
                     <a href=""><img src="{{asset($upload->thumbnail_image)}}" alt="" width="auto" height="350px" class="ls_obj-cover"></a>
                     @endif
@@ -108,7 +144,7 @@
                             <span class="btn like-icon"><i class="fa fa-thumbs-down  " style="font-size: 1.2em"></i></span>
                             @endif
                             <small id="totalLikeshow"> {{$upload->likes->count('count')}} Likes</small>
-
+                            &nbsp;
                             <small> {{$upload->view}} views</small>
                         </div>
                         <div class="sv-views-progress">

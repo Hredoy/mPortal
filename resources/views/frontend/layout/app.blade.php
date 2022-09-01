@@ -21,6 +21,9 @@
     <link href="{{asset('assets/frontend/css/custom-style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/frontend/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/frontend/css/font-circle-video.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/frontend/css/font-circle-video.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/frontend/css/font-circle-video.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/frontend/css/slick.css')}}" rel="stylesheet">
     <link href="{{asset('assets/frontend/css/ls-custom-style.css')}}" rel="stylesheet">
     @stack('custom_css')
 
@@ -53,6 +56,7 @@
     <script src="{{asset('assets/frontend/js/jquery.min.js')}}"></script>
     <script src="{{asset('assets/frontend/bootstrap/js/bootstrap.min.js')}}"></script>
     {{-- <script src="{{asset('assets/frontend/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelement-and-player.min.js')}}"></script> --}}
+    <script src="{{asset('assets/frontend/js/slick.min.js')}}"></script>
     <script src="{{asset('assets/frontend/js/custom.js')}}"></script>
     @stack('custom_script')
     <script>

@@ -367,4 +367,20 @@ $( document ).ready(function() {
 
     MYAPP.initialize();
 
+        
+    $('.ls_single-img').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.ls_multiple-img'
+    });
+    $('.ls_multiple-img').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.ls_single-img',
+        centerMode: true,
+        focusOnSelect: true,
+        arrows: false
+    });
 });

@@ -318,6 +318,17 @@
     margin-right: 15px;
     color: #fff;
 }
+.ls_single-img img {
+    width: 100%;
+    height: 433px;
+    object-fit: cover;
+}
+.ls_multiple-img img {
+    width: 100%;
+    object-fit: cover;
+    height: 150px;
+    cursor: pointer;
+}
 
 @media only screen and (min-width:1200px){
     .mobile-menu{
