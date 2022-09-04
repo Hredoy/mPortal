@@ -61,7 +61,7 @@ class CommentController extends Controller
         ]);
         $input['user_id'] = Auth::id();
        $comment = Comment::create($input);
-
+        $comment = Comment::with(['user'])->where("id",$comment->id)->first();
         return response()->json([
             'success' => true,
             'code' => 200,

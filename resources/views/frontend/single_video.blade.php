@@ -71,10 +71,10 @@ muted autoplay @endguest>
                     </div>
 
                     <!-- <div class="acide-panel acide-panel-top">
-                                                <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
-                                                <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>
-                                                <a href="#"><i class="cv cvicon-cv-flag" data-toggle="tooltip" data-placement="top" title="Flag"></i></a>
-                                            </div> -->
+                                                                                            <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
+                                                                                            <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>
+                                                                                            <a href="#"><i class="cv cvicon-cv-flag" data-toggle="tooltip" data-placement="top" title="Flag"></i></a>
+                                                                                        </div> -->
                     <div class="author clearfix">
                         <div class="author-head ls_avatar-img">
                             <a href="#"><img
@@ -197,10 +197,10 @@ muted autoplay @endguest>
                         </div>
 
                         <!-- <div class="content-block head-div head-arrow head-arrow-top visible-xs">
-                                                    <div class="head-arrow-icon">
-                                                        <i class="cv cvicon-cv-next"></i>
-                                                    </div>
-                                                </div> -->
+                                                                                                <div class="head-arrow-icon">
+                                                                                                    <i class="cv cvicon-cv-next"></i>
+                                                                                                </div>
+                                                                                            </div> -->
 
                         {{-- <div class="adblock2">
                         <div class="img">
@@ -243,8 +243,7 @@ muted autoplay @endguest>
                                             @auth
 
                                                 <input type="hidden" id="image"
-                                                    value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif"
-                                                    id="">
+                                                    value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif">
                                             @endauth
                                             <input type="hidden" id="image"
                                                 value="{{ asset('assets/frontend/images/ava5.png') }}" id="">
@@ -265,7 +264,7 @@ muted autoplay @endguest>
                                             <div class="cl-comment-text">
                                                 <div class="cl-name-date"><a
                                                         href="#">{{ $comment->user->name }}</a> .
-                                                    {{ $comment->created_at->diffForHumans() }}</div>
+                                                    {{ $comment->created_at }}</div>
                                                 <div class="cl-text">{{ $comment->body }}</div>
                                                 <div class="cl-meta">
                                                     @if (count($comment->replies) > 0)
@@ -328,8 +327,8 @@ muted autoplay @endguest>
                     </div>
                     <div class="content-block head-div head-arrow visible-xs">
                         <!-- <div class="head-arrow-icon">
-                                                    <i class="cv cvicon-cv-next"></i>
-                                                </div> -->
+                                                                                                <i class="cv cvicon-cv-next"></i>
+                                                                                            </div> -->
                         {{-- <div class="adblock2 adblock2-v2">
                         <div class="img">
                             <span>Google AdSense 300 x 250</span>
@@ -503,20 +502,19 @@ muted autoplay @endguest>
                         },
 
                         success: function(data) {
+                            console.log(data);
                             $('#commentStore')[0].reset();
                             var getData = `<div class="cl-comment" id="increment">
-                            <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" id="comment-img" src="${data.data.comment.image}" ></a></div>
+                            <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" id="comment-img" src="${data.data.image}" ></a></div>
                             <div class="cl-comment-text">
-                                <div class="cl-name-date"><a href="#" id="comment-name">${data.data.comment.user.name}</a> . ${data.data.time}</div>
-                                <div class="cl-text" id="comment-body">${data.data.comment.body}</div>
-                                <span class="btn btn-sm pull-right comment-del" id="${data.data.comment.id}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
+                                <div class="cl-name-date"><a href="#" id="comment-name">${data.data.user.name}</a> . ${data.data.created_at}</div>
+                                <div class="cl-text" id="comment-body">${data.data.body}</div>
+                                <span class="btn btn-sm pull-right comment-del" id="${data.data.id}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
 
                                 <div class="cl-flag"><a href="#"><i class="cv cvicon-cv-flag"></i></a></div>
                             </div>
                             <div class="clearfix"></div>
                         </div>`;
-
-
 
                             $('#commentList').append(getData);
                             // commentList();

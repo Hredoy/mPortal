@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class Comment extends Model
 {
     use HasFactory;
+
 
     protected $guarded = ['id'];
     protected $table = 'comments';
@@ -25,5 +26,7 @@ class Comment extends Model
     {
         return $this->hasMany(Comment::class, 'parent_id');
     }
-
+    public function getCreatedAtAttribute($value){
+        return Carbon::parse($value)->diffForHumans();
+    }
 }

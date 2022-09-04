@@ -5,7 +5,7 @@
         </div>
         <div class="cl-comment-text">
             <div class="cl-name-date"><a href="#">{{ $reply->user->name }}</a> .
-                {{ $reply->created_at->diffForHumans() }}</div>
+                {{ $reply->created_at }}</div>
             <div class="cl-text">{{ $reply->body }}</div>
             <div class="cl-meta">
             </div>
@@ -21,7 +21,7 @@
             <div class="reply-comment">
                 @auth
                     <div class="rc-ava"><a href="#"><img
-                                src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif"
+                                src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }}@else {{ Gravatar::get(Auth::user()->email) }} @endif"
                                 alt=""></a></div>
                 @endauth
                 @guest
