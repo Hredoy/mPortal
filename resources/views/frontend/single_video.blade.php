@@ -71,10 +71,10 @@ muted autoplay @endguest>
                     </div>
 
                     <!-- <div class="acide-panel acide-panel-top">
-                                                                                            <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
-                                                                                            <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>
-                                                                                            <a href="#"><i class="cv cvicon-cv-flag" data-toggle="tooltip" data-placement="top" title="Flag"></i></a>
-                                                                                        </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <a href="#"><i class="cv cvicon-cv-flag" data-toggle="tooltip" data-placement="top" title="Flag"></i></a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div> -->
                     <div class="author clearfix">
                         <div class="author-head ls_avatar-img">
                             <a href="#"><img
@@ -197,10 +197,10 @@ muted autoplay @endguest>
                         </div>
 
                         <!-- <div class="content-block head-div head-arrow head-arrow-top visible-xs">
-                                                                                                <div class="head-arrow-icon">
-                                                                                                    <i class="cv cvicon-cv-next"></i>
-                                                                                                </div>
-                                                                                            </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="head-arrow-icon">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="cv cvicon-cv-next"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div> -->
 
                         {{-- <div class="adblock2">
                         <div class="img">
@@ -236,7 +236,7 @@ muted autoplay @endguest>
                                                     src="{{ asset('assets/frontend/images/ava5.png') }}"></a></div>
                                     @endguest
                                     <div class="rc-comment">
-                                        <form id="commentStore">
+                                        <form id="commentStore" data-replyForm="0">
                                             <textarea id="body" rows="3" placeholder="Share what you think?"></textarea>
                                             <input type="hidden" id="upload_id" value="{{ $upload->id }}"
                                                 id="">
@@ -267,16 +267,19 @@ muted autoplay @endguest>
                                                     {{ $comment->created_at }}</div>
                                                 <div class="cl-text">{{ $comment->body }}</div>
                                                 <div class="cl-meta">
-                                                    @if (count($comment->replies) > 0)
-                                                        <span class="green reply-count"
-                                                            id="reply-count{{ $comment->id }}"><span
-                                                                class="circle"></span>
-                                                            {{ $comment->replies->count() }}</span> <span
-                                                            class="grey"></span>
-                                                    @endif
-                                                    <a data-toggle="collapse" href="#collapse{{ $comment->id }}"
-                                                        role="button" aria-expanded="false"
-                                                        aria-controls="#collapse{{ $comment->id }}">Reply</a>
+                                                    <span class="green reply-count"
+                                                        id="reply-count{{ $comment->id }}"><span class="circle"></span>
+                                                        @if (count($comment->replies) > 0)
+                                                            {{ $comment->replies->count() }}
+                                                        @else
+                                                            0
+                                                        @endif
+
+                                                    </span> <span class="grey"></span>
+                                                    <a data-toggle="collapse"
+                                                        href="#collapseMainReply{{ $comment->id }}" role="button"
+                                                        aria-expanded="false"
+                                                        aria-controls="#collapseMainReply{{ $comment->id }}">Reply</a>
                                                 </div>
                                                 @if ($comment->user->id == Auth::id())
                                                     <span class="btn btn-sm pull-right comment-del"
@@ -284,28 +287,65 @@ muted autoplay @endguest>
                                                             class="fa fa-minus-circle text-danger"
                                                             style="font-size: 1.2em"></i></span>
                                                 @endif
-                                                @if (count($comment->replies) > 0)
-                                                    <div class="cl-replies"><a data-toggle="collapse"
-                                                            href="#collapseReply{{ $comment->id }}"
-                                                            id="reply-count{{ $comment->id }}" role="button"
-                                                            aria-expanded="false"
-                                                            aria-controls="collapseReply{{ $comment->id }}">View all
-                                                            {{ $comment->replies->count() }} replies <i
-                                                                class="fa fa-chevron-down" aria-hidden="true"></i></a>
-                                                    </div>
-                                                @endif
+                                                <div class="cl-replies"><a data-toggle="collapse"
+                                                        href="#collapse{{ $comment->id }}"
+                                                        id="reply-count{{ $comment->id }}" role="button"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapse{{ $comment->id }}">View all
+                                                        <span id="reply-all-count{{ $comment->id }}">
+                                                            @if (count($comment->replies) > 0)
+                                                                {{ $comment->replies->count() }}
+                                                            @else
+                                                                0
+                                                            @endif
+                                                        </span>
+                                                        replies <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                                                </div>
                                                 <div class="cl-flag"><a href="#"><i
                                                             class="cv cvicon-cv-flag"></i></a></div>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
+
                                         <!-- END comment -->
+                                        <div class="collapse" id="collapseMainReply{{ $comment->id }}">
+                                            <div class="reply-comment">
+                                                @auth
+                                                    <div class="rc-ava"><a href="#"><img
+                                                                src="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }}@else {{ Gravatar::get(Auth::user()->email) }} @endif"
+                                                                alt=""></a></div>
+                                                @endauth
+                                                @guest
+                                                    <div class="rc-ava"><a href="#"><img
+                                                                src="{{ asset('assets/frontend/images/ava5.png') }}"
+                                                                alt=""></a></div>
+                                                @endguest
+                                                <div class="rc-comment">
+                                                    <form id="replyStore{{ $comment->id }}" data-replyForm="1">
+                                                        <textarea name="body" rows="3" placeholder="Reply what you think?"></textarea>
+                                                        <input type="hidden" name="upload_id"
+                                                            value="{{ $upload->id }}" id="">
+                                                        <input type="hidden" name="parent_id"
+                                                            value="{{ $comment->id }}" />
+                                                        @auth
+                                                            <input type="hidden" name="image"
+                                                                value="@if (Auth::user()->profile && Auth::user()->profile->avatar_status == 1) {{ Auth::user()->profile->avatar }} @else {{ Gravatar::get(Auth::user()->email) }} @endif"
+                                                                id="">
+                                                        @endauth
+                                                        <button id="replybtn" type="submit">
+                                                            <i class="cv cvicon-cv-add-comment"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
 
-
-                                        <div class="collapse" id="collapseReply{{ $comment->id }}">
+                                        <div class="collapse" id="collapse{{ $comment->id }}">
                                             @include('frontend.partials._comment_replies', [
-                                                'comments' => $upload->comments,
+                                                'comments' => $comment->replies,
                                                 'post_id' => $upload->id,
+                                                'parent_id' => $comment->parent_id,
                                             ])
 
                                         </div>
@@ -327,8 +367,8 @@ muted autoplay @endguest>
                     </div>
                     <div class="content-block head-div head-arrow visible-xs">
                         <!-- <div class="head-arrow-icon">
-                                                                                                <i class="cv cvicon-cv-next"></i>
-                                                                                            </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="cv cvicon-cv-next"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div> -->
                         {{-- <div class="adblock2 adblock2-v2">
                         <div class="img">
                             <span>Google AdSense 300 x 250</span>
@@ -492,6 +532,7 @@ muted autoplay @endguest>
 
 
                     $.ajax({
+
                         url: "{{ url('/comment-store') }}",
                         type: "POST",
                         dataType: 'json',
@@ -504,19 +545,7 @@ muted autoplay @endguest>
                         success: function(data) {
                             console.log(data);
                             $('#commentStore')[0].reset();
-                            var getData = `<div class="cl-comment" id="increment">
-                            <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" id="comment-img" src="${data.data.image}" ></a></div>
-                            <div class="cl-comment-text">
-                                <div class="cl-name-date"><a href="#" id="comment-name">${data.data.user.name}</a> . ${data.data.created_at}</div>
-                                <div class="cl-text" id="comment-body">${data.data.body}</div>
-                                <span class="btn btn-sm pull-right comment-del" id="${data.data.id}" ><i class="fa fa-minus-circle text-danger" style="font-size: 1.2em"></i></span>
-
-                                <div class="cl-flag"><a href="#"><i class="cv cvicon-cv-flag"></i></a></div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>`;
-
-                            $('#commentList').append(getData);
+                            $('#commentList').append(data.data);
                             // commentList();
 
                         }
@@ -550,36 +579,27 @@ muted autoplay @endguest>
 
                     /* addEventListener onsubmit each form */
                     $(this).bind("submit", function(event) {
-
                         event.preventDefault();
-
-                        if (event.target.id == "replyStore") {
-
+                        alert("found");
+                        if ($(this).attr('data-replyForm') == 1) {
                             $.ajax({
-                                url: "{{ url('/comment-store') }}",
+                                url: "{{ url('/comment-store-reply') }}",
                                 type: "POST",
                                 dataType: 'json',
                                 data: $(this).serialize(),
                                 success: function(data) {
-                                    $("#replyStore").trigger("reset");
-                                    var count = $('span#reply-count' + data.data.comment
-                                        .parent_id).empty().prepend(data.data.count);
+                                    var form = '#' + event.target.id;
+                                    $(form).trigger("reset");
+                                    console.log(data.count);
 
-                                    var getData = `<div class="cl-comment-reply" id="reply${data.data.comment.parent_id}">
-                                <div class="cl-avatar"><a href="#"><img style=" height: 62;width: 70px;" src="${data.data.comment.image}}" ></a></div>
-                                <div class="cl-comment-text">
-                                    <div class="cl-name-date"><a href="#">${data.data.userName}</a> .${data.data.time}</div>
-                                    <div class="cl-text">${data.data.comment.body }</div>
-                                    <div class="cl-meta">
+                                    var count = $('#reply-count' + data.comment[0]
+                                        .parent_id).empty().prepend(data.count);
+                                    var getData = data.data;
 
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>`
-
-                                    var commentId = '#comment' + data.data.comment
+                                    $('#reply-all-count' + data.comment[0]
+                                        .parent_id).empty().prepend(data.count);
+                                    var commentId = '#collapse' + data.comment[0]
                                         .parent_id;
-
                                     $(commentId).append(getData);
 
                                 }

@@ -301,6 +301,7 @@ Route::get('video/like/{id}', 'App\Http\Controllers\Frontend\SinglevideoControll
 Route::get('/author/follow/{id}', 'App\Http\Controllers\Frontend\SinglevideoController@follow')->name('user.follow');
 // Store Comment
 Route::post('/comment-store/', 'App\Http\Controllers\CommentController@storeComment')->name('comment.store');
+Route::post('/comment-store-reply/', 'App\Http\Controllers\CommentController@replyStoreComment')->name('comment.replyStoreComment');
 // Get Comment
 Route::get('/get-comment/{id}', 'App\Http\Controllers\CommentController@getComment')->name('comment.get');
 // Delete Comment

@@ -12,6 +12,6 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        'comment-store'
+        'comment-store','comment-store-reply'
     ];
 }
