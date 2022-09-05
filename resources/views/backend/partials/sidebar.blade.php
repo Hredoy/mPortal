@@ -10,9 +10,9 @@ $totalusermessage = TicketReply::whereIn('ticket_id', $userticekt)->where('is_ad
 <div class="iq-sidebar">
     <div class="iq-sidebar-logo d-flex justify-content-between">
         <a href="{{route('home')}}" class="header-logo">
-            {{-- <img src="{{$settings->logo}}" class="img-fluid rounded-normal" alt=""> --}}
+            <img src="{{$settings->logo}}" class="img-fluid rounded-normal" alt="">
             <div class="logo-title">
-                <span class="text-primary text-uppercase">{{($settings->app_name)? $settings->app_name : config('app.name')}}</span>
+                {{-- <span class="text-primary text-uppercase">{{($settings->app_name)? $settings->app_name : config('app.name')}}</span> --}}
             </div>
         </a>
         <div class="iq-menu-bt-sidebar">

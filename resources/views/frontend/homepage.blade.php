@@ -1,6 +1,6 @@
 @extends('frontend.layout.app')
 @section('second_navbar')
-    @include('frontend.partials.second_navbar')
+@include('frontend.partials.second_navbar')
 @endsection
 @section('main_section')
 <div class="content-wrapper">
@@ -101,6 +101,7 @@
                     <div class="cb-content videolist">
                         <div class="row">
                             @forelse ($uploads->where('featured', 1) as $item)
+                            <input type="hidden" name="upload_id" value="{{$item->id}}">
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
@@ -114,25 +115,23 @@
                                     </div>
                                     <div class="v-views ls_d-flex ls_align-center ls_justify-between">
                                         {{$item->view}} views.
-                                        <div class="pull-right">
-                                        {{-- @if ($item->user_id == Auth::id())
-                                            <a href="#" disabled class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
-                                        @else
-                                            @if (!$item->likes()->where('user_id', Auth::id())->first() )
-                                                <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
-                                            @endif --}}
-                                           <div class="pull-right">
-                                            {{-- @if(!empty($likeChecks))
-                                                @if ( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() )
-                                                    <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                    <div class="pull-right">
+                                        @auth
+                                            @if ($item->user_id == Auth::id())
+                                                <a href="#" disabled class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                            @else
+                                                @if (!$item->likes()->where('user_id', Auth::id())->first() )
+                                                    <span class="btn like-icon" id="{{$item->id}}"><i class="fa fa-thumbs-up" style="font-size: 1.2em"></i></span>
                                                 @else
-                                                    <a href="{{Route('unlike', $item->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
+                                                    <span class="btn like-icon" id="{{$item->id}}"><i class="fa fa-thumbs-down  " style="font-size: 1.2em"></i></span>
                                                 @endif
-                                            @endif --}}
-                                                <small> {{$item->likes->count('count')}} Likes</small>
-                                            </div>
-                                        {{-- @endif --}}
-                                        </div>
+                                            @endif
+                                        @endauth
+                                        @guest
+                                            <span  disabled class="btn"><i class="fa fa-thumbs-up" style="font-size: 1.2em"></i></span>
+                                        @endguest
+                                        <small id="totalLikeshow" class="{{$item->id}}"> {{$item->likes->count('count')}} Likes</small>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +168,7 @@
                             <div class="col-lg-3 col-sm-6 videoitem mx-2">
                                 <div class="b-video">
                                     <div class="v-img">
-                                        <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt="" width="100%" height="215px" class="ls_obj-cover"></a>
+                                        <a href="{{route('singleVideo', $item->id)}}"><img src="{{asset($item->thumbnail_image)}}" alt="" width="270px" height="215px" class="ls_obj-cover"></a>
                                         <div class="time">{{$item->upload_duration}}</div>
                                     </div>
                                     <div class="ls_height-1 v-desc">
@@ -179,14 +178,23 @@
                                     </div>
                                     <div class="v-views ls_d-flex ls_align-center ls_justify-between">
                                         {{$item->view}} views.
-                                        {{-- <div class="pull-right">
-                                            @if ( $likeChecks->upload_id == $item->id && $likeChecks->user_id == Auth::id() )
-                                            <a href="{{Route('like', $item->id)}}" class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
-                                            @else
-                                            <a href="{{Route('unlike', $item->id)}}" class="btn"><i class="fa fa-thumbs-o-down  " style="font-size: 1.2em"></i></a>
-                                            @endif
-                                           <small> {{$item->likes->count('count')}} Likes</small>
-                                        </div> --}}
+                                        <div class="pull-right">
+                                            @auth
+                                                @if ($item->user_id == Auth::id())
+                                                    <a href="#" disabled class="btn "><i class="fa fa-thumbs-o-up" style="font-size: 1.2em"></i></a>
+                                                @else
+                                                    @if (!$item->likes()->where('user_id', Auth::id())->first() )
+                                                        <span class="btn like-icon" id="{{$item->id}}"><i class="fa fa-thumbs-up" style="font-size: 1.2em"></i></span>
+                                                    @else
+                                                        <span class="btn like-icon" id="{{$item->id}}"><i class="fa fa-thumbs-down  " style="font-size: 1.2em"></i></span>
+                                                    @endif
+                                                @endif
+                                            @endauth
+                                            @guest
+                                                <span  disabled class="btn"><i class="fa fa-thumbs-up" style="font-size: 1.2em"></i></span>
+                                            @endguest
+                                            <small id="totalLikeshow" class="{{$item->id}}"> {{$item->likes->count('count')}} Likes</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -201,3 +209,34 @@
     </div>
 </div>
 @endsection
+@push('custom_script')
+<script>
+$(document).ready(function() {
+
+// Like Video
+$(document).on('click', '.like-icon', function() {
+    var id = this.id;
+    $.ajax({
+        url: `/video/like/${id}`
+        , type: 'GET'
+        , success: function(data) {
+            // console.log(data);
+            if(data.data.click == 'like'){
+                $('.like-icon#' +id).html('<i class="fa fa-thumbs-down" style="font-size: 1.2em"></i>')
+            }else if(data.data.click == 'unlike'){
+                $('.like-icon#' +id).html('<i class="fa fa-thumbs-up" style="font-size: 1.2em"></i>')
+            }
+            $('#totalLikeshow.' +id).html(`${data.data.likecount} like`)
+
+        }
+        , error: function(error) {
+            console.log(error)
+        }
+    })
+});
+
+
+});
+    </script>
+    @endpush
+

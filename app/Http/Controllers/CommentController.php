@@ -59,6 +59,7 @@ class CommentController extends Controller
         $request->validate([
             'body'=>'required',
         ]);
+<<<<<<< HEAD
         $input['user_id'] = Auth::id();
         $comment = Comment::create($input);
         $comment = Comment::with(['user','replies'])->where("id",$comment->id)->get();
@@ -98,6 +99,33 @@ class CommentController extends Controller
             'count'=> $comment_counter->count(),
             'comment'=>$comment
         ]);
+=======
+       if (Auth::check()) {
+            $input['user_id'] = Auth::id();
+            $input['created_at'] = \Carbon\Carbon::now();
+            $id = Comment::insertGetId($input);
+
+            $comment=  Comment::whereId($id)->with("user")->first();
+            if ($request->parent_id) {
+                $count=  Comment::whereUpload_id($request->upload_id)->whereParent_id($request->parent_id)->sum("user_id");
+            } else {
+                $count=  Comment::whereUpload_id($request->upload_id)->where('parent_id', null)->sum("user_id");
+            }
+
+                return response()->json([
+                    'success' => true,
+                    'code' => 200,
+                    'data' => [
+                        "comment"=>$comment,
+                        "time"=>$comment->created_at->diffForHumans(),
+                        "userName"=>$comment->user->name,
+                        "count"=>$count,
+                        ]
+                ]);
+
+
+       }
+>>>>>>> main
     }
 
 }
