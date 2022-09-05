@@ -60,6 +60,7 @@
                     @endif
                 </div>
 
+<<<<<<< Updated upstream
                 <!-- <div class="acide-panel acide-panel-top">
                     <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
                     <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>
@@ -84,6 +85,37 @@
                             @endif
                                 <div class="c-s" id="totalFollowShow">
                                     {{$upload->user->followers()->get()->count()}}
+=======
+                    <!-- <div class="acide-panel acide-panel-top">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked"></i></a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="#"><i class="cv cvicon-cv-flag" data-toggle="tooltip" data-placement="top" title="Flag"></i></a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div> -->
+                    <div class="author clearfix">
+                        <div class="author-head ls_avatar-img">
+                            <a href="#"><img
+                                    src="@if ($upload->user->profile && $upload->user->profile->avatar_status == 1) {{ $upload->user->profile->avatar }} @else {{ Gravatar::get($upload->user->email) }} @endif"
+                                    alt="{{ $upload->user->name }}" class="sv-avatar"></a>
+                            <div class="sv-name">
+                                <div><a href="{{ route('channelpage', $upload->user_id) }}">{{ $upload->user->name }}</a>
+                                    . {{ App\Models\Upload::where('user_id', $upload->user_id)->count() }} Videos</div>
+                                <div class="c-sub hidden-xs">
+                                    @if (empty($followCheck))
+                                        @auth
+                                            <span class="c-f btn follow-btn">Follow</i></span>
+                                        @endauth
+                                        @guest
+                                            <span class="c-f btn follow-btn ">Follow</i></span>
+
+                                        @endguest
+                                    @else
+                                        <span class="c-f btn follow-btn">Unfollow</i></span>
+                                    @endif
+                                    <div class="c-s" id="totalFollowShow">
+                                        {{ $upload->user->followers()->get()->count() }}
+                                    </div>
+                                    <div class="clearfix"></div>
+>>>>>>> Stashed changes
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -178,11 +210,19 @@
                         <a>Tell Us What You Think</a>
                     </div>
 
+<<<<<<< Updated upstream
                     <!-- <div class="content-block head-div head-arrow head-arrow-top visible-xs">
                         <div class="head-arrow-icon">
                             <i class="cv cvicon-cv-next"></i>
                         </div>
                     </div> -->
+=======
+                        <!-- <div class="content-block head-div head-arrow head-arrow-top visible-xs">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="head-arrow-icon">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="cv cvicon-cv-next"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div> -->
+>>>>>>> Stashed changes
 
                     {{-- <div class="adblock2">
                         <div class="img">
@@ -313,12 +353,20 @@
                         </div>
                         <!-- END comments -->
                     </div>
+<<<<<<< Updated upstream
                 </div>
                 <div class="content-block head-div head-arrow visible-xs">
                     <!-- <div class="head-arrow-icon">
                         <i class="cv cvicon-cv-next"></i>
                     </div> -->
                     {{-- <div class="adblock2 adblock2-v2">
+=======
+                    <div class="content-block head-div head-arrow visible-xs">
+                        <!-- <div class="head-arrow-icon">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="cv cvicon-cv-next"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div> -->
+                        {{-- <div class="adblock2 adblock2-v2">
+>>>>>>> Stashed changes
                         <div class="img">
                             <span>Google AdSense 300 x 250</span>
                         </div>
@@ -463,6 +511,7 @@ $(document).on('click', '.like-icon', function() {
         });
 // --------END FOLLOW AUTHOR --------//
 
+<<<<<<< Updated upstream
 
 
 // -------- ADD COMMENT --------//
@@ -573,3 +622,143 @@ $( this ).bind( "submit", function(event) {
 });
     </script>
     @endpush
+=======
+                // Like Video
+                $(document).on('click', '.like-icon', function() {
+                    let upload_id = $('input[name="upload_id"]').val();
+                    $.ajax({
+                        url: `/video/like/${upload_id}`,
+                        type: 'GET',
+                        success: function(data) {
+                            // console.log(data);
+                            if (data.data.click == 'like') {
+                                $('.like-icon').html(
+                                    '<i class="fa fa-thumbs-down" style="font-size: 1.2em"></i>'
+                                )
+                            } else if (data.data.click == 'unlike') {
+                                $('.like-icon').html(
+                                    '<i class="fa fa-thumbs-up" style="font-size: 1.2em"></i>')
+                            }
+                            $('#totalLikeshow').html(`${data.data.likecount} like`)
+
+                        },
+                        error: function(error) {
+                            console.log(error)
+                        }
+                    })
+                });
+
+                // -------- FOLLOW AUTHOR --------//
+                $(document).on('click', '.follow-btn', function() {
+                    let user_id = $('input[name="user_id"]').val();
+                    $.ajax({
+                        url: `/author/follow/${user_id}`,
+                        type: 'GET',
+                        success: function(data) {
+                            if (data.data.click == 'follow') {
+                                $('.follow-btn').html('Follow')
+                            } else if (data.data.click == 'unfollow') {
+                                $('.follow-btn').html('Unfollow')
+                            }
+                            $('#totalFollowShow').html(data.data.followcount)
+
+                        },
+                        error: function(error) {
+                            console.log(error)
+                        }
+                    })
+                });
+                // --------END FOLLOW AUTHOR --------//
+
+
+
+                // -------- ADD COMMENT --------//
+
+                $("#commentStore").submit(function(event) {
+                    event.preventDefault();
+
+                    var body = $('#body').val();
+                    var upload_id = $('#upload_id').val();
+                    var image = $('#image').val();
+
+
+                    $.ajax({
+
+                        url: "{{ url('/comment-store') }}",
+                        type: "POST",
+                        dataType: 'json',
+                        data: {
+                            body: body,
+                            upload_id: upload_id,
+                            image: image
+                        },
+
+                        success: function(data) {
+                            console.log(data);
+                            $('#commentStore')[0].reset();
+                            $('#commentList').append(data.data);
+                            // commentList();
+
+                        }
+                    })
+                });
+
+                // -------- END ADD COMMENT --------//
+
+                // -------- DELETE COMMENT --------//
+                $(document).on('click', '.comment-del', function() {
+                    var id = this.id;
+                    $.ajax({
+                        url: "{{ url('/comment-delete/') }}/" + id,
+                        type: 'get',
+                        success: function(res) {
+                            $(this).parents(".cl-comment-text").parents(".cl-comment").remove();
+                            $(".cl-comment-reply#reply" + id).remove()
+
+
+
+                        },
+                        error: function(error) {
+                            console.log(error)
+                        }
+                    })
+                });
+                // -------- END DELETE COMMENT --------//
+
+
+                $("form").each(function() {
+
+                    /* addEventListener onsubmit each form */
+                    $(this).bind("submit", function(event) {
+                        if ($(this).attr('data-replyForm') == 1) {
+                            $.ajax({
+                                url: "{{ url('/comment-store-reply') }}",
+                                type: "POST",
+                                dataType: 'json',
+                                data: $(this).serialize(),
+                                success: function(data) {
+                                    var form = '#' + event.target.id;
+                                    $(form).trigger("reset");
+                                    console.log(data.count);
+
+                                    var count = $('#reply-count' + data.comment[0]
+                                        .parent_id).empty().prepend(data.count);
+                                    var getData = data.data;
+
+                                    $('#reply-all-count' + data.comment[0]
+                                        .parent_id).empty().prepend(data.count);
+                                    var commentId = '#collapse' + data.comment[0]
+                                        .parent_id;
+                                    $(commentId).append(getData);
+
+                                }
+                            });
+                        }
+
+                    });
+
+                });
+            });
+        </script>
+        h
+>>>>>>> Stashed changes
